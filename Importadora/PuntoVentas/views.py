@@ -54,7 +54,7 @@ class ProductDetailView(TemplateView):
 
 
 def team(request):
-    return render(request, 'web/team.html')
+    return render(request, 'web/team1.html')
 
 
 def register(request):
