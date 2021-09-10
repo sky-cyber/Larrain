@@ -1,0 +1,89 @@
+{% extends 'Adm/admin.html' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-8 text-center">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shopping-basket"></i>
+                                {{ title2 }}
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-hover text-center" id="tabla">
+                                <thead class="bg-primary alert-link text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Categoria</th>
+                                    <th>Marca</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Imagen</th>
+                                    <th>Fecha de creacion</th>
+                                    <th>Opciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for p in object_list %}
+                                    <tr>
+                                        <td>{{ p.id }}</td>
+                                        <td>{{ p.name }}</td>
+                                        <td>{{ p.category }}</td>
+                                        <td>{{ p.mark }}</td>
+                                        <td>{{ p.selling_price }}</td>
+                                        <td>{{ p.stock }}</td>
+                                        <td class="text-center">
+                                            {% if p.image %}
+                                                <img src="{{ p.image.url }}" class="img-fluid d-block mx-auto"
+                                                     style="width: 80px; height: 80px">
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ p.date_create }}</td>
+                                        <td>
+                                            <a href="{% url 'product_edit' p.id %}" type="button"
+                                               class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
+                                            <a href="{% url 'product_delete' p.id %}"
+                                               class="btn btn-danger btn-sm"><i
+                                                    class="fas fa-trash-restore-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="card-footer">
+                                <a href="{% url 'product_create' %}" class="btn btn-primary" id="btntest"><i
+                                        class="fas fa-plus-square"></i>
+                                    {{ button }}
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

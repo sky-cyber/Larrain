@@ -1,0 +1,46 @@
+{% extends 'Web/home.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block service %}
+
+{% endblock %}
+
+{% block contend %}
+    <br><br><br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Productos selecionados del carrito</h4>
+                <hr>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>valor</th>
+                        <th>cantidad</th>
+                        <th>subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cp in cart.cartproduct_set.all %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ cp.product.image.url }}</td>
+                            <td>{{ cp.product.name }}</td>
+                            <td>{{ cp.rate }}</td>
+                            <td>{{ cp.quatity }}</td>
+                            <td>{{ cp.subtotal }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

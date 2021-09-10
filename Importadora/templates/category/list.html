@@ -1,0 +1,69 @@
+{% extends 'Adm/admin.html' %}
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shopping-basket"></i>
+                                {{ title2 }}
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="container">
+                                <table class="table table-hover " id="tabla" style="width: 100%">
+                                    <thead class="bg-primary alert-link text-white">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Categorias</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for c in object_list %}
+                                        <tr>
+                                            <td>{{ c.id }}</td>
+                                            <td>{{ c.name }}</td>
+                                            <td>
+                                                <a href="{% url 'category_update' c.id %}" type="button" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
+                                                <a href="{% url 'category_delete' c.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ url_create }}" class="btn btn-primary" id="btntest"><i class="fas fa-plus-square"></i>
+                                    {{ button }}
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

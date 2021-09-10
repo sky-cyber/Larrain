@@ -1,0 +1,141 @@
+{% extends 'Web/home.html' %}
+{% load static %}
+
+{% block title %}
+        <title>Producto</title>
+{% endblock %}
+
+{% block service %}
+
+{% endblock %}
+
+{% block contend %}
+    <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+            <br>
+            <div class="row wow fadeIn">
+                <h1>{{ product.name }} | Visitas {{ product.view_count }}</h1>
+                <hr>
+                <div class="col-md-6 mb-4">
+                    <img src="{{ product.image.url }}"
+                         class="img-fluid" alt="">
+                </div>
+                <div class="col-md-6 mb-4">
+
+                    <!--Content-->
+                    <div class="p-4">
+
+                        <p class="lead text-black">
+                        <div class="card-title">
+                            <h5 class="card-title" style="font-size: 15px; color: #5d6974">
+                                <strike>Precio: ${{ product.marked_price }}</strike></h5>
+                            <h3 class="card-title" style="font-size: 23px"><img
+                                    src="{% static 'assets/img/picture/price_label.png' %}"
+                                    class="img-fluid" style="width: 35px; height: 35px"> Oferta:
+                                ${{ product.selling_price }}</h3>
+                        </div>
+                        </p>
+                        <p class="lead font-weight-bold"
+                           style="font-size: 25px"><img src="{% static 'assets/img/picture/product.png' %}"
+                                                        class="img-fluid" style="width: 35px; height: 35px">
+                            Categoria: {{ product.category }}</p>
+                        <p class="lead font-weight-bold" style="font-size: 25px"><img
+                                src="{% static 'assets/img/picture/mark.png' %}"
+                                class="img-fluid" style="width: 35px; height: 35px"> Marca: {{ product.mark }}</p>
+                        <p class="lead font-weight-bold text-danger" style="font-size: 25px"><img
+                                src="{% static 'assets/img/picture/warranty.png' %}"
+                                class="img-fluid" style="width: 35px; height: 35px"> Garantia: {{ product.warranty }}
+                        </p>
+                        <hr>
+                        <p class="lead font-weight-bold">{{ product.description }}</p>
+
+                        <form class="d-flex justify-content-left">
+                            <!-- Default input -->
+                                <input type="number" value="1" aria-label="Search" class="form-control"
+                                       style="width: 100px">
+                                <a href="{% url 'addtocart' product.id %}" class="btn btn-success btn-md my-0 p text-center" type="submit">Add to cart
+                                    <i class="fas fa-shopping-cart ml-1"></i>
+                                </a>
+                        </form>
+                        <div class="row">
+                            <div class="mt-4 text-center">
+                                <br>
+                                <p class="lead text-center text-bold">Metodos de pago:</p>
+                                <img
+                                        src="{% static 'assets/img/picture/visa.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/mastercard.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/wester.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/bank-transfer.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/paypal.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/american-expres.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row d-flex justify-content-center wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-6 text-center">
+
+                    <h4 class="my-4 h4">Additional information</h4>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta
+                        odit
+                        voluptates,
+                        quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg"
+                         class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg"
+                         class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg"
+                         class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </main>
+{% endblock %}
