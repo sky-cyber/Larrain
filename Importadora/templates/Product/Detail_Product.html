@@ -14,7 +14,7 @@
         <div class="container dark-grey-text mt-5">
             <br>
             <div class="row wow fadeIn">
-                <h1>{{ product.name }} | Visitas {{ product.view_count }}</h1>
+                <h1>{{ product.name }} | Visitas {{ product.numReviews }}</h1>
                 <hr>
                 <div class="col-md-6 mb-4">
                     <img src="{{ product.image.url }}"
@@ -28,11 +28,11 @@
                         <p class="lead text-black">
                         <div class="card-title">
                             <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                <strike>Precio: ${{ product.marked_price }}</strike></h5>
+                                <strike>Precio: ${{ product.salePrice }}</strike></h5>
                             <h3 class="card-title" style="font-size: 23px"><img
                                     src="{% static 'assets/img/picture/price_label.png' %}"
                                     class="img-fluid" style="width: 35px; height: 35px"> Oferta:
-                                ${{ product.selling_price }}</h3>
+                                ${{ product.offerPrice }}</h3>
                         </div>
                         </p>
                         <p class="lead font-weight-bold"
@@ -41,7 +41,7 @@
                             Categoria: {{ product.category }}</p>
                         <p class="lead font-weight-bold" style="font-size: 25px"><img
                                 src="{% static 'assets/img/picture/mark.png' %}"
-                                class="img-fluid" style="width: 35px; height: 35px"> Marca: {{ product.mark }}</p>
+                                class="img-fluid" style="width: 35px; height: 35px"> Marca: {{ product.brand }}</p>
                         <p class="lead font-weight-bold text-danger" style="font-size: 25px"><img
                                 src="{% static 'assets/img/picture/warranty.png' %}"
                                 class="img-fluid" style="width: 35px; height: 35px"> Garantia: {{ product.warranty }}
@@ -53,7 +53,7 @@
                             <!-- Default input -->
                                 <input type="number" value="1" aria-label="Search" class="form-control"
                                        style="width: 100px">
-                                <a href="{% url 'addtocart' product.id %}" class="btn btn-success btn-md my-0 p text-center" type="submit">Add to cart
+                                <a href="" class="btn btn-success btn-md my-0 p text-center" type="submit">Add to cart
                                     <i class="fas fa-shopping-cart ml-1"></i>
                                 </a>
                         </form>

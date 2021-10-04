@@ -52,8 +52,8 @@
                                         <td>{{ p.id }}</td>
                                         <td>{{ p.name }}</td>
                                         <td>{{ p.category }}</td>
-                                        <td>{{ p.mark }}</td>
-                                        <td>{{ p.selling_price }}</td>
+                                        <td>{{ p.brand }}</td>
+                                        <td>{{ p.offerPrice }}</td>
                                         <td>{{ p.stock }}</td>
                                         <td class="text-center">
                                             {% if p.image %}
@@ -61,7 +61,7 @@
                                                      style="width: 80px; height: 80px">
                                             {% endif %}
                                         </td>
-                                        <td>{{ p.date_create }}</td>
+                                        <td>{{ p.createdAt }}</td>
                                         <td>
                                             <a href="{% url 'product_edit' p.id %}" type="button"
                                                class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>

@@ -6,11 +6,12 @@ from Modulo.Funtions.category.form import CategoryForm
 from PuntoVentas.models import *
 
 
-# def category_list(request):
-#     data = {
-#         'categories': Category.objects.all()
-#     }
-#     return render(request, 'category/list.html', data)
+def category_list(request):
+    data = {
+        'categories': Category.objects.all()
+    }
+    return render(request, 'category/list.html', data)
+
 
 class CategoryListView(ListView):
     model = Category

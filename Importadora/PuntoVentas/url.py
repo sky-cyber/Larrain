@@ -1,6 +1,6 @@
 from django.urls import path
 
-from Modulo.Funtions.cart.view import AddToCartView, MyCartView
+# from Modulo.Funtions.cart.view import AddToCartView, MyCartView
 from PuntoVentas.views import home, team, register, CatalogueListView, AllCategoriesView, ProductDetailView
 
 urlpatterns = [
@@ -14,7 +14,7 @@ urlpatterns = [
     path('producto/<slug:slug>/', ProductDetailView.as_view(), name='productDetail'),
 
     # URL THE CART
-    path('add-to-cart/<int:prod_id>/', AddToCartView.as_view(), name='addtocart'),
-    path('mi-carrito/', MyCartView.as_view(), name='mycart')
+    # path('add-to-cart/<int:prod_id>/', AddToCartView.as_view(), name='addtocart'),
+    # path('mi-carrito/', MyCartView.as_view(), name='mycart')
 
 ]

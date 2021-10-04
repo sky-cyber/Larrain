@@ -47,7 +47,7 @@ class ProductDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         slug = self.kwargs['slug']
         product = Product.objects.get(slug=slug)
-        product.view_count += 1
+        product.numReviews += 1
         product.save()
         context['product'] = product
         return context

@@ -4,18 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# Create your models here.
-
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=500)
-    email = models.CharField(max_length=200, null=True, blank=True)
-    joined = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.first_name
-
+# Create your models here
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre", unique=True)
@@ -30,20 +19,74 @@ class Category(models.Model):
         ordering = ['id']
 
 
+class Supplier(models.Model):
+    rut = models.CharField(max_length=15, verbose_name="Rut", unique=True, blank=False, null=False)
+    company = models.CharField(max_length=200, verbose_name="Empresa", blank=False, null=False)
+    phone = models.CharField(default="", max_length=12, verbose_name="Celular", unique=True, blank=False, null=False)
+    address = models.CharField(default="", max_length=250, verbose_name="Dirección", blank=False, null=False)
+    email = models.EmailField(default="", max_length=100, verbose_name="Email", unique=True, blank=False, null=False)
+    detailProduct = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
+    timeDelivery = models.CharField(default="", max_length=250, verbose_name="Tiempo de Entrega", blank=False, null=False)
+    createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
+
+    def __str__(self):
+        return self.rut
+
+    class Meta:
+        verbose_name = "Proveedor"
+        verbose_name_plural = "Proveedores"
+        ordering = ['id']
+
+
+class Role(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Nombre", unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Role"
+        verbose_name_plural = "Roles"
+        ordering = ['id']
+
+
+class Users(models.Model):
+    role = models.ForeignKey('Role', on_delete=models.SET_NULL, null=True)
+    username = models.CharField(max_length=50,verbose_name="Nombre de usuario")
+    first_name = models.CharField(max_length=50,verbose_name="Nombres")
+    last_name = models.CharField(max_length=200,verbose_name="Apellidos")
+    Password = models.CharField(default="", max_length=200, verbose_name="Contraseña")
+    email = models.EmailField(max_length=200, null=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"
+        ordering = ['id']
+
+
 class Product(models.Model):
+    user = models.ForeignKey('Users', on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
+    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=50, verbose_name="Nombre del Producto", unique=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, default="")
-    mark = models.CharField(default="", verbose_name='Marca del Producto',
+    image = models.ImageField(upload_to="product", null=True, blank=True)
+    brand = models.CharField(default="", verbose_name='Marca del Producto',
                             max_length=50, blank=False, null=False)
     description = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
-    marked_price = models.PositiveIntegerField(default=0, max_length=20, verbose_name="Precio De Mercado")
-    selling_price = models.PositiveIntegerField(default=0, max_length=20, verbose_name="Precio de Venta")
+    rating = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
+    numReviews = models.PositiveIntegerField(default=0, verbose_name="Cantidad de Visitas")
+    salePrice = models.PositiveIntegerField(default=0, verbose_name="Precio")
+    offerPrice = models.PositiveIntegerField(default=0, verbose_name="Oferta")
     stock = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to="product", null=True, blank=True)
     warranty = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Garantia")
-    view_count = models.PositiveIntegerField(default=0, verbose_name="Cantidad de Visitas")
-    date_create = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
+    dispachTime = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Tiempo de envio")
+    statusProduct = models.BooleanField(default="", verbose_name="Estado", null=True, blank=True )
+    createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
     def __str__(self):
         return self.name
@@ -54,97 +97,29 @@ class Product(models.Model):
         ordering = ['name']
 
 
-class Cart(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
-    total = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
+class Contact(models.Model):
+    user = models.ForeignKey('Users', on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=50, verbose_name="Cliente")
+    claim = models.CharField(max_length=500, verbose_name="Reclamo")
+    createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
     def __str__(self):
-        return "Cart: " + str(self.id)
+        return self.name
+
+    class Meta:
+        verbose_name = "Contacto"
+        verbose_name_plural = "Contactos"
+        ordering = ['name']
 
 
-class CartProduct(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rate = models.PositiveIntegerField(default=0)
-    quantity = models.PositiveIntegerField(default=0)
-    subtotal = models.PositiveIntegerField(default=0)
-
-    def __str__(self):
-        return "Cart: " + str(self.cart.id) + "CartProduct: " + str(self.id)
-
-
-ORDER_STATUS = (
-    ("Orden recivida", "Orden recibida"),
-    ("Orden En Proceso", "Orden En Proceso"),
-    ("Orden En Camino", "Orden En Camino"),
-    ("Orden Completada", "Orden Completada"),
-    ("Orden Cancelada", "Orden Cancelada"),
-)
-
-
-class Order(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    ordered_by = models.CharField(max_length=200)
-    shipping_address = models.CharField(max_length=200)
-    phone = models.CharField(max_length=50, unique=True, verbose_name="Celular")
-    email = models.EmailField(max_length=50, unique=True, verbose_name="Correo Electronico")
-    subtotal = models.PositiveIntegerField(default=0)
-    discount = models.PositiveIntegerField(default=0)
-    total = models.PositiveIntegerField(default=0)
-    order_status = models.CharField(max_length=50, choices=ORDER_STATUS)
-    date_create = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
+class Report(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Nombre", unique=True)
 
     def __str__(self):
-        return "Order: " + str(self.id)
+        return self.name
 
-# class detSales(models.Model):
-#     sale = models.ForeignKey('Sales', on_delete=models.CASCADE)
-#     product = models.ForeignKey('Product', on_delete=models.CASCADE)
-#     count = models.IntegerField(default=0)
-#     price = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
-#     subtotal = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
-#
-#     def __str__(self):
-#         return self.product.name
-#
-#     class Meta:
-#         verbose_name = "detVenta"
-#         verbose_name_plural = "detVentas"
-#         ordering = ['id']
-#
-#
-# class Sales(models.Model):
-#     client = models.ForeignKey('Client', on_delete=models.CASCADE)
-#     date_sale = models.DateTimeField(default=datetime.now, verbose_name="Fecha De Venta")
-#     subtotal = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
-#     iva = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
-#     total = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
-#
-#     def __str__(self):
-#         return self.client.names
-#
-#     class Meta:
-#         verbose_name = "Venta"
-#         verbose_name_plural = "Ventas"
-#         ordering = ['id']
+    class Meta:
+        verbose_name = "Reporte"
+        verbose_name_plural = "Reportes"
+        ordering = ['id']
 
-
-# class Client(models.Model):
-#     names = models.CharField(max_length=150, verbose_name="Nombres")
-#     last_name = models.CharField(max_length=150, verbose_name="Apellidos")
-#     rut = models.CharField(max_length=12, unique=True, verbose_name="RUT")
-#     birthday = models.DateField(default=datetime.now, verbose_name="Fecha De Nacimiento")
-#     address = models.CharField(max_length=100, null=True, blank=True, verbose_name="Direccion")
-#     gender = models.CharField(max_length=50, default="male", verbose_name="Sexo")
-#     email = models.EmailField(max_length=50, unique=True, verbose_name="Correo")
-#     phone = models.CharField(max_length=12, unique=True, blank=False, null=False, verbose_name="Celular")
-#     date_create = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
-#
-#     def __str__(self):
-#         return "{0},{1}".format(self.last_name, self.names)
-#
-#     class Meta:
-#         verbose_name = "Cliente"
-#         verbose_name_plural = "Clientes"
-#         ordering = ['names']
