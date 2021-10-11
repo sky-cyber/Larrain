@@ -50,6 +50,7 @@ class ProductDetailView(TemplateView):
         product.numReviews += 1
         product.save()
         context['product'] = product
+        context['button'] = 'Agregar al Carrito'
         return context
 
 

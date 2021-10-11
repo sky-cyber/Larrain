@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-        <title>Producto</title>
+    <title>Producto</title>
 {% endblock %}
 
 {% block service %}
@@ -17,7 +17,7 @@
                 <h1>{{ product.name }} | Visitas {{ product.numReviews }}</h1>
                 <hr>
                 <div class="col-md-6 mb-4">
-                    <img src="{{ product.image.url }}"
+                    <img src="{{ product.imageURL }}"
                          class="img-fluid" alt="">
                 </div>
                 <div class="col-md-6 mb-4">
@@ -47,40 +47,42 @@
                                 class="img-fluid" style="width: 35px; height: 35px"> Garantia: {{ product.warranty }}
                         </p>
                         <hr>
-                        <p class="lead font-weight-bold">{{ product.description }}</p>
-
-                        <form class="d-flex justify-content-left">
+                        <br>
+                        <form class="d-flex justify-content-left text-center">
                             <!-- Default input -->
-                                <input type="number" value="1" aria-label="Search" class="form-control"
-                                       style="width: 100px">
-                                <a href="" class="btn btn-success btn-md my-0 p text-center" type="submit">Add to cart
-                                    <i class="fas fa-shopping-cart ml-1"></i>
-                                </a>
+                            <input type="number" value="1" aria-label="Search" class="form-control"
+                                   style="width: 100px">
+                            <a href="" class="btn btn-success btn-md my-0 p text-center"
+                               type="submit"><i class="fas fa-shopping-cart ml-1"></i>{{ button }}
+                            </a>
                         </form>
-                        <div class="row">
-                            <div class="mt-4 text-center">
-                                <br>
-                                <p class="lead text-center text-bold">Metodos de pago:</p>
-                                <img
-                                        src="{% static 'assets/img/picture/visa.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/mastercard.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/wester.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/bank-transfer.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/paypal.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/american-expres.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                            </div>
-                        </div>
+                    </div>
+                </div>
+                <h2 class="text-center">Caracteristicas del producto</h2>
+                <div class="card-footer">
+                    <p class="lead font-weight-bold">{{ product.description }}</p>
+                </div>
+                <div class="row">
+                    <div class="mt-4 text-center">
+                        <p class="lead text-center text-bold">Metodos de pago:</p>
+                        <img
+                                src="{% static 'assets/img/picture/visa.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
+                        <img
+                                src="{% static 'assets/img/picture/mastercard.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
+                        <img
+                                src="{% static 'assets/img/picture/wester.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
+                        <img
+                                src="{% static 'assets/img/picture/bank-transfer.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
+                        <img
+                                src="{% static 'assets/img/picture/paypal.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
+                        <img
+                                src="{% static 'assets/img/picture/american-expres.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px">
                     </div>
                 </div>
             </div>

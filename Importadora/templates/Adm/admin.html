@@ -44,13 +44,13 @@ to get the desired effect
                 <a href="{% url 'adm' %}" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="#" class="nav-link">contact</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="#" class="nav-link">contact</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="#" class="nav-link">contact</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -186,7 +186,7 @@ to get the desired effect
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <div class="d-block text-white text-bold text-center">{{ user.username }}</div>
                 </div>
             </div>
 
@@ -196,46 +196,139 @@ to get the desired effect
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active">
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Barra de opciones
                             </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'category_list' %}" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
+
+                        <a href="" class="nav-link active">
+                            <i class="fas fa-shopping-basket"></i>
                             <p>
-                                Nueva categoria
-                                <i class="right badge badge-danger">New</i>
+                                Categorias
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'category_create' %}" class="nav-link">
+                                    <i class="fas fa-ad"></i>
+                                    <p>Nueva categoria</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'category_list' %}" class="nav-link">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <p>Listado de cateogrias</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="{% url 'product_create' %}" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Nuevo Producto
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="{% url 'product_list' %}" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="" class="nav-link active">
+                           <i class="fas fa-cubes"></i>
                             <p>
                                 Bodega
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'product_create' %}" class="nav-link">
+                                    <i class="fas fa-dolly"></i>
+                                    <p>Registrar Producto</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'product_list' %}" class="nav-link">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <p>Listado de Producto</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
+                        <a href="" class="nav-link active">
+                           <i class="fas fa-shipping-fast"></i>
                             <p>
-                                Charts
+                                Proveedor
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'supplier_create' %}" class="nav-link">
+                                    <i class="fas fa-user-lock"></i>
+                                    <p>Nuevo Proveedor</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier_list' %}" class="nav-link">
+                                   <i class="fas fa-address-card"></i>
+                                    <p>Listado de Proveedores</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
+                           <i class="fas fa-users"></i>
+                            <p>
+                                Usuarios
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'supplier_create' %}" class="nav-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>Nuevo Usuario</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'supplier_list' %}" class="nav-link">
+                                   <i class="fas fa-id-card-alt"></i>
+                                    <p>Listado de Usuarios</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
+                           <i class="fas fa-users"></i>
+                            <p>
+                                Clientes
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>Registros</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>Ordenes</p>
+                                    <i class="right badge badge-primary">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'claim_list' %}" class="nav-link">
+                                   <i class="fas fa-id-card-alt"></i>
+                                    <p>Listado de Reclamos</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -322,7 +415,11 @@ to get the desired effect
                 <div class="row">
                     <div class="card" style="width: 1000px;">
                         <div class="card-header text-primary">
-                            <h1>Bienvenido a WYKEP</h1>
+                            {% if user.is_authenticated %}
+                                <h1>Bienvenido a WYKEP {{ user.username }}</h1>
+                            {% else %}
+                                <h1>Francisco es un hijo de puta</h1>
+                            {% endif %}
                         </div>
                         <div class="card-body align-self-center">
                             <div class="card">

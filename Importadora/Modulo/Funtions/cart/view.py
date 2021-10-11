@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView
+from django.shortcuts import render
 
 from PuntoVentas.models import *
+from django.contrib.auth.models import User
 
 
 # class AddToCartView(TemplateView):
@@ -49,18 +51,24 @@ from PuntoVentas.models import *
 #             pass
 #
 #
-# class MyCartView(TemplateView):
-#     template_name = "Cart/mycart.html"
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         cart_id = self.request.session.get("cart_id", None)
-#         if cart_id:
-#             cart = Cart.objects.get(id=cart_id)
-#         else:
-#             cart = None
-#         context['cart'] = cart
-#         return context
+def mycart(request):
+    if request.user.is_authenticated:
+        client = request.user.client
+        order, created = Orders.objects.get_or_create(client=client, isPaid=False, isDelivered=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+    context = {'items': items}
+    return render(request, 'Cart/mycart1.html', context)
 
 
+class AllitemsView(TemplateView):
+    model = Orders
+    template_name = 'Cart/mycart.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['items'] = OderItem.objects.all()
+        context['button'] = 'Agregar al Carrito'
+        context['button1'] = 'Ver Producto'
+        return context
