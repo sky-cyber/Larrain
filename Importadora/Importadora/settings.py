@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PuntoVentas.apps.PuntoventasConfig',
+    # lib
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -127,5 +129,24 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# settings the file and picture
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# URL the LOGIN Y LOGOUT
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+
+# settings send email GMAIL
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'desarrollowykep@gmail.com'
+EMAIL_HOST_PASSWORD = '1d5aw2#asdx'
+
+
+
+

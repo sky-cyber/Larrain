@@ -5,11 +5,11 @@ from Modulo.Funtions.claim.form import ClaimForm
 from PuntoVentas.models import Contact
 
 
-class RegisterCreateView(CreateView):
+class ContactCreateView(CreateView):
     model = Contact
-    template_name = "Web/register.html"
+    template_name = "Web/contact.html"
     form_class = ClaimForm
-    success_url = reverse_lazy('register')
+    success_url = reverse_lazy('contact')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

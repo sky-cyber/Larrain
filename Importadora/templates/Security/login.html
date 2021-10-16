@@ -1,0 +1,110 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WYKEP | Login</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'admin/css/ionicons.min.css' %}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{% static 'admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box" style="width: 30%">
+    <br>
+    <div class="login-logo">
+        <img src="{% static 'assets/img/logo_wykep.png' %}">
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <a href="{% url 'home' %}" class="btn btn-dark text-left col-12"><i class="fas fa-door-open"></i> Volver</a>
+        <div class="card-body login-card-body text-center">
+            {% block image %}
+                <h3 class="login-box-msg text-bold">{{ title }}</h3>
+                <img src="{% static 'assets/img/security/user-login.png' %}" alt="">
+            {% endblock %}
+            {% block card %}
+                <br><br>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="text-left text-bold">
+                        {{ form.username.label }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <img src="{% static 'assets/img/security/user_icon.png' %}" alt="" style="width: 20px">
+                        </div>
+                        {{ form.username|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su nombre de Usuario'|attr:'autocomplete:off' }}
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                    <div class="text-left text-bold">
+                        {{ form.password.label }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <img src="{% static 'assets/img/security/lock_password.png' %}" alt="" style="width: 20px">
+                        </div>
+                        {{ form.password|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Contraseña' }}
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark btn-block">Login</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <p class="mb-1">
+                    <a href="{% url 'reset' %}">¿Has olvidado tu clave? click aqui</a>
+                </p>
+                <p class="mb-0">
+                    <a href="{% url 'register' %}" class="text-center">Registrate aqui</a>
+                </p>
+            {% endblock %}
+        </div>
+
+        <script src="{% static 'js/sweetalert2@11.js' %}"></script>
+
+        <script type="application/javascript">
+            {% if form.errors %}
+                var errors = '';
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        errors += '{{ error }}\n';
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errors
+                });
+            {% endif %}
+        </script>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'admin/dist/js/adminlte.min.js' %}"></script>
+
+</body>
+</html>

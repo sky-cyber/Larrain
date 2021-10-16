@@ -1,0 +1,68 @@
+{% extends 'Adm/admin.html' %}
+{% load static %}
+
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        {% block titulo %}
+                            <h1 class="m-0 text-danger text-bold">Perfil Del Usuario</h1>
+                        {% endblock %}
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card" style="width: 1000px;">
+                        <div class="card-header text-primary">
+                            {% if user.is_authenticated %}
+                                <h1>Bienvenido a WYKEP {{ user.username }}</h1>
+                            {% else %}
+                                <h1></h1>
+                            {% endif %}
+                        </div>
+                        <div class="card-body align-self-center">
+                            <div class="card">
+                                <div class="card bg-info">
+                                    <br>
+                                    <img src="{% static 'admin/img/profile.png' %}"
+                                         class="card-img-top align-self-center" alt="asd" style="width: 150px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-bold ">Usuario Administrativo</h5>
+                                        <p class="card-text text-bold">Un gusto tenerte en nuestro equipo, en este panel
+                                            verificarás tu informacion.</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <ul class="list-group list-group-flush" style="font-size: 20px;">
+                                    <li id="usuario" class="list-group-item">Usuario: {{ user.username }}</li>
+                                    <li id="nombre" class="list-group-item">Nombres: {{ user.first_name }}</li>
+                                    <li id="apellido" class="list-group-item">Apellidos: {{ user.last_name }}</li>
+                                    <li id="correo" class="list-group-item">Correo
+                                        Electronico: {{ user.email }}</li>
+                                </ul>
+                                <div class="card-body align-self-center">
+                                    <a href="" class="card-link btn btn-success">¿Desea
+                                        cambiar la clave?</a>
+                                    <a href="#" class="card-link btn btn-danger">¿Solicita eliminar está cuenta?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

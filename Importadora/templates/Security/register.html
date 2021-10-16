@@ -1,0 +1,64 @@
+{% extends 'Security/login.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block image %}
+    <h3 class="login-box-msg text-bold">Registro de Usuarios</h3>
+    <img src="{% static 'assets/img/security/add_user_icon.png' %}" alt="" style="width: 40%">
+{% endblock %}
+
+{% block card %}
+    <form method="post">
+        <br>
+        {% csrf_token %}
+        <div class="text-left text-bold">
+            {{ form.username.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.username|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su nombre de Usuario' }}
+        </div>
+        <div class="text-left text-bold">
+            {{ form.first_name.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.first_name|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su nombre de Nombre' }}
+        </div>
+        <div class="text-left text-bold">
+            {{ form.last_name.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.last_name|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Apellido' }}
+        </div>
+        <div class="text-left text-bold">
+            {{ form.email.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.email|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Correo' }}
+        </div>
+        <div class="text-left text-bold">
+            {{ form.password1.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.password1|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Contraseña' }}
+        </div>
+        <div class="text-left text-bold">
+            {{ form.password2.label }}
+        </div>
+        <div class="input-group mb-3">
+            {{ form.password2|add_class:'form-control card-footer'|attr:'placeholder:Confirma su contraseña' }}
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-dark btn-block">Registro</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <p class="mb-1">
+        <a href="{% url 'reset' %}">¿Has olvidado tu clave? click aqui</a>
+    </p>
+    <p class="mb-0">
+        <a href="{% url 'login' %}" class="text-center">Login Aqui</a>
+    </p>
+{% endblock %}

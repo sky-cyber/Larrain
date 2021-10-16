@@ -4,15 +4,28 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
 
-from PuntoVentas.models import Product, Category
+from PuntoVentas.models import *
 
 
 def home(request):
     return render(request, 'Web/home.html')
 
 
-def adm(request):
-    return render(request, 'Adm/admin.html')
+class DashboardView(TemplateView):
+    template_name = 'Adm/dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Total de Registros'
+        context['totalProduct'] = Product.objects.count()
+        context['totalUsers'] = User.objects.count()
+        context['totalSupplier'] = Supplier.objects.count()
+        context['totalOrder'] = Orders.objects.count()
+        return context
+
+
+class PerfilView(TemplateView):
+    template_name = 'Adm/perfil.html'
 
 
 class CatalogueListView(ListView):
@@ -59,4 +72,4 @@ def team(request):
 
 
 def register(request):
-    return render(request, 'web/register.html')
+    return render(request, 'web/contact.html')

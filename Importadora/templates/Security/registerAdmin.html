@@ -1,0 +1,79 @@
+{% extends 'Adm/admin.html' %}
+{% load widget_tweaks %}
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-danger text-bold">Agregar un Nuevo Usuario</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <form method="post">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    {% if action == 'add' %}
+                                        <i class="fas fa-plus-circle"></i>
+                                    {% else %}
+                                        <i class="fas fa-edit"></i>
+                                    {% endif %}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="container">
+                                    {% csrf_token %}
+                                    {{ form.username.label }}
+                                    {{ form.username | add_class:'form-control' | attr:'placeholder:Ingrese un nombre de Usuario'}}
+                                    {{ form.first_name.label }}
+                                    {{ form.first_name | add_class:'form-control'| attr:'placeholder:Ingrese Nombres' }}
+                                    {{ form.last_name.label }}
+                                    {{ form.last_name | add_class:'form-control'| attr:'placeholder:Ingrese Apellidos' }}
+                                    {{ form.email.label }}
+                                    {{ form.email | add_class:'form-control'| attr:'placeholder:Ingrese un Correo' }}
+                                    {{ form.password1.label }}
+                                    {{ form.password1 | add_class:'form-control'| attr:'placeholder:Ingrese una Contraseña' }}
+                                    {{ form.password2.label }}
+                                    {{ form.password2 | add_class:'form-control'| attr:'placeholder:Repita la Contraseña' }}
+                                    <br>
+                                    <div class="class=" style="font-size: 20px">
+                                    <p>
+                                        {{ form.is_superuser.label }}
+                                        {{ form.is_superuser }}
+                                    </p>
+                                    <p>
+                                        {{ form.is_staff.label }}
+                                        {{ form.is_staff }}
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-audio-description"></i> Agregar Usuario
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+{% endblock %}

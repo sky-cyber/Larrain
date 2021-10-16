@@ -17,9 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from Modulo.Funtions.security.view import LoginFormView, RegisterUser, ResetPasswordView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', LoginFormView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('resetPassword/', ResetPasswordView.as_view(), name='reset'),
+    path('register/', RegisterUser, name='register'),
     path('', include('PuntoVentas.url')),
     path('panel/', include('PuntoVentas.urladm'))
 ]

@@ -2,35 +2,43 @@ from django.urls import path
 
 from Modulo.Funtions.category.view import *
 from Modulo.Funtions.product.view import *
+from Modulo.Funtions.security.view import *
 from Modulo.Funtions.supplier.view import *
 from Modulo.Funtions.claim.view import *
-from PuntoVentas.views import adm
+from PuntoVentas.views import DashboardView, PerfilView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
 
-    # URL THE PANEL
-    path('', adm, name='adm'),
+    # URL FOR DASHBOARD
+    path('', login_required(DashboardView.as_view()), name='adm'),
+    # URL FOR PERFIL
+    path('perfil/', login_required(PerfilView.as_view()), name='perfil'),
 
     # URL OF CATEGORY
-    path('category/list', CategoryListView.as_view(), name='category_list'),
-    path('category/add', CategoryCreateView.as_view(), name='category_create'),
-    path('category/edit/<int:pk>/', CategoryUpdateView.as_view(), name='category_update'),
-    path('category/delete/<int:pk>/', CategoryDeleteView.as_view(), name='category_delete'),
+    path('category/list', login_required(CategoryListView.as_view()), name='category_list'),
+    path('category/add', login_required(CategoryCreateView.as_view()), name='category_create'),
+    path('category/edit/<int:pk>/', login_required(CategoryUpdateView.as_view()), name='category_update'),
+    path('category/delete/<int:pk>/', login_required(CategoryDeleteView.as_view()), name='category_delete'),
 
     # URL THE PRODUCT
-    path('product/add', ProductCreateView.as_view(), name='product_create'),
-    path('product/list', ProductListView.as_view(), name='product_list'),
-    path('product/edit/<int:pk>/', ProductUpdateView.as_view(), name='product_edit'),
-    path('product/delete/<int:pk>/', ProductDeleteView.as_view(), name='product_delete'),
+    path('product/add', login_required(ProductCreateView.as_view()), name='product_create'),
+    path('product/list', login_required(ProductListView.as_view()), name='product_list'),
+    path('product/edit/<int:pk>/', login_required(ProductUpdateView.as_view()), name='product_edit'),
+    path('product/delete/<int:pk>/', login_required(ProductDeleteView.as_view()), name='product_delete'),
 
     # URL THE SUPPLIER
-    path('supplier/add', SupplierCreateView.as_view(), name='supplier_create'),
-    path('supplier/list', SupplierListView.as_view(), name='supplier_list'),
-    path('supplier/edit/<int:pk>/', SupplierUpdateView.as_view(), name='supplier_update'),
-    path('supplier/delete/<int:pk>/', SupplierDeleteView.as_view(), name='supplier_delete'),
+    path('supplier/add', login_required(SupplierCreateView.as_view()), name='supplier_create'),
+    path('supplier/list', login_required(SupplierListView.as_view()), name='supplier_list'),
+    path('supplier/edit/<int:pk>/', login_required(SupplierUpdateView.as_view()), name='supplier_update'),
+    path('supplier/delete/<int:pk>/', login_required(SupplierDeleteView.as_view()), name='supplier_delete'),
 
     # URL THE CLAIM
-    path('claim/list', ClaimListView.as_view(), name='claim_list'),
-    path('claim/delete/<int:pk>/', ClaimDeleteView.as_view(), name='claim_delete')
+    path('claim/list', login_required(ClaimListView.as_view()), name='claim_list'),
+    path('claim/delete/<int:pk>/', login_required(ClaimDeleteView.as_view()), name='claim_delete'),
+
+    # URL THE USER
+    path('registerUser/', login_required(RegisterUserAdmin), name='registerUser'),
+    path('listUser/', UserListView, name='list_user'),
 
 ]

@@ -37,23 +37,20 @@ to get the desired effect
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="{% url 'adm' %}" role="button"><i
+                <a class="nav-link text-white" data-widget="pushmenu" href="{% url 'adm' %}" role="button"><i
                         class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'adm' %}" class="nav-link">Home</a>
+                <a href="{% url 'perfil' %}" class="nav-link text-white btn-primary">PERFIL</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">contact</a>
+                <a href="{% url 'adm' %}" class="nav-link text-white btn-primary">METRICAS</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">contact</a>
+                <a href="#" class="nav-link text-white btn-primary">contact</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">contact</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="{% url 'logout' %}" class="nav-link text-white btn-primary">SALIR</a>
             </li>
         </ul>
 
@@ -174,7 +171,8 @@ to get the desired effect
             <img src="{% static 'admin/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <img src="{% static 'assets/img/logo_wykep.png' %}" class="brand-text font-weight-light"
+              style="width: 50%">
         </a>
 
         <!-- Sidebar -->
@@ -182,11 +180,11 @@ to get the desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{% static 'admin/dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2"
-                         alt="User Image">
+                    <img src="{% static 'admin/dist/img/123das.jpg' %}" class="elevation-2"
+                         alt="User Image" style="width: 70px;">
                 </div>
                 <div class="info">
-                    <div class="d-block text-white text-bold text-center">{{ user.username }}</div>
+                    <h4 class="d-block text-white text-bold text-center">{{ user.username }}</h4>
                 </div>
             </div>
 
@@ -285,14 +283,14 @@ to get the desired effect
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{% url 'supplier_create' %}" class="nav-link">
+                                <a href="{% url 'registerUser' %}" class="nav-link">
                                     <i class="fas fa-user-plus"></i>
                                     <p>Nuevo Usuario</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'supplier_list' %}" class="nav-link">
+                                <a href="{% url 'list_user' %}" class="nav-link">
                                    <i class="fas fa-id-card-alt"></i>
                                     <p>Listado de Usuarios</p>
                                 </a>
@@ -385,88 +383,23 @@ to get the desired effect
 </div>
 
 {% block body %}
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
 
-                    <div class="col-sm-6">
-                        {% block titulo %}
-                            <h1 class="m-0 text-dark">Perfil Del Usuario</h1>
-                        {% endblock %}
-                    </div><!-- /.col -->
-
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v3</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="card" style="width: 1000px;">
-                        <div class="card-header text-primary">
-                            {% if user.is_authenticated %}
-                                <h1>Bienvenido a WYKEP {{ user.username }}</h1>
-                            {% else %}
-                                <h1>Francisco es un hijo de puta</h1>
-                            {% endif %}
-                        </div>
-                        <div class="card-body align-self-center">
-                            <div class="card">
-                                <div class="card bg-info">
-                                    <br>
-                                    <img src="{% static 'admin/img/profile.png' %}"
-                                         class="card-img-top align-self-center" alt="asd" style="width: 150px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-bold ">Usuario Administrativo</h5>
-                                        <p class="card-text text-bold">Un gusto tenerte en nuestro equipo, en este panel
-                                            verificarás tu informacion.</p>
-                                    </div>
-                                </div>
-                                <br>
-                                <ul class="list-group list-group-flush" style="font-size: 20px;">
-                                    <li id="usuario" class="list-group-item">Usuario: {{ user.username }}</li>
-                                    <li id="nombre" class="list-group-item">Nombres: {{ user.first_name }}</li>
-                                    <li id="apellido" class="list-group-item">Apellidos: {{ user.last_name }}</li>
-                                    <li id="correo" class="list-group-item">Correo
-                                        Electronico: {{ user.email }}</li>
-                                </ul>
-                                <div class="card-body align-self-center">
-                                    <a href="" class="card-link btn btn-success">¿Desea
-                                        cambiar la clave?</a>
-                                    <a href="#" class="card-link btn btn-danger">¿Solicita eliminar está cuenta?</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.content -->
-    </div>
 {% endblock %}
 
 <!-- Sweet Alert -->
 
 <script src="{% static 'js/sweetalert2@11.js' %}"></script>
 
-<script>
+<script type="application/javascript">
     {% if form.errors %}
         var errors = '';
         {% for field in form %}
             {% for error in field.errors %}
                 errors += '{{ error }}\n';
             {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            errors += '{{ error }}\n';
         {% endfor %}
         Swal.fire({
             icon: 'error',
