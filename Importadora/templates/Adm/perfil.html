@@ -37,8 +37,8 @@
                             <div class="card">
                                 <div class="card bg-info">
                                     <br>
-                                    <img src="{% static 'admin/img/profile.png' %}"
-                                         class="card-img-top align-self-center" alt="asd" style="width: 150px;">
+                                    <img src="{{ request.user.get_image }}"
+                                         class="card-img-top align-self-center" alt="asd" style="width: 300px;">
                                     <div class="card-body">
                                         <h5 class="card-title text-bold ">Usuario Administrativo</h5>
                                         <p class="card-text text-bold">Un gusto tenerte en nuestro equipo, en este panel
@@ -54,7 +54,7 @@
                                         Electronico: {{ user.email }}</li>
                                 </ul>
                                 <div class="card-body align-self-center">
-                                    <a href="" class="card-link btn btn-success">¿Desea
+                                    <a href="{% url 'reset_password' %}" class="card-link btn btn-success">¿Desea
                                         cambiar la clave?</a>
                                     <a href="#" class="card-link btn btn-danger">¿Solicita eliminar está cuenta?</a>
                                 </div>

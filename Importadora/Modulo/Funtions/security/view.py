@@ -1,19 +1,21 @@
 from Importadora.wsgi import *
+from django.utils.decorators import method_decorator
 from django.contrib.auth.views import LoginView, FormView
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
 
-from Modulo.Funtions.security.form import CreateUserForm, ResetPasswordForm
+from Modulo.Funtions.security.form import CreateUserForm, ResetPasswordForm, ChangePasswordForm
 from PuntoVentas.models import *
 
 import smtplib
+import uuid
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 
 from Importadora import settings
@@ -67,6 +69,12 @@ class ResetPasswordView(FormView):
     def send_email_reset_Password(self, user):
         data = {}
         try:
+
+            URL = settings.DOMAIN if not settings.DEBUG else self.request.META['HTTP_HOST']
+
+            user.token = uuid.uuid4()
+            user.save()
+
             mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
             mailServer.starttls()
             mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
@@ -81,8 +89,8 @@ class ResetPasswordView(FormView):
 
             content = render_to_string('Email/sendResetPassword.html', {
                 'user': user,
-                'link_resetpwd': '',
-                'link_home': ''
+                'link_resetpwd': 'http://{}/changePassword/{}/'.format(URL, str(user.token)),
+                'link_home': 'http://{}'.format(URL)
             })
             # Adjuntamos el texto
             mensaje.attach(MIMEText(content, 'html'))
@@ -102,6 +110,7 @@ class ResetPasswordView(FormView):
             if form.is_valid():
                 user = form.get_user()
                 data = self.send_email_reset_Password(user)
+                return redirect('home')
             else:
                 data['error'] = form.errors
         except Exception as e:
@@ -115,6 +124,44 @@ class ResetPasswordView(FormView):
                             'al crear su cuenta. Se enviará un correo electrónico ' \
                             'a ese usuario con más instrucciones sobre cómo ' \
                             'restablecer su contraseña.'
+        return context
+
+
+class ChangePasswordView(FormView):
+    form_class = ChangePasswordForm
+    template_name = 'Security/changePassword.html'
+    success_url = reverse_lazy(settings.LOGIN_REDIRECT_URL)
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        token = self.kwargs['token']
+        if User.objects.filter(token=token).exists():
+            return super().get(request, *args, **kwargs)
+        return HttpResponseRedirect(self.success_url)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            form = ChangePasswordForm(request.POST)
+            if form.is_valid():
+                user = User.objects.get(token=self.kwargs['token'])
+                user.set_password(request.POST['password'])
+                user.token = uuid.uuid4()
+                user.save()
+                return redirect(settings.LOGIN_URL)
+            else:
+                data['error'] = form.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
+    def get_context_data(self, **kwargs):
+        context = super(ChangePasswordView, self).get_context_data(**kwargs)
+        context['title'] = 'Cambio de Contraseña'
+        context['button'] = 'Resetear'
         return context
 
 
@@ -133,3 +180,13 @@ class UserListView(ListView):
         context['url_create'] = reverse_lazy('category_create')
         context['button'] = "Nuevo Registro"
         return context
+
+
+
+
+
+
+
+
+
+

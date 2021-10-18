@@ -180,7 +180,7 @@ to get the desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{% static 'admin/dist/img/123das.jpg' %}" class="elevation-2"
+                    <img src="{{ request.user.get_image }}" class="elevation-2"
                          alt="User Image" style="width: 70px;">
                 </div>
                 <div class="info">

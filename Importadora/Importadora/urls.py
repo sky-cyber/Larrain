@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Modulo.Funtions.security.view import LoginFormView, RegisterUser, ResetPasswordView
+from Modulo.Funtions.security.view import LoginFormView, RegisterUser, ResetPasswordView, ChangePasswordView
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', LoginFormView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('resetPassword/', ResetPasswordView.as_view(), name='reset'),
+    path('resetPassword/', ResetPasswordView.as_view(), name='reset_password'),
+    path('changePassword/<str:token>/', ChangePasswordView.as_view(), name='changePassword'),
     path('register/', RegisterUser, name='register'),
     path('', include('PuntoVentas.url')),
     path('panel/', include('PuntoVentas.urladm'))

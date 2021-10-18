@@ -21,8 +21,8 @@
                     <table class="table table-hover">
                         <thead class="bg-dark alert-link text-white">
                         <tr>
-                            <th><h5>Productos: <strong>15</strong></h5></th>
-                            <th><h5>Total:<strong> $2.235.148</strong></h5></th>
+                            <th><h5>Productos: <strong>{{ order.get_cart_total }}</strong></h5></th>
+                            <th><h5>Total:<strong> ${{ order.get_total_items }}</strong></h5></th>
                             <th>
                                 <a style="float:right; margin:5px;" class="btn btn-warning" href="">Pagar</a>
                             </th>
@@ -38,7 +38,7 @@
                             <th>Producto</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
-                            <th>subTotal</th>
+                            <th>Subtotal</th>
                         </tr>
                         </thead>
                         {% if items %}
@@ -46,8 +46,9 @@
                                 <tbody>
                                 <tr style="font-size: 20px">
                                     <td class="text-center">
-                                        <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
-                                             style="width: 80px; height: 80px">
+                                        <img src="{{ item.product.imageURL }}"
+                                             class="img-fluid d-block mx-auto"
+                                             style="width: 80px; height: 60px">
                                     </td>
                                     <td>{{ item.product.name }}</td>
                                     <td>{{ item.product.offerPrice }}</td>
@@ -59,7 +60,6 @@
                                         </div>
                                     </td>
                                     <td>{{ item.get_sub_total }}</td>
-                                    <td>{{ item.get_cart_total }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -72,4 +72,3 @@
         </div>
     </div>
 {% endblock %}
-

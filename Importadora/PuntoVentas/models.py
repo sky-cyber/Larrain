@@ -1,10 +1,21 @@
 from datetime import datetime
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from Importadora.settings import MEDIA_URL, STATIC_URL
 
 
 # Create your models here
+
+class User(AbstractUser):
+    image = models.ImageField(upload_to='users', null=True, blank=True)
+    token = models.UUIDField(primary_key=False, editable=False, null=True, blank=True)
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(MEDIA_URL, self.image)
+        return '{}{}'.format(STATIC_URL, 'admin/img/profile.png')
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre", unique=True)
@@ -40,9 +51,9 @@ class Supplier(models.Model):
 
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    username = models.CharField(max_length=50,verbose_name="Nombre de usuario")
-    first_name = models.CharField(max_length=50,verbose_name="Nombres")
-    last_name = models.CharField(max_length=200,verbose_name="Apellidos")
+    username = models.CharField(max_length=50, verbose_name="Nombre de usuario")
+    first_name = models.CharField(max_length=50, verbose_name="Nombres")
+    last_name = models.CharField(max_length=200, verbose_name="Apellidos")
     Password = models.CharField(default="", max_length=200, verbose_name="Contraseña")
     email = models.EmailField(max_length=200, null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
@@ -101,7 +112,7 @@ TYPE_CLAIM = (
 
 
 class Contact(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
+    client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=100, verbose_name="Cliente")
     phone = models.CharField(default="", max_length=12, verbose_name="Celular", blank=False, null=False)
     email = models.EmailField(max_length=200, null=True, blank=True, verbose_name="Correo")
@@ -131,7 +142,7 @@ class Report(models.Model):
 
 
 class Review(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
+    client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True)
     rating = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
     comments = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
@@ -171,17 +182,17 @@ class Orders(models.Model):
     def __str__(self):
         return str(self.id)
 
-    # @property
-    # def get_cart_total(self):
-    #     orderitems = self.orderitem_set.all()
-    #     total = sum([item.get_sub_total for item in orderitems])
-    #     return total
-    #
-    # @property
-    # def get_total_items(self):
-    #     orderitems = self.orderitem_set.all()
-    #     total = sum([item.qty for item in orderitems])
-    #     return total
+    @property
+    def get_cart_total(self):
+        orderitems = self.get_total_items()
+        total = sum([item.get_sub_total for item in orderitems])
+        return total
+
+    @property
+    def get_total_items(self):
+        orderitems = self.get_total_items()
+        total = sum([item.qty for item in orderitems])
+        return total
 
     class Meta:
         verbose_name = "Orden"

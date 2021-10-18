@@ -1,6 +1,6 @@
 from django.urls import path
 
-from Modulo.Funtions.cart.view import AllitemsView, mycart
+from Modulo.Funtions.cart.view import mycart
 from PuntoVentas.views import home, team, CatalogueListView, AllCategoriesView, ProductDetailView
 from Modulo.Funtions.claim.view import ContactCreateView
 from Modulo.Funtions.Email.view import WelcomeView
@@ -17,7 +17,6 @@ urlpatterns = [
 
     # URL THE CART
     path('mi-carrito/', mycart, name='mycart'),
-    path('allitem/', AllitemsView.as_view(), name='allitem'),
 
     # URL SEND EMAIL
     path('welcome/', WelcomeView.as_view(), name='welcome'),

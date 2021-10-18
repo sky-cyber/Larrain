@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'wykep1',
+        'USER': 'wykep2',
         'PASSWORD': '123',
     }
 }
@@ -147,6 +147,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'desarrollowykep@gmail.com'
 EMAIL_HOST_PASSWORD = '1d5aw2#asdx'
 
+# MODEL USER
 
+AUTH_USER_MODEL = 'PuntoVentas.User'
+
+# DOMAIN THE SOFTWARE
+
+DOMAIN = ''
 
 
