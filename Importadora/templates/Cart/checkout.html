@@ -1,0 +1,408 @@
+{% extends 'Web/home.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block service %}
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block contend %}
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+
+    <body class="bg-light">
+
+    <div class="container">
+        <br><br><br>
+        <main>
+            <div class="py-5 text-center">
+                <a class="btn btn-primary btn-lg d-flex" href="{% url 'catalogue' %}" style="width: 250px">Continuar
+                    Comprando</a>
+                <br><br>
+                <img class="d-block mx-auto mb-4" src="{% static 'assets/img/logo_wykep_ori.png' %}" style="width: 40%">
+                <h2>Formulario de Pago</h2>
+                <p class="lead">A continuación se muestra un formulario donde podrá colocar sus datos personales
+                    necesarios para poder realizar la compra de sus prodctos. Cada grupo de formulario requerido tiene
+                    un estado de validación que se activará por si algunos de los campos no está completado de manera
+                    correcta.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6  order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-success">Tu Carrito</span>
+                        <span class="badge bg-dark rounded-pill">{{ order.get_cart_items }}</span>
+                    </h4>
+                    {% for item in items %}
+                        <ul class="list-group">
+                            <div class="card-footer p-1 text-center"
+                                 style="border-color: #000b16">{{ item.product.name }}</div>
+                            <li class="list-group-item d-flex justify-content-between lh-sm py-1">
+                                <div>
+                                    <img src="{{ item.product.imageURL }}" alt=""
+                                         style="width: 100px;">
+                                    <small class="p-1">Catidad: {{ item.qty }}</small>
+                                    <span class="p-1">Valor: {{ item.product.offerPrice }}</span>
+                                    <span class="p-1">Sub Total: {{ item.get_sub_total }}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endfor %}
+
+                    <div class="card-footer p-2">
+                        <div class="list-group">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-danger" style="font-size: 20px">Cantidad de articulos: </h4>
+                                <span class="badge bg-dark rounded-pill"
+                                      style="font-size: 20px">{{ order.get_cart_items }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-success text-bold" style="font-size: 20px">Sub Total: </h4>
+                                <span class="badge bg-dark rounded-pill"
+                                      style="font-size: 20px">{{ order.get_cart_total }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-success text-bold" style="font-size: 20px">Iva: </h4>
+                                <span class="badge bg-dark rounded-pill"
+                                      style="font-size: 20px">{{ order.tax }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-success text-bold" style="font-size: 20px">total: </h4>
+                                <span class="badge bg-dark rounded-pill"
+                                      style="font-size: 20px">{{ order.total }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="form-wrapper">
+                    <h4 class="mb-3 text-danger">Dirección de Envio</h4>
+                    <form class="needs-validation" id="form">
+                        <div class="row g-3">
+
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="username" class="form-label">Usuario</label>
+                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                        {{ user.username }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                        {{ user.email }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="username" class="form-label">Nombres</label>
+                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                        {{ user.first_name }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label">Apellidos</label>
+                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                        {{ user.last_name }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3" id="user-info">
+                                <div class="col-6 form-field">
+                                    <label for="address" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control" id="user"
+                                           placeholder="Nombre de usuario"
+                                           required="" name="user">
+                                    <div class="invalid-feedback">
+                                        Please enter your shipping address.
+                                    </div>
+                                </div>
+
+                                <div class="col-6 form-field">
+                                    <label for="address" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="email"
+                                           placeholder="Ingrese su correo"
+                                           required="" name="email">
+                                    <div class="invalid-feedback">
+                                        Please enter your shipping address.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-2" id="shipping-info">
+                                <div class="col-12 form-field">
+                                    <label for="address" class="form-label">Dirección</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="Ingrese su dirección"
+                                           required="" name="address">
+                                    <div class="invalid-feedback">
+                                        Please enter your shipping address.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 form-field">
+                                    <label for="country" class="form-label">País</label>
+                                    <input type="text" class="form-control" placeholder="Integre su País"
+                                           required="" name="country">
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 form-field">
+                                    <label for="state" class="form-label">Ciudad</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese su Ciudad"
+                                           required="" name="city">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid state.
+                                    </div>
+                                </div>
+
+                                <div class="col-12 form-field">
+                                    <label for="zip" class="form-label">Codigo Postal</label>
+                                    <input type="text" name="postalCode" class="form-control"
+                                           placeholder="Ingrese su Codigo Postal" required="">
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-dark btn-lg" id="form-button"
+                                type="submit" value="continue">Continuar con el Pago
+                        </button>
+
+                        Metodos de Pago :
+                        <div class="card-footer py-2 text-center hidden" id="payment-info"
+                             style="background: #2b579b; color: white; font-size: 25px">
+                            <button id="make-payment">
+                                <img src="{% static 'assets/img/picture/paypal.png' %}" class="img-fluid"
+                                     style="width: 50px; height: 50px">
+                            </button>
+                            <button>
+                                <img src="{% static 'assets/img/picture/mastercard.png' %}" class="img-fluid"
+                                     style="width: 50px; height: 50px">
+                            </button>
+                            <button>
+                                <img src="{% static 'assets/img/picture/bank-transfer.png' %}" class="img-fluid"
+                                     style="width: 50px; height: 50px">
+                            </button>
+                            <button>
+                                <img src="{% static 'assets/img/picture/american-expres.png' %}" class="img-fluid"
+                                     style="width: 50px; height: 50px">
+                            </button>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="mt-4 text-center">
+                                <img
+                                        src="{% static 'assets/img/picture/visa.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/mastercard.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/wester.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/bank-transfer.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/paypal.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                                <img
+                                        src="{% static 'assets/img/picture/american-expres.png' %}"
+                                        class="img-fluid" style="width: 60px; height: 60px">
+                            </div>
+                        </div>
+
+                        <br><br><br><br><br>
+
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="same-address">
+                            <label class="form-check-label" for="same-address">Shipping address is the same as my
+                                billing address</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="save-info">
+                            <label class="form-check-label" for="save-info">Save this information for next time</label>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4 class="mb-3">Payment</h4>
+
+                        <div class="my-3">
+                            <div class="form-check">
+                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked=""
+                                       required="">
+                                <label class="form-check-label" for="credit">Credit card</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
+                                       required="">
+                                <label class="form-check-label" for="debit">Debit card</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
+                                       required="">
+                                <label class="form-check-label" for="paypal">PayPal</label>
+                            </div>
+                        </div>
+
+                        <div class="row gy-3">
+                            <div class="col-md-6">
+                                <label for="cc-name" class="form-label">Name on card</label>
+                                <input type="text" class="form-control" id="cc-name" placeholder="">
+                                <small class="text-muted">Full name as displayed on card</small>
+                                <div class="invalid-feedback">
+                                    Name on card is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="cc-number" class="form-label">Credit card number</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="">
+                                <div class="invalid-feedback">
+                                    Credit card number is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-expiration" class="form-label">Expiration</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="">
+                                <div class="invalid-feedback">
+                                    Expiration date required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="">
+                                <div class="invalid-feedback">
+                                    Security code required
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-dark btn-lg" type="submit">Continue to checkout</button>
+                    </form>
+                    <br><br>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="text/javascript">
+        var shipping = '{{ order.shipping }}'
+        var subtotal = '{{ order.get_cart_total }}'
+        var tax = '{{ order.tax }}'
+        var total = '{{ order.total }}'
+
+        if (shipping === 'False') {
+            document.getElementById('shipping-info').innerHTML = ''
+        }
+
+        if (user !== 'AnonymousUser') {
+            document.getElementById('user-info').innerHTML = ''
+        }
+
+        if (shipping === 'False' && user !== 'AnonymousUser') {
+            document.getElementById('form-wrapper').classList.add("hidden");
+            document.getElementById('payment-info').classList.remove("hidden")
+        }
+
+        var form = document.getElementById('form')
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            console.log('form submited...')
+            document.getElementById('form-button').classList.add('hidden')
+            document.getElementById('payment-info').classList.remove('hidden')
+        })
+
+        document.getElementById('make-payment').addEventListener('click', function (e) {
+            submitFormData()
+        })
+
+        function submitFormData() {
+            console.log('PayPal button clicked')
+
+            var userFormData = {
+                'name': null,
+                'email': null,
+                'subtotal': subtotal,
+                'tax': tax,
+                'total': total,
+            }
+
+            var shippingInfo = {
+                'address': null,
+                'city': null,
+                'country': null,
+                'postalCode': null,
+            }
+
+            if (shipping !== 'False') {
+                shippingInfo.address = form.address.value
+                shippingInfo.city = form.city.value
+                shippingInfo.country = form.country.value
+                shippingInfo.postalCode = form.postalCode.value
+            }
+
+            if (user === 'AnonymousUser') {
+                userFormData.name = form.name.value
+                userFormData.email = form.email.value
+            }
+
+            var url = '/process_order/'
+            fetch(url,{
+                method:'POST',
+                headers:{
+                    'Content-type':'application/json',
+                    'X-CSRFToken':csrftoken,
+                },
+                body:JSON.stringify({'form':userFormData, 'shipping': shippingInfo})
+            })
+            .then((response) => response.json())
+            .then((data) =>{
+                console.log('success:', data);
+                alert('transaction complete');
+                window.location.href = "/"
+            })
+
+        }
+
+    </script>
+    </body>
+
+{% endblock %}
+

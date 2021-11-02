@@ -1,8 +1,9 @@
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
+
+
 from PuntoVentas.models import User
-from django.forms import model_to_dict
 
 
 class CreateUserForm(UserCreationForm):
@@ -16,11 +17,17 @@ class CreateUserForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'image', 'is_superuser', 'is_staff']
         exclude = ['last_login', 'date_joined', 'user_permissions']
 
-    def toJSON(self):
-        item = model_to_dict(self, exclude=['password', 'groups', 'user_permissions'])
-        item['last_login'] = self.last_login.strftime('%Y-%m-%d')
-        item['date_joined'] = self.last_login.strftime('%Y-%m-%d')
-        return item
+    def save(self, commit=True):
+        data = {}
+        form = super()
+        try:
+            if form.is_valid():
+                form.save()
+            else:
+                data['error'] = form.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return data
 
 
 class ResetPasswordForm(forms.Form):
@@ -34,7 +41,7 @@ class ResetPasswordForm(forms.Form):
         if not User.objects.filter(username=cleaned['username']).exists():
             self._errors['error'] = self._errors.get('error', self.error_class())
             self._errors['error'].append('El Nombre de Usuario no esta registrado')
-            #raise forms.ValidationError('El email no existe')
+            # raise forms.ValidationError('El email no existe')
         return cleaned
 
     def get_user(self):
@@ -60,8 +67,3 @@ class ChangePasswordForm(forms.Form):
             self._errors['error'] = self._errors.get('error', self.error_class())
             self._errors['error'].append('Las credenciales no coinciden')
         return cleaned
-
-
-
-
-

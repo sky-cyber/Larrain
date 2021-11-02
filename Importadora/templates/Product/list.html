@@ -54,10 +54,22 @@
                                         <td>{{ p.category }}</td>
                                         <td>{{ p.brand }}</td>
                                         <td>{{ p.offerPrice }}</td>
-                                        <td>{{ p.stock }}</td>
+                                        <td style="font-size: 20px">
+                                            {% if p.stock == 0 %}
+                                                <i class="right badge badge-danger">no hay stock</i>
+                                            {% elif p.stock >= 1 and p.stock <= 10 %}
+                                                <i class="right badge badge-danger">{{ p.stock }}</i>
+                                                {% elif p.stock >= 11 and p.stock <= 20 %}
+                                                <i class="right badge badge-warning">{{ p.stock }}</i>
+                                                {% elif p.stock >= 21 and p.stock <= 30 %}
+                                                <i class="right badge badge-info">{{ p.stock }}</i>
+                                                {% elif p.stock >= 31 %}
+                                                <i class="right badge badge-success">{{ p.stock }}</i>
+                                            {% endif %}
+                                        </td>
                                         <td class="text-center">
-                                                <img src="{{ p.imageURL }}" class="img-fluid d-block mx-auto"
-                                                     style="width: 80px; height: 80px">
+                                            <img src="{{ p.imageURL }}" class="img-fluid d-block mx-auto"
+                                                 style="width: 80px; height: 80px">
                                         </td>
                                         <td>{{ p.createdAt }}</td>
                                         <td>
@@ -75,6 +87,10 @@
                                 <a href="{% url 'product_create' %}" class="btn btn-primary" id="btntest"><i
                                         class="fas fa-plus-square"></i>
                                     {{ button }}
+                                </a>
+                                <a href="{% url 'product_pdf' %}" class="btn btn-success" id="btntest"><i
+                                        class="fas fa-plus-square"></i>
+                                    {{ button2 }}
                                 </a>
                             </div>
                         </div>

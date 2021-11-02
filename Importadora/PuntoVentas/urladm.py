@@ -5,6 +5,8 @@ from Modulo.Funtions.product.view import *
 from Modulo.Funtions.security.view import *
 from Modulo.Funtions.supplier.view import *
 from Modulo.Funtions.claim.view import *
+from Modulo.Funtions.PDF.view import *
+from Modulo.Funtions.Order.view import *
 from PuntoVentas.views import DashboardView, PerfilView
 from django.contrib.auth.decorators import login_required
 
@@ -12,6 +14,7 @@ urlpatterns = [
 
     # URL FOR DASHBOARD
     path('', login_required(DashboardView.as_view()), name='adm'),
+
     # URL FOR PERFIL
     path('perfil/', login_required(PerfilView.as_view()), name='perfil'),
 
@@ -39,6 +42,13 @@ urlpatterns = [
 
     # URL THE USER
     path('registerUser/', login_required(RegisterUserAdmin), name='registerUser'),
-    path('listUser/', UserListView, name='list_user'),
+    path('listUser/', login_required(UserListView.as_view()), name='list_user'),
+
+    # URL FOR PDF
+    path('product/pdf', ProductPdfView.as_view(), name='product_pdf'),
+    path('supplier/pdf', SupplierPdfView.as_view(), name='supplier_pdf'),
+
+    # URL FOR ORDER
+    path('order/list/', login_required(OrderListView.as_view()), name='order_list')
 
 ]

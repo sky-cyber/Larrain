@@ -2,6 +2,8 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.forms import model_to_dict
+
 from Importadora.settings import MEDIA_URL, STATIC_URL
 
 
@@ -15,6 +17,14 @@ class User(AbstractUser):
         if self.image:
             return '{}{}'.format(MEDIA_URL, self.image)
         return '{}{}'.format(STATIC_URL, 'admin/img/profile.png')
+
+    def toJSON(self):
+        item = model_to_dict(self, exclude=['password', 'groups', 'user_permissions'])
+        if self.last_login:
+            item['last_login'] = self.last_login.strftime('%m-%d %H:%M:%S')
+        item['date_joined'] = self.date_joined.strftime('%Y-%m-%d')
+        item['image'] = self.get_image()
+        return item
 
 
 class Category(models.Model):
@@ -49,23 +59,22 @@ class Supplier(models.Model):
         ordering = ['id']
 
 
-class Client(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    username = models.CharField(max_length=50, verbose_name="Nombre de usuario")
-    first_name = models.CharField(max_length=50, verbose_name="Nombres")
-    last_name = models.CharField(max_length=200, verbose_name="Apellidos")
-    Password = models.CharField(default="", max_length=200, verbose_name="Contraseña")
-    email = models.EmailField(max_length=200, null=True, blank=True)
-    createdAt = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.username
-
-    class Meta:
-        verbose_name = "Cliente"
-        verbose_name_plural = "Clientes"
-        ordering = ['id']
-
+# class Client(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+#     username = models.CharField(max_length=50, verbose_name="Nombre de usuario")
+#     first_name = models.CharField(max_length=50, verbose_name="Nombres")
+#     last_name = models.CharField(max_length=200, verbose_name="Apellidos")
+#     Password = models.CharField(default="", max_length=200, verbose_name="Contraseña")
+#     email = models.EmailField(max_length=200, null=True, blank=True)
+#     createdAt = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.username
+#
+#     class Meta:
+#         verbose_name = "Cliente"
+#         verbose_name_plural = "Clientes"
+#         ordering = ['id']
 
 class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
@@ -76,14 +85,14 @@ class Product(models.Model):
     brand = models.CharField(default="", verbose_name='Marca del Producto',
                             max_length=50, blank=False, null=False)
     description = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
-    rating = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
+    rating = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
     numReviews = models.PositiveIntegerField(default=0, verbose_name="Cantidad de Visitas")
     salePrice = models.PositiveIntegerField(default=0, verbose_name="Precio")
     offerPrice = models.PositiveIntegerField(default=0, verbose_name="Oferta")
     stock = models.PositiveIntegerField(default=0)
     warranty = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Garantia")
     dispachTime = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Tiempo de envio")
-    statusProduct = models.BooleanField(default="", verbose_name="Estado", null=True, blank=True )
+    statusProduct = models.BooleanField(default="False", verbose_name="Estado", null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
     def __str__(self):
@@ -112,7 +121,7 @@ TYPE_CLAIM = (
 
 
 class Contact(models.Model):
-    client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=100, verbose_name="Cliente")
     phone = models.CharField(default="", max_length=12, verbose_name="Celular", blank=False, null=False)
     email = models.EmailField(max_length=200, null=True, blank=True, verbose_name="Correo")
@@ -142,7 +151,7 @@ class Report(models.Model):
 
 
 class Review(models.Model):
-    client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True)
     rating = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
     comments = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
@@ -158,24 +167,25 @@ class Review(models.Model):
 
 
 ORDER_STATUS = (
-    ("Order received", "Orden recibida"),
-    ("Order In Process", "Orden En Proceso"),
-    ("Order On The Way", "Orden En Camino"),
-    ("Order Completed", "Orden Completada"),
-    ("Order canceled", "Orden Cancelada"),
+    ("Orden recibida", "Orden recibida"),
+    ("Orden En Proceso", "Orden En Proceso"),
+    ("Orden En Camino", "Orden En Camino"),
+    ("Orden Completada", "Orden Completada"),
+    ("Orden Cancelada", "Orden Cancelada"),
 )
 
 
 class Orders(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     paymentMethod = models.CharField(max_length=250, verbose_name="Tipo de pago")
-    taxPrice = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
-    shippingPrice = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
-    totalPrice = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
-    isPaid = models.BooleanField(default=False)
+    taxPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
+    shippingPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
+    totalPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
+    isPaid = models.BooleanField(default=False, null=True, blank=False)
     paidAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
-    isDelivered = models.BooleanField(default=False)
+    isDelivered = models.BooleanField(default=False, null=True, blank=False)
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    transaction_id = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=100, choices=ORDER_STATUS)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
@@ -183,15 +193,35 @@ class Orders(models.Model):
         return str(self.id)
 
     @property
+    def tax(self):
+        self.taxPrice = 0.19
+        totaltax = self.shippingPrice * int(self.taxPrice)
+        return totaltax
+
+    @property
+    def total(self):
+        self.totalPrice = self.shippingPrice + self.tax
+        return self.totalPrice
+
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.oderitem_set.all()
+        for i in orderitems:
+            if i.product.statusProduct == False:
+                shipping = True
+        return shipping
+
+    @property
     def get_cart_total(self):
-        orderitems = self.get_total_items()
-        total = sum([item.get_sub_total for item in orderitems])
+        items = self.oderitem_set.all()
+        total = sum([item.get_sub_total for item in items])
         return total
 
     @property
-    def get_total_items(self):
-        orderitems = self.get_total_items()
-        total = sum([item.qty for item in orderitems])
+    def get_cart_items(self):
+        items = self.oderitem_set.all()
+        total = sum([item.qty for item in items])
         return total
 
     class Meta:
@@ -205,18 +235,12 @@ class OderItem(models.Model):
     order = models.ForeignKey('Orders', on_delete=models.SET_NULL, null=True, blank=True)
     qty = models.IntegerField(default=0, null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
-    image = models.CharField(max_length=100,null=True, blank=True)
+
 
     @property
     def get_sub_total(self):
         sub_total = self.product.offerPrice * self.qty
         return sub_total
-
-    @property
-    def get_cart_total(self):
-        items = OderItem.objects.all()
-        total = sum([item.get_sub_total for item in items])
-        return total
 
     def __str__(self):
         return str(self.id)
@@ -231,9 +255,8 @@ class ShippingAddress(models.Model):
     order = models.OneToOneField('Orders', on_delete=models.CASCADE, null=True, blank=True)
     address = models.CharField(max_length=250, verbose_name="Dirección", null=True, blank=True)
     city = models.CharField(max_length=250, verbose_name="Ciudad", null=True, blank=True)
-    postalCode = models.CharField(max_length=100, verbose_name="Ciudad", null=True, blank=True)
-    country = models.CharField(max_length=250, verbose_name="Ciudad", null=True, blank=True)
-    shippingPrice = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
+    postalCode = models.CharField(max_length=100, verbose_name="Codigo Postal", null=True, blank=True)
+    country = models.CharField(max_length=250, verbose_name="País", null=True, blank=True)
 
     def __str__(self):
         return str(self.address)
@@ -245,7 +268,7 @@ class ShippingAddress(models.Model):
 
 
 class SalesDetail(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     report = models.ForeignKey('Report', on_delete=models.SET_NULL, null=True, blank=True)
     order = models.OneToOneField('Orders', on_delete=models.CASCADE, null=True, blank=True)
     numDetail = models.IntegerField(default=0, null=True, blank=True)

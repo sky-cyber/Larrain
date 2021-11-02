@@ -14,7 +14,7 @@
         <div class="container dark-grey-text mt-5">
             <br>
             <div class="row wow fadeIn">
-                <h1>{{ product.name }} | Visitas {{ product.numReviews }}</h1>
+                <h3>{{ product.name }} | Visitas {{ product.numReviews }}</h3>
                 <hr>
                 <div class="col-md-6 mb-4">
                     <img src="{{ product.imageURL }}"
@@ -50,9 +50,7 @@
                         <br>
                         <form class="d-flex justify-content-left text-center">
                             <!-- Default input -->
-                            <input type="number" value="1" aria-label="Search" class="form-control"
-                                   style="width: 100px">
-                            <a href="" class="btn btn-success btn-md my-0 p text-center"
+                            <a href="" data-product="{{ product.id }}" data-action="add" class="btn btn-success btn-md my-0 p text-center update-cart"
                                type="submit"><i class="fas fa-shopping-cart ml-1"></i>{{ button }}
                             </a>
                         </form>

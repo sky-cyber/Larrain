@@ -49,13 +49,16 @@
                                         <tr>
                                             <td>{{ s.id }}</td>
                                             <td>{{ s.rut }}</td>
-                                            <td>{{ s.company}}</td>
+                                            <td>{{ s.company }}</td>
                                             <td>{{ s.phone }}</td>
                                             <td>{{ s.detailProduct }}</td>
                                             <td>{{ s.timeDelivery }}</td>
                                             <td>
-                                                <a href="{% url 'supplier_update' s.id %}" type="button" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
-                                                <a href="{% url 'supplier_delete' s.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
+                                                <a href="{% url 'supplier_update' s.id %}" type="button"
+                                                   class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
+                                                <a href="{% url 'supplier_delete' s.id %}"
+                                                   class="btn btn-danger btn-sm"><i
+                                                        class="fas fa-trash-restore-alt"></i></a>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -63,8 +66,13 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ url_create_supplier }}" class="btn btn-primary" id="btntest"><i class="fas fa-plus-square"></i>
+                                <a href="{{ url_create_supplier }}" class="btn btn-primary" id="btntest"><i
+                                        class="fas fa-plus-square"></i>
                                     {{ button }}
+                                </a>
+                                <a href="{% url 'supplier_pdf' %}" class="btn btn-success" id="btntest"><i
+                                        class="fas fa-plus-square"></i>
+                                    {{ button2 }}
                                 </a>
                             </div>
                         </div>

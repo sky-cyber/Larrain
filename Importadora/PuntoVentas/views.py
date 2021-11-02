@@ -8,7 +8,15 @@ from PuntoVentas.models import *
 
 
 def home(request):
-    return render(request, 'Web/home.html')
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+        items = order.oderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+    context = {'items': items, 'order': order}
+    return render(request, 'Web/home.html', context)
 
 
 class DashboardView(TemplateView):

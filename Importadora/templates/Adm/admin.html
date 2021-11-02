@@ -8,6 +8,18 @@
 
     <title>AdminLTE 3 | Dashboard 3</title>
 
+    <!-- jQuery -->
+    <script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+
+    <!-- Graphics -->
+    <script src="{% static 'admin/highcharts/highcharts.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/exporting.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/export-data.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/accessibility.js' %}"></script>
+
+    <!-- listado de usuarios -->
+    <script src="{% static 'admin/js/list.js' %}"></script>
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
     <!-- IonIcons -->
@@ -172,7 +184,7 @@ to get the desired effect
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <img src="{% static 'assets/img/logo_wykep.png' %}" class="brand-text font-weight-light"
-              style="width: 50%">
+                 style="width: 50%">
         </a>
 
         <!-- Sidebar -->
@@ -227,7 +239,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                           <i class="fas fa-cubes"></i>
+                            <i class="fas fa-cubes"></i>
                             <p>
                                 Bodega
                                 <i class="right fas fa-angle-left"></i>
@@ -251,7 +263,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                           <i class="fas fa-shipping-fast"></i>
+                            <i class="fas fa-shipping-fast"></i>
                             <p>
                                 Proveedor
                                 <i class="right fas fa-angle-left"></i>
@@ -267,7 +279,7 @@ to get the desired effect
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'supplier_list' %}" class="nav-link">
-                                   <i class="fas fa-address-card"></i>
+                                    <i class="fas fa-address-card"></i>
                                     <p>Listado de Proveedores</p>
                                 </a>
                             </li>
@@ -275,7 +287,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                           <i class="fas fa-users"></i>
+                            <i class="fas fa-users"></i>
                             <p>
                                 Usuarios
                                 <i class="right fas fa-angle-left"></i>
@@ -291,7 +303,7 @@ to get the desired effect
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'list_user' %}" class="nav-link">
-                                   <i class="fas fa-id-card-alt"></i>
+                                    <i class="fas fa-id-card-alt"></i>
                                     <p>Listado de Usuarios</p>
                                 </a>
                             </li>
@@ -299,7 +311,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                           <i class="fas fa-users"></i>
+                            <i class="fas fa-users"></i>
                             <p>
                                 Clientes
                                 <i class="right fas fa-angle-left"></i>
@@ -314,7 +326,7 @@ to get the desired effect
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{% url 'order_list' %}" class="nav-link">
                                     <i class="fas fa-user-plus"></i>
                                     <p>Ordenes</p>
                                     <i class="right badge badge-primary">New</i>
@@ -322,7 +334,7 @@ to get the desired effect
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'claim_list' %}" class="nav-link">
-                                   <i class="fas fa-id-card-alt"></i>
+                                    <i class="fas fa-id-card-alt"></i>
                                     <p>Listado de Reclamos</p>
                                 </a>
                             </li>
@@ -475,5 +487,6 @@ to get the desired effect
 <script src="{% static 'admin/plugins/chart.js/Chart.min.js' %}"></script>
 <script src="{% static 'admin/dist/js/demo.js' %}"></script>
 <script src="{% static 'admin/dist/js/demo.js' %}"></script>
+
 </body>
 </html>

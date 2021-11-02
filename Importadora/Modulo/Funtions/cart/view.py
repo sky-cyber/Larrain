@@ -1,7 +1,12 @@
+import datetime
+from django.utils import timezone
+
+from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render
 
 from PuntoVentas.models import *
+import json
 
 
 
@@ -49,18 +54,95 @@ from PuntoVentas.models import *
 #             return context
 #         except:
 #             pass
-
-
-
-def mycart(request):
+def Mycart(request):
     if request.user.is_authenticated:
-        client = request.user.client
-        order, created = Orders.objects.get_or_create(client=client, isPaid=False, isDelivered=False)
-        items = OderItem.objects.filter(order=order)
+        user = request.user
+        order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+        items = order.oderitem_set.all()
     else:
         items = []
-    context = {'items': items}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+    context = {'items': items, 'order': order}
     return render(request, 'Cart/mycart.html', context)
+
+
+def Checkout(request):
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+        items = order.oderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+    context = {'items': items, 'order': order}
+    return render(request, 'Cart/checkout.html', context)
+
+
+def UpdateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print('Action:', action)
+    print('productId:', productId)
+
+    user = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+    orderItem, created = OderItem.objects.get_or_create(order=order, product=product)
+
+    if action == 'add':
+        orderItem.qty = (orderItem.qty + 1)
+    elif action == 'remove':
+        orderItem.qty = (orderItem.qty - 1)
+    orderItem.save()
+
+    if orderItem.qty <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
+
+
+def ProcessOrder(request):
+    transaction_id = datetime.now().timestamp()
+    data = json.loads(request.body)
+
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+        subtotal = data['form']['subtotal']
+        order.transaction_id = transaction_id
+        order.shippingPrice = subtotal
+        order.paidAt = timezone.now()
+        order.isPaid = True
+        order.isDelivered = True
+        order.paymentMethod = "PayPal"
+        order.status = 'Orden En Proceso'
+        order.deliveredAt = timezone.now()
+        order.save()
+
+        if subtotal == order.get_cart_total:
+            order.isPaid = True
+            order.isDelivered = True
+            order.paymentMethod = 'PayPal'
+        order.save()
+
+        if order.shipping == True:
+            ShippingAddress.objects.create(
+                order=order,
+                address=data['shipping']['address'],
+                city=data['shipping']['city'],
+                country=data['shipping']['country'],
+                postalCode=data['shipping']['postalCode'],
+            )
+
+    else:
+        print('user not authenticated')
+
+    return JsonResponse('payment complete!', safe=False)
+
+
+
 
 
 

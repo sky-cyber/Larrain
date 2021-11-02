@@ -21,10 +21,10 @@
                     <table class="table table-hover">
                         <thead class="bg-dark alert-link text-white">
                         <tr>
-                            <th><h5>Productos: <strong>{{ order.get_cart_total }}</strong></h5></th>
-                            <th><h5>Total:<strong> ${{ order.get_total_items }}</strong></h5></th>
+                            <th><h5>Productos: <strong>{{ order.get_cart_items }}</strong></h5></th>
+                            <th><h5>Total:<strong> ${{ order.get_cart_total }}</strong></h5></th>
                             <th>
-                                <a style="float:right; margin:5px;" class="btn btn-warning" href="">Pagar</a>
+                                <a style="float:right; margin:5px;" class="btn btn-warning" href="{% url 'checkout' %}">Pagar</a>
                             </th>
                         </tr>
                         </thead>
@@ -55,8 +55,10 @@
                                     <td>
                                         {{ item.qty }}
                                         <div class="d-inline-block">
-                                            <a href=""><i class="fas fa-angle-up"></i></a>
-                                            <a href=""><i class="fas fa-angle-down"></i></a>
+                                            <a href="" data-product="{{ item.product.id }}" data-action="add" class="update-cart"><i
+                                                    class="fas fa-angle-up"></i></a>
+                                            <a href="" data-product="{{ item.product.id }}" data-action="remove" class="update-cart"><i
+                                                    class="fas fa-angle-down update-cart"></i></a>
                                         </div>
                                     </td>
                                     <td>{{ item.get_sub_total }}</td>

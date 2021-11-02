@@ -24,6 +24,7 @@ class SupplierListView(ListView):
         context['object_list'] = Supplier.objects.all()
         context['url_create_supplier'] = reverse_lazy('supplier_create')
         context['button'] = "Nuevo Registro"
+        context['button2'] = "Generar PDF"
         return context
 
 

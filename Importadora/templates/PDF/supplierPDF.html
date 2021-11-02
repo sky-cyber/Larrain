@@ -1,0 +1,754 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width" name="viewport"/>
+    <style>
+        .bee-form .bee-form-row .bee-field button {
+            font-size: inherit;
+            font-family: inherit
+        }
+
+        .bee-button .content {
+            text-align: center
+        }
+
+        .bee-row-1,
+        .bee-row-1 .bee-row-content,
+        .bee-row-10,
+        .bee-row-11 .bee-row-content,
+        .bee-row-12,
+        .bee-row-12 .bee-row-content,
+        .bee-row-13,
+        .bee-row-13 .bee-row-content,
+        .bee-row-2,
+        .bee-row-2 .bee-row-content,
+        .bee-row-3,
+        .bee-row-3 .bee-row-content,
+        .bee-row-4,
+        .bee-row-5,
+        .bee-row-5 .bee-row-content,
+        .bee-row-6,
+        .bee-row-6 .bee-row-content,
+        .bee-row-7,
+        .bee-row-7 .bee-row-content,
+        .bee-row-8,
+        .bee-row-8 .bee-row-content,
+        .bee-row-9,
+        .bee-row-9 .bee-row-content {
+            background-repeat: no-repeat
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif
+        }
+
+        a {
+            color: #0068a5
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body,
+        h1,
+        h2,
+        p {
+            margin: 0
+        }
+
+        .bee-menu .bee-hamburger-trigger {
+            display: none
+        }
+
+        .bee-row-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex
+        }
+
+        .bee-row-content.reverse,
+        .bee-row-content.reverse .bee-col {
+            -moz-transform: scale(1, -1);
+            -webkit-transform: scale(1, -1);
+            -o-transform: scale(1, -1);
+            -ms-transform: scale(1, -1);
+            transform: scale(1, -1)
+        }
+
+        .bee-row-content .bee-col-w1 {
+            flex-basis: 8%
+        }
+
+        .bee-row-content .bee-col-w2 {
+            flex-basis: 17%
+        }
+
+        .bee-row-content .bee-col-w3 {
+            flex-basis: 25%
+        }
+
+        .bee-row-content .bee-col-w4 {
+            flex-basis: 33%
+        }
+
+        .bee-row-content .bee-col-w5 {
+            flex-basis: 42%
+        }
+
+        .bee-row-content .bee-col-w6 {
+            flex-basis: 50%
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 div.label:not(.inline),
+        .bee-row-12 .bee-col-4 .bee-block-2 label:not(.inline),
+        .bee-row-content .bee-col-w12 {
+            flex-basis: 100%
+        }
+
+        .bee-button a,
+        .bee-icon .bee-icon-label-right a,
+        .bee-menu ul li a {
+            text-decoration: none
+        }
+
+        .bee-divider,
+        .bee-image {
+            overflow: auto
+        }
+
+        .bee-divider .center,
+        .bee-image .bee-center {
+            margin: 0 auto
+        }
+
+        .bee-row-11 .bee-col-3 .bee-block-1,
+        .bee-row-7 .bee-col-3 .bee-block-1,
+        .bee-row-8 .bee-col-2 .bee-block-1,
+        .bee-row-9 .bee-col-3 .bee-block-1 {
+            width: 100%
+        }
+
+        .bee-form .bee-form-row .bee-field {
+            padding: 3px;
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            align-content: flex-start
+        }
+
+        .bee-form .bee-form-row .bee-field input:not([type=checkbox]):not([type=radio]) {
+            flex-grow: 1;
+            font-family: inherit;
+            font-size: inherit
+        }
+
+        .bee-form .bee-form-row .bee-field .bee-button-container {
+            flex-grow: 1
+        }
+
+        .bee-form input[type=color] {
+            border: none;
+            height: 38px
+        }
+
+        .bee-form input[type=color]::-webkit-color-swatch-wrapper {
+            margin: 0;
+            padding: 2px
+        }
+
+        .bee-form input[type=color]::-webkit-color-swatch {
+            margin: 0;
+            padding: 0
+        }
+
+        .bee-icon,
+        .bee-icon .bee-icon-image,
+        .bee-icon .bee-icon-label-right,
+        .bee-menu ul.bee-horizontal li {
+            display: inline-block
+        }
+
+        .bee-icon {
+            vertical-align: middle
+        }
+
+        .bee-icon .bee-icon-image {
+            vertical-align: middle;
+            margin-right: -4px
+        }
+
+        .bee-image img {
+            display: block;
+            width: 100%
+        }
+
+        .bee-menu .bee-hamburger-controls {
+            cursor: pointer;
+            display: inline-block;
+            position: relative
+        }
+
+        .bee-menu .bee-hamburger-controls span {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            transition: .12s ease-in-out
+        }
+
+        .bee-menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .bee-social .icon img {
+            max-height: 32px
+        }
+
+        .bee-text {
+            overflow-wrap: anywhere
+        }
+
+        .bee-row-1 {
+            background-color: #ff7134
+        }
+
+        .bee-row-1 .bee-col-1,
+        .bee-row-11 .bee-col-4,
+        .bee-row-13 .bee-col-1,
+        .bee-row-3 .bee-col-4,
+        .bee-row-5 .bee-col-1,
+        .bee-row-5 .bee-col-2,
+        .bee-row-5 .bee-col-3,
+        .bee-row-6 .bee-col-1,
+        .bee-row-6 .bee-col-4,
+        .bee-row-7 .bee-col-4,
+        .bee-row-8 .bee-col-1,
+        .bee-row-8 .bee-col-4,
+        .bee-row-9 .bee-col-4 {
+            padding-bottom: 5px;
+            padding-top: 5px
+        }
+
+        .bee-row-1 .bee-col-1 .bee-block-1 {
+            padding: 10px
+        }
+
+        .bee-row-12,
+        .bee-row-2 {
+            background-color: #191d25
+        }
+
+        .bee-row-2 .bee-col-1,
+        .bee-row-2 .bee-col-2 {
+            padding-bottom: 10px;
+            padding-top: 10px
+        }
+
+        .bee-row-12 .bee-col-1 .bee-block-1,
+        .bee-row-2 .bee-col-1 .bee-block-1 {
+            font-family: inherit;
+            font-size: 14px;
+            text-align: left
+        }
+
+        .bee-row-2 .bee-col-2 .bee-block-1 {
+            color: #fff;
+            font-family: inherit;
+            font-size: 16px;
+            padding-right: 15px;
+            text-align: right
+        }
+
+        .bee-row-3 .bee-col-2 {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 30px
+        }
+
+        .bee-row-3 .bee-col-2 .bee-block-1 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 60px;
+            text-align: center;
+            width: 100%
+        }
+
+        .bee-row-11 .bee-col-2 .bee-block-2,
+        .bee-row-12 .bee-col-1 .bee-block-2,
+        .bee-row-3 .bee-col-2 .bee-block-2,
+        .bee-row-6 .bee-col-3 .bee-block-4,
+        .bee-row-7 .bee-col-2 .bee-block-3,
+        .bee-row-8 .bee-col-3 .bee-block-3,
+        .bee-row-9 .bee-col-2 .bee-block-2 {
+            padding: 10px 20px
+        }
+
+        .bee-row-3 .bee-col-2 .bee-block-3,
+        .bee-row-6 .bee-col-3 .bee-block-5,
+        .bee-row-7 .bee-col-2 .bee-block-4,
+        .bee-row-8 .bee-col-3 .bee-block-4,
+        .bee-row-9 .bee-col-2 .bee-block-3 {
+            padding: 10px 20px;
+            text-align: left
+        }
+
+        .bee-row-3 .bee-col-3 {
+            padding-top: 5px
+        }
+
+        .bee-row-3 .bee-col-3 .bee-block-1 {
+            padding-top: 20px;
+            width: 100%
+        }
+
+        .bee-row-4 .bee-row-content {
+            background-image: url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/3936/gradient_3.png');
+            background-position: center top;
+            background-repeat: repeat
+        }
+
+        .bee-row-4 .bee-col-1 {
+            padding-bottom: 5px
+        }
+
+        .bee-row-4 .bee-col-1 .bee-block-1 {
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 100%
+        }
+
+        .bee-row-5 .bee-col-2 .bee-block-1 {
+            padding: 35px;
+            text-align: center;
+            width: 100%
+        }
+
+        .bee-row-5 .bee-col-2 .bee-block-2 {
+            padding: 10px 45px 40px
+        }
+
+        .bee-row-6 .bee-col-2 .bee-block-1 {
+            padding-bottom: 30px;
+            padding-top: 30px;
+            width: 100%
+        }
+
+        .bee-row-6 .bee-col-3 {
+            padding-bottom: 5px;
+            padding-top: 30px
+        }
+
+        .bee-row-6 .bee-col-3 .bee-block-1,
+        .bee-row-6 .bee-col-3 .bee-block-3,
+        .bee-row-7 .bee-col-2 .bee-block-2,
+        .bee-row-8 .bee-col-3 .bee-block-2 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px
+        }
+
+        .bee-row-10 .bee-col-1 .bee-block-2,
+        .bee-row-6 .bee-col-3 .bee-block-2,
+        .bee-row-8 .bee-col-3 .bee-block-1 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            text-align: center;
+            width: 100%
+        }
+
+        .bee-row-7 .bee-col-1,
+        .bee-row-9 .bee-col-1 {
+            padding-bottom: 40px;
+            padding-top: 20px
+        }
+
+        .bee-row-7 .bee-col-2,
+        .bee-row-9 .bee-col-2 {
+            padding-bottom: 60px;
+            padding-top: 60px
+        }
+
+        .bee-row-7 .bee-col-2 .bee-block-1,
+        .bee-row-9 .bee-col-2 .bee-block-1 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            text-align: center;
+            width: 100%
+        }
+
+        .bee-row-8 .bee-col-3 {
+            padding-bottom: 30px;
+            padding-top: 30px
+        }
+
+        .bee-row-9 .bee-col-3 {
+            padding-bottom: 30px
+        }
+
+        section#fondo {
+            background-color: #212529;
+            background-image: url("../assets/img/map-image.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .bee-row-10 .bee-col-1 {
+            padding-bottom: 55px;
+            padding-top: 5px
+        }
+
+        .bee-row-10 .bee-col-1 .bee-block-1 {
+            padding: 30px;
+            width: 100%
+        }
+
+        .bee-row-10 .bee-col-1 .bee-block-3 {
+            padding: 5px 20px 10px
+        }
+
+        .bee-row-10 .bee-col-1 .bee-block-4 {
+            padding: 10px 20px;
+            text-align: center
+        }
+
+        .bee-row-11 {
+            background-color: #fd8d37;
+            background-repeat: no-repeat
+        }
+
+        .bee-row-11 .bee-col-1 {
+            padding-bottom: 25px;
+            padding-top: 20px
+        }
+
+        .bee-row-11 .bee-col-2 {
+            padding-bottom: 30px;
+            padding-top: 60px
+        }
+
+        .bee-row-11 .bee-col-2 .bee-block-1 {
+            padding: 40px 20px 5px;
+            text-align: center;
+            width: 100%
+        }
+
+        .bee-row-11 .bee-col-2 .bee-block-3 {
+            padding: 10px 20px 25px;
+            text-align: left
+        }
+
+        .bee-row-11 .bee-col-3 {
+            padding-top: 15px
+        }
+
+        .bee-row-12 .bee-col-1,
+        .bee-row-12 .bee-col-2,
+        .bee-row-12 .bee-col-3,
+        .bee-row-12 .bee-col-4 {
+            padding-bottom: 15px;
+            padding-top: 15px
+        }
+
+        .bee-row-12 .bee-col-1 .bee-block-3 {
+            padding: 10px;
+            text-align: left
+        }
+
+        .bee-row-12 .bee-col-2 .bee-block-1,
+        .bee-row-12 .bee-col-2 .bee-block-2,
+        .bee-row-12 .bee-col-2 .bee-block-3,
+        .bee-row-12 .bee-col-3 .bee-block-1,
+        .bee-row-12 .bee-col-3 .bee-block-2,
+        .bee-row-12 .bee-col-3 .bee-block-3,
+        .bee-row-12 .bee-col-3 .bee-block-4 {
+            padding: 10px 10px 10px 20px
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-1 {
+            padding: 10px 10px 10px 15px
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 {
+            font-family: inherit;
+            font-size: 14px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto
+        }
+
+        .bee-row-13 .bee-col-1 .bee-block-1 {
+            color: #9d9d9d;
+            font-family: inherit;
+            font-size: 15px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            text-align: center
+        }
+
+        .bee-row-2 .bee-col-2 .bee-block-1 li {
+            padding: 5px 10px
+        }
+
+        .bee-row-2 .bee-col-2 .bee-block-1 li a {
+            color: #8f99a5
+        }
+
+        @media (max-width: 768px) {
+            .bee-form {
+                width: 100% !important
+            }
+
+            .bee-menu ul.with-bee-hamburger {
+                display: none;
+                padding: 5px 0;
+                position: relative;
+                top: -4px
+            }
+
+            .bee-menu ul.with-bee-hamburger li {
+                display: block;
+                text-align: center
+            }
+
+            .bee-menu ul.with-bee-hamburger li a {
+                text-decoration: none
+            }
+
+            .bee-menu ul.with-bee-hamburger span {
+                display: none
+            }
+
+            #bee-hamburger-mx41lq7:checked ~ ul,
+            .bee-row-content:not(.no_stack) {
+                display: block
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 .bee-hamburger-controls {
+                width: 36px;
+                height: 36px;
+                background-color: #1e2f40;
+                border-radius: 0
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 .bee-hamburger-controls span {
+                width: 18px;
+                height: 18px
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 .bee-hamburger-controls span.bee-hamburger-open {
+                background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiIHdpZHRoPSI2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxyZWN0IGhlaWdodD0iMTIiIHJ4PSI2IiB3aWR0aD0iNjQiLz48cmVjdCBoZWlnaHQ9IjEyIiByeD0iNiIgd2lkdGg9IjY0IiB5PSI1MiIvPjxyZWN0IGhlaWdodD0iMTIiIHJ4PSI2IiB3aWR0aD0iNjQiIHk9IjI2Ii8+PC9nPjwvc3ZnPg==");
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 .bee-hamburger-controls span.bee-hamburger-close {
+                background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiIHdpZHRoPSI2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxyZWN0IGhlaWdodD0iMTIiIHJ4PSI2IiB0cmFuc2Zvcm09Im1hdHJpeCgtLjcwNzEwNjc4IC0uNzA3MTA2NzggLjcwNzEwNjc4IC0uNzA3MTA2NzggMzEuOTkxMzc4IDc3LjIzNDAxOSkiIHdpZHRoPSI4MiIgeD0iLTkuMDA4NjIyIiB5PSIyNS45OTEzNzgiLz48cmVjdCBoZWlnaHQ9IjEyIiByeD0iNiIgdHJhbnNmb3JtPSJtYXRyaXgoLS43MDcxMDY3OCAuNzA3MTA2NzggLS43MDcxMDY3OCAtLjcwNzEwNjc4IDc3LjgxOTgwNiAzMi4yMzQwMTkpIiB3aWR0aD0iODIiIHg9Ii04Ljc2NTk4MSIgeT0iMjYuMjM0MDE5Ii8+PC9nPjwvc3ZnPg==");
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 ul.with-bee-hamburger {
+                background-color: #1e2f40
+            }
+
+            .bee-row-2 .bee-col-2 .bee-block-1 ul.with-bee-hamburger li,
+            .bee-row-2 .bee-col-2 .bee-block-1 ul.with-bee-hamburger li a {
+                color: #fff
+            }
+
+            #bee-hamburger-mx41lq7:checked ~ .bee-hamburger-controls .bee-hamburger-open {
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+
+            #bee-hamburger-mx41lq7:checked ~ .bee-hamburger-controls .bee-hamburger-close {
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+        }
+
+        .bee-row-2 .bee-col-1 .bee-block-1 .bee-icon-image {
+            padding: 5px 5px 5px 20px
+        }
+
+        .bee-row-12 .bee-col-1 .bee-block-1 .bee-icon:not(:last-child),
+        .bee-row-2 .bee-col-1 .bee-block-1 .bee-icon:not(:last-child) {
+            margin-right: -4px
+        }
+
+        .bee-row-12 .bee-col-1 .bee-block-1 .bee-icon-image {
+            padding: 15px 5px 5px 20px
+        }
+
+        .bee-row-13 .bee-col-1 .bee-block-1 .bee-icon-image {
+            padding: 5px 6px 5px 5px
+        }
+
+        .bee-row-13 .bee-col-1 .bee-block-1 .bee-icon {
+            margin-left: 0;
+            margin-right: 0
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 div.label,
+        .bee-row-12 .bee-col-4 .bee-block-2 label {
+            color: #cfcfcf;
+            line-height: 200%;
+            text-align: left;
+            display: block
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 div.label {
+            padding: 3px
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 input:not([type=checkbox]):not([type=radio]):not([type=image]) {
+            background-color: #fff;
+            border-bottom: 1px solid transparent;
+            border-left: 1px solid transparent;
+            border-radius: 4px;
+            border-right: 1px solid transparent;
+            border-top: 1px solid transparent;
+            padding: 5px
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 input:not([type=checkbox]):not([type=radio]):focus {
+            outline-color: #3aaee0
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 button {
+            background-color: #ff7134;
+            border-bottom: 0 solid transparent;
+            border-left: 0 solid transparent;
+            border-radius: 4px;
+            border-right: 0px solid transparent;
+            border-top: 0 solid transparent;
+            color: #fff;
+            line-height: 200%;
+            padding: 5px 20px;
+            width: 100%
+        }
+
+        .bee-row-12 .bee-col-4 .bee-block-2 .bee-button-container {
+            text-align: "center"
+        }
+    </style>
+</head>
+<body>
+<div class="bee-page-container">
+    <div class="bee-row bee-row-1">
+        <div class="bee-row-content">
+            <div class="bee-col bee-col-1 bee-col-w12">
+
+            </div>
+        </div>
+    </div>
+    <div class="bee-row bee-row-2">
+        <div class="bee-row-content no_stack">
+            <div class="bee-col bee-col-1 bee-col-w6">
+                <div class="bee-block bee-block-1 bee-icons">
+                    <div class="bee-icon">
+                        <div class="bee-icon-image"><img alt="Company Logo" height="16px"
+                                                         src="{% static 'assets/img/logo_wykep.png' %}"
+                                                         width="auto"/></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="bee-row bee-row-10" id="fondo">
+        <div class="bee-row-content">
+            <div class="bee-col bee-col-1 bee-col-w12">
+                <br><br>
+                <div class="bee-col text-center" style="color: white">
+                    <h5 class="card-title" style="font-size: 40px">Usuario: {{ name }}</h5>
+                    <h5 class="card-title">Compañia: {{ Company }}</h5>
+                    <h5 class="card-title">Rut: {{ rut }}</h5>
+                    <h5 class="card-title">Dirección: {{ address }}</h5>
+                </div>
+                <br><br>
+                <div class="bee-block bee-block-2 bee-heading">
+                    <h1 class="card-title" style="color: white; font-size: 50px">{{ title }}</h1>
+                </div>
+                <hr style="color: white">
+                <div class="bee-block bee-block-3 bee-text">
+                    <div class="bee-text-content"
+                         style="font-size: 20px; line-height: 150%; color: white; font-family: inherit;">
+                        <p style="font-size: 20px; line-height: 21px; text-align: center;"><span
+                                style="font-size: 20px; line-height: 24px;">En Este pdf se mostraran los Proveedores que fueron Contratados por la Empresa Importadora Larrain con tus caracteristicas e informacion necesaria para su funcionamiento</span>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="bee-block bee-block-1 bee-image"><a><img alt="Map pin"
+                                                                     class="bee-center bee-fixedwidth"
+                                                                     src="{% static 'assets/img/map-image.png' %}"
+                                                                     style="width: 400px"/></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="card-header text-center text-bold" style="color: white; background-color: black">
+        <h3 class="card-title">
+            Listado de Proveedores Contratados
+        </h3>
+    </div>
+    {% for s in supplier %}
+    <div class="card-primary row">
+        <div class="col-sm-6">
+            <div class="card-header">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="background-color: #c2d4f5">Compañia: {{ s.company }}</h5>
+                    <hr>
+                    <h5 class="card-title">Rut: {{ s.rut }}</h5>
+                    <h5 class="card-title">Celular: {{ s.phone }}</h5>
+                    <h5 class="card-title">Dirección: {{ s.address }}</h5>
+                    <h5 class="card-title">Correo: {{ s.email }}</h5>
+                    <h5 class="card-title">Tiempo de Envio: {{ s.timeDelivery }}</h5>
+                    <h5 class="card-title">Fecha de Contrato: {{ s.createdAt }}</h5>
+                    <hr>
+                    <h5 class="card-title text-center" style="background-color: #164d94; color: white">Detalle de los productos</h5>
+                    <p class="card-title text-center" style="font-size: 20px; background: white">{{ s.detailProduct }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br><br>
+    <section class="bee-row bee-row-10" id="fondo">
+        <div class="bee-row-content">
+            <div class="bee-col bee-col-1 bee-col-w12">
+                <div class="bee-block bee-block-1 bee-image"><a><img alt="Map pin"
+                                                                     class="bee-center bee-fixedwidth"
+                                                                     src="{% static 'assets/img/map-image.png' %}"
+                                                                     style="width: 400px"/></a>
+                </div>
+                <div class="bee-block bee-block-2 bee-heading">
+                    <h2 style="color:#191d25;direction:ltr;font-family:'Playfair Display', Georgia, serif;font-size:34px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
+                        <img src="{% static 'assets/img/logo_wykep.png' %}" alt=""></h2>
+                </div>
+                <div class="bee-block bee-block-3 bee-text">
+                    <div class="bee-text-content"
+                         style="font-size: 35px; line-height: 150%; color: white; font-family: inherit;">
+                        <p style="font-size: 35px; line-height: 21px; text-align: center;"><span
+                                style="font-size: 16px; line-height: 24px;">Enviamos a todo el mundo, tu producto entregado en tu puerta con las mejores condiciones</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

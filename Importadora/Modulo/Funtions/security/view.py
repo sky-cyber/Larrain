@@ -1,3 +1,5 @@
+from django.contrib.admin import action
+
 from Importadora.wsgi import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.views import LoginView, FormView
@@ -5,7 +7,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views.decorators.csrf import csrf_exempt
 
 from Modulo.Funtions.security.form import CreateUserForm, ResetPasswordForm, ChangePasswordForm
@@ -53,10 +55,37 @@ def RegisterUserAdmin(request):
         if request.user.is_authenticated:
             if form.is_valid():
                 form.save()
-                return redirect('adm')
+                return redirect('list_user')
     context = {'form': form}
     return render(request, 'Security/registerAdmin.html', context)
 
+# class RegisterUserAdmin(CreateView):
+#     model = User
+#     form_class = CreateUserForm
+#     template_name = 'Security/registerAdmin.html'
+#     success_url = reverse_lazy('list_user')
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         return super().dispatch(request, *args, **kwargs)
+#
+#     def post(self, request, *args, **kwargs):
+#         data = {}
+#         try:
+#             action = request.POST['action']
+#             if action == 'add':
+#                 form = self.get_form()
+#                 data = form.save()
+#             else:
+#                 data['error'] = 'No ha ingresado ninguna opción'
+#         except Exception as e:
+#             data['error'] = str(e)
+#         return JsonResponse(data)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(RegisterUserAdmin, self).get_context_data(**kwargs)
+#         context['title'] = 'Creacion de un Usuario'
+#         context['title2'] = 'Crear Usuario Administrador'
+#         return context
 
 class ResetPasswordView(FormView):
     template_name = 'Security/resetPassword.html'
@@ -169,24 +198,28 @@ class UserListView(ListView):
     model = User
     template_name = "Security/list.html"
 
+    @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
-        return super(UserListView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'searchdata':
+                data = []
+                for i in User.objects.all():
+                    data.append(i.toJSON())
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Categorias"
-        context['title2'] = "Categorias Registradas"
-        context['object_list'] = User.objects.all()
-        context['url_create'] = reverse_lazy('category_create')
+        context['title'] = "Listado De Usuarios"
+        context['title2'] = 'Lista de registros de Administradores'
         context['button'] = "Nuevo Registro"
+        context['button2'] = "Generar PDF"
         return context
-
-
-
-
-
-
-
-
-
-

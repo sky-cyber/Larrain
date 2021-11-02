@@ -31,6 +31,7 @@ class ProductListView(ListView):
         context['title'] = 'Listado de Productos Registrados'
         context['title2'] = 'Productos Almacenados en Bodega'
         context['button'] = 'Agregar Producto'
+        context['button2'] = 'Generar PDF'
         return context
 
 

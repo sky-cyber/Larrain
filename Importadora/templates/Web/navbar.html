@@ -9,10 +9,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href=" {% url 'home' %} ">Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'catalogue' %}">Catalogo</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'all_categories' %}">Categorias</a></li>
+                <li class="nav-item"><a class="nav-link" href=" {% url 'home' %} "><i class="fab fa-servicestack"></i>
+                    Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'catalogue' %}"><i class="fas fa-laptop"></i>
+                    Catalogo</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'all_categories' %}"><i class="fas fa-tag"></i>
+                    Categorias</a></li>
                 {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-id-card"></i>
+                        Perfil
+                    </a></li>
                     <li class="nav-item"><a class="nav-link" href=""><i class="fas fa-user-tie"></i> {{ user.username }}
                     </a></li>
                     <li class="nav-item dropdown">
@@ -32,6 +38,10 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'mycart' %}"><i class="fas fa-cart-plus"></i>
+                        <span class="badge bg-dark rounded-pill">{{ order.get_cart_items }}</span></a>
+                    </li>
+
                 {% else %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -52,9 +62,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'mycart' %}"><i class="fas fa-cart-plus"></i></a>
+                    </li>
                 {% endif %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'mycart' %}"><i class="fas fa-cart-plus"></i></a>
-                </li>
             </ul>
         </div>
     </div>

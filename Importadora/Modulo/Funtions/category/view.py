@@ -24,6 +24,7 @@ class CategoryListView(ListView):
         context['object_list'] = Category.objects.all()
         context['url_create'] = reverse_lazy('category_create')
         context['button'] = "Nuevo Registro"
+        context['button2'] = "Generar PDF"
         return context
 
 

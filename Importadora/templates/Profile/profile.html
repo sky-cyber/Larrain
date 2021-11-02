@@ -1,0 +1,85 @@
+{% extends 'Web/home.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block service %}
+
+{% endblock %}
+
+{% block contend %}
+    <br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-footer bg-dark">
+                        <div class="text-center text-white p-2">
+                            {% if user.is_authenticated %}
+                                <h5>Bienvenido a wykep {{ user.username }}</h5>
+                            {% else %}
+                                <h1></h1>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-body align-self-center">
+                        <div class="card text-center">
+                            <div class="card-footer">
+                                <br>
+                                <img src="{{ request.user.get_image }}"
+                                     class="card-img-top align-self-center" alt="asd" style="width: 150px;">
+                            </div>
+                            <br>
+                            <ul class="list-group list-group-flush">
+                                <li id="usuario" class="list-group-item">Usuario: {{ user.username }}</li>
+                                <li id="nombre" class="list-group-item">Nombres: {{ user.first_name }}</li>
+                                <li id="apellido" class="list-group-item">Apellidos: {{ user.last_name }}</li>
+                                <li id="correo" class="list-group-item">Email: {{ user.email }}</li>
+                            </ul>
+                            <div class="card-body align-self-center">
+                                <a href="{% url 'reset_password' %}" class="card-link btn btn-success">Cambiar Clave</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card-footer bg-dark">
+                    <div class="text-center text-bold text-white p-2" style="font-size: 25px">Ordenes Emitidas</div>
+                </div>
+                <table class="table table-hover text-center" id="data">
+                    <thead class="bg-dark alert-link text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Total</th>
+                        <th>Tipo de Pago</th>
+                        <th>Fecha emitida</th>
+                        <th>Transacción</th>
+                    </tr>
+                    </thead>
+                    {% if order %}
+                        {% for o in order %}
+                            <tbody>
+                            <tr style="font-size: 15px">
+                                <td><a class="btn btn-dark btn-sm" href="{% url 'order-detail' o.pk %}">{{ o.id }}</a></td>
+                                <td>{{ o.shippingPrice }}</td>
+                                <td>{{ o.paymentMethod }}</td>
+                                <td>{{ o.paidAt }}</td>
+                                <td>{{ o.transaction_id }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                        </table>
+                    {% else %}
+                        <h1 id="notproduct">No Ha Hecho Ninguna Compra</h1>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

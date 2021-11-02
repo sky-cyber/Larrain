@@ -17,6 +17,7 @@ $(function () {
             {"data": "first_name"},
             {"data": "last_name"},
             {"data": "username"},
+            {"data": "last_login"},
             {"data": "date_joined"},
             {"data": "image"},
             {"data": "id"},
@@ -27,7 +28,7 @@ $(function () {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    return '<img src="'+row.image+'" class="img-fluid mx-auto d-block" style="width: 20px; height: 20px;">';
+                    return '<img src="' + row.image + '" class="img-fluid mx-auto d-block" style="width: 40px; height: 40px;">';
                 }
             },
             {
@@ -35,8 +36,8 @@ $(function () {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="' + row.id + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="' + row.id + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+                    var buttons = '<a href="' + row.id + '/" class="btn btn-warning btn-sm btn-flat"><i class="fas fa-edit"></i></a> ';
+                    buttons += '<a href="' + row.id + '/" type="button" class="btn btn-danger btn-sm btn-flat"><i class="fas fa-trash-alt"></i></a>';
                     return buttons;
                 }
             },
