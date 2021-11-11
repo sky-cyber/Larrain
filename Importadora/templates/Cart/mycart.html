@@ -1,5 +1,6 @@
 {% extends 'Web/home.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 
@@ -22,7 +23,7 @@
                         <thead class="bg-dark alert-link text-white">
                         <tr>
                             <th><h5>Productos: <strong>{{ order.get_cart_items }}</strong></h5></th>
-                            <th><h5>Total:<strong> ${{ order.get_cart_total }}</strong></h5></th>
+                            <th><h5>Total:<strong> ${{ order.get_cart_total | intcomma }}</strong></h5></th>
                             <th>
                                 <a style="float:right; margin:5px;" class="btn btn-warning" href="{% url 'checkout' %}">Pagar</a>
                             </th>
@@ -51,7 +52,7 @@
                                              style="width: 80px; height: 60px">
                                     </td>
                                     <td>{{ item.product.name }}</td>
-                                    <td>{{ item.product.offerPrice }}</td>
+                                    <td>{{ item.product.offerPrice | intcomma }}</td>
                                     <td>
                                         {{ item.qty }}
                                         <div class="d-inline-block">
@@ -61,7 +62,7 @@
                                                     class="fas fa-angle-down update-cart"></i></a>
                                         </div>
                                     </td>
-                                    <td>{{ item.get_sub_total }}</td>
+                                    <td>{{ item.get_sub_total | intcomma }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

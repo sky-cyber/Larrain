@@ -32,27 +32,28 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="container">
-                                <table class="table table-hover " id="tabla" style="width: 100%">
+                                <table class="table table-hover text-center" id="tabla" style="width: 100%">
                                     <thead class="bg-primary alert-link text-white">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Rut</th>
-                                        <th>Compañia</th>
-                                        <th>Celular</th>
-                                        <th>Productos</th>
-                                        <th>Entrega</th>
+                                        <th>Imagen</th>
+                                        <th>Nombres</th>
+                                        <th>Apellidos</th>
+                                        <th>Fecha de Registro</th>
                                         <th>Opciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                     {% for s in object_list %}
                                         <tr>
-                                            <td>{{ s.id }}</td>
-                                            <td>{{ s.rut }}</td>
-                                            <td>{{ s.company }}</td>
-                                            <td>{{ s.phone }}</td>
-                                            <td>{{ s.detailProduct }}</td>
-                                            <td>{{ s.timeDelivery }}</td>
+                                            <td><a class="btn btn-success" href="{% url 'supplier_contract' s.pk %}">{{ s.id }}</a></td>
+                                            <td class="text-center">
+                                                <img src="{{ s.get_image }}" class="img-fluid d-block mx-auto"
+                                                     style="width: 60px; height: 40px">
+                                            </td>
+                                            <td>{{ s.first_name }}</td>
+                                            <td>{{ s.last_name }}</td>
+                                            <td>{{ s.createdAt }}</td>
                                             <td>
                                                 <a href="{% url 'supplier_update' s.id %}" type="button"
                                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>

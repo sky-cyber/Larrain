@@ -1,6 +1,7 @@
 {% extends 'Web/home.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 
@@ -16,7 +17,10 @@
         <div class="row m-0">
             <div class="col-md-7 col-12">
                 <div class="row">
-                    <a href="{% url 'profile' %}" class="btn btn-success" style="width: 20%">volver</a>
+                    <div class="">
+                        <a href="{% url 'profile' %}" class="btn btn-success" style="width: 20%">{{ button }}</a>
+                        <a href="{% url 'order_pdf' order.pk %}" class="btn btn-danger">{{ PDF }}</a>
+                    </div>
                     <div class="col-12 mb-4">
                         <div>
                             <div class="text-center m-3 card-footer" style="background: #09111e; color: white">
@@ -39,10 +43,16 @@
                                      style="font-size: 20px; background: #09111EFF; color: white">Información de Envio:
                                 </div>
                                 <hr>
-                                <div class="d-block m-2" style="font-size: 20px">País: valparaiso</div>
-                                <div class="d-block m-2" style="font-size: 20px">Ciudad: Valparaiso</div>
-                                <div class="d-block m-2" style="font-size: 20px">Codigo Postal: 8524526</div>
-                                <div class="d-block m-2" style="font-size: 20px">Dirección: Avenida Porvenir #679</div>
+                                {% if shipping %}
+                                    <div class="d-block m-2" style="font-size: 20px">País: {{ shipping.country }}</div>
+                                    <div class="d-block m-2" style="font-size: 20px">Ciudad: {{ shipping.city }}</div>
+                                    <div class="d-block m-2" style="font-size: 20px">Codigo
+                                        Postal: {{ shipping.postalCode }}</div>
+                                    <div class="d-block m-2" style="font-size: 20px">
+                                        Dirección: {{ shipping.address }}</div>
+                                {% else %}
+                                    <p>No hay registros de envio</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -64,8 +74,8 @@
                                                 <img src="{{ item.product.imageURL }}" alt=""
                                                      style="width: 100px;">
                                                 <span class="p-1">Catidad: {{ item.qty }}</span>
-                                                <span class="p-1">Valor: {{ item.product.offerPrice }}</span>
-                                                <span class="p-1">Sub Total: {{ item.get_sub_total }}</span>
+                                                <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
+                                                <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -77,6 +87,7 @@
                     </div>
                 </div>
             </div>
+            <br><br>
             <div class="col-md-5 col-12 card-footer" style="background: #eee8e8">
                 <div class="box-left">
                     <p class="card-footer text-center text-bold text-white" style="background: #09111EFF">Resumen de la
@@ -86,19 +97,37 @@
                         Pagado: {{ order.paidAt }}</p>
                     <hr>
                     <div class="d-block">Estado de la orden:</div>
-                    <p class="card-footer text-center text-bold text-white" style="background: #e32525">{{ order.status }}</p>
+                    {% if order.status == "Orden Recibida" %}
+                        <p class="card-footer text-center text-bold text-white"
+                           style="background: #2545e3">{{ order.status }}</p>
+                    {% elif order.status == "Orden En Proceso" %}
+                        <p class="card-footer text-center text-bold text-white"
+                           style="background: #eecf08">{{ order.status }}</p>
+                    {% elif order.status == "Orden Cancelada" %}
+                        <p class="card-footer text-center text-bold text-white"
+                           style="background: #e32525">{{ order.status }}</p>
+                    {% elif order.status == "Orden En Camino" %}
+                        <p class="card-footer text-center text-bold text-white"
+                           style="background: #2a2a2a">{{ order.status }}</p>
+                    {% elif order.status == "Orden Completada" %}
+                        <p class="card-footer text-center text-bold text-white"
+                           style="background: #18bd06">{{ order.status }}</p>
+                    {% endif %}
                     <hr>
                     <div class="h8">
                         <div class="row m-0 border mb-3 card-footer">
                             <p class="card-footer text-center" style="background: #ffffff">Resumen de la orden</p>
                             <hr>
                             <div class="d-block m-2" style="font-size: 20px">Productos: {{ order.get_cart_items }}</div>
-                             <hr>
-                            <div class="d-block m-2" style="font-size: 20px">Sub Total: {{ order.shippingPrice }}</div>
-                             <hr>
-                            <div class="d-block m-2" style="font-size: 20px">Iva: {{ order.tax }}</div>
-                             <hr>
-                            <div class="d-block m-2" style="font-size: 20px">Total: {{ order.total }}</div>
+                            <hr>
+                            <div class="d-block m-2" style="font-size: 20px">Sub Total:
+                                ${{ order.shippingPrice | intcomma }}</div>
+                            <hr>
+                            <div class="d-block m-2" style="font-size: 20px">Costo de envio:
+                                ${{ order.tax | intcomma }}</div>
+                            <hr>
+                            <div class="d-block m-2" style="font-size: 20px">Total Pagado:
+                                ${{ order.total | intcomma }}</div>
                         </div>
                     </div>
                 </div>

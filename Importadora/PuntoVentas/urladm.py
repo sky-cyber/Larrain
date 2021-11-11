@@ -35,6 +35,7 @@ urlpatterns = [
     path('supplier/list', login_required(SupplierListView.as_view()), name='supplier_list'),
     path('supplier/edit/<int:pk>/', login_required(SupplierUpdateView.as_view()), name='supplier_update'),
     path('supplier/delete/<int:pk>/', login_required(SupplierDeleteView.as_view()), name='supplier_delete'),
+    path('contract/supplier/<int:pk>/', ContractSupplier.as_view(), name='supplier_contract'),
 
     # URL THE CLAIM
     path('claim/list', login_required(ClaimListView.as_view()), name='claim_list'),
@@ -43,12 +44,21 @@ urlpatterns = [
     # URL THE USER
     path('registerUser/', login_required(RegisterUserAdmin), name='registerUser'),
     path('listUser/', login_required(UserListView.as_view()), name='list_user'),
+    path('updateUser/<int:pk>/', login_required(UpdateUserAdmin.as_view()), name='updateUser'),
+    path('deleteUser/<int:pk>/', login_required(DeleteUserAdmin.as_view()), name='deleteUser'),
 
     # URL FOR PDF
     path('product/pdf', ProductPdfView.as_view(), name='product_pdf'),
     path('supplier/pdf', SupplierPdfView.as_view(), name='supplier_pdf'),
+    path('orderDetail/pdf/<int:pk>/', OrderPdfView.as_view(), name='order_pdf'),
+    path('contract/pdf/<int:pk>/', ContractpdfView.as_view(), name='contract_pdf'),
 
     # URL FOR ORDER
-    path('order/list/', login_required(OrderListView.as_view()), name='order_list')
+    path('order/all/list/', login_required(OrderListView.as_view()), name='order_list'),
+
+
+
+    path('orderDetailAdmin/<int:pk>', OrderClientDetail.as_view(), name='order_client_detail'),
+    path('change/order/<int:pk>/', ChangeOrderView.as_view(), name='change_order')
 
 ]

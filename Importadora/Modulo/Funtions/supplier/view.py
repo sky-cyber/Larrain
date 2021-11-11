@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
 from Modulo.Funtions.supplier.form import SupplierForm
 from PuntoVentas.models import *
@@ -19,7 +19,7 @@ class SupplierListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Proveedores"
+        context['title'] = "Listado De los Contratos"
         context['title2'] = "Proveedores Registrados"
         context['object_list'] = Supplier.objects.all()
         context['url_create_supplier'] = reverse_lazy('supplier_create')
@@ -67,3 +67,21 @@ class SupplierDeleteView(DeleteView):
         context['title2'] = "¿Quiere eliminar la Compañia "
         context['url_list_supplier'] = reverse_lazy('supplier_list')
         return context
+
+
+class ContractSupplier(TemplateView):
+    model = Supplier
+    template_name = "Supplier/contract.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['contract'] = Supplier.objects.get(pk=pk)
+        context['button'] = "Volver a la lista de Provedores"
+        context['PDF'] = "Generar PDF"
+        return context
+
+
+
+
+

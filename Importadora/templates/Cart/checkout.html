@@ -1,6 +1,7 @@
 {% extends 'Web/home.html' %}
 {% load static %}
 {% load widget_tweaks %}
+{% load humanize %}
 
 {% block service %}
 
@@ -63,8 +64,8 @@
                                     <img src="{{ item.product.imageURL }}" alt=""
                                          style="width: 100px;">
                                     <small class="p-1">Catidad: {{ item.qty }}</small>
-                                    <span class="p-1">Valor: {{ item.product.offerPrice }}</span>
-                                    <span class="p-1">Sub Total: {{ item.get_sub_total }}</span>
+                                    <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
+                                    <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
                                 </div>
                             </li>
                         </ul>
@@ -80,17 +81,17 @@
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-success text-bold" style="font-size: 20px">Sub Total: </h4>
                                 <span class="badge bg-dark rounded-pill"
-                                      style="font-size: 20px">{{ order.get_cart_total }}</span>
+                                      style="font-size: 20px">$ {{ order.get_cart_total | intcomma }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-success text-bold" style="font-size: 20px">Iva: </h4>
+                                <h4 class="text-success text-bold" style="font-size: 20px">Costo de Envio: </h4>
                                 <span class="badge bg-dark rounded-pill"
-                                      style="font-size: 20px">{{ order.tax }}</span>
+                                      style="font-size: 20px">$ {{ order.tax | intcomma }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-success text-bold" style="font-size: 20px">total: </h4>
+                                <h4 class="text-success text-bold" style="font-size: 20px">Total A Pagar: </h4>
                                 <span class="badge bg-dark rounded-pill"
-                                      style="font-size: 20px">{{ order.total }}</span>
+                                      style="font-size: 20px"> $ {{ order.get_cart_total | intcomma }}</span>
                             </div>
                         </div>
                     </div>

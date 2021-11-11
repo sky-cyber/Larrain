@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-danger text-bold">Agregar un Nuevo Usuario</h1>
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Main content -->
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -29,8 +29,9 @@
                                 <h3 class="card-title">
                                     {% if action == 'add' %}
                                         <i class="fas fa-plus-circle"></i>
-                                    {% else %}
-                                        <i class="fas fa-edit"></i>
+                                        {% else %}
+                                         <i class="fas fa-edit"></i>
+                                            {{ title2 }}
                                     {% endif %}
                                 </h3>
                             </div>
@@ -39,21 +40,19 @@
                                 <div class="container">
                                     {% csrf_token %}
                                     {{ form.username.label }}
-                                    {{ form.username | add_class:'form-control' | attr:'placeholder:Ingrese un nombre de Usuario'}}
+                                    {{ form.username}}
                                     {{ form.first_name.label }}
-                                    {{ form.first_name | add_class:'form-control'| attr:'placeholder:Ingrese Nombres' }}
+                                    {{ form.first_name}}
                                     {{ form.last_name.label }}
-                                    {{ form.last_name | add_class:'form-control'| attr:'placeholder:Ingrese Apellidos' }}
+                                    {{ form.last_name}}
                                     {{ form.email.label }}
-                                    {{ form.email | add_class:'form-control'| attr:'placeholder:Ingrese un Correo' }}
-                                    {{ form.password1.label }}
-                                    {{ form.password1 | add_class:'form-control'| attr:'placeholder:Ingrese una Contraseña' }}
-                                    {{ form.password2.label }}
-                                    {{ form.password2 | add_class:'form-control'| attr:'placeholder:Repita la Contraseña' }}
+                                    {{ form.email}}
+                                    {{ form.password.label }}
+                                    {{ form.password}}
                                     <br>
                                     {{ form.image }}
                                     <br>
-                                    <div class="class=" style="font-size: 20px">
+                                    <div class="py-2" style="font-size: 20px">
                                     <p>
                                         {{ form.is_superuser.label }}
                                         {{ form.is_superuser }}
@@ -67,7 +66,7 @@
                             <br>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-audio-description"></i> Agregar Usuario
+                                    <i class="fas fa-audio-description"></i> {{ button }}
                                 </button>
                             </div>
                         </div>

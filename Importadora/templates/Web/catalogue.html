@@ -1,5 +1,6 @@
 {% extends 'web/home.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
     <title>Catalogo de Productos</title>
@@ -62,10 +63,42 @@
                 </div>
                 <br>
                 <br>
+                <div class="row justify-content-center">
+                    <nav class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 95%;">
+                        <ul class="pagination">
+                            {% if object_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.previous_page_number }}"><i
+                                            class="fas fa-arrow-alt-circle-left"></i></a>
+                                </li>
+                            {% endif %}
+
+                            {% for page in pages %}
+                                <li class="page-item{% if current_page == page %} active {% endif %}">
+                                    <a class="page-link bg-dark" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if object_list.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.next_page_number }}"><i
+                                            class="fas fa-arrow-alt-circle-right"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.paginator.num_pages }}"><i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
                 <div class="row" style="width: 100%">
                     {% if object_list %}
                         {% for product in object_list %}
-                            <div class="col-lg-4 col-md-6 mb-4 text-center">
+                            <div class="col-lg-3 col-md-6 mb-4 text-center">
                                 <div class="card h-100 text-bold text-black">
                                     {% if product.image %}
                                         <img class="card-img-top" src="{{ product.imageURL }}"
@@ -78,9 +111,9 @@
                                         <hr>
                                         <div class="card-title">
                                             <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                                <strike>${{ product.salePrice }}</strike></h5>
+                                                <strike>${{ product.salePrice | intcomma }}</strike></h5>
                                             <h5 class="card-title" style="font-size: 23px">
-                                                ${{ product.offerPrice }}</h5>
+                                                ${{ product.offerPrice | intcomma }}</h5>
                                         </div>
                                     </div>
                                     <div class="card-footer" style="width: 100%">
@@ -88,7 +121,7 @@
                                             &#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                         <div class="float-right"> Visitas {{ product.numReviews }}</div>
                                     </div>
-                                    <div class="card-footer" style="width: 100%">
+                                    <div class="card-footer">
                                         <button data-product="{{ product.id }}" data-action="add"
                                                 class="btn btn-success btn-sm update-cart"><i
                                                 class="fas fa-cart-arrow-down"></i>
@@ -105,6 +138,38 @@
                     {% else %}
                         <h1 id="notproduct">no hay Productos Registrados</h1>
                     {% endif %}
+                </div>
+                <div class="row justify-content-center">
+                    <nav class="d-grid gap-2 d-md-flex justify-content-md-end" style="width: 95%;">
+                        <ul class="pagination">
+                            {% if object_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.previous_page_number }}"><i
+                                            class="fas fa-arrow-alt-circle-left"></i></a>
+                                </li>
+                            {% endif %}
+
+                            {% for page in pages %}
+                                <li class="page-item{% if current_page == page %} active {% endif %}">
+                                    <a class="page-link bg-dark" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if object_list.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.next_page_number }}"><i
+                                            class="fas fa-arrow-alt-circle-right"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ object_list.paginator.num_pages }}"><i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

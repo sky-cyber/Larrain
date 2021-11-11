@@ -1,7 +1,7 @@
 from django.urls import path
 
 from Modulo.Funtions.cart.view import Mycart, Checkout, UpdateItem, ProcessOrder
-from PuntoVentas.views import home, team, CatalogueListView, AllCategoriesView, ProductDetailView
+from PuntoVentas.views import home, team, CatalogueListView, AllCategoriesView, ProductDetailView, TypeCategory
 from Modulo.Funtions.claim.view import ContactCreateView
 from Modulo.Funtions.Email.view import WelcomeView
 from Modulo.Funtions.Profile.view import Profile, OrderDetail
@@ -11,11 +11,12 @@ urlpatterns = [
 
     # URL THE WEB
     path('', home, name='home'),
-    path('catalogo/', CatalogueListView.as_view(), name='catalogue'),
+    path('catalogo/', CatalogueListView, name='catalogue'),
     path('team/', team, name='team'),
     path('contact/', ContactCreateView.as_view(), name='contact'),
     path('allcategory/', AllCategoriesView.as_view(), name='all_categories'),
     path('producto/<slug:slug>/', ProductDetailView.as_view(), name='productDetail'),
+    path('category/<slug:slug>/', TypeCategory.as_view(), name='type_category'),
 
     # URL THE CART
     path('mi-carrito/', Mycart, name='mycart'),

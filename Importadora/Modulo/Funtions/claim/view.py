@@ -14,7 +14,7 @@ class ContactCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Contactanos"
-        context['title2'] = "Comentanos ¿En que podemos ayudarte?"
+        context['title2'] = "Coméntanos ¿En qué podemos ayudarte?"
         context['button'] = "Enviar Mensaje"
         return context
 
@@ -25,7 +25,7 @@ class ClaimListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Reclamos o Opiniones"
+        context['title'] = "Listado De Reclamos u Opiniones"
         context['title2'] = "Listado"
         context['object_list'] = Contact.objects.all()
         return context

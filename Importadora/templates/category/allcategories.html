@@ -1,6 +1,7 @@
 {% extends 'Web/home.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block title %}
     <title>Todas Las Categorias</title>
@@ -35,8 +36,8 @@
                                         <hr>
                                         <div class="card-title">
                                             <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                                <strike>${{ p.salePrice }}</strike></h5>
-                                            <h5 class="card-title" style="font-size: 23px">${{ p.offerPrice }}</h5>
+                                                <strike>${{ p.salePrice | intcomma }}</strike></h5>
+                                            <h5 class="card-title" style="font-size: 23px">${{ p.offerPrice | intcomma }}</h5>
                                         </div>
                                     </div>
                                     <div class="card-footer" style="width: 100%">

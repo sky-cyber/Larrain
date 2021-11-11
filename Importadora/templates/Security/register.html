@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block card %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <br>
         {% csrf_token %}
         <div class="text-left text-bold">
@@ -36,16 +36,14 @@
             {{ form.email|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Correo' }}
         </div>
         <div class="text-left text-bold">
-            {{ form.password1.label }}
+            {{ form.password.label }}
         </div>
         <div class="input-group mb-3">
-            {{ form.password1|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Contraseña' }}
+            {{ form.password|add_class:'form-control card-footer'|attr:'placeholder:Ingrese su Contraseña' }}
         </div>
-        <div class="text-left text-bold">
-            {{ form.password2.label }}
-        </div>
+        {{ form.image.label }}
         <div class="input-group mb-3">
-            {{ form.password2|add_class:'form-control card-footer'|attr:'placeholder:Confirma su contraseña' }}
+            {{ form.image }}
         </div>
         <br>
         <div class="row">

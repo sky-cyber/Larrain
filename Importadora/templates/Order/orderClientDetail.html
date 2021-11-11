@@ -1,0 +1,234 @@
+{% extends 'Adm/admin.html' %}
+{% load  static %}
+{% load humanize %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <a href="{% url 'order_list' %}" class="btn btn-dark">{{ button }}</a>
+                        <a href="{% url 'order_pdf' order.pk %}" class="btn btn-success">{{ PDF }}</a>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card bg-primary">
+                                    <div class="card-body text-center">
+                                        <h1 class="card-text text-bold">Detalle de la Orden del Cliente</h1>
+                                        <p class="card-text text-bold">Se visualiza toda la informacion y datos
+                                            personales del cliente al momento que emitio su orden de compra.</p>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <label for="username" class="form-label">Foto de Perfil</label>
+                                    <div class="col-sm-3">
+                                        <img src="/media/{{ order.user.image }}" style="width: 150px; height: 130px">
+                                    </div>
+                                    <hr>
+                                    <div class="row g-3">
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Usuario</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.user.username }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.user.email }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Nombres</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.user.first_name }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Apellidos</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.user.last_name }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">País</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ shipping.country }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Ciudad</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ shipping.city }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Codigo Postal</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ shipping.postalCode }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Fecha de Registro</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.user.date_joined }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label for="email" class="form-label">Dirección</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ shipping.address }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <h1 class="card-footer text-center" style="background: #cbced2">Detalles del
+                                        Pago</h1>
+                                    <hr>
+                                </div>
+                                <div class="container">
+                                    <div class="row g-3">
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Cantidad de Productos</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.get_cart_items }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Total Pagado</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                ${{ order.total | intcomma }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Tipo de Pago</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.paymentMethod }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">N° Transactión</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.transaction_id }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Estado de la Orden</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.status }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Cambio de Estado de la
+                                                order</label>
+                                            <div class="card-footer text-center"
+                                                style="background: #f5ff68; font-size: 15px">
+                                                <form action="{% url 'change_order' order.pk %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <select class="form-control" name="status">
+                                                        {% for i, j in allstatus %}
+                                                            <option value="{{ i }}"
+                                                                    {% if i == order.status %}selected{% endif %}>{{ j }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <br>
+                                                    <button class="btn btn-dark">Actualizar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="email" class="form-label">Fecha de Pago</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ order.paidAt }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <h1 class="text-center">Productos Comprados</h1>
+                        <hr>
+                        <div class="card-body">
+                            <div class="container">
+                                <table class="table table-hover text-center" style="width: 100%; font-size: 15px">
+                                    <thead class="bg-primary alert-link text-white">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre del Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Valor</th>
+                                        <th>Sub Total</th>
+                                        <th>imagen</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in items %}
+                                        <tr>
+                                            <td>{{ item.product.id }}</td>
+                                            <td>{{ item.product.name }}</td>
+                                            <td>{{ item.qty }}</td>
+                                            <td>${{ item.product.offerPrice | intcomma }}</td>
+                                            <td>${{ item.get_sub_total | intcomma }}</td>
+                                            <td class="text-center"><a
+                                                    href="{% url 'productDetail' item.product.slug %}">
+                                                <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
+                                                     style="width: 40px; height: 40px"></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

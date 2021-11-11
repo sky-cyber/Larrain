@@ -1,5 +1,6 @@
 {% extends 'Web/home.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
     <title>Producto</title>
@@ -28,11 +29,11 @@
                         <p class="lead text-black">
                         <div class="card-title">
                             <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                <strike>Precio: ${{ product.salePrice }}</strike></h5>
+                                <strike>Precio: ${{ product.salePrice | intcomma }}</strike></h5>
                             <h3 class="card-title" style="font-size: 23px"><img
                                     src="{% static 'assets/img/picture/price_label.png' %}"
                                     class="img-fluid" style="width: 35px; height: 35px"> Oferta:
-                                ${{ product.offerPrice }}</h3>
+                                ${{ product.offerPrice | intcomma }}</h3>
                         </div>
                         </p>
                         <p class="lead font-weight-bold"

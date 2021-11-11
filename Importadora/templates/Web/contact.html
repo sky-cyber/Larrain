@@ -1,6 +1,8 @@
 {% extends 'web/home.html' %}
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block service %}
 
 {% endblock %}
@@ -23,10 +25,39 @@
             <!-- to get an API token!-->
             <form method="post">
                 <div class="card-body">
-                    <div class="container" style="width: 80%">
+                    <div class="container" style="width: 80%; color: white; font-size: 20px">
                         <div class="row">
                             {% csrf_token %}
-                            {{ form }}
+                            <div class="text-left text-bold">
+                                {{ form.name.label }}
+                            </div>
+                            <div class="input-group mb-2">
+                                {{ form.name|add_class:'form-control'|attr:'placeholder:Ingrese su nombre' }}
+                            </div>
+                            <div class="text-left text-bold">
+                                {{ form.phone.label }}
+                            </div>
+                            <div class="input-group mb-2">
+                                {{ form.phone|add_class:'form-control'|attr:'placeholder:Ingrese un Celular' }}
+                            </div>
+                            <div class="text-left text-bold">
+                                {{ form.email.label }}
+                            </div>
+                            <div class="input-group mb-2">
+                                {{ form.email|add_class:'form-control'|attr:'placeholder:Ingrese un Correo Electronico' }}
+                            </div>
+                            <div class="text-left text-bold">
+                                {{ form.typeClaim.label }}
+                            </div>
+                            <div class="input-group mb-2">
+                                {{ form.typeClaim|add_class:'form-control'}}
+                            </div>
+                            <div class="text-left text-bold">
+                                {{ form.claim.label }}
+                            </div>
+                            <div class="input-group mb-2">
+                                {{ form.claim|add_class:'form-control'|attr:'placeholder: Coméntanos ¿En qué podemos ayudarte?' }}
+                            </div>
                             <br> <br> <br>
                             <div class="card-footer text-center">
                                 <br> <br>

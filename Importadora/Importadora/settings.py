@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'PuntoVentas.apps.PuntoventasConfig',
     # lib
     'widget_tweaks',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'wykep2',
+        'USER': 'skycyber1',
         'PASSWORD': '123',
     }
 }

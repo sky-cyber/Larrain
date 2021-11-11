@@ -1,0 +1,148 @@
+{% extends 'Adm/admin.html' %}
+{% load  static %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <a href="{% url 'supplier_list' %}" class="btn btn-dark">{{ button }}</a>
+                        <a href="{% url 'contract_pdf' contract.pk %}" class="btn btn-success">{{ PDF }}</a>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card bg-primary">
+                                    <div class="card-body text-center">
+                                        <h1 class="card-text text-bold">Contrato del Proveedor</h1>
+                                        <p class="card-text text-bold">Se visualiza toda la informacion y datos
+                                            personales del nuevo Proveedor que fue contratado por la Empresa Importadora Larrain.</p>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <label for="username" class="form-label">Foto de Perfil</label>
+                                    <div class="col-sm-3">
+                                        <img src="/media/{{ contract.image }}" style="width: 150px; height: 130px">
+                                    </div>
+                                    <hr>
+                                    <div class="row g-3">
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">rut</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.rut }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Compañia o Empresa</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.company }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Nombres Del Proveedor</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.first_name }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Apellidos Del Proveedor</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.last_name }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Fecha de Nacimiento</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.birthday }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Celular</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.phone }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Correo Electronico</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.email }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Fecha de Registro</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.createdAt }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <label for="email" class="form-label">Dirección Del Proveedor</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.address }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <h1 class="card-footer text-center" style="background: #cbced2">Detalles del
+                                        los Productos En los que trabajará el Proveedor</h1>
+                                    <hr>
+                                </div>
+                                <div class="container">
+                                    <div class="row g-3">
+                                        <div class="col-sm-12">
+                                            <label for="username" class="form-label">Fecha de Entrega Comprometida</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #f5ff68; font-size: 15px">
+                                                {{ contract.timeDelivery }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <label for="email" class="form-label">Detalles y caracteristicas de los productos</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #d0d1d5; font-size: 15px">
+                                                {{ contract.detailProduct }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

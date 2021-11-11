@@ -1,4 +1,6 @@
 {% extends 'Adm/admin.html' %}
+{% load static %}
+{% load widget_tweaks %}
 {% block body %}
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -19,7 +21,7 @@
         </div>
 
         <!-- Main content -->
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -38,15 +40,105 @@
                             <div class="card-body">
                                 <div class="container">
                                     {% csrf_token %}
-                                    {{ form }}
+                                    <div class="text-left text-bold">
+                                        {{ form.rut.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.rut|add_class:'form-control card-footer'|attr:'placeholder:Ingrese un Rut' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.first_name.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.first_name|add_class:'form-control card-footer'|attr:'placeholder:Ingrese los Nombres del Proveedor' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.last_name.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.last_name|add_class:'form-control card-footer'|attr:'placeholder:Ingrese los Apellidos del Proveedor' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.birthday.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-text" style="background: #2a2a2a">
+                                            <img src="{% static 'assets/img/security/calendar_icon.png' %}" alt=""
+                                                 style="width: 20px">
+                                        </div>
+                                        {{ form.birthday|add_class:'form-control card-footer datepicker'|attr:'autocomplete:off' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.company.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.company|add_class:'form-control card-footer'|attr:'placeholder:Ingrese la Compañia o Empresa' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.phone.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.phone|add_class:'form-control card-footer'|attr:'placeholder:Ingrese Celular del Proveedor' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.address.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.address|add_class:'form-control card-footer'|attr:'placeholder:Ingrese Dirección de la Compañia' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.email.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.email|add_class:'form-control card-footer'|attr:'placeholder:Ingrese Correo Electronico del Proveedor' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.detailProduct.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        {{ form.detailProduct|add_class:'form-control card-footer'|attr:'placeholder:Ingrese la Informacion de los productos que trabajará el Proveedor' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.timeDelivery.label }}
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-text" style="background: #2a2a2a">
+                                            <img src="{% static 'assets/img/security/calendar_icon.png' %}" alt=""
+                                                 style="width: 20px">
+                                        </div>
+                                        {{ form.timeDelivery|add_class:'form-control card-footer datepicker'| attr:'autocomplete:off' }}
+                                    </div>
+                                    <div class="text-left text-bold">
+                                        {{ form.image.label }}
+                                    </div>
+                                    {{ form.image | add_class:'form-control' }}
                                 </div>
                                 <br>
-                                <div class="card-footer">
+                                <div class="card-footer" style="width: 20%">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-audio-description"></i> {{ button }}
                                     </button>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                !function ($) {
+                                    $.fn.datepicker.dates['es'] = {
+                                        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                                        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+                                        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                                        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                                        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                                        today: "Hoy",
+                                        monthsTitle: "Meses",
+                                        clear: "Borrar",
+                                        weekStart: 1,
+                                        format: "dd/mm/yyyy"
+                                    }
+                                }(jQuery);
+                                $('.datepicker').datepicker({
+                                    language: 'es'
+                                });
+                            </script>
                             <!-- /.card-body -->
                         </div>
                     </div>

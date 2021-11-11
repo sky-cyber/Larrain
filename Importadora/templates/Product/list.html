@@ -1,4 +1,5 @@
 {% extends 'Adm/admin.html' %}
+{% load humanize %}
 
 {% block body %}
     <div class="content-wrapper">
@@ -53,7 +54,7 @@
                                         <td>{{ p.name }}</td>
                                         <td>{{ p.category }}</td>
                                         <td>{{ p.brand }}</td>
-                                        <td>{{ p.offerPrice }}</td>
+                                        <td>${{ p.offerPrice | intcomma }}</td>
                                         <td style="font-size: 20px">
                                             {% if p.stock == 0 %}
                                                 <i class="right badge badge-danger">no hay stock</i>

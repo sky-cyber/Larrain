@@ -1,4 +1,5 @@
 from django.contrib.admin import action
+from django.contrib.auth.decorators import permission_required
 
 from Importadora.wsgi import *
 from django.utils.decorators import method_decorator
@@ -7,7 +8,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views.decorators.csrf import csrf_exempt
 
 from Modulo.Funtions.security.form import CreateUserForm, ResetPasswordForm, ChangePasswordForm
@@ -50,42 +51,110 @@ def RegisterUser(request):
 
 def RegisterUserAdmin(request):
     form = CreateUserForm
+    title = "Registro de Usuarios"
+    title2 = "Crear un Usuario Administrador"
+    button = "Registar Usuario"
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if request.user.is_authenticated:
             if form.is_valid():
                 form.save()
                 return redirect('list_user')
-    context = {'form': form}
+    context = {'form': form, 'title': title, 'title2': title2, 'button': button}
     return render(request, 'Security/registerAdmin.html', context)
 
 # class RegisterUserAdmin(CreateView):
 #     model = User
 #     form_class = CreateUserForm
 #     template_name = 'Security/registerAdmin.html'
+#     # permission_required = 'user.add_user'
 #     success_url = reverse_lazy('list_user')
 #
-#     def dispatch(self, request, *args, **kwargs):
-#         return super().dispatch(request, *args, **kwargs)
+#     # def dispatch(self, request, *args, **kwargs):
+#     #     return super().dispatch(request, *args, **kwargs)
 #
-#     def post(self, request, *args, **kwargs):
-#         data = {}
-#         try:
-#             action = request.POST['action']
-#             if action == 'add':
-#                 form = self.get_form()
-#                 data = form.save()
-#             else:
-#                 data['error'] = 'No ha ingresado ninguna opción'
-#         except Exception as e:
-#             data['error'] = str(e)
-#         return JsonResponse(data)
+#     # def post(self, request, *args, **kwargs):
+#     #     data = {}
+#     #     try:
+#     #         action = request.POST['action']
+#     #         if action == 'add':
+#     #             form = self.get_form()
+#     #             data = form.save()
+#     #         else:
+#     #             data['error'] = 'No ha ingresado ninguna opción'
+#     #     except Exception as e:
+#     #         data['error'] = str(e)
+#     #     return JsonResponse(data)
 #
 #     def get_context_data(self, **kwargs):
-#         context = super(RegisterUserAdmin, self).get_context_data(**kwargs)
+#         context = super().get_context_data(**kwargs)
 #         context['title'] = 'Creacion de un Usuario'
 #         context['title2'] = 'Crear Usuario Administrador'
 #         return context
+
+
+class UpdateUserAdmin(UpdateView):
+    model = User
+    form_class = CreateUserForm
+    template_name = 'Security/registerAdmin.html'
+    permission_required = 'user.add_user'
+    success_url = reverse_lazy('list_user')
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     return super().dispatch(request, *args, **kwargs)
+    #
+    # def post(self, request, *args, **kwargs):
+    #     data = {}
+    #     try:
+    #         action = request.POST['action']
+    #         if action == 'edit':
+    #             form = self.get_form()
+    #             data = form.save()
+    #         else:
+    #             data['error'] = 'No ha ingresado ninguna opción'
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return JsonResponse(data)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar un Usuario'
+        context['title2'] = 'Edicion Usuario Administrador'
+        context['button'] = 'Editar Usuario'
+        return context
+
+
+class DeleteUserAdmin(DeleteView):
+    model = User
+    form_class = CreateUserForm
+    template_name = 'Security/delete.html'
+    permission_required = 'user.add_user'
+    success_url = reverse_lazy('list_user')
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     return super().dispatch(request, *args, **kwargs)
+    #
+    # def post(self, request, *args, **kwargs):
+    #     data = {}
+    #     try:
+    #         action = request.POST['action']
+    #         if action == 'edit':
+    #             form = self.get_form()
+    #             data = form.save()
+    #         else:
+    #             data['error'] = 'No ha ingresado ninguna opción'
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return JsonResponse(data)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Elimar un Usuario'
+        context['title2'] = "¿Quiere eliminar al Usuario "
+        return context
+
 
 class ResetPasswordView(FormView):
     template_name = 'Security/resetPassword.html'
@@ -221,5 +290,5 @@ class UserListView(ListView):
         context['title'] = "Listado De Usuarios"
         context['title2'] = 'Lista de registros de Administradores'
         context['button'] = "Nuevo Registro"
-        context['button2'] = "Generar PDF"
+        context['butto'] = "Generar PDF"
         return context

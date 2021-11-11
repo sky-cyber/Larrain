@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            color: black;
+        }
+
+        body {
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            color: black;
+        }
+
+        .name-company {
+            font-size: 30px;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        table thead tr th {
+            border: 1px solid black !important;
+            padding: 3px;
+        }
+
+        table tbody tr td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        .img-logo {
+            margin-top: 10px;
+            width: 75px;
+            height: 75px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <img src="{% static 'assets/img/logo_wykep_ori.png' %}" class="img-fluid d-block mx-auto img-logo"
+         style="width: 250px; height: 100px">
+    <h1 class="name-company">{{ Company }}</h1>
+    <p class="text-center">
+        Direccion: {{ address }}<br>
+        Rut de la Empresa: {{ rut }}<br>
+        N° de servicio a cliente: {{ Telefóno }}<br>
+        Sitio Web: {{ Web }}<br>
+    </p>
+    <hr>
+    <br>
+    <h2 class="text-center">Datos del Cliente</h2>
+    <p>
+        <b>Cliente:</b> {{ order.user.get_full_name }}<br>
+        <b>Correo Electronico:</b> {{ order.user.email }}<br>
+        <b>Tipo de Pago:</b> {{ order.paymentMethod }}<br>
+        <b>Fecha de Pago:</b> {{ order.paidAt }}<br>
+        <b>Numero de Order:</b> {{ order.transaction_id }}<br>
+    </p>
+    <hr>
+    <br>
+    <h2 class="text-center">Detalle de la Compra</h2>
+    <table class="table" style="width: 100%;">
+        <thead>
+        <tr style="border: 1px solid black;">
+            <th style="width: 40%;">Producto</th>
+            <th style="width: 20%;">Cantidad</th>
+            <th style="width: 20%;">P.Unitario</th>
+            <th style="width: 20%;" class="text-right">Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.qty }}</td>
+                <td>{{ item.product.offerPrice | intcomma }}</td>
+                <td>{{ item.get_sub_total | intcomma }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3" class="text-right"><b>Cantidad de Productos</b></td>
+            <td class="text-right">{{ order.get_cart_items }}</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-right"><b>Subtotal</b></td>
+            <td class="text-right">${{ order.get_cart_total | intcomma }}</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-right"><b>Descuento por envio</b></td>
+            <td class="text-right">${{ order.tax | intcomma }}</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-right"><b>Total Pagado</b></td>
+            <td class="text-right">${{ order.total | intcomma }}</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p class="text-uppercase font-weight-bold text-center">
+                    !Gracias por su preferencia!<br>
+                    Una vez que usted a recibido el pedido<br>
+                    No hay derecho a reclamo ni devolución del producto<br>
+                    Que tenga un excelente día
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

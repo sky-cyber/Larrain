@@ -55,6 +55,7 @@ import json
 #         except:
 #             pass
 def Mycart(request):
+    category = Category.objects.all()
     if request.user.is_authenticated:
         user = request.user
         order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
@@ -62,11 +63,12 @@ def Mycart(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-    context = {'items': items, 'order': order}
+    context = {'items': items, 'order': order, 'category': category}
     return render(request, 'Cart/mycart.html', context)
 
 
 def Checkout(request):
+    category = Category.objects.all()
     if request.user.is_authenticated:
         user = request.user
         order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
@@ -74,7 +76,7 @@ def Checkout(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-    context = {'items': items, 'order': order}
+    context = {'items': items, 'order': order, 'category': category}
     return render(request, 'Cart/checkout.html', context)
 
 

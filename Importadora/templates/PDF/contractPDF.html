@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            color: black;
+        }
+
+        body {
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <img src="{% static 'assets/img/logo_wykep_ori.png' %}" class="id-block mx-auto img-logo"
+         style="width: 250px; height: 100px">
+    <hr>
+    <h3 class="text-center">{{ title }}</h3>
+    <div style="text-align: justify; font-size: 15px">
+        <img src="/media/{{ contract.image }}" style="width: 200px;height: 170px">
+        <hr>
+        <p>
+            Se le hace el presente contrato a <strong>{{ contract.first_name }} {{ contract.last_name }}</strong>
+            con
+            cedula
+            de identidad <strong>N° {{ contract.rut }}</strong>, Con nacionalidad chilena y
+            fecha de nacimiento <strong>{{ contract.birthday }}</strong>, En el cual viene en representación de la
+            Compañía <strong>{{ contract.company }}</strong> Ubicado en
+            <strong>{{ contract.address }}</strong>.
+        </p>
+        <p>
+            Cualquiera sea las situaciones o acuerdos serán comunicados al celular <strong>+56
+            9 {{ contract.phone }}</strong> o a la dirección de correo electrónico
+            <strong>{{ contract.email }}</strong>
+            asociado únicamente del proveedor. se le da Inicio a su contrato el
+            <strong>{{ contract.createdAt }}</strong>.
+        </p>
+        <p>
+            De acuerdo a las partes acordadas, por <strong>CARLOS ALBERTO PEÑALOSA TELLO</strong>, Agente de Ventas,
+            identificado con
+            cédula
+            de
+            ciudadanía <strong>Nº 76306798</strong>, actuando en nombre y representación de la Compañía <strong>Importadora
+            Larrain</strong>, Rut:
+            <strong>900746983-1</strong>
+            entidad de derecho privado, legalmente constituida, con domicilio principal en <strong>Santa Cruz calle
+            Centenario</strong>,
+            todo
+            lo cual consta en el certificado de existencia y representación legal expedido por la Cámara de Comercio.
+        </p>
+        <p>
+            Los efectos del presente contrato se enunciará como <strong>EL PROVEEDOR</strong>, acuerdan celebrar el
+            presente contrato
+            comercial, el cual se regirá por las normas del <strong>Código Civil, Código de Comercio y el Estatuto del
+            Consumidor</strong>, decretos y reglamentaciones sobre bienes de consumo.
+        </p>
+        <p>
+            <strong>A) El PROVEEDOR</strong> se obliga a gestionar y obtener, a su cargo, todas las licencias, permisos
+            y autorizaciones
+            administrativas que pudieren ser necesarias para la comercialización de los productos objeto de este
+            contrato.
+        </p>
+        <p>
+            <strong>B) El PROVEEDOR</strong> se hace cargo de la totalidad de los <strong>impuestos</strong>, cualquiera que sea su
+            naturaleza y carácter,
+            que se devenguen como consecuencia de la importación, nacionalización o comercialización de los mismos,
+            salvo el Impuesto de <strong>IVA</strong>, que <strong>LA EMPRESA pagará al proveedor</strong> dentro de la factura de venta que este le
+            emita. La empresa a su vez le <strong>facturará</strong> al MIEMBRO al elaborar la correspondiente factura de venta.
+        </p>
+        <p>
+            <strong>C) El PROVEEDOR</strong> debe enviar a la empresa las <strong>fotos y/o publicidad de
+            Los productos que desee que la empresa presente en su tienda virtual</strong>, junto con todas las <strong>características
+            del producto, precio de lista oficial, términos de garantía, tiempos de entrega</strong> y demás comentarios que
+            desee sean colocados en la Tienda de la empresa con <strong>5 días de anticipación</strong> a la fecha acordada.
+
+        </p>
+        <p>
+            <strong>D) En caso de que El PROVEEDOR</strong> prevea que se le va a agotar el <strong>inventario de uno, varios o
+            la totalidad de los productos</strong> que están siendo exhibidos en la tienda o que requiera modificar características o precios,
+            deberá avisarlo con <strong>5 días de antelación</strong> para que la Empresa proceda a retíralos de su vitrina comercial o
+            realizar las modificaciones informadas que sean aprobadas por la Empresa.
+        </p>
+        <p>
+            <strong>E) En caso de retrasos o entrega</strong> por fuera del plazo acordado de los productos, EL
+            PROVEEDOR deberán
+            notificar a <strong>LA EMPRESA de inmediato por escrito</strong>, explicando las razones del retraso para que ésta a su vez,
+            pueda ofrecer las explicaciones a que haya lugar a sus CLIENTES MIEMBROS.
+        </p>
+        <p>
+            <strong>F) Todos los productos que suministrará el Proveedor</strong> serán originales, y no vulneran
+            ninguna ley, derecho o
+            interés de tercero alguno, <strong>en especial los referidos a propiedad industrial e intelectual</strong>, y que cuenta con
+            las correspondientes licencias
+        </p>
+        <br>
+        <div class="text-center">
+            <div class="text-center col-sm-12 p-4" style="display: inline-block; text-align: left">
+                <p>_______________________</p>
+                Firma del Agente de Ventas
+                <p>Carlos Aalberto Peñalosa Tello</p>
+            </div>
+            <div class="text-center col-sm-12 p-4" style="display: inline-block; text-align: right">
+                <p>_______________________</p>
+                Firma del Proveedor
+                <p>{{ contract.first_name }} {{ contract.last_name }}</p>
+            </div>
+        </div>
+        <br>
+        <p class="text-center" style="font-size: 10px">
+            Compañia: {{ Company }}<br>
+            Direccion: {{ address }}<br>
+            Rut de la Empresa: {{ rut }}<br>
+            Celular: {{ Telefóno }}<br>
+            Sitio Web: {{ Web }}<br>
+        </p>
+    </div>
+    <hr>
+</div>
+</body>
+</html>

@@ -26,6 +26,15 @@ class User(AbstractUser):
         item['image'] = self.get_image()
         return item
 
+    # def save(self, *args, **kwargs):
+    #     if self.pk is None:
+    #         self.set_password(self.password)
+    #     else:
+    #         user = User.objects.get(pk=self.pk)
+    #         if user.password != self.password:
+    #             self.set_password(self.password)
+    #     super().save(*args, **kwargs)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre", unique=True)
@@ -43,12 +52,24 @@ class Category(models.Model):
 class Supplier(models.Model):
     rut = models.CharField(max_length=15, verbose_name="Rut", unique=True, blank=False, null=False)
     company = models.CharField(max_length=200, verbose_name="Empresa", blank=False, null=False)
+    first_name = models.CharField(default="", max_length=50, verbose_name="Nombres")
+    last_name = models.CharField(default="", max_length=200, verbose_name="Apellidos")
+    birthday = models.DateField(default=datetime.now, auto_now=False, auto_now_add=False,
+                                verbose_name="Fecha de Nacimiento", blank=False, null=False)
     phone = models.CharField(default="", max_length=12, verbose_name="Celular", unique=True, blank=False, null=False)
     address = models.CharField(default="", max_length=250, verbose_name="Dirección", blank=False, null=False)
     email = models.EmailField(default="", max_length=100, verbose_name="Email", unique=True, blank=False, null=False)
-    detailProduct = models.TextField(default="", verbose_name='Detalle de los productos', blank=False, null=False)
-    timeDelivery = models.DateField(auto_now=False, auto_now_add=False, verbose_name="Fecha de Entrega(dd/mm/yyyy)", blank=False, null=False)
+    detailProduct = models.TextField(
+        default="Nombre del Producto: \n1)\n2)\n3) \n Cantidad de dichos productos: \n1)\n2)\n3) "
+        , verbose_name='Detalle de los productos', blank=False, null=False)
+    timeDelivery = models.DateField(default=datetime.now, auto_now=False, auto_now_add=False, verbose_name="Fecha de Entrega de los Productos", blank=False, null=False)
+    image = models.ImageField(upload_to='supplier', null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(MEDIA_URL, self.image)
+        return '{}{}'.format(STATIC_URL, 'admin/img/profile.png')
 
     def __str__(self):
         return self.company
@@ -167,7 +188,7 @@ class Review(models.Model):
 
 
 ORDER_STATUS = (
-    ("Orden recibida", "Orden recibida"),
+    ("Orden Recibida", "Orden Recibida"),
     ("Orden En Proceso", "Orden En Proceso"),
     ("Orden En Camino", "Orden En Camino"),
     ("Orden Completada", "Orden Completada"),
@@ -178,9 +199,9 @@ ORDER_STATUS = (
 class Orders(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     paymentMethod = models.CharField(max_length=250, verbose_name="Tipo de pago")
-    taxPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
-    shippingPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
-    totalPrice = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
+    taxPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
+    shippingPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
+    totalPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
     isPaid = models.BooleanField(default=False, null=True, blank=False)
     paidAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     isDelivered = models.BooleanField(default=False, null=True, blank=False)

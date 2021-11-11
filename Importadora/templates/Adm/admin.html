@@ -10,6 +10,15 @@
 
     <!-- jQuery -->
     <script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'admin/plugins/popper/popper.min.js' %}"></script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="{% static 'bootstrap-datepicker/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <!-- Graphics -->
     <script src="{% static 'admin/highcharts/highcharts.js' %}"></script>
@@ -188,7 +197,7 @@ to get the desired effect
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar" style="height: 1500px">
+        <div class="sidebar" style="height: 1700px">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -196,7 +205,7 @@ to get the desired effect
                          alt="User Image" style="width: 70px;">
                 </div>
                 <div class="info">
-                    <h4 class="d-block text-white text-bold text-center">{{ user.username }}</h4>
+                    <h4 class="d-block text-white text-bold text-center">{{ request.user.username }}</h4>
                 </div>
             </div>
 
@@ -208,14 +217,14 @@ to get the desired effect
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <img src="{% static 'assets/img/navbar/tachometer_icon.png' %}" alt="" style="width: 30px;">
                             <p>
                                 Barra de opciones
                             </p>
                         </a>
 
                         <a href="" class="nav-link active">
-                            <i class="fas fa-shopping-basket"></i>
+                            <img src="{% static 'assets/img/navbar/add_bag_basket.png' %}" alt="" style="width: 30px;">
                             <p>
                                 Categorias
                                 <i class="right fas fa-angle-left"></i>
@@ -224,14 +233,14 @@ to get the desired effect
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{% url 'category_create' %}" class="nav-link">
-                                    <i class="fas fa-ad"></i>
+                                    <img src="{% static 'assets/img/navbar/add_icon.png' %}" alt="" style="width: 30px;">
                                     <p>Nueva categoria</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'category_list' %}" class="nav-link">
-                                    <i class="fas fa-clipboard-list"></i>
+                                    <img src="{% static 'assets/img/navbar/checkmark_done.png' %}" alt="" style="width: 30px;">
                                     <p>Listado de cateogrias</p>
                                 </a>
                             </li>
@@ -239,7 +248,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                            <i class="fas fa-cubes"></i>
+                            <img src="{% static 'assets/img/navbar/cubes_module.png' %}" alt="" style="width: 30px;">
                             <p>
                                 Bodega
                                 <i class="right fas fa-angle-left"></i>
@@ -248,14 +257,14 @@ to get the desired effect
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{% url 'product_create' %}" class="nav-link">
-                                    <i class="fas fa-dolly"></i>
+                                    <img src="{% static 'assets/img/navbar/apple_ipod.png' %}" alt="" style="width: 20px;">
                                     <p>Registrar Producto</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'product_list' %}" class="nav-link">
-                                    <i class="fas fa-clipboard-check"></i>
+                                    <img src="{% static 'assets/img/navbar/checklist.png' %}" alt="" style="width: 20px;">
                                     <p>Listado de Producto</p>
                                 </a>
                             </li>
@@ -263,7 +272,7 @@ to get the desired effect
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                            <i class="fas fa-shipping-fast"></i>
+                            <img src="{% static 'assets/img/navbar/truck_vehicle_icon.png' %}" alt="" style="width: 30px;">
                             <p>
                                 Proveedor
                                 <i class="right fas fa-angle-left"></i>
@@ -272,22 +281,22 @@ to get the desired effect
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{% url 'supplier_create' %}" class="nav-link">
-                                    <i class="fas fa-user-lock"></i>
+                                     <img src="{% static 'assets/img/navbar/new_add_user.png' %}" alt="" style="width: 30px;">
                                     <p>Nuevo Proveedor</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'supplier_list' %}" class="nav-link">
-                                    <i class="fas fa-address-card"></i>
-                                    <p>Listado de Proveedores</p>
+                                    <img src="{% static 'assets/img/navbar/contract_icon.png' %}" alt="" style="width: 30px;">
+                                    <p>Contratos</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link active">
-                            <i class="fas fa-users"></i>
+                            <img src="{% static 'assets/img/navbar/supplier_new.png' %}" alt="" style="width: 30px;">
                             <p>
                                 Usuarios
                                 <i class="right fas fa-angle-left"></i>
@@ -296,15 +305,39 @@ to get the desired effect
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{% url 'registerUser' %}" class="nav-link">
-                                    <i class="fas fa-user-plus"></i>
+                                    <img src="{% static 'assets/img/navbar/user_group_new.png' %}" alt="" style="width: 30px;">
                                     <p>Nuevo Usuario</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'list_user' %}" class="nav-link">
-                                    <i class="fas fa-id-card-alt"></i>
+                                    <img src="{% static 'assets/img/navbar/contact_list_user.png' %}" alt="" style="width: 30px;">
                                     <p>Listado de Usuarios</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
+                            <img src="{% static 'assets/img/navbar/customers_group.png' %}" alt="" style="width: 30px;">
+                            <p>
+                                Clientes
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'order_list' %}" class="nav-link">
+                                    <img src="{% static 'assets/img/navbar/file_open_icon.png' %}" alt="" style="width: 30px;">
+                                    <p>Ordenes</p>
+                                    <i class="right badge badge-primary">New</i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'claim_list' %}" class="nav-link">
+                                    <img src="{% static 'assets/img/navbar/cabinet_file.png' %}" alt="" style="width: 30px;">
+                                    <p>Listado de Reclamos</p>
                                 </a>
                             </li>
                         </ul>
@@ -313,7 +346,7 @@ to get the desired effect
                         <a href="" class="nav-link active">
                             <i class="fas fa-users"></i>
                             <p>
-                                Clientes
+                                Vendedor
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -321,21 +354,58 @@ to get the desired effect
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="fas fa-user-plus"></i>
-                                    <p>Registros</p>
+                                    <p>Generar Registros</p>
                                     <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'order_list' %}" class="nav-link">
-                                    <i class="fas fa-user-plus"></i>
-                                    <p>Ordenes</p>
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-paste"></i>
+                                    <p>Generar Compra</p>
                                     <i class="right badge badge-primary">New</i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'claim_list' %}" class="nav-link">
-                                    <i class="fas fa-id-card-alt"></i>
-                                    <p>Listado de Reclamos</p>
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-paste"></i>
+                                    <p>Listado de Clientes</p>
+                                    <i class="right badge badge-primary">New</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
+                            <i class="fas fa-users"></i>
+                            <p>
+                                Despacho
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>Lista de Traslado</p>
+                                    <i class="right badge badge-danger">New</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link active">
+                            <i class="fas fa-users"></i>
+                            <p>
+                                Supervisor
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    <p>Lista de Ofertas</p>
+                                    <i class="right badge badge-danger">New</i>
                                 </a>
                             </li>
                         </ul>

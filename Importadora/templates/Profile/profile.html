@@ -1,5 +1,6 @@
 {% extends 'Web/home.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 
@@ -63,9 +64,10 @@
                     {% if order %}
                         {% for o in order %}
                             <tbody>
-                            <tr style="font-size: 15px">
-                                <td><a class="btn btn-dark btn-sm" href="{% url 'order-detail' o.pk %}">{{ o.id }}</a></td>
-                                <td>{{ o.shippingPrice }}</td>
+                            <tr style="font-size: 16px">
+                                <td><a class="btn btn-dark btn-sm" href="{% url 'order-detail' o.pk %}">{{ o.id }}</a>
+                                </td>
+                                <td>${{ o.shippingPrice | intcomma }}</td>
                                 <td>{{ o.paymentMethod }}</td>
                                 <td>{{ o.paidAt }}</td>
                                 <td>{{ o.transaction_id }}</td>
@@ -74,8 +76,38 @@
                     </tbody>
                         </table>
                     {% else %}
-                        <h1 id="notproduct">No Ha Hecho Ninguna Compra</h1>
+                        <h1 id="notproduct">Porqué no compras acaso nos Odias</h1>
                     {% endif %}
+
+                <div class="row justify-content-center text-center">
+                    <nav style="width: 30%">
+                        <ul class="pagination text-center">
+                            {% if order.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ order.previous_page_number }}"><i class="fas fa-arrow-alt-circle-left"></i></a>
+                                </li>
+                            {% endif %}
+
+                            {% for page in pages %}
+                                <li class="page-item{% if current_page == page %} active {% endif %}">
+                                    <a class="page-link bg-dark" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if order.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ order.next_page_number }}"><i class="fas fa-arrow-alt-circle-right"></i></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link bg-dark" href="?page={{ order.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
