@@ -28,7 +28,10 @@ def OrderDetail(request, pk):
         user = request.user
         order = Orders.objects.get(user=user, id=pk)
         items = order.oderitem_set.all()
-        shipping = ShippingAddress.objects.get(order=order)
+        if ShippingAddress.objects.filter(order=order).exists():
+            shipping = ShippingAddress.objects.get(order=order)
+        else:
+            shipping = []
     else:
         order = []
         items = []
@@ -36,8 +39,3 @@ def OrderDetail(request, pk):
     context = {'order': order, 'items': items, 'shipping': shipping,
                'button': button, 'PDF': PDF}
     return render(request, 'Profile/orderDetail.html', context)
-
-
-
-
-

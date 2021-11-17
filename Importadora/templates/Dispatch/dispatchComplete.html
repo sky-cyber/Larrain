@@ -1,0 +1,71 @@
+{% extends 'Adm/admin.html' %}
+{% load humanize %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-8 text-center">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shopping-basket"></i>
+                                {{ title2 }}
+                            </h3>
+                            <br>
+                            <hr>
+                            <div style="display: block">
+                                <a href="{% url 'dispatch_list' %}" class="btn btn-info m-1"> Ordenes A Despachar</a>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-hover text-center" id="tabla">
+                                <thead class="bg-dark alert-link text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Cantidad de Productos Comprados</th>
+                                    <th>Fecha de orden Entregada</th>
+                                    <th>Transacción</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for o in dispatch %}
+                                    <tr>
+                                        <td><a class="btn btn-dark"
+                                               href="{% url 'detail_client' o.pk %}">{{ o.id }}</a></td>
+                                        <td style="font-size: 18px">{{ o.user }}</td>
+                                        <td style="font-size: 20px"><i
+                                                class="right badge badge-success">{{ o.get_cart_items }}</i></td>
+                                        <td>{{ o.arrivalDate }}</td>
+                                        <td>{{ o.transaction_id }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

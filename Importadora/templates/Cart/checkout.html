@@ -60,12 +60,21 @@
                             <div class="card-footer p-1 text-center"
                                  style="border-color: #000b16">{{ item.product.name }}</div>
                             <li class="list-group-item d-flex justify-content-between lh-sm py-1">
-                                <div>
-                                    <img src="{{ item.product.imageURL }}" alt=""
+                                <div class="text-center">
+                                    <img class="text-center" src="{{ item.product.imageURL }}" alt=""
                                          style="width: 100px;">
-                                    <small class="p-1">Catidad: {{ item.qty }}</small>
-                                    <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
-                                    <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                    <span class="p-1">Catidad: {{ item.qty }}</span>
+                                    {% if item.product.offer %}
+                                        <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
+                                        <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                        <span class="p-1"><i class="badge badge-dark"
+                                                             style="background: #d31b1b; font-size: 15px">En Oferta</i></span>
+                                    {% else %}
+                                        <span class="p-1">Valor: {{ item.product.salePrice | intcomma }}</span>
+                                        <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                        <span class="p-1"><i class="badge badge-dark"
+                                                             style="background: #ffffff; font-size: 15px">xxxxxxxx</i></span>
+                                    {% endif %}
                                 </div>
                             </li>
                         </ul>
@@ -104,28 +113,28 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label for="username" class="form-label">Usuario</label>
-                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                    <div class="card-footer text-center" style="background: #deedfd; font-size: 15px">
                                         {{ user.username }}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                    <div class="card-footer text-center" style="background: #deedfd; font-size: 15px">
                                         {{ user.email }}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="username" class="form-label">Nombres</label>
-                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                    <div class="card-footer text-center" style="background: #deedfd; font-size: 15px">
                                         {{ user.first_name }}
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="email" class="form-label">Apellidos</label>
-                                    <div class="card-footer text-center" style="background: #f5ff68; font-size: 15px">
+                                    <div class="card-footer text-center" style="background: #deedfd; font-size: 15px">
                                         {{ user.last_name }}
                                     </div>
                                 </div>
@@ -385,20 +394,20 @@
             }
 
             var url = '/process_order/'
-            fetch(url,{
-                method:'POST',
-                headers:{
-                    'Content-type':'application/json',
-                    'X-CSRFToken':csrftoken,
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrftoken,
                 },
-                body:JSON.stringify({'form':userFormData, 'shipping': shippingInfo})
+                body: JSON.stringify({'form': userFormData, 'shipping': shippingInfo})
             })
-            .then((response) => response.json())
-            .then((data) =>{
-                console.log('success:', data);
-                alert('transaction complete');
-                window.location.href = "/"
-            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('success:', data);
+                    alert('transaction complete');
+                    window.location.href = "/"
+                })
 
         }
 

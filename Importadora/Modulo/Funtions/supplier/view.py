@@ -64,7 +64,7 @@ class SupplierDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Eliminación de un Proveedor"
-        context['title2'] = "¿Quiere eliminar la Compañia "
+        context['title2'] = "¿Quiere eliminar al Proveedor "
         context['url_list_supplier'] = reverse_lazy('supplier_list')
         return context
 

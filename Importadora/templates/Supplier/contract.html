@@ -28,7 +28,7 @@
                     <div class="card card-default">
                         <div class="card-body">
                             <div class="card">
-                                <div class="card bg-primary">
+                                <div class="card bg-dark">
                                     <div class="card-body text-center">
                                         <h1 class="card-text text-bold">Contrato del Proveedor</h1>
                                         <p class="card-text text-bold">Se visualiza toda la informacion y datos
@@ -38,78 +38,80 @@
                                 <div class="container">
                                     <label for="username" class="form-label">Foto de Perfil</label>
                                     <div class="col-sm-3">
-                                        <img src="/media/{{ contract.image }}" style="width: 150px; height: 130px">
+                                        <img src="/media/{{ contract.image }}" style="width: 200px; height: 180px">
                                     </div>
                                     <hr>
                                     <div class="row g-3">
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">rut</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.rut }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.rut }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Compañia o Empresa</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.company }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.company }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Nombres Del Proveedor</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.first_name }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.first_name }}</strong>
+                                                <strong>{{ contract.second_name }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Apellidos Del Proveedor</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.last_name }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.pather_last_name }}</strong>
+                                                <strong>{{ contract.mother_last_name }}</strong>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Fecha de Nacimiento</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.birthday }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.birthday }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Celular</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.phone }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.phone }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Correo Electronico</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.email }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.email }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Fecha de Registro</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.createdAt }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.createdAt }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12">
                                             <label for="email" class="form-label">Dirección Del Proveedor</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.address }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ contract.address }}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -123,16 +125,16 @@
                                         <div class="col-sm-12">
                                             <label for="username" class="form-label">Fecha de Entrega Comprometida</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ contract.timeDelivery }}
+                                                 style="background: #deedfd; font-size: 15px">
+                                                <strong>{{ contract.timeDelivery }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12">
                                             <label for="email" class="form-label">Detalles y caracteristicas de los productos</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #d0d1d5; font-size: 15px">
-                                                {{ contract.detailProduct }}
+                                                 style="background: #deedfd; font-size: 15px">
+                                                <strong>{{ contract.detailProduct }}</strong>
                                             </div>
                                         </div>
                                     </div>

@@ -22,7 +22,6 @@ class CreateUserForm(ModelForm):
             'first_name': 'Nombres',
             'last_name': 'Apellidos',
             'password': 'Contraseña',
-            'image': 'Foto de perfil',
         }
         widgets = {
             'username': TextInput(
@@ -105,7 +104,7 @@ class ResetPasswordForm(forms.Form):
         if not User.objects.filter(username=cleaned['username']).exists():
             self._errors['error'] = self._errors.get('error', self.error_class())
             self._errors['error'].append('El Nombre de Usuario no esta registrado')
-            # raise forms.ValidationError('El email no existe')
+            #raise forms.ValidationError('El email no existe')
         return cleaned
 
     def get_user(self):

@@ -29,7 +29,11 @@
                             <div class="card-body">
                                 <div class="container">
                                     <div class="alert alert-danger alert-dismissible">
-                                        <h1><i class="icon fas fa-ban"></i>{{ title2 }} {{ object.company }}?</h1>
+                                        <h2><i class="icon fas fa-ban"></i>{{ title2 }}
+                                            {{ object.first_name }}
+                                            {{ object.second_name }}
+                                            {{ object.pather_last_name }}
+                                            {{ object.mother_last_name }}?</h2>
                                     </div>
                                     {% csrf_token %}
                                 </div>

@@ -21,6 +21,20 @@ class ProductCreateView(CreateView):
         return context
 
 
+class ProductListOfferView(ListView):
+    model = Product
+    template_name = 'Product/listOfferProduct.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Product.objects.filter(offer=True)
+        context['title'] = 'Listado de Productos En Oferta'
+        context['title2'] = 'Productos Almacenados en Bodega'
+        context['button'] = 'Agregar Producto'
+        context['button2'] = 'Generar PDF'
+        return context
+
+
 class ProductListView(ListView):
     model = Product
     template_name = 'Product/list.html'

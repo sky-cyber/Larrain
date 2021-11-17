@@ -1,0 +1,190 @@
+{% extends 'Adm/admin.html' %}
+{% load humanize %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <div class="container">
+            <main class="mt-1">
+                <div class="row wow fadeIn">
+                    {% if order.status == "Orden A Despacho" %}
+                        <div class="col-sm-12">
+                            <a href="{% url 'dispatch_list' %}" class="btn btn-dark">{{ button }}</a>
+                        </div>
+                    {% elif order.status == "Orden En Camino" %}
+                        <div class="col-sm-12">
+                            <a href="{% url 'dispatch_list_InTheWay' %}" class="btn btn-dark">{{ button }}</a>
+                        </div>
+                    {% elif order.status == "Orden Completada" %}
+                        <div class="col-sm-12">
+                            <a href="{% url 'dispatch_list_complete' %}" class="btn btn-dark">{{ button }}</a>
+                        </div>
+                    {% endif %}
+                    <hr>
+                    <div class="card bg-dark">
+                        <div class="card-body text-center">
+                            <h1 class="card-text text-bold">Detalle de la información del pedido del Cliente</h1>
+                            <p class="card-text text-bold">Se visualiza toda la informacion y datos
+                                personales del cliente para el despacho de sus productos.</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-6 mb-4 text-center" style="font-size: 20px">
+                        <strong class="p-5">Foto de perfil del cliente:</strong>
+                        <br><br>
+                        <img src="{{ order.user.get_image }}"
+                             class="img-fluid" alt="" style="width: 250px">
+                    </div>
+                    <div class="col-md-6 mb-4" style="font-size: 20px">
+                        {% if order.status == "Orden A Despacho" or order.status == "Orden En Camino" %}
+                            <strong class="">Actualizacion del Pedido:</strong>
+                            <hr>
+                            <form action="{% url 'change_list_dispatch' order.pk %}" method="POST">
+                                {% csrf_token %}
+                                <div class="col-sm-12">
+                                    <label for="username" class="form-label">Fecha Estimada de Envio</label>
+                                    <input class="card-footer text-center form-control datepicker" name="arrivalDate" autocomplete="off"
+                                           style="background: #deedfd; font-size: 14px;">
+                                        {{ update_date }}
+                                    </input>
+                                </div>
+                            </form>
+
+                            <div class="col-sm-12">
+                                <label for="username" class="form-label">Actualizar Pedido</label>
+                                <div class="card-footer text-center"
+                                     style="background: #deedfd; font-size: 14px">
+                                    <form action="{% url 'change_list_dispatch' order.pk %}" method="POST">
+                                        {% csrf_token %}
+                                        <select class="form-control" name="status">
+                                            {% for i, j in allstatus %}
+                                                <option value="{{ i }}"
+                                                        {% if i == order.status %}selected{% endif %}>{{ j }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <br>
+                                        <button class="btn btn-dark">Actualizar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-sm-12">
+                                <label for="username" class="form-label">Fecha En La que se Enviaron Los
+                                    Productos</label>
+                                <div class="card-footer text-center"
+                                     style="background: #deedfd; font-size: 14px">
+                                    <strong>{{ order.arrivalDate }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="username" class="form-label">Estado del Pedido</label>
+                                <div class="card-footer text-center"
+                                     style="background: #deedfd; font-size: 14px">
+                                    <strong>{{ order.status }}</strong>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card-footer text-center bg-dark" style="font-size: 20px">Información personal
+                            del Cliente
+                        </div>
+                        <div class="card-footer" style="font-size: 18px">
+                                <span class="card">
+                                    <strong>Nombres: {{ order.user.first_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Apellidos: {{ order.user.last_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Correo Electronico: {{ order.user.email }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Fecha de Registro: {{ order.user.date_joined }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Número de transacción: {{ order.transaction_id }}</strong>
+                                </span>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card-footer text-center bg-dark" style="font-size: 20px">Información para el
+                            Envio de Productos
+                        </div>
+                        <div class="card-footer" style="font-size: 18px">
+                                <span class="card">
+                                    <strong>País: {{ shipping.country }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Ciudad: {{ shipping.city }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Codigo Postal: {{ shipping.postalCode }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Dirección: {{ shipping.address }}</strong>
+                                </span>
+                            <br>
+                        </div>
+                    </div>
+                    {% if order.status == "Orden A Despacho" or order.status == "Orden En Camino" %}
+                        <h2 class="text-center">Detalle de los Productos a Despachar</h2>
+                    {% else %}
+                        <h2 class="text-center">Detalle de los Productos Despachados</h2>
+                    {% endif %}
+                    <hr>
+                    <div class="card-body">
+                        <div class="container">
+                            <table class="table table-hover text-center" style="width: 100%; font-size: 18px">
+                                <thead class="bg-dark alert-link text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre del Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>imagen</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in items %}
+                                    <tr>
+                                        <td>{{ item.product.id }}</td>
+                                        <td>{{ item.product.name }}</td>
+                                        <td>{{ item.qty }}</td>
+                                        <td class="text-center"><a
+                                                href="{% url 'productDetail' item.product.slug %}">
+                                            <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
+                                                 style="width: 40px; height: 40px"></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </main>
+            <script type="application/javascript">
+                !function ($) {
+                    $.fn.datepicker.dates['es'] = {
+                        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+                        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                        today: "Hoy",
+                        monthsTitle: "Meses",
+                        clear: "Borrar",
+                        weekStart: 1,
+                        format: "dd/mm/yyyy"
+                    }
+                }(jQuery);
+                $('.datepicker').datepicker({
+                    language: 'es'
+                });
+            </script>
+        </div>
+    </div>
+{% endblock %}

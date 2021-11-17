@@ -34,12 +34,22 @@
                                                 <h5 class="card-title">{{ p.name }}</h5>
                                             </h4>
                                             <hr>
-                                            <div class="card-title">
-                                                <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                                    <strike>${{ p.salePrice | intcomma }}</strike></h5>
-                                                <h5 class="card-title" style="font-size: 23px">
-                                                    ${{ p.offerPrice | intcomma }}</h5>
-                                            </div>
+                                            {% if p.offer %}
+                                                <div class="card-title">
+                                                    <h5 class="card-title" style="font-size: 15px; color: #5d6974">
+                                                        <strike>${{ p.salePrice | intcomma }}</strike></h5>
+                                                    <h5 class="card-title" style="font-size: 23px">
+                                                        ${{ p.offerPrice | intcomma }}</h5>
+                                                    <span class="p-1"><i class="badge badge-dark"
+                                                                         style="background: #d31b1b; font-size: 15px">En Oferta</i></span>
+                                                </div>
+                                            {% else %}
+                                                <div class="card-title">
+                                                    <br>
+                                                    <h5 class="card-title" style="font-size: 23px">
+                                                        ${{ p.salePrice | intcomma }}</h5>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                         <div class="card-footer" style="width: 100%">
                                             <small class="text-muted">

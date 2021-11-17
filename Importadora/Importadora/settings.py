@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -80,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'skycyber1',
+        'USER': 'skycyber3',
         'PASSWORD': '123',
     }
 }

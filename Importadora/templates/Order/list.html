@@ -31,11 +31,20 @@
                                 <i class="fas fa-shopping-basket"></i>
                                 {{ title2 }}
                             </h3>
+                            <br>
+                            <hr>
+                            <div class="text-center" style="display: block">
+                                <a href="{% url 'order_complete' %}" class="btn btn-success m-1"> Orden Completada</a>
+                                <a href="{% url 'order_in_process' %}" class="btn btn-warning m-1"> Orden En Proceso</a>
+                                <a href="{% url 'order_to_dispatch' %}" class="btn btn-info m-1"> Orden A Despacho</a>
+                                <a href="{% url 'order_canceled' %}" class="btn btn-danger m-1"> Orden Cancelada</a>
+                                <a href="{% url 'order_on_the_way' %}" class="btn btn-dark m-1"> Orden En Camino</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-hover text-center" id="tabla">
-                                <thead class="bg-primary alert-link text-white">
+                                <thead class="bg-dark alert-link text-white">
                                 <tr>
                                     <th>ID</th>
                                     <th>Usuario</th>
@@ -48,36 +57,36 @@
                                 </thead>
                                 <tbody>
                                 {% for o in object_list %}
+                                    {% if o.transaction_id%}
                                     <tr>
-                                        <td><a class="btn btn-success" href="{% url 'order_client_detail' o.pk %}">{{ o.id }}</a></td>
+                                        <td><a class="btn btn-dark"
+                                               href="{% url 'order_client_detail' o.pk %}">{{ o.id }}</a></td>
                                         <td style="font-size: 18px">{{ o.user }}</td>
-                                        <td style="font-size: 20px"><i class="right badge badge-primary">{{ o.shippingPrice | intcomma }}</i></td>
-                                        <td style="font-size: 20px"><i class="right badge badge-dark">{{ o.get_cart_items }}</i></td>
+                                        <td style="font-size: 20px"><i
+                                                class="right badge badge-primary">{{ o.shippingPrice | intcomma }}</i>
+                                        </td>
+                                        <td style="font-size: 20px"><i
+                                                class="right badge badge-dark">{{ o.get_cart_items }}</i></td>
                                         <td>{{ o.paidAt }}</td>
                                         <td style="font-size: 20px">
-                                            {% if o.status == "Orden Recibida" %}
+                                            {% if o.status == "Orden A Despacho" %}
                                                 <i class="right badge badge-info">{{ o.status }}</i>
-                                                {% elif o.status == "Orden En Proceso" %}
+                                            {% elif o.status == "Orden En Proceso" %}
                                                 <i class="right badge badge-warning">{{ o.status }}</i>
-                                                {% elif o.status == "Orden Cancelada" %}
+                                            {% elif o.status == "Orden Cancelada" %}
                                                 <i class="right badge badge-danger">{{ o.status }}</i>
-                                                {% elif o.status == "Orden En Camino" %}
+                                            {% elif o.status == "Orden En Camino" %}
                                                 <i class="right badge badge-dark">{{ o.status }}</i>
-                                                {% elif o.status == "Orden Completada" %}
+                                            {% elif o.status == "Orden Completada" %}
                                                 <i class="right badge badge-success">{{ o.status }}</i>
                                             {% endif %}
                                         </td>
                                         <td>{{ o.transaction_id }}</td>
                                     </tr>
+                                    {% endif %}
                                 {% endfor %}
                                 </tbody>
                             </table>
-                            <div class="card-footer">
-                                <a href="{% url 'product_pdf' %}" class="btn btn-success" id="btntest"><i
-                                        class="fas fa-plus-square"></i>
-                                    {{ button2 }}
-                                </a>
-                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

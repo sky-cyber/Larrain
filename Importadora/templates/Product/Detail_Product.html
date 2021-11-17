@@ -28,12 +28,20 @@
 
                         <p class="lead text-black">
                         <div class="card-title">
+                        {% if product.offer %}
                             <h5 class="card-title" style="font-size: 15px; color: #5d6974">
                                 <strike>Precio: ${{ product.salePrice | intcomma }}</strike></h5>
+
                             <h3 class="card-title" style="font-size: 23px"><img
                                     src="{% static 'assets/img/picture/price_label.png' %}"
                                     class="img-fluid" style="width: 35px; height: 35px"> Oferta:
                                 ${{ product.offerPrice | intcomma }}</h3>
+                            {% else %}
+                             <h3 class="card-title" style="font-size: 23px"><img
+                                    src="{% static 'assets/img/picture/price_label.png' %}"
+                                    class="img-fluid" style="width: 35px; height: 35px"> Precio:
+                                ${{ product.salePrice | intcomma }}</h3>
+                        {% endif %}
                         </div>
                         </p>
                         <p class="lead font-weight-bold"

@@ -97,3 +97,30 @@ class ContractpdfView(View):
         except:
             pass
         return HttpResponseRedirect(reverse_lazy('home'))
+
+
+class DispatchPdfView(View):
+    def get(self, request, *args, **kwargs):
+        # try:
+            template = get_template("PDF/listDispatch.html")
+            user = request.user
+            order = Orders.objects.filter(status="Orden A Despacho")
+            shipping = ShippingAddress.objects.all()
+            context = {"order": order,
+                       "user": user,
+                       "shipping": shipping,
+                       "name": "Wykep",
+                       "rut": "17.984.014-6",
+                       "Telefóno": "+56 9 99632564",
+                       "Web": "www.wykep.com",
+                       "Company": "Importadora Larrain",
+                       "address": "Avenida porvenir #679",
+                       "title": "Listado de Proveedores",
+                       'icon': '{}{}'.format(settings.MEDIA_URL, 'logo_wykep_ori.png')}
+            html_template = template.render(context)
+            css_url = os.path.join(settings.BASE_DIR, 'static/admin/css/bootstrap.min.css')
+            pdf = HTML(string=html_template, base_url = request.build_absolute_uri()).write_pdf(stylesheets=[CSS(css_url)])
+            return HttpResponse(pdf, content_type='application/pdf')
+        # except:
+        #     pass
+        # return HttpResponseRedirect(reverse_lazy('home'))

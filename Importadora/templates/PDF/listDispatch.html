@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <div class="container">
+        <main class="mt-1">
+            <div class="row wow fadeIn">
+                <hr>
+                <div class="col-md-6 mb-4">
+                    {% for o in order %}
+                            <div class="card-footer text-center bg-dark" style="font-size: 20px">Información de los
+                                Clientes
+                            </div>
+                            <div class="card-footer" style="font-size: 18px">
+                                <strong>Foto de perfil del cliente:</strong>
+                                <br>
+                                <img src="{{ o.user.get_image }}"
+                                     class="img-fluid text-center" alt="" style="width: 80px; height: 80px">
+                                <span class="card">
+                                    <strong>Nombres: {{ o.user.first_name }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Apellidos: {{ o.user.last_name }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Correo Electronico: {{ o.user.email }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Fecha de Entrega: {{ o.arrivalDate }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Número de transacción: {{ o.transaction_id }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Cantidad de Productos comprados: {{ o.get_cart_items }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>País: {{ s.country }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Ciudad: {{ s.city }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Codigo Postal: {{ s.postalCode }}</strong>
+                                </span>
+                                <span class="card">
+                                    <strong>Dirección: {{ s.address }}</strong>
+                                </span>
+                                <br>
+                            </div>
+                        <br>
+                    {% endfor %}
+                </div>
+                <h2 class="text-center">Detalle de los productos a despachar</h2>
+                <hr>
+                <div class="card-body">
+                    <div class="container">
+                        <table class="table table-hover text-center" style="width: 100%; font-size: 18px">
+                            <thead class="bg-dark alert-link text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre del Producto</th>
+                                <th>Cantidad</th>
+                                <th>imagen</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in order.oderitem_set.all %}
+                                <tr>
+                                    <td>{{ item.product.id }}</td>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.qty }}</td>
+                                    <td class="text-center"><a
+                                            href="{% url 'productDetail' item.product.slug %}">
+                                        <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
+                                             style="width: 40px; height: 40px"></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

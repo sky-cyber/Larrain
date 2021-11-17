@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <div class="container">
                                 <table class="table table-hover text-center" id="tabla" style="width: 100%">
-                                    <thead class="bg-primary alert-link text-white">
+                                    <thead class="bg-dark alert-link text-white">
                                     <tr>
                                         <th>ID</th>
                                         <th>Imagen</th>
@@ -51,8 +51,8 @@
                                                 <img src="{{ s.get_image }}" class="img-fluid d-block mx-auto"
                                                      style="width: 60px; height: 40px">
                                             </td>
-                                            <td>{{ s.first_name }}</td>
-                                            <td>{{ s.last_name }}</td>
+                                            <td>{{ s.first_name }} {{ s.second_name }}</td>
+                                            <td>{{ s.pather_last_name }} {{ s.mother_last_name }}</td>
                                             <td>{{ s.createdAt }}</td>
                                             <td>
                                                 <a href="{% url 'supplier_update' s.id %}" type="button"

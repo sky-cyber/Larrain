@@ -1,0 +1,95 @@
+{% extends 'Adm/admin.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-8 text-center">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shopping-basket"></i>
+                                {{ title2 }}
+                            </h3>
+                            <br>
+                            <hr>
+                            <div class="text-center" style="display: block">
+                                <a href="{% url 'order_list' %}" class="btn btn-primary m-1"> Todas Las Ordenes</a>
+                                <a href="{% url 'order_in_process' %}" class="btn btn-warning m-1"> Orden En Proceso</a>
+                                <a href="{% url 'order_to_dispatch' %}" class="btn btn-info m-1"> Orden A Despacho</a>
+                                <a href="{% url 'order_canceled' %}" class="btn btn-danger m-1"> Orden Cancelada</a>
+                                <a href="{% url 'order_on_the_way' %}" class="btn btn-dark m-1"> Orden En Camino</a>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-hover text-center" id="tabla">
+                                <thead class="bg-dark alert-link text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Total</th>
+                                    <th>cantidad</th>
+                                    <th>Fecha De Pago</th>
+                                    <th>Estado</th>
+                                    <th>Transacción</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for o in object_list %}
+                                    <tr>
+                                        <td><a class="btn btn-dark"
+                                               href="{% url 'order_client_detail' o.pk %}">{{ o.id }}</a></td>
+                                        <td style="font-size: 18px">{{ o.user }}</td>
+                                        <td style="font-size: 20px"><i
+                                                class="right badge badge-primary">{{ o.shippingPrice | intcomma }}</i>
+                                        </td>
+                                        <td style="font-size: 20px"><i
+                                                class="right badge badge-dark">{{ o.get_cart_items }}</i></td>
+                                        <td>{{ o.paidAt }}</td>
+                                        <td style="font-size: 20px">
+                                            {% if o.status == "Orden A Despacho" %}
+                                                <i class="right badge badge-info">{{ o.status }}</i>
+                                            {% elif o.status == "Orden En Proceso" %}
+                                                <i class="right badge badge-warning">{{ o.status }}</i>
+                                            {% elif o.status == "Orden Cancelada" %}
+                                                <i class="right badge badge-danger">{{ o.status }}</i>
+                                            {% elif o.status == "Orden En Camino" %}
+                                                <i class="right badge badge-dark">{{ o.status }}</i>
+                                            {% elif o.status == "Orden Completada" %}
+                                                <i class="right badge badge-success">{{ o.status }}</i>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ o.transaction_id }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

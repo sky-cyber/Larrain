@@ -10,8 +10,29 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href=" {% url 'home' %} "><i class="fab fa-servicestack"></i>
                     Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'catalogue' %}"><i class="fas fa-laptop"></i>
-                    Catalogo</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-store"></i>
+                        Tienda
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        <li>
+                            <div class="dropdown-item text-center">Vitrina de Productos</div>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'catalogue' %}">
+                                <i class="fas fa-laptop"></i> Catálogo</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'product_offer' %}">
+                                <i class="fas fa-search-dollar"></i> Ofertas</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,9 +49,9 @@
                                 <hr class="dropdown-divider">
                             </li>
                             {% for c in category %}
-                                <div style="display: inline-block;">
+                                <div class="text-center" style="display: inline-block;">
                                     <li>
-                                        <a style="font-size: 15px;padding: 10px" class="dropdown-item"
+                                        <a class="dropdown-item text-center" style="font-size: 15px;padding: 5px; margin: 5px"
                                            href="{% url 'type_category' c.slug %}">{{ c.name }}</a>
                                     </li>
                                 </div>
@@ -64,7 +85,8 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'mycart' %}"><i class="fas fa-cart-plus"></i>
-                        <span class="badge rounded-pill" style="font-size: 15px; background: #1759f6">{{ order.get_cart_items }}</span></a>
+                        <span class="badge rounded-pill"
+                              style="font-size: 15px; background: #1759f6">{{ order.get_cart_items }}</span></a>
                     </li>
 
                 {% else %}

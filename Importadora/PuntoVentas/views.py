@@ -38,7 +38,7 @@ class PerfilView(TemplateView):
     template_name = 'Adm/perfil.html'
 
 
-def CatalogueListView(request):
+def Catalogue(request):
     button = 'Agregar al Carrito'
     button1 = 'Ver Producto'
     object_list = Product.objects.all().order_by("-id")
@@ -64,6 +64,33 @@ def CatalogueListView(request):
                'button1': button1, 'order': order, 'items': items,
                'current_page': current_page, 'pages': pages, 'category': category}
     return render(request, 'Web/catalogue.html', context)
+
+
+def ProductOffer(request):
+    button = 'Agregar al Carrito'
+    button1 = 'Ver Producto'
+    productOffer = Product.objects.filter(offer=True).order_by("-id")
+    category = Category.objects.all()
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
+        items = order.oderitem_set.all()
+        paginator = Paginator(productOffer, 8)
+        page = request.GET.get('page') or 1
+        productOffer = paginator.get_page(page)
+        current_page = int(page)
+        pages = range(1, productOffer.paginator.num_pages + 1)
+    else:
+        order = []
+        items = []
+        paginator = Paginator(productOffer, 8)
+        page = request.GET.get('page') or 1
+        productOffer = paginator.get_page(page)
+        current_page = int(page)
+        pages = range(1, productOffer.paginator.num_pages + 1)
+    context = {'productOffer': productOffer, 'button': button, 'button1': button1, 'category': category,
+               'items': items, 'current_page': current_page, 'pages': pages, 'order': order}
+    return render(request, 'Web/productOffer.html', context)
 
 
 class AllCategoriesView(TemplateView):

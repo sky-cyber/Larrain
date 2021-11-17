@@ -29,7 +29,7 @@
                     <div class="card card-default">
                         <div class="card-body">
                             <div class="card">
-                                <div class="card bg-primary">
+                                <div class="card bg-dark">
                                     <div class="card-body text-center">
                                         <h1 class="card-text text-bold">Detalle de la Orden del Cliente</h1>
                                         <p class="card-text text-bold">Se visualiza toda la informacion y datos
@@ -39,76 +39,76 @@
                                 <div class="container">
                                     <label for="username" class="form-label">Foto de Perfil</label>
                                     <div class="col-sm-3">
-                                        <img src="/media/{{ order.user.image }}" style="width: 150px; height: 130px">
+                                        <img src="{{ order.user.get_image }}" style="width: 150px; height: 130px">
                                     </div>
                                     <hr>
                                     <div class="row g-3">
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Usuario</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.user.username }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.user.username }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Email</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.user.email }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.user.email }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Nombres</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.user.first_name }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.user.first_name }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Apellidos</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.user.last_name }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.user.last_name }}</strong>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">País</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ shipping.country }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ shipping.country }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Ciudad</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ shipping.city }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ shipping.city }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Codigo Postal</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ shipping.postalCode }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ shipping.postalCode }}</strong>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Fecha de Registro</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.user.date_joined }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.user.date_joined }}</strong>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="email" class="form-label">Dirección</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ shipping.address }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ shipping.address }}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -122,47 +122,46 @@
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Cantidad de Productos</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.get_cart_items }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.get_cart_items }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">Total Pagado</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                ${{ order.total | intcomma }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>${{ order.total | intcomma }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Tipo de Pago</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.paymentMethod }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.paymentMethod }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="email" class="form-label">N° Transactión</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.transaction_id }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.transaction_id }}</strong>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="username" class="form-label">Estado de la Orden</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.status }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.status }}</strong>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-3">
-                                            <label for="username" class="form-label">Cambio de Estado de la
-                                                order</label>
+                                            <label for="username" class="form-label">Actualizar Orden</label>
                                             <div class="card-footer text-center"
-                                                style="background: #f5ff68; font-size: 15px">
+                                                 style="background: #deedfd; font-size: 14px">
                                                 <form action="{% url 'change_order' order.pk %}" method="POST">
                                                     {% csrf_token %}
                                                     <select class="form-control" name="status">
@@ -180,8 +179,8 @@
                                         <div class="col-sm-6">
                                             <label for="email" class="form-label">Fecha de Pago</label>
                                             <div class="card-footer text-center"
-                                                 style="background: #f5ff68; font-size: 15px">
-                                                {{ order.paidAt }}
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ order.paidAt }}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +194,7 @@
                         <div class="card-body">
                             <div class="container">
                                 <table class="table table-hover text-center" style="width: 100%; font-size: 15px">
-                                    <thead class="bg-primary alert-link text-white">
+                                    <thead class="bg-dark alert-link text-white">
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del Producto</th>
@@ -211,7 +210,11 @@
                                             <td>{{ item.product.id }}</td>
                                             <td>{{ item.product.name }}</td>
                                             <td>{{ item.qty }}</td>
-                                            <td>${{ item.product.offerPrice | intcomma }}</td>
+                                            {% if item.product.offer %}
+                                                <td>${{ item.product.offerPrice | intcomma }}</td>
+                                            {% else %}
+                                                <td>${{ item.product.salePrice | intcomma }}</td>
+                                            {% endif %}
                                             <td>${{ item.get_sub_total | intcomma }}</td>
                                             <td class="text-center"><a
                                                     href="{% url 'productDetail' item.product.slug %}">

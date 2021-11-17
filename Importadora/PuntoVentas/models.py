@@ -52,17 +52,21 @@ class Category(models.Model):
 class Supplier(models.Model):
     rut = models.CharField(max_length=15, verbose_name="Rut", unique=True, blank=False, null=False)
     company = models.CharField(max_length=200, verbose_name="Empresa", blank=False, null=False)
-    first_name = models.CharField(default="", max_length=50, verbose_name="Nombres")
-    last_name = models.CharField(default="", max_length=200, verbose_name="Apellidos")
+    first_name = models.CharField(default="", max_length=50, verbose_name="Primer Nombre")
+    second_name = models.CharField(default="", max_length=50, verbose_name="Segundo Nombre")
+    pather_last_name = models.CharField(default="", max_length=50, verbose_name="Apellido Paterno")
+    mother_last_name = models.CharField(default="", max_length=50, verbose_name="Apellido Materno")
     birthday = models.DateField(default=datetime.now, auto_now=False, auto_now_add=False,
                                 verbose_name="Fecha de Nacimiento", blank=False, null=False)
-    phone = models.CharField(default="", max_length=12, verbose_name="Celular", unique=True, blank=False, null=False)
+    phone = models.CharField(default="", max_length=9, verbose_name="Celular", unique=True, blank=False, null=False)
     address = models.CharField(default="", max_length=250, verbose_name="Dirección", blank=False, null=False)
     email = models.EmailField(default="", max_length=100, verbose_name="Email", unique=True, blank=False, null=False)
     detailProduct = models.TextField(
         default="Nombre del Producto: \n1)\n2)\n3) \n Cantidad de dichos productos: \n1)\n2)\n3) "
         , verbose_name='Detalle de los productos', blank=False, null=False)
-    timeDelivery = models.DateField(default=datetime.now, auto_now=False, auto_now_add=False, verbose_name="Fecha de Entrega de los Productos", blank=False, null=False)
+    timeDelivery = models.DateField(default=datetime.now, auto_now=False,
+                                    auto_now_add=False, verbose_name="Fecha de Entrega de los Productos",
+                                    blank=False, null=False)
     image = models.ImageField(upload_to='supplier', null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
@@ -103,13 +107,13 @@ class Product(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre del Producto", unique=True)
     slug = models.SlugField(unique=True, default="")
     image = models.ImageField(upload_to="product", null=True, blank=True)
-    brand = models.CharField(default="", verbose_name='Marca del Producto',
-                            max_length=50, blank=False, null=False)
+    brand = models.CharField(default="", verbose_name='Marca del Producto', max_length=50, blank=False, null=False)
     description = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
     rating = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
     numReviews = models.PositiveIntegerField(default=0, verbose_name="Cantidad de Visitas")
     salePrice = models.PositiveIntegerField(default=0, verbose_name="Precio")
     offerPrice = models.PositiveIntegerField(default=0, verbose_name="Oferta")
+    offer = models.BooleanField(default="False", verbose_name="Producto En Oferta", null=True, blank=True)
     stock = models.PositiveIntegerField(default=0)
     warranty = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Garantia")
     dispachTime = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Tiempo de envio")
@@ -174,7 +178,7 @@ class Report(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True)
-    rating = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
+    rating = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
     comments = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
@@ -188,7 +192,7 @@ class Review(models.Model):
 
 
 ORDER_STATUS = (
-    ("Orden Recibida", "Orden Recibida"),
+    ("Orden A Despacho", "Orden A Despacho"),
     ("Orden En Proceso", "Orden En Proceso"),
     ("Orden En Camino", "Orden En Camino"),
     ("Orden Completada", "Orden Completada"),
@@ -199,15 +203,18 @@ ORDER_STATUS = (
 class Orders(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     paymentMethod = models.CharField(max_length=250, verbose_name="Tipo de pago")
-    taxPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
-    shippingPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
-    totalPrice = models.DecimalField(default=0, max_digits=15, decimal_places=2, blank=True, null=True)
+    shippingValue = models.PositiveIntegerField(default=0, verbose_name="Precio De Envio")
+    shippingPrice = models.PositiveIntegerField(default=0, verbose_name="SubTotal")
+    totalPrice = models.PositiveIntegerField(default=0, verbose_name="Total")
     isPaid = models.BooleanField(default=False, null=True, blank=False)
     paidAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     isDelivered = models.BooleanField(default=False, null=True, blank=False)
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     transaction_id = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=100, choices=ORDER_STATUS)
+    arrivalDate = models.DateField(default=datetime.now, auto_now=False,
+                                   auto_now_add=False, verbose_name="Fecha de Llegada de los Productos",
+                                   blank=True, null=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
     def __str__(self):
@@ -215,9 +222,9 @@ class Orders(models.Model):
 
     @property
     def tax(self):
-        self.taxPrice = 0.19
-        totaltax = self.shippingPrice * int(self.taxPrice)
-        return totaltax
+        self.shippingValue = 0
+        totalValue = self.shippingPrice * int(self.shippingValue)
+        return totalValue
 
     @property
     def total(self):
@@ -260,7 +267,10 @@ class OderItem(models.Model):
 
     @property
     def get_sub_total(self):
-        sub_total = self.product.offerPrice * self.qty
+        if self.product.offer == True:
+            sub_total = self.product.offerPrice * self.qty
+        else:
+            sub_total = self.product.salePrice * self.qty
         return sub_total
 
     def __str__(self):
@@ -274,10 +284,10 @@ class OderItem(models.Model):
 
 class ShippingAddress(models.Model):
     order = models.OneToOneField('Orders', on_delete=models.CASCADE, null=True, blank=True)
-    address = models.CharField(max_length=250, verbose_name="Dirección", null=True, blank=True)
-    city = models.CharField(max_length=250, verbose_name="Ciudad", null=True, blank=True)
-    postalCode = models.CharField(max_length=100, verbose_name="Codigo Postal", null=True, blank=True)
-    country = models.CharField(max_length=250, verbose_name="País", null=True, blank=True)
+    address = models.CharField(default="", max_length=250, verbose_name="Dirección", null=True, blank=True)
+    city = models.CharField(default="", max_length=250, verbose_name="Ciudad", null=True, blank=True)
+    postalCode = models.CharField(default="", max_length=100, verbose_name="Codigo Postal", null=True, blank=True)
+    country = models.CharField(default="", max_length=250, verbose_name="País", null=True, blank=True)
 
     def __str__(self):
         return str(self.address)

@@ -1,8 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from Modulo.Funtions.category.form import CategoryForm
+from django.contrib import messages
 from PuntoVentas.models import *
 
 

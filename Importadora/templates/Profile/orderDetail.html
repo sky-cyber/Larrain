@@ -15,16 +15,20 @@
     <br><br><br><br><br>
     <div class="container card-footer">
         <div class="row m-0">
+            <div class="text-center text-danger card-footer">
+                <h1>Detalle de la Orden</h1>
+            </div>
+            <hr>
             <div class="col-md-7 col-12">
                 <div class="row">
-                    <div class="">
+                    <div class="container py-1">
                         <a href="{% url 'profile' %}" class="btn btn-success" style="width: 20%">{{ button }}</a>
                         <a href="{% url 'order_pdf' order.pk %}" class="btn btn-danger">{{ PDF }}</a>
                     </div>
                     <div class="col-12 mb-4">
                         <div>
                             <div class="text-center m-3 card-footer" style="background: #09111e; color: white">
-                                <p style="font-size: 25px">Detalle de la Orden</p>
+                                <p style="font-size: 25px">Número de la Transacción</p>
                                 <h3>N° {{ order.transaction_id }}</h3>
                             </div>
                         </div>
@@ -66,7 +70,7 @@
                             </div>
                             {% if items %}
                                 {% for item in items %}
-                                    <ul class="list-group text-center">
+                                    <ul class="list-group">
                                         <a href="{% url 'productDetail' item.product.slug %}"
                                            class="p-1 btn btn-dark">{{ item.product.name }}</a>
                                         <li class="list-group-item justify-content-between lh-sm py-1">
@@ -74,8 +78,15 @@
                                                 <img src="{{ item.product.imageURL }}" alt=""
                                                      style="width: 100px;">
                                                 <span class="p-1">Catidad: {{ item.qty }}</span>
-                                                <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
-                                                <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                                {% if item.product.offer %}
+                                                    <span class="p-1">Valor: {{ item.product.offerPrice | intcomma }}</span>
+                                                    <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                                    <span class="p-1"><i class="badge badge-dark"
+                                                                         style="background: #d31b1b">Producto En Oferta</i></span>
+                                                {% else %}
+                                                    <span class="p-1">Valor: {{ item.product.salePrice | intcomma }}</span>
+                                                    <span class="p-1">Sub Total: {{ item.get_sub_total | intcomma }}</span>
+                                                {% endif %}
                                             </div>
                                         </li>
                                     </ul>
@@ -87,8 +98,8 @@
                     </div>
                 </div>
             </div>
-            <br><br>
             <div class="col-md-5 col-12 card-footer" style="background: #eee8e8">
+            <br><br>
                 <div class="box-left">
                     <p class="card-footer text-center text-bold text-white" style="background: #09111EFF">Resumen de la
                         orden</p>
@@ -97,7 +108,7 @@
                         Pagado: {{ order.paidAt }}</p>
                     <hr>
                     <div class="d-block">Estado de la orden:</div>
-                    {% if order.status == "Orden Recibida" %}
+                    {% if order.status == "Orden A Despacho" %}
                         <p class="card-footer text-center text-bold text-white"
                            style="background: #2545e3">{{ order.status }}</p>
                     {% elif order.status == "Orden En Proceso" %}
@@ -114,6 +125,14 @@
                            style="background: #18bd06">{{ order.status }}</p>
                     {% endif %}
                     <hr>
+                    <div class="d-block">Fecha Estimada de Llegada:</div>
+                    {% if order.arrivalDate <= order.createdAt %}
+                        <p class="card-footer text-center text-bold text-white" style="background: #09111e">
+                            En Proceso</p>
+                    {% else %}
+                        <p class="card-footer text-center text-bold text-white" style="background: #09111e">
+                            {{ order.arrivalDate }}</p>
+                    {% endif %}
                     <div class="h8">
                         <div class="row m-0 border mb-3 card-footer">
                             <p class="card-footer text-center" style="background: #ffffff">Resumen de la orden</p>
