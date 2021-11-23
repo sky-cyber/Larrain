@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Application definition
 
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'crum.CurrentRequestUserMiddleware',
 ]
 
 ROOT_URLCONF = 'Importadora.urls'
@@ -82,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'skycyber3',
+        'USER': 'skycyber4',
         'PASSWORD': '123',
     }
 }
@@ -158,4 +159,6 @@ AUTH_USER_MODEL = 'PuntoVentas.User'
 
 DOMAIN = ''
 
+# SESSION SERIALIZER
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'

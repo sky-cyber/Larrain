@@ -7,6 +7,7 @@ from Modulo.Funtions.supplier.view import *
 from Modulo.Funtions.claim.view import *
 from Modulo.Funtions.PDF.view import *
 from Modulo.Funtions.Order.view import *
+from Modulo.Funtions.Sales.view import *
 from Modulo.Funtions.Dispatch.view import *
 from PuntoVentas.views import DashboardView, PerfilView
 from django.contrib.auth.decorators import login_required
@@ -14,40 +15,42 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
 
     # URL FOR DASHBOARD
-    path('', login_required(DashboardView.as_view()), name='adm'),
+    path('', DashboardView.as_view(), name='adm'),
 
     # URL FOR PERFIL
     path('perfil/', login_required(PerfilView.as_view()), name='perfil'),
 
     # URL OF CATEGORY
-    path('category/list', login_required(CategoryListView.as_view()), name='category_list'),
-    path('category/add', login_required(CategoryCreateView.as_view()), name='category_create'),
-    path('category/edit/<int:pk>/', login_required(CategoryUpdateView.as_view()), name='category_update'),
-    path('category/delete/<int:pk>/', login_required(CategoryDeleteView.as_view()), name='category_delete'),
+    path('category/list', (CategoryListView.as_view()), name='category_list'),
+    path('category/add', (CategoryCreateView.as_view()), name='category_create'),
+    path('category/edit/<int:pk>/', (CategoryUpdateView.as_view()), name='category_update'),
+    path('category/delete/<int:pk>/', (CategoryDeleteView.as_view()), name='category_delete'),
 
     # URL THE PRODUCT
-    path('product/add', login_required(ProductCreateView.as_view()), name='product_create'),
-    path('product/list', login_required(ProductListView.as_view()), name='product_list'),
-    path('product/edit/<int:pk>/', login_required(ProductUpdateView.as_view()), name='product_edit'),
-    path('product/delete/<int:pk>/', login_required(ProductDeleteView.as_view()), name='product_delete'),
-    path('product/list/offer', login_required(ProductListOfferView.as_view()), name='product_list_offer'),
+    path('product/add', (ProductCreateView.as_view()), name='product_create'),
+    path('product/list', (ProductListView.as_view()), name='product_list'),
+    path('product/edit/<int:pk>/', (ProductUpdateView.as_view()), name='product_edit'),
+    path('product/delete/<int:pk>/', (ProductDeleteView.as_view()), name='product_delete'),
+    path('product/list/offer', (ProductListOfferView.as_view()), name='product_list_offer'),
 
     # URL THE SUPPLIER
-    path('supplier/add', login_required(SupplierCreateView.as_view()), name='supplier_create'),
-    path('supplier/list', login_required(SupplierListView.as_view()), name='supplier_list'),
-    path('supplier/edit/<int:pk>/', login_required(SupplierUpdateView.as_view()), name='supplier_update'),
-    path('supplier/delete/<int:pk>/', login_required(SupplierDeleteView.as_view()), name='supplier_delete'),
-    path('contract/supplier/<int:pk>/', login_required(ContractSupplier.as_view()), name='supplier_contract'),
+    path('supplier/add', (SupplierCreateView.as_view()), name='supplier_create'),
+    path('supplier/list', (SupplierListView.as_view()), name='supplier_list'),
+    path('supplier/edit/<int:pk>/', (SupplierUpdateView.as_view()), name='supplier_update'),
+    path('supplier/delete/<int:pk>/', (SupplierDeleteView.as_view()), name='supplier_delete'),
+    path('contract/supplier/<int:pk>/', (ContractSupplier.as_view()), name='supplier_contract'),
 
     # URL THE CLAIM
-    path('claim/list', login_required(ClaimListView.as_view()), name='claim_list'),
-    path('claim/delete/<int:pk>/', login_required(ClaimDeleteView.as_view()), name='claim_delete'),
+    path('claim/list', (ClaimListView.as_view()), name='claim_list'),
+    path('claim/delete/<int:pk>/', (ClaimDeleteView.as_view()), name='claim_delete'),
 
     # URL THE USER
     path('registerUser/', login_required(RegisterUserAdmin), name='registerUser'),
     path('listUser/', login_required(UserListView.as_view()), name='list_user'),
-    path('updateUser/<int:pk>/', login_required(UpdateUserAdmin.as_view()), name='updateUser'),
+    path('listClient/', login_required(ClientListView.as_view()), name='list_client'),
+    path('updateUser/<int:pk>/', login_required(UpdateUserAdmin), name='updateUser'),
     path('deleteUser/<int:pk>/', login_required(DeleteUserAdmin.as_view()), name='deleteUser'),
+    path('change/user/<int:pk>/', ChangeUser.as_view(), name='change_user'),
 
     # URL FOR PDF
     path('product/pdf', ProductPdfView.as_view(), name='product_pdf'),
@@ -57,7 +60,7 @@ urlpatterns = [
     path('dispatch/pdf/', DispatchPdfView.as_view(), name='dispatch_pdf'),
 
     # URL FOR ORDER
-    path('order/all/list/', login_required(OrderListView.as_view()), name='order_list'),
+    path('order/all/list/', (OrderListView.as_view()), name='order_list'),
     path('order/complete/', OrderComplete.as_view(), name='order_complete'),
     path('order/inProcess/', OrderInProcess.as_view(), name='order_in_process'),
     path('order/ToDispatch/', OrderToDispatch.as_view(), name='order_to_dispatch'),
@@ -72,5 +75,20 @@ urlpatterns = [
     path('change/list/dispatch/<int:pk>/', ChangedispatchView.as_view(), name='change_list_dispatch'),
     path('dispatch/list/complete', DispatchListComplete.as_view(), name='dispatch_list_complete'),
     path('dispatch/InTheWay', DispatchListInTheWay.as_view(), name='dispatch_list_InTheWay'),
+
+    # URL FOR DISPATCHER
+    path('create/dispatcher', CreateDispatcher.as_view(), name='create_dispatcher'),
+    path('list/dispatcher', ListDispacher.as_view(), name='list_dispatcher'),
+    path('update/dispatcher/<int:pk>/', UpdateDispatcher.as_view(), name='update_dispatcher'),
+    path('delete/dispatcher/<int:pk>/', DeleteDispatcher.as_view(), name='delete_dispatcher'),
+
+    # URL FOR CLIENT
+    path('create/client', CreateClient.as_view(), name='create_client'),
+    path('list/Client/face-to-face', ListClientFaceToFace.as_view(), name='list_client_face'),
+    path('edit/Client/<int:pk>/', UpdateClient.as_view(), name='update_client'),
+    path('delete/client/<int:pk>/', DeleteClient.as_view(), name='delete_client'),
+
+    # URL FOR SALE
+    path('sale/client', SaleClient.as_view(), name='sale_client')
 
 ]

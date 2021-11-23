@@ -13,32 +13,33 @@
                 <hr>
                 <div class="col-md-6 mb-4">
                     {% for o in order %}
-                            <div class="card-footer text-center bg-dark" style="font-size: 20px">Información de los
-                                Clientes
-                            </div>
-                            <div class="card-footer" style="font-size: 18px">
-                                <strong>Foto de perfil del cliente:</strong>
-                                <br>
-                                <img src="{{ o.user.get_image }}"
-                                     class="img-fluid text-center" alt="" style="width: 80px; height: 80px">
-                                <span class="card">
+                        <div class="card-footer text-center bg-dark" style="font-size: 20px">Información de los
+                            Clientes
+                        </div>
+                        <div class="card-footer" style="font-size: 18px">
+                            <strong>Foto de perfil del cliente:</strong>
+                            <br>
+                            <img src="{{ o.user.get_image }}"
+                                 class="img-fluid text-center" alt="" style="width: 80px; height: 80px">
+                            <span class="card">
                                     <strong>Nombres: {{ o.user.first_name }}</strong>
                                 </span>
-                                <span class="card">
+                            <span class="card">
                                     <strong>Apellidos: {{ o.user.last_name }}</strong>
                                 </span>
-                                <span class="card">
+                            <span class="card">
                                     <strong>Correo Electronico: {{ o.user.email }}</strong>
                                 </span>
-                                <span class="card">
+                            <span class="card">
                                     <strong>Fecha de Entrega: {{ o.arrivalDate }}</strong>
                                 </span>
-                                <span class="card">
+                            <span class="card">
                                     <strong>Número de transacción: {{ o.transaction_id }}</strong>
                                 </span>
-                                <span class="card">
+                            <span class="card">
                                     <strong>Cantidad de Productos comprados: {{ o.get_cart_items }}</strong>
                                 </span>
+                            {% for s in shipping %}
                                 <span class="card">
                                     <strong>País: {{ s.country }}</strong>
                                 </span>
@@ -51,8 +52,9 @@
                                 <span class="card">
                                     <strong>Dirección: {{ s.address }}</strong>
                                 </span>
-                                <br>
-                            </div>
+                            {% endfor %}
+                            <br>
+                        </div>
                         <br>
                     {% endfor %}
                 </div>

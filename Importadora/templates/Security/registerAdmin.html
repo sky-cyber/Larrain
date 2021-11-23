@@ -29,9 +29,9 @@
                                 <h3 class="card-title">
                                     {% if action == 'add' %}
                                         <i class="fas fa-plus-circle"></i>
-                                        {% else %}
-                                         <i class="fas fa-edit"></i>
-                                            {{ title2 }}
+                                    {% else %}
+                                        <i class="fas fa-edit"></i>
+                                        {{ title2 }}
                                     {% endif %}
                                 </h3>
                             </div>
@@ -40,41 +40,54 @@
                                 <div class="container">
                                     {% csrf_token %}
                                     {{ form.username.label }}
-                                    {{ form.username}}
+                                    {{ form.username }}
                                     {{ form.first_name.label }}
-                                    {{ form.first_name}}
+                                    {{ form.first_name }}
                                     {{ form.last_name.label }}
-                                    {{ form.last_name}}
+                                    {{ form.last_name }}
                                     {{ form.email.label }}
-                                    {{ form.email}}
+                                    {{ form.email }}
                                     {{ form.password.label }}
-                                    {{ form.password}}
+                                    {{ form.password }}
                                     <br>
                                     {{ form.image }}
                                     <br>
                                     <div class="py-2" style="font-size: 20px">
-                                    <p>
-                                        {{ form.is_superuser.label }}
-                                        {{ form.is_superuser }}
-                                    </p>
-                                    <p>
-                                        {{ form.is_staff.label }}
-                                        {{ form.is_staff }}
-                                    </p>
+                                        <p>
+                                            {{ form.is_superuser.label }}
+                                            {{ form.is_superuser }}
+                                        </p>
+                                        <p>
+                                            {{ form.is_staff.label }}
+                                            {{ form.is_staff }}
+                                        </p>
+                                        <p style="font-size: 17px">
+                                            {{ form.groups.label }}
+                                            {{ form.groups }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-audio-description"></i> {{ button }}
+                                    </button>
                                 </div>
                             </div>
-                            <br>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-audio-description"></i> {{ button }}
-                                </button>
-                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
                     </div>
+                    <script type="application/javascript">
+                        $(function () {
+                            $('.select2').select2({
+                                theme: "bootstrap4",
+                                language: 'es',
+                                placeholder: 'Ingrese El o Los Grupos Para El Usuario'
+                            });
+                        });
+                    </script>
                 </div>
             </div>
-    </div>
-    </form>
+        </form>
     </div>
 {% endblock %}

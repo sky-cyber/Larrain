@@ -121,6 +121,7 @@ def ProcessOrder(request):
         order.paymentMethod = "PayPal"
         order.status = 'Orden En Proceso'
         order.deliveredAt = timezone.now()
+        order.totalPrice = order.shippingPrice
         order.save()
 
         if subtotal == order.get_cart_total:

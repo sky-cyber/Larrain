@@ -1,0 +1,118 @@
+{% extends 'Adm/admin.html' %}
+
+{% load widget_tweaks %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                            {% if action == 'add' %}
+                                <i class="fas fa-plus-circle"></i>
+                            {% else %}
+                                <i class="fas fa-cubes"></i>
+                            {% endif %}
+                            {{ title2 }}
+                        </div>
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Busque Un Producto">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-danger" style="height: 38px"><i
+                                                class="fas fa-times-circle"></i></button>
+                                    </span>
+                                    <br><br>
+                                    <hr>
+                                    <div class="container p-2" style="font-size: 12px">
+                                        <table class="table table-hover " id="tabla" style="width: 100%">
+                                            <thead class="bg-dark alert-link text-white">
+                                            <tr>
+                                                <th>Eliminar</th>
+                                                <th>Producto</th>
+                                                <th>Categoria</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for c in object_list %}
+                                                <tr>
+                                                    <td>{{ c.id }}</td>
+                                                    <td>{{ c.name }}</td>
+                                                    <td>
+                                                        <a href="{% url 'category_update' c.id %}" type="button"
+                                                           class="btn btn-warning btn-sm"><i
+                                                                class="fas fa-edit"></i>'</a>
+                                                        <a href="{% url 'category_delete' c.id %}"
+                                                           class="btn btn-danger btn-sm"><i
+                                                                class="fas fa-trash-restore-alt"></i></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title" style="height: 10px"><i class="fas fa-cart-arrow-down"></i> {{ title3 }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Fecha de Venta:</label>
+                                {{ form.date_joined | add_class:'form-control' }}
+                            </div>
+                            <div class="form-group">
+                                <label>Cliente:</label>
+                                {{ form.client }}
+                            </div>
+                            <div class="form-group">
+                                <label>SubTotal:</label>
+                                {{ form.subtotal | add_class:'form-control'}}
+                            </div>
+                            <div class="form-group">
+                                <label>Costo de Envio:</label>
+                                {{ form.value | add_class:'form-control'}}
+                            </div>
+                            <div class="form-group">
+                                <label>Total a Pagar:</label>
+                                {{ form.total | add_class:'form-control'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

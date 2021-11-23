@@ -1,12 +1,15 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView
 from PuntoVentas.models import *
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 
-class OrderClientDetail(TemplateView):
+class OrderClientDetail(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderClientDetail.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderClientDetail, self).get_context_data(**kwargs)
@@ -24,7 +27,9 @@ class OrderClientDetail(TemplateView):
         return context
 
 
-class ChangeOrderView(TemplateView):
+class ChangeOrderView(ValidatorPermissionRequiredMixins, TemplateView):
+    permission_required = 'change_orders'
+
     def post(self, request, *args, **kwargs):
         order_id = self.kwargs['pk']
         order = Orders.objects.get(id=order_id)
@@ -34,9 +39,10 @@ class ChangeOrderView(TemplateView):
         return redirect(reverse_lazy('order_list'), kwargs={"pk": order_id})
 
 
-class OrderListView(ListView):
+class OrderListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
     model = Orders
     template_name = 'Order/list.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderListView, self).get_context_data(**kwargs)
@@ -46,9 +52,10 @@ class OrderListView(ListView):
         return context
 
 
-class OrderComplete(TemplateView):
+class OrderComplete(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderComplete.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderComplete, self).get_context_data(**kwargs)
@@ -58,9 +65,10 @@ class OrderComplete(TemplateView):
         return context
 
 
-class OrderInProcess(TemplateView):
+class OrderInProcess(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderInProcess.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderInProcess, self).get_context_data(**kwargs)
@@ -70,9 +78,10 @@ class OrderInProcess(TemplateView):
         return context
 
 
-class OrderToDispatch(TemplateView):
+class OrderToDispatch(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderToDispatch.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderToDispatch, self).get_context_data(**kwargs)
@@ -82,9 +91,10 @@ class OrderToDispatch(TemplateView):
         return context
 
 
-class OrderCanceled(TemplateView):
+class OrderCanceled(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderCanceled.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderCanceled, self).get_context_data(**kwargs)
@@ -94,9 +104,10 @@ class OrderCanceled(TemplateView):
         return context
 
 
-class OrderOnTheWay(TemplateView):
+class OrderOnTheWay(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Orders
     template_name = 'Order/orderOnTheWay.html'
+    permission_required = 'view_orders'
 
     def get_context_data(self, **kwargs):
         context = super(OrderOnTheWay, self).get_context_data(**kwargs)

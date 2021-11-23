@@ -1,7 +1,7 @@
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import TextInput, PasswordInput, ModelForm
+from django.forms import TextInput, PasswordInput, ModelForm, SelectMultiple
 
 from PuntoVentas.models import User
 
@@ -14,7 +14,7 @@ class CreateUserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'image', 'is_superuser', 'is_staff']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'image', 'is_superuser', 'is_staff', 'groups']
         exclude = ['last_login', 'date_joined', 'user_permissions']
 
         labels = {
@@ -53,6 +53,13 @@ class CreateUserForm(ModelForm):
                     'placeholder': 'Ingrese una contraseña',
                     'class': 'form-control'
                 }
+            ),
+            'groups': SelectMultiple(
+                attrs={
+                    'class': 'form-control select2',
+                    'style': '100%',
+                    'multiple': 'multiple'
+                }
             )
         }
 
@@ -77,6 +84,7 @@ class CreateUserForm(ModelForm):
         form = super()
         try:
             if form.is_valid():
+                print(self.cleaned_data['groups'])
                 pwd = self.cleaned_data['password']
                 u = form.save(commit=False)
                 if u.pk is None:
@@ -86,6 +94,9 @@ class CreateUserForm(ModelForm):
                     if user.password != pwd:
                         u.set_password(pwd)
                 u.save()
+                u.groups.clear()
+                for g in self.cleaned_data['groups']:
+                    u.groups.add(g)
             else:
                 data['error'] = form.errors
         except Exception as e:

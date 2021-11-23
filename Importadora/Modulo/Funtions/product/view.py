@@ -1,16 +1,19 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from Modulo.Funtions.product.form import ProductForm
 from PuntoVentas.models import Product
 
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'Product/create.html'
     success_url = reverse_lazy('product_list')
+    permission_required = 'add_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,9 +24,10 @@ class ProductCreateView(CreateView):
         return context
 
 
-class ProductListOfferView(ListView):
+class ProductListOfferView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
     model = Product
     template_name = 'Product/listOfferProduct.html'
+    permission_required = 'view_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,9 +39,10 @@ class ProductListOfferView(ListView):
         return context
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
     model = Product
     template_name = 'Product/list.html'
+    permission_required = 'view_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,11 +54,12 @@ class ProductListView(ListView):
         return context
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, UpdateView):
     model = Product
     template_name = 'Product/create.html'
     form_class = ProductForm
     success_url = reverse_lazy('product_list')
+    permission_required = 'change_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -63,10 +69,11 @@ class ProductUpdateView(UpdateView):
         return context
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, DeleteView):
     model = Product
     template_name = "Product/delete.html"
     success_url = reverse_lazy('product_list')
+    permission_required = 'delete_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

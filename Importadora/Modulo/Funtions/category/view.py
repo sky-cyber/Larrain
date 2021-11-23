@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -5,6 +7,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from Modulo.Funtions.category.form import CategoryForm
 from django.contrib import messages
+
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 from PuntoVentas.models import *
 
 
@@ -15,9 +19,10 @@ def category_list(request):
     return render(request, 'category/list.html', data)
 
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
     model = Category
     template_name = "category/list.html"
+    permission_required = 'view_category'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -30,11 +35,12 @@ class CategoryListView(ListView):
         return context
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, CreateView):
     model = Category
     template_name = "category/create.html"
     form_class = CategoryForm
     success_url = reverse_lazy('category_list')
+    permission_required = 'add_category'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,11 +50,12 @@ class CategoryCreateView(CreateView):
         return context
 
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, UpdateView):
     model = Category
     template_name = "category/create.html"
     form_class = CategoryForm
     success_url = reverse_lazy('category_list')
+    permission_required = 'change_category'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -58,10 +65,11 @@ class CategoryUpdateView(UpdateView):
         return context
 
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, DeleteView):
     model = Category
     template_name = "category/delete.html"
     success_url = reverse_lazy('category_list')
+    permission_required = 'delete_category'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

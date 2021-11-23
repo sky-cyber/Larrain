@@ -44,6 +44,7 @@
                                     <th>ID</th>
                                     <th>Cliente</th>
                                     <th>Cantidad de Productos Comprados</th>
+                                    <th>Despachado Por:</th>
                                     <th>Fecha Estimada de Llegada</th>
                                     <th>Transacción</th>
                                 </tr>
@@ -56,6 +57,7 @@
                                         <td style="font-size: 18px">{{ o.user }}</td>
                                         <td style="font-size: 20px"><i
                                                 class="right badge badge-success">{{ o.get_cart_items }}</i></td>
+                                        <td>{{ o.dispatcher }}</td>
                                         <td>{{ o.arrivalDate }}</td>
                                         <td>{{ o.transaction_id }}</td>
                                     </tr>

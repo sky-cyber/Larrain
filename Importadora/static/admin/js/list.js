@@ -19,10 +19,23 @@ $(function () {
             {"data": "username"},
             {"data": "last_login"},
             {"data": "date_joined"},
+            {"data": "groups"},
             {"data": "image"},
             {"data": "id"},
         ],
         columnDefs: [
+            {
+                targets: [-3],
+                class: 'text-center',
+                orderable: false,
+                render: function (data, type, row) {
+                    var html = '';
+                    $.each(row.groups, function (key, value) {
+                        html += '<span class="badge badge-success">'+ value.name +'</span> ';
+                    });
+                    return html;
+                }
+            },
             {
                 targets: [-2],
                 class: 'text-center',

@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.template.loader import get_template
 from django.urls import reverse_lazy
 from django.views.generic import View
@@ -105,7 +106,8 @@ class DispatchPdfView(View):
             template = get_template("PDF/listDispatch.html")
             user = request.user
             order = Orders.objects.filter(status="Orden A Despacho")
-            shipping = ShippingAddress.objects.all()
+            # shipping = get_object_or_404(ShippingAddress, order=order)
+            shipping = ShippingAddress.objects.filter(order_id=order)
             context = {"order": order,
                        "user": user,
                        "shipping": shipping,

@@ -21,44 +21,41 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-shopping-basket"></i>
-                                {{ title2 }}
-                            </h3>
+
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-shopping-basket"></i>
+                            {{ title2 }}
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-hover " id="data" style="width: 100%">
+                            <thead class="bg-dark alert-link text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Username</th>
+                                <th>último acceso</th>
+                                <th>Fecha de registro</th>
+                                <th>Grupos</th>
+                                <th>imagen</th>
+                                <th>Opciones</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="card-footer">
+                            <a href="{% url 'registerUser' %}" class="btn btn-primary" id="btntest"><i
+                                    class="fas fa-plus-square"></i>
+                                {{ button }}
+                            </a>
+                            <a href="{% url 'registerUser' %}" class="btn btn-success" id="btntest"><i
+                                    class="fas fa-plus-square"></i>
+                                {{ button2 }}
+                            </a>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="container">
-                                <table class="table table-hover " id="data" style="width: 100%">
-                                    <thead class="bg-dark alert-link text-white">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>Username</th>
-                                        <th>último acceso</th>
-                                        <th>Fecha de registro</th>
-                                        <th>imagen</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                                <div class="card-footer">
-                                    <a href="{% url 'registerUser' %}" class="btn btn-primary" id="btntest"><i
-                                            class="fas fa-plus-square"></i>
-                                        {{ button }}
-                                    </a>
-                                    <a href="{% url 'registerUser' %}" class="btn btn-success" id="btntest"><i
-                                            class="fas fa-plus-square"></i>
-                                        {{ button2 }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
                     </div>
                 </div>
             </div>

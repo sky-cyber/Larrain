@@ -1,21 +1,17 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
 from Modulo.Funtions.supplier.form import SupplierForm
 from PuntoVentas.models import *
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 
-# def category_list(request):
-#     data = {
-#         'categories': Category.objects.all()
-#     }
-#     return render(request, 'category/list.html', data)
-
-
-class SupplierListView(ListView):
+class SupplierListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
     model = Supplier
     template_name = "Supplier/list.html"
+    permission_required = 'view_supplier'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,11 +24,12 @@ class SupplierListView(ListView):
         return context
 
 
-class SupplierCreateView(CreateView):
+class SupplierCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, CreateView):
     model = Supplier
     template_name = "Supplier/create.html"
     form_class = SupplierForm
     success_url = reverse_lazy('supplier_list')
+    permission_required = 'add_supplier'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,11 +39,12 @@ class SupplierCreateView(CreateView):
         return context
 
 
-class SupplierUpdateView(UpdateView):
+class SupplierUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, UpdateView):
     model = Supplier
     template_name = "Supplier/create.html"
     form_class = SupplierForm
     success_url = reverse_lazy('supplier_list')
+    permission_required = 'change_supplier'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,10 +54,11 @@ class SupplierUpdateView(UpdateView):
         return context
 
 
-class SupplierDeleteView(DeleteView):
+class SupplierDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, DeleteView):
     model = Supplier
     template_name = "Supplier/delete.html"
     success_url = reverse_lazy('supplier_list')
+    permission_required = 'delete_supplier'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,9 +68,10 @@ class SupplierDeleteView(DeleteView):
         return context
 
 
-class ContractSupplier(TemplateView):
+class ContractSupplier(LoginRequiredMixin, ValidatorPermissionRequiredMixins, TemplateView):
     model = Supplier
     template_name = "Supplier/contract.html"
+    permission_required = 'view_supplier'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

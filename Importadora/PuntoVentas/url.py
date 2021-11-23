@@ -30,6 +30,8 @@ urlpatterns = [
 
     # URL profile
     path('profile/', login_required(Profile), name='profile'),
-    path('order/detail/<int:pk>/', OrderDetail, name='order-detail')
+    path('order/detail/<int:pk>/', OrderDetail, name='order-detail'),
 
+    # URL PURCHASE DETAIL
+    path('purchase/detail/', PurchaseDetail.as_view(), name='purchase_detail')
 ]

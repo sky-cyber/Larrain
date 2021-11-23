@@ -14,6 +14,11 @@
     <script src="{% static 'bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
     <script src="{% static 'admin/plugins/popper/popper.min.js' %}"></script>
 
+    <!-- Select2 -->
+    <script src="{% static 'admin/select2-4.0.13/js/select2.min.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'admin/select2-4.0.13/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/select2-4.0.13/css/select2-bootstrap4.min.css' %}">
+
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
     <!-- style -->
@@ -30,6 +35,8 @@
 
     <!-- listado de usuarios -->
     <script src="{% static 'admin/js/list.js' %}"></script>
+    <!-- listado de Clientes -->
+    <script src="{% static 'admin/js/listClient.js' %}"></script>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
@@ -69,9 +76,28 @@ to get the desired effect
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{% url 'adm' %}" class="nav-link text-white btn-dark">METRICAS</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link text-white btn-dark">contact</a>
-            </li>
+            {% if request.user.groups.all %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link {% if request.user.groups.all.count > 1 %} dropdown-toggle{% endif %}" href="#"
+                       id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+                        {% if request.session.group.name %}
+                            {{ request.session.group.name }}
+                        {% endif %}
+                    </a>
+                    {% if request.user.groups.all.count > 1 %}
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="dropdownSubMenu1">
+                            {% for g in request.user.groups.all %}
+                                {% if g.id != request.session.group.id %}
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'change_user' g.id %}">{{ g.name }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{% url 'logout' %}" class="nav-link text-white btn-dark">SALIR</a>
             </li>
@@ -224,220 +250,265 @@ to get the desired effect
                                 Barra de opciones
                             </p>
                         </a>
-
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/add_bag_basket.png' %}" alt="" style="width: 30px;">
-                            <p>
-                                Categorias
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'category_create' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/add_icon.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Nueva categoria</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
+                        {% if request.session.group.name == 'Administrador' or request.session.group.name == 'Encargado de Bodega' %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/add_bag_basket.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Categorias
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'category_create' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/add_icon.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Nueva categoria</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'category_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/checkmark_done.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado de cateogrias</p>
+                                    </a>
+                                </li>
+                            </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="{% url 'category_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/checkmark_done.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Listado de cateogrias</p>
-                                </a>
+                            <li class="nav-item has-treeview">
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/cubes_module.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Bodega
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'product_create' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/computer_monitor.png' %}" alt=""
+                                             style="width: 20px;">
+                                        <p>Registrar Producto</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'product_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/checklist.png' %}" alt=""
+                                             style="width: 20px;">
+                                        <p>Listado de Producto</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        </li>
+                    <li class="nav-item has-treeview">
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Agente de ventas" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/truck_vehicle_icon.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Proveedor
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'supplier_create' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/new_add_user.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Nuevo Proveedor</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'supplier_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/contract_document.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Contratos</p>
+                                    </a>
+                                </li>
+                            </ul>
                             </li>
-                        </ul>
+                        {% endif %}
+                    <li class="nav-item has-treeview">
+                        {% if request.session.group.name == "Administrador" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/supplier_new.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Usuarios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'registerUser' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/user_group_new.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Nuevo Usuario</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'list_user' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/contact_list_user.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado de Usuarios</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/cubes_module.png' %}" alt="" style="width: 30px;">
-                            <p>
-                                Bodega
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'product_create' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/apple_ipod.png' %}" alt=""
-                                         style="width: 20px;">
-                                    <p>Registrar Producto</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'product_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/checklist.png' %}" alt=""
-                                         style="width: 20px;">
-                                    <p>Listado de Producto</p>
-                                </a>
-                            </li>
-                        </ul>
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Encargado de Bodega" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/customers_group.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Clientes Web
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'order_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/file_open_icon.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Ordenes</p>
+                                        <i class="right badge badge-primary">New</i>
+                                    </a>
+                                </li>
+                                {% if request.session.group.name == "Administrador" %}
+                                    <li class="nav-item">
+                                        <a href="{% url 'list_client' %}" class="nav-link">
+                                            <img src="{% static 'assets/img/navbar/human_folder.png' %}" alt=""
+                                                 style="width: 30px;">
+                                            <p>Listado de Clientes</p>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/truck_vehicle_icon.png' %}" alt=""
-                                 style="width: 30px;">
-                            <p>
-                                Proveedor
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'supplier_create' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/new_add_user.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Nuevo Proveedor</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'supplier_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/contract_document.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Contratos</p>
-                                </a>
-                            </li>
-                        </ul>
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Vendedor" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/businessman.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Vendedor
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'create_client' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/education_file.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Crear Cliente</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'sale_client' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/shopping_cart.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Generar Compra</p>
+                                        <i class="right badge badge-primary">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'list_client_face' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/document.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado de Clientes</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/supplier_new.png' %}" alt="" style="width: 30px;">
-                            <p>
-                                Usuarios
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'registerUser' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/user_group_new.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Nuevo Usuario</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'list_user' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/contact_list_user.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Listado de Usuarios</p>
-                                </a>
-                            </li>
-                        </ul>
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Despacho" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/shipping_icon.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Despacho
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'create_dispatcher' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/airplane_plane.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Nuevo Contrato</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'list_dispatcher' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/airplane_plane.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado De Despacho</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'dispatch_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/global_service.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Lista de Traslado</p>
+                                        <i class="right badge badge-primary">New</i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'dispatch_list_complete' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/file_filing.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Ordenes Completadas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/customers_group.png' %}" alt="" style="width: 30px;">
-                            <p>
-                                Clientes
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'order_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/file_open_icon.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Ordenes</p>
-                                    <i class="right badge badge-primary">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'claim_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/cabinet_file.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Listado de Reclamos</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/businessman.png' %}" alt=""
-                                 style="width: 30px;">
-                            <p>
-                                Vendedor
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/education_file.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Generar Registros</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/shopping_cart.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Generar Compra</p>
-                                    <i class="right badge badge-primary">New</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/document.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Listado de Clientes</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/shipping_icon.png' %}" alt=""
-                                 style="width: 30px;">
-                            <p>
-                                Despacho
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'dispatch_list' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/global_service.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Lista de Traslado</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{% url 'dispatch_list_complete' %}" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/task_check.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Ordenes Completadas</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="" class="nav-link active">
-                            <img src="{% static 'assets/img/navbar/supervisor_icon.png' %}" alt=""
-                                 style="width: 30px;">
-                            <p>
-                                Supervisor
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <img src="{% static 'assets/img/navbar/sale_offer_icon.png' %}" alt=""
-                                         style="width: 30px;">
-                                    <p>Lista de Ofertas</p>
-                                    <i class="right badge badge-danger">New</i>
-                                </a>
-                            </li>
-                        </ul>
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Supervisor" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/supervisor_icon.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Supervisor
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'product_list_offer' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/sale_offer_icon.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Lista de Ofertas</p>
+                                        <i class="right badge badge-danger">New</i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'claim_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/cabinet_file.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado de Reclamos</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -500,6 +571,21 @@ to get the desired effect
 <!-- Sweet Alert -->
 
 <script src="{% static 'js/sweetalert2@11.js' %}"></script>
+
+<script type="application/javascript">
+    {% if messages %}
+        var html = '<p>';
+        {% for message in messages %}
+            html += '{{ message }}<br>';
+        {% endfor %}
+        html += '</p>';
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: html
+        });
+    {% endif %}
+</script>
 
 <script type="application/javascript">
     {% if form.errors %}

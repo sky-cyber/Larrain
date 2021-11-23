@@ -11,7 +11,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                        {% if request.session.group.name == "Administrador" %}
+                            <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                        {% else %}
+                            <h1 class="m-0 text-danger text-bold">{{ title2 }}</h1>
+                        {% endif %}
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -22,69 +26,136 @@
                 </div>
             </div>
         </div>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row text-center">
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-primary">
-                            <div class="inner">
-                                <h3>{{ totalProduct }}</h3>
-                                <h4>Productos</h4>
-                                <p class="image card-footer">
-                                    <img src="{% static 'admin/img/product.png' %}" class="elevation-2"
-                                         alt="User Image" style="height: 100px">
-                                </p>
+        {% if request.session.group.name == "Administrador" %}
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row text-center">
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>{{ totalProduct }}</h3>
+                                    <h4>Productos</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'assets/img/navbar/iphone_mobile.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'product_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="{% url 'product_list' %}" class="small-box-footer">Ver Registros <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ totalUsers }}</h3>
-                                <h4>Usuarios</h4>
-                                <p class="image card-footer">
-                                    <img src="{% static 'admin/img/user.png' %}" class="elevation-2"
-                                         alt="User Image" style="height: 100px">
-                                </p>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #05296b; color: white">
+                                <div class="inner">
+                                    <h3>{{ totalUsers }}</h3>
+                                    <h4>Usuarios</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'admin/img/user.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'list_user' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="{% url 'list_user' %}" class="small-box-footer">Ver Registros <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{ totalSupplier }}</h3>
-                                <h4>Proveedores</h4>
-                                <p class="image card-footer">
-                                    <img src="{% static 'admin/img/proveedor.png' %}" class="elevation-2"
-                                         alt="User Image" style="height: 100px">
-                                </p>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #ad0000; color: white">
+                                <div class="inner">
+                                    <h3>{{ totalSupplier }}</h3>
+                                    <h4>Proveedores</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'admin/img/proveedor.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'supplier_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="{% url 'supplier_list' %}" class="small-box-footer">Ver Registros <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="small-box bg-dark">
-                            <div class="inner">
-                                <h3>{{ totalOrder }}</h3>
-                                <h4>Ordenes</h4>
-                                <p class="image card-footer">
-                                    <img src="{% static 'admin/img/order_product.png' %}" class="elevation-2"
-                                         alt="User Image" style="height: 100px">
-                                </p>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #2a2a2a; color: white">
+                                <div class="inner">
+                                    <h3>{{ totalOrder }}</h3>
+                                    <h4>Total de Ordenes</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'admin/img/order_product.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'order_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="{% url 'order_list' %}" class="small-box-footer">Ver Registros <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row text-center">
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #e7d000; color: white">
+                                <div class="inner">
+                                    <h3>{{ totalProductOffer }}</h3>
+                                    <h4>Productos En Oferta</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'assets/img/navbar/discount_sale.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'product_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #0cad07; color: white">
+                                <div class="inner">
+                                    <h3>{{ totalClientWeb }}</h3>
+                                    <h4>Clientes Web</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'assets/img/navbar/group_team.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'list_client' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #8f0c9b; color: white">
+                                <div class="inner">
+                                    <h3>{{ Totaldispatcher }}</h3>
+                                    <h4>Despachadores</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'assets/img/navbar/air_airplane.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'supplier_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box" style="background: #ff8200; color: white">
+                                <div class="inner">
+                                    <h3>{{ OrderProcess }}</h3>
+                                    <h4>Ordenes En Proceso</h4>
+                                    <p class="image card-footer">
+                                        <img src="{% static 'assets/img/navbar/green_mail.png' %}" class="elevation-2"
+                                             alt="User Image" style="height: 100px">
+                                    </p>
+                                </div>
+                                <a href="{% url 'order_list' %}" class="small-box-footer">Ver Registros <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
         <div class="container-fluid">
+            {% if request.session.group.name == "Administrador" %}
+                <h2 class="m-0 text-danger text-bold p-3">{{ title2 }}</h2>
+            {% endif %}
             <div class="row">
                 <div class="col-lg-12">
                     <div id="container"></div>
@@ -135,7 +206,7 @@
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} $</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true

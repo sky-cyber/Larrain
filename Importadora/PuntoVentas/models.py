@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from crum import get_current_request
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.forms import model_to_dict
@@ -24,16 +25,18 @@ class User(AbstractUser):
             item['last_login'] = self.last_login.strftime('%m-%d %H:%M:%S')
         item['date_joined'] = self.date_joined.strftime('%Y-%m-%d')
         item['image'] = self.get_image()
+        item['groups'] = [{'id': g.id, 'name': g.name} for g in self.groups.all()]
         return item
 
-    # def save(self, *args, **kwargs):
-    #     if self.pk is None:
-    #         self.set_password(self.password)
-    #     else:
-    #         user = User.objects.get(pk=self.pk)
-    #         if user.password != self.password:
-    #             self.set_password(self.password)
-    #     super().save(*args, **kwargs)
+    def get_group_session(self):
+        try:
+            request = get_current_request()
+            groups = self.groups.all()
+            if groups.exists():
+                if 'group' not in request.session:
+                    request.session['group'] = groups[0]
+        except:
+            pass
 
 
 class Category(models.Model):
@@ -83,23 +86,6 @@ class Supplier(models.Model):
         verbose_name_plural = "Proveedores"
         ordering = ['id']
 
-
-# class Client(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-#     username = models.CharField(max_length=50, verbose_name="Nombre de usuario")
-#     first_name = models.CharField(max_length=50, verbose_name="Nombres")
-#     last_name = models.CharField(max_length=200, verbose_name="Apellidos")
-#     Password = models.CharField(default="", max_length=200, verbose_name="Contraseña")
-#     email = models.EmailField(max_length=200, null=True, blank=True)
-#     createdAt = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return self.username
-#
-#     class Meta:
-#         verbose_name = "Cliente"
-#         verbose_name_plural = "Clientes"
-#         ordering = ['id']
 
 class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
@@ -163,18 +149,6 @@ class Contact(models.Model):
         ordering = ['name']
 
 
-class Report(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nombre", unique=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Reporte"
-        verbose_name_plural = "Reportes"
-        ordering = ['id']
-
-
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True)
@@ -200,8 +174,38 @@ ORDER_STATUS = (
 )
 
 
+class Dispatcher(models.Model):
+    rut = models.CharField(max_length=13, unique=True, verbose_name="Rut", null=True, blank=False)
+    first_name = models.CharField(max_length=100, verbose_name="Nombre del Cliente", null=True, blank=False)
+    second_name = models.CharField(max_length=100, verbose_name="Segundo Nombre", null=True, blank=False)
+    pather_last_name = models.CharField(default="", max_length=100, verbose_name="Apellido Paterno", null=True,
+                                        blank=False)
+    mother_last_name = models.CharField(default="", max_length=100, verbose_name="Apellido Materno", null=True,
+                                        blank=False)
+    phone = models.CharField(default="", max_length=9, unique=True, verbose_name="Celular", null=True, blank=False)
+    email = models.EmailField(default="", max_length=50, unique=True,
+                              verbose_name="Correo Electronico", null=True, blank=False)
+    image = models.ImageField(upload_to='dispatcher', null=True, blank=True)
+    createdAt = models.DateField(auto_now=True, auto_now_add=False,
+                                 verbose_name="Fecha de Registro", null=True, blank=False)
+
+    def __str__(self):
+        return self.first_name
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(MEDIA_URL, self.image)
+        return '{}{}'.format(STATIC_URL, 'admin/img/profile.png')
+
+    class Meta:
+        verbose_name = "Despachador"
+        verbose_name_plural = "Despachadores"
+        ordering = ['id']
+
+
 class Orders(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    dispatcher = models.ForeignKey(Dispatcher, on_delete=models.SET_NULL, null=True, blank=True)
     paymentMethod = models.CharField(max_length=250, verbose_name="Tipo de pago")
     shippingValue = models.PositiveIntegerField(default=0, verbose_name="Precio De Envio")
     shippingPrice = models.PositiveIntegerField(default=0, verbose_name="SubTotal")
@@ -264,7 +268,6 @@ class OderItem(models.Model):
     qty = models.IntegerField(default=0, null=True, blank=True)
     price = models.IntegerField(default=0, null=True, blank=True)
 
-
     @property
     def get_sub_total(self):
         if self.product.offer == True:
@@ -298,49 +301,74 @@ class ShippingAddress(models.Model):
         ordering = ['id']
 
 
-class SalesDetail(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    report = models.ForeignKey('Report', on_delete=models.SET_NULL, null=True, blank=True)
-    order = models.OneToOneField('Orders', on_delete=models.CASCADE, null=True, blank=True)
-    numDetail = models.IntegerField(default=0, null=True, blank=True)
-    paymentMethod = models.CharField(max_length=250, verbose_name="Tipo de pago")
-    totalPrice = models.DecimalField(default=0, max_digits=7 , decimal_places=2, blank=True, null=True)
-    createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
+GENDER = (
+    ("Masculino", "Masculino"),
+    ("Femenino", "Femenino"),
+    ("Prefiero No Decir", "Prefiero No Decir"),
+)
+
+
+class Client(models.Model):
+    rut = models.CharField(max_length=13, unique=True, verbose_name="Rut", null=True, blank=False)
+    first_name = models.CharField(max_length=100, verbose_name="Primer Nombre", null=True, blank=False)
+    second_name = models.CharField(max_length=100, verbose_name="Segundo Nombre", null=True, blank=False)
+    pather_last_name = models.CharField(default="", max_length=100, verbose_name="Apellido Paterno", null=True,
+                                        blank=False)
+    mother_last_name = models.CharField(default="", max_length=100, verbose_name="Apellido Materno", null=True,
+                                        blank=False)
+    birthday = models.DateField(default=datetime.now, verbose_name="Fecha de Nacimiento", auto_now=False,
+                                auto_now_add=False, null=False, blank=False)
+    phone = models.CharField(default="", max_length=9, unique=True, verbose_name="Celular", null=True, blank=False)
+    email = models.EmailField(default="", max_length=50, unique=True,
+                              verbose_name="Correo Electronico", null=True, blank=False)
+    gender = models.CharField(default="", max_length=50, choices=GENDER)
+    address = models.CharField(default="", max_length=250, verbose_name="Dirección", null=True, blank=True)
+    city = models.CharField(default="", max_length=250, verbose_name="Ciudad", null=True, blank=True)
+    createdAt = models.DateField(auto_now=True, auto_now_add=False,
+                                 verbose_name="Fecha de Registro", null=True, blank=True)
 
     def __str__(self):
-        return str(self.numDetail)
+        return self.first_name
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['gender'] = {'id': self.gender, 'name': self.get_gender_display()}
+        item['date_birthday'] = self.birthday.strftime('%Y-%m-%d')
+        return item
+
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+        ordering = ['id']
+
+
+class Sale(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=False)
+    value = models.PositiveIntegerField(default=0, verbose_name="Precio De Envio", null=True, blank=True)
+    subtotal = models.PositiveIntegerField(default=0, verbose_name="SubTotal", null=True, blank=True)
+    total = models.PositiveIntegerField(default=0, verbose_name="Total", null=True, blank=True)
+    date_joined = models.DateField(default=datetime.now, verbose_name='Fecha de Registro')
+
+    def __str__(self):
+        return self.client.first_name
+
+    class Meta:
+        verbose_name = "Venta"
+        verbose_name_plural = "Ventas"
+        ordering = ['id']
+
+
+class DetSale(models.Model):
+    sale = models.ForeignKey(Sale, on_delete=models.SET_NULL, null=True, blank=False)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=False)
+    price = models.PositiveIntegerField(default=0, verbose_name="Precio", null=True, blank=True)
+    qty = models.PositiveIntegerField(default=0, verbose_name="Cantidad", null=True, blank=True)
+    subtotal = models.PositiveIntegerField(default=0, verbose_name="SubTotal", null=True, blank=True)
+
+    def __str__(self):
+        return self.product.name
 
     class Meta:
         verbose_name = "Detalle de Venta"
-        verbose_name_plural = "Detalles de Ventas"
+        verbose_name_plural = "Detalle de Ventas"
         ordering = ['id']
-
-
-class Dispatch(models.Model):
-    shippingadress = models.ForeignKey('ShippingAddress', on_delete=models.SET_NULL, null=True, blank=True)
-    dispatchNum = models.IntegerField(default=0, null=True, blank=True)
-    dispatchDate = models.DateField(auto_now=True, auto_now_add=False)
-    destinationCity = models.CharField(max_length=250, verbose_name="Ciudad de destino", null=True, blank=True)
-    destinationAddress = models.CharField(max_length=400, verbose_name="Dirección de destino", null=True, blank=True)
-    dispatched_By = models.CharField(max_length=400, verbose_name="Despachado por:", null=True, blank=True)
-    createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
-
-    def __str__(self):
-        return str(self.destinationCity)
-
-    class Meta:
-        verbose_name = "Destino"
-        verbose_name_plural = "Destinos"
-        ordering = ['id']
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,18 +1,21 @@
-from django.contrib.admin import action
 from django.contrib.auth.decorators import permission_required
 
 from Importadora.wsgi import *
+from django.contrib.admin import action
+
 from django.utils.decorators import method_decorator
 from django.contrib.auth.views import LoginView, FormView
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.views.decorators.csrf import csrf_exempt
 
 from Modulo.Funtions.security.form import CreateUserForm, ResetPasswordForm, ChangePasswordForm
 from PuntoVentas.models import *
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import Group
 
 import smtplib
 import uuid
@@ -20,6 +23,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from django.template.loader import render_to_string
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 from Importadora import settings
 
@@ -41,9 +45,12 @@ class LoginFormView(LoginView):
 def RegisterUser(request):
     form = CreateUserForm
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
+        form = CreateUserForm(request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
+            clientes, created = Group.objects.get_or_create(name="Clientes")
+            user = User.objects.get(username=request.POST.get('username'))
+            user.groups.add(clientes)
             return redirect('home')
     context = {'form': form}
     return render(request, 'Security/register.html', context)
@@ -55,13 +62,14 @@ def RegisterUserAdmin(request):
     title2 = "Crear un Usuario Administrador"
     button = "Registar Usuario"
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
+        form = CreateUserForm(request.POST, files=request.FILES)
         if request.user.is_authenticated:
             if form.is_valid():
                 form.save()
                 return redirect('list_user')
     context = {'form': form, 'title': title, 'title2': title2, 'button': button}
     return render(request, 'Security/registerAdmin.html', context)
+
 
 # class RegisterUserAdmin(CreateView):
 #     model = User
@@ -92,62 +100,60 @@ def RegisterUserAdmin(request):
 #         context['title2'] = 'Crear Usuario Administrador'
 #         return context
 
+def UpdateUserAdmin(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    title = "Editar un Usuario"
+    title2 = 'Edicion Usuario Administrador'
+    button = "Editar Usuario"
+    data = {
+        'form': CreateUserForm(instance=user), 'title': title, 'title2': title2, 'button': button
+    }
+    if request.method == 'POST':
+        form = CreateUserForm(data=request.POST, instance=user, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(to='list_user')
+        data['form'] = form
+    return render(request, 'Security/registerAdmin.html', data)
 
-class UpdateUserAdmin(UpdateView):
-    model = User
-    form_class = CreateUserForm
-    template_name = 'Security/registerAdmin.html'
-    permission_required = 'user.add_user'
-    success_url = reverse_lazy('list_user')
+# class UpdateUserAdmin(ValidatorPermissionRequiredMixins, UpdateView):
+#     model = User
+#     form_class = CreateUserForm
+#     template_name = 'Security/registerAdmin.html'
+#     permission_required = 'change_user'
+#     success_url = reverse_lazy('list_user')
+#
+#     # def dispatch(self, request, *args, **kwargs):
+#     #     self.object = self.get_object()
+#     #     return super().dispatch(request, *args, **kwargs)
+#     #
+#     # def post(self, request, *args, **kwargs):
+#     #     data = {}
+#     #     try:
+#     #         action = request.POST['action']
+#     #         if action == 'edit':
+#     #             form = self.get_form()
+#     #             data = form.save()
+#     #         else:
+#     #             data['error'] = 'No ha ingresado ninguna opción'
+#     #     except Exception as e:
+#     #         data['error'] = str(e)
+#     #     return JsonResponse(data)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Editar un Usuario'
+#         context['title2'] = 'Edicion Usuario Administrador'
+#         context['button'] = 'Editar Usuario'
+#         return context
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     return super().dispatch(request, *args, **kwargs)
-    #
-    # def post(self, request, *args, **kwargs):
-    #     data = {}
-    #     try:
-    #         action = request.POST['action']
-    #         if action == 'edit':
-    #             form = self.get_form()
-    #             data = form.save()
-    #         else:
-    #             data['error'] = 'No ha ingresado ninguna opción'
-    #     except Exception as e:
-    #         data['error'] = str(e)
-    #     return JsonResponse(data)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Editar un Usuario'
-        context['title2'] = 'Edicion Usuario Administrador'
-        context['button'] = 'Editar Usuario'
-        return context
-
-
-class DeleteUserAdmin(DeleteView):
+class DeleteUserAdmin(ValidatorPermissionRequiredMixins, DeleteView):
     model = User
     form_class = CreateUserForm
     template_name = 'Security/delete.html'
-    permission_required = 'user.add_user'
+    permission_required = 'delete_user'
     success_url = reverse_lazy('list_user')
-
-    # def dispatch(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     return super().dispatch(request, *args, **kwargs)
-    #
-    # def post(self, request, *args, **kwargs):
-    #     data = {}
-    #     try:
-    #         action = request.POST['action']
-    #         if action == 'edit':
-    #             form = self.get_form()
-    #             data = form.save()
-    #         else:
-    #             data['error'] = 'No ha ingresado ninguna opción'
-    #     except Exception as e:
-    #         data['error'] = str(e)
-    #     return JsonResponse(data)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -263,9 +269,10 @@ class ChangePasswordView(FormView):
         return context
 
 
-class UserListView(ListView):
+class UserListView(ValidatorPermissionRequiredMixins, ListView):
     model = User
     template_name = "Security/list.html"
+    permission_required = 'view_user'
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -277,7 +284,7 @@ class UserListView(ListView):
             action = request.POST['action']
             if action == 'searchdata':
                 data = []
-                for i in User.objects.all():
+                for i in User.objects.all().exclude(groups__name="Clientes"):
                     data.append(i.toJSON())
             else:
                 data['error'] = 'Ha ocurrido un error'
@@ -290,5 +297,44 @@ class UserListView(ListView):
         context['title'] = "Listado De Usuarios"
         context['title2'] = 'Lista de registros de Administradores'
         context['button'] = "Nuevo Registro"
-        context['butto'] = "Generar PDF"
         return context
+
+
+class ClientListView(ValidatorPermissionRequiredMixins, ListView):
+    model = User
+    template_name = "Security/listClient.html"
+    permission_required = 'view_user'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'searchdata':
+                data = []
+                for i in User.objects.filter(groups__name="Clientes"):
+                    data.append(i.toJSON())
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Listado De Clientes"
+        context['title2'] = 'Listado de Clientes Registrados en la Página WYKEP'
+        context['button'] = "Nuevo Registro"
+        return context
+
+
+class ChangeUser(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        try:
+            request.session['group'] = Group.objects.get(pk=self.kwargs['pk'])
+        except:
+            pass
+        return HttpResponseRedirect(reverse_lazy('adm'))

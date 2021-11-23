@@ -43,20 +43,33 @@
                             <form action="{% url 'change_list_dispatch' order.pk %}" method="POST">
                                 {% csrf_token %}
                                 <div class="col-sm-12">
+                                    <label for="username" class="form-label">Asignar Despachador</label>
+                                    <div class="card-footer text-center"
+                                         style="background: #deedfd; font-size: 14px">
+                                        <select class="form-control" name="dispatcher" id="id_dispatcher">
+                                            {% for d, j in range.dispatcher %}
+                                                <option value="{{ d }}"
+                                                {% if d == order.dispatcher %}selected{% endif %}>{{ j }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
                                     <label for="username" class="form-label">Fecha Estimada de Envio</label>
-                                    <input class="card-footer text-center form-control datepicker" name="arrivalDate" autocomplete="off"
-                                           style="background: #deedfd; font-size: 14px;">
-                                        {{ update_date }}
+                                    <input class="text-center form-control datepicker" name="arrivalDate"
+                                           autocomplete="off" required=""
+                                           style="background: #deedfd; font-size: 14px;" value="">
+                                    <div class="text-center">
+                                        Fecha de Cambio Anterior: {{ date }}
+                                    </div>
                                     </input>
                                 </div>
-                            </form>
 
-                            <div class="col-sm-12">
-                                <label for="username" class="form-label">Actualizar Pedido</label>
-                                <div class="card-footer text-center"
-                                     style="background: #deedfd; font-size: 14px">
-                                    <form action="{% url 'change_list_dispatch' order.pk %}" method="POST">
-                                        {% csrf_token %}
+                                <div class="col-sm-12">
+                                    <label for="username" class="form-label">Actualizar Estado</label>
+                                    <div class="card-footer text-center"
+                                         style="background: #deedfd; font-size: 14px">
                                         <select class="form-control" name="status">
                                             {% for i, j in allstatus %}
                                                 <option value="{{ i }}"
@@ -65,9 +78,9 @@
                                         </select>
                                         <br>
                                         <button class="btn btn-dark">Actualizar</button>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         {% else %}
                             <div class="col-sm-12">
                                 <label for="username" class="form-label">Fecha En La que se Enviaron Los

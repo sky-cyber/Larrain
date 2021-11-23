@@ -363,7 +363,7 @@
             submitFormData()
         })
 
-        function submitFormData() {
+        function submitFormData(row) {
             console.log('PayPal button clicked')
 
             var userFormData = {
@@ -405,11 +405,11 @@
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('success:', data);
-                    alert('transaction complete');
-                    window.location.href = "/"
+                    alert('Transacción Completa');
+                    window.location.href = '/purchase/detail/';
                 })
-
         }
+
 
     </script>
     </body>

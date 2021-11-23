@@ -1,7 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.functions import Coalesce
 from django.shortcuts import render
 
 # Create your function here.
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, TemplateView
 from django.core.paginator import Paginator
 
@@ -21,16 +25,30 @@ def home(request):
     return render(request, 'Web/home.html', context)
 
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'Adm/dashboard.html'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(DashboardView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        request.user.get_group_session()
+        return super(DashboardView, self).get(request, *args, **kwargs)
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Total de Registros'
+        context['title2'] = 'Metricas Del Año 2020'
         context['totalProduct'] = Product.objects.count()
-        context['totalUsers'] = User.objects.count()
+        context['totalProductOffer'] = Product.objects.filter(offer=True).count()
+        context['totalUsers'] = User.objects.all().exclude(groups__name="Clientes").count()
+        context['totalClientWeb'] = User.objects.filter(groups__name="Clientes").count()
         context['totalSupplier'] = Supplier.objects.count()
-        context['totalOrder'] = Orders.objects.count()
+        context['totalOrder'] = Orders.objects.all().exclude(isPaid=False).count()
+        context['OrderProcess'] = Orders.objects.filter(status="Orden En Proceso").count()
+        context['Totaldispatcher'] = Dispatcher.objects.all().count()
         return context
 
 
@@ -155,6 +173,14 @@ class ProductDetailView(TemplateView):
         context['order'] = order
         context['items'] = items
         context['button'] = 'Agregar al Carrito'
+        return context
+
+
+class PurchaseDetail(TemplateView):
+    template_name = 'Web/purchaseDetail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PurchaseDetail, self).get_context_data(**kwargs)
         return context
 
 
