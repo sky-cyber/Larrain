@@ -37,7 +37,7 @@
                         <form role="form">
                             <div class="card-body">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Busque Un Producto">
+                                    <input type="text" class="form-control select2" placeholder="Busque Un Producto">
                                     <span class="input-group-append">
                                         <button type="button" class="btn btn-danger" style="height: 38px"><i
                                                 class="fas fa-times-circle"></i></button>
@@ -86,12 +86,13 @@
                 <div class="col-lg-4">
                     <div class="card card-dark">
                         <div class="card-header">
-                            <h3 class="card-title" style="height: 10px"><i class="fas fa-cart-arrow-down"></i> {{ title3 }}</h3>
+                            <h3 class="card-title" style="height: 10px"><i
+                                    class="fas fa-cart-arrow-down"></i> {{ title3 }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Fecha de Venta:</label>
-                                {{ form.date_joined | add_class:'form-control' }}
+                                {{ form.date_joined | add_class:'form-control datepicker' }}
                             </div>
                             <div class="form-group">
                                 <label>Cliente:</label>
@@ -99,15 +100,15 @@
                             </div>
                             <div class="form-group">
                                 <label>SubTotal:</label>
-                                {{ form.subtotal | add_class:'form-control'}}
+                                {{ form.subtotal | add_class:'form-control'| attr:'readonly:True' }}
                             </div>
                             <div class="form-group">
                                 <label>Costo de Envio:</label>
-                                {{ form.value | add_class:'form-control'}}
+                                {{ form.value | add_class:'form-control' | attr:'readonly:True'}}
                             </div>
                             <div class="form-group">
                                 <label>Total a Pagar:</label>
-                                {{ form.total | add_class:'form-control'}}
+                                {{ form.total | add_class:'form-control'| attr:'readonly:True' }}
                             </div>
                         </div>
                     </div>

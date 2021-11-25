@@ -44,21 +44,18 @@
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Categoria</th>
-                                    <th>Marca</th>
                                     <th>Precio</th>
                                     <th>Stock</th>
                                     <th>Imagen</th>
-                                    <th>Fecha de creacion</th>
                                     <th>Opciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for p in object_list %}
                                     <tr>
-                                        <td>{{ p.id }}</td>
+                                        <td><a class="btn btn-primary" href="{% url 'detail_product' p.pk %}">{{ p.id }}</a></td>
                                         <td>{{ p.name }}</td>
                                         <td>{{ p.category }}</td>
-                                        <td>{{ p.brand }}</td>
                                         {% if p.offer %}
                                             <td>${{ p.offerPrice | intcomma }}</td>
                                         {% else %}
@@ -81,7 +78,6 @@
                                             <img src="{{ p.imageURL }}" class="img-fluid d-block mx-auto"
                                                  style="width: 80px; height: 80px">
                                         </td>
-                                        <td>{{ p.createdAt }}</td>
                                         <td>
                                             <a href="{% url 'product_edit' p.id %}" type="button"
                                                class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>

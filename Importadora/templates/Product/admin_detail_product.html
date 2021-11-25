@@ -1,0 +1,84 @@
+{% extends 'Adm/admin.html' %}
+
+{% load humanize %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <div class="container">
+            <main class="mt-1">
+                <div class="row wow fadeIn">
+                    <hr>
+                    {% if product.offer == True %}
+                        <a href="{% url 'product_list_offer' %}" class="btn btn-primary m-3" style="width: 250px">Volver al
+                            Listado de Productos</a>
+                    {% else %}
+                        <a href="{% url 'product_list' %}" class="btn btn-primary m-3" style="width: 250px">Volver al
+                            Listado de Productos</a>
+                    {% endif %}
+                    <hr>
+                    <div class="card bg-dark">
+                        <div class="card-body text-center">
+                            <h1 class="card-text text-bold">Detalle del Producto</h1>
+                            <p class="card-text text-bold">Se visualiza toda la informacion y Caracteristicas del
+                                Producto que se mostrará en vitrina</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-6 mb-4">
+                        <div class="card-footer text-center bg-dark" style="font-size: 20px">Información Del Producto
+                        </div>
+                        <div class="card-footer" style="font-size: 18px">
+                                <span class="card">
+                                    <strong>Nombre: {{ product.name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Provedor: {{ product.supplier }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Categoria: {{ product.category }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Marca: {{ product.brand }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Precio: ${{ product.salePrice | intcomma }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Oferta: ${{ product.offerPrice | intcomma }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Stock: {{ product.stock }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Garantia: {{ product.warranty }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Número de Visitas: {{ product.numReviews }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Fecha de Registro: {{ product.createdAt }}</strong>
+                                </span>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 text-center" style="font-size: 20px">
+                        <strong class="p-5">Foto del Producto:</strong>
+                        <br><br>
+                        <img src="{{ product.imageURL }}"
+                             class="img-fluid" alt="" style="width: 450px">
+                    </div>
+                    <h2 class="text-center">Caracteristicas del producto</h2>
+                    <hr>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="card-footer">
+                                {{ product.description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </main>
+        </div>
+    </div>
+{% endblock %}

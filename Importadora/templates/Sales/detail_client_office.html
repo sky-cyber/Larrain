@@ -1,0 +1,71 @@
+{% extends 'Adm/admin.html' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <div class="container">
+            <main class="mt-1">
+                <div class="row wow fadeIn">
+                    <hr>
+                    <a href="{% url 'list_client_face' %}" class="btn btn-primary m-3" style="width: 250px">Volver al
+                        Listado de Clientes</a>
+                    <hr>
+                    <div class="card bg-dark">
+                        <div class="card-body text-center">
+                            <h1 class="card-text text-bold">Detalle del Cliente</h1>
+                            <p class="card-text text-bold">Se visualiza toda la informacion Del Cliente Registrado Desde
+                                la Sucursal</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12 w-25">
+                        <div class="card-footer bg-dark" style="font-size: 20px; width: 500px">Información Del Cliente
+                        </div>
+                        <div class="card-footer" style="font-size: 18px; width: 500px">
+                                <span class="card">
+                                    <strong>Rut: {{ client.rut }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Primer Nombre: {{ client.first_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Segundo Nombre: {{ client.second_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Primer Apellido: {{ client.pather_last_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Segundo Apellido: {{ client.mother_last_name }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Fecha de Nacimiento: {{ client.birthday }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Celular: {{ client.phone }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Correo Electronico: {{ client.email }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Genero: {{ client.gender }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Ciudad: {{ client.city }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Dirección: {{ client.address }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Sucursal: {{ client.address }}</strong>
+                                </span>
+                            <span class="card">
+                                    <strong>Fecha de Regitro: {{ client.createdAt }}</strong>
+                                </span>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </main>
+        </div>
+    </div>
+{% endblock %}

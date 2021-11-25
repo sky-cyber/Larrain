@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from Modulo.Funtions.product.form import ProductForm
 from PuntoVentas.models import Product
 
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView
 from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 
@@ -21,6 +21,7 @@ class ProductCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, C
         context['title'] = 'Agregar Nuevo Producto'
         context['title2'] = 'Registro'
         context['button'] = 'Guardar Registro'
+
         return context
 
 
@@ -82,6 +83,17 @@ class ProductDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, D
         context['product_url'] = reverse_lazy('product_list')
         return context
 
+
+class DetailProduct(TemplateView):
+    model = Product
+    template_name = 'Product/admin_detail_product.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailProduct, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        product = Product.objects.get(pk=pk)
+        context['product'] = product
+        return context
 
 
 

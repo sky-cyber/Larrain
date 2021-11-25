@@ -47,6 +47,8 @@ class CategoryCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
         context['title'] = "Crear Categoria"
         context['title2'] = "Agregue Su Categoria"
         context['button'] = "Guardar Registro"
+        context['list'] = reverse_lazy('category_list')
+        context['button2'] = "Volver al Listado"
         return context
 
 
@@ -62,6 +64,8 @@ class CategoryUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
         context['title'] = "Edición de la Categoria"
         context['title2'] = "Edite Su Categoria"
         context['button'] = "Actualizar Categoria"
+        context['list'] = reverse_lazy('category_list')
+        context['button2'] = "Volver al Listado"
         return context
 
 

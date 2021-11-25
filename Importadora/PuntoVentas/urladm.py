@@ -32,6 +32,7 @@ urlpatterns = [
     path('product/edit/<int:pk>/', (ProductUpdateView.as_view()), name='product_edit'),
     path('product/delete/<int:pk>/', (ProductDeleteView.as_view()), name='product_delete'),
     path('product/list/offer', (ProductListOfferView.as_view()), name='product_list_offer'),
+    path('detail/product/<int:pk>/', DetailProduct.as_view(), name='detail_product'),
 
     # URL THE SUPPLIER
     path('supplier/add', (SupplierCreateView.as_view()), name='supplier_create'),
@@ -81,12 +82,14 @@ urlpatterns = [
     path('list/dispatcher', ListDispacher.as_view(), name='list_dispatcher'),
     path('update/dispatcher/<int:pk>/', UpdateDispatcher.as_view(), name='update_dispatcher'),
     path('delete/dispatcher/<int:pk>/', DeleteDispatcher.as_view(), name='delete_dispatcher'),
+    path('detail/dispatcher/<int:pk>/', DetailDispatcher.as_view(), name='detail_dispatcher'),
 
     # URL FOR CLIENT
     path('create/client', CreateClient.as_view(), name='create_client'),
     path('list/Client/face-to-face', ListClientFaceToFace.as_view(), name='list_client_face'),
     path('edit/Client/<int:pk>/', UpdateClient.as_view(), name='update_client'),
     path('delete/client/<int:pk>/', DeleteClient.as_view(), name='delete_client'),
+    path('detail/client/office/<int:pk>/', DetailClientOffice.as_view(), name='detail_client_office'),
 
     # URL FOR SALE
     path('sale/client', SaleClient.as_view(), name='sale_client')

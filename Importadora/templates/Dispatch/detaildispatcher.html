@@ -1,0 +1,104 @@
+{% extends 'Adm/admin.html' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <a href="{% url 'list_dispatcher' %}" class="btn btn-dark">{{ button }}</a>
+                        <a href="" class="btn btn-success">{{ PDF }}</a>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h1 class="card-text text-bold">Contrato del Despachador</h1>
+                                        <p class="card-text text-bold">Se visualiza toda la informacion y datos
+                                            personales del nuevo Despachador que fue contratado por la Empresa Importadora
+                                            Larrain.</p>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <label for="username" class="form-label">Foto de Perfil</label>
+                                    <div class="col-sm-3">
+                                        <img src="{{ dispatcher.get_image }}" style="width: 200px; height: 180px">
+                                    </div>
+                                    <hr>
+                                    <div class="row g-3">
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">rut</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.rut }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Nombres Del Despachador</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.first_name }}</strong>
+                                                <strong>{{ dispatcher.second_name }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Apellidos Del Despachador</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.pather_last_name }}</strong>
+                                                <strong>{{ dispatcher.mother_last_name }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="email" class="form-label">Celular</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.phone }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="username" class="form-label">Correo Electronico</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.email }}</strong>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <label for="username" class="form-label">Fecha de Registro</label>
+                                            <div class="card-footer text-center"
+                                                 style="background: #deedfd; font-size: 14px">
+                                                <strong>{{ dispatcher.createdAt }}</strong>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

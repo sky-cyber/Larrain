@@ -68,6 +68,18 @@ class DeleteClient(ValidatorPermissionRequiredMixins, DeleteView):
         return context
 
 
+class DetailClientOffice(TemplateView):
+    model = Client
+    template_name = 'Sales/detail_client_office.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailClientOffice, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        client = Client.objects.get(pk=pk)
+        context['client'] = client
+        return context
+
+
 class SaleClient(CreateView):
     model = Sale
     form_class = SaleForm
@@ -80,6 +92,8 @@ class SaleClient(CreateView):
         context['title2'] = "Detalle del Producto"
         context['title3'] = "Datos De La Orden"
         return context
+
+
 
 
 

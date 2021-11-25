@@ -152,6 +152,21 @@ class DeleteDispatcher(ValidatorPermissionRequiredMixins, DeleteView):
         return context
 
 
+class DetailDispatcher(TemplateView):
+    model = Dispatcher
+    template_name = 'Dispatch/detaildispatcher.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailDispatcher, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        dispatcher = Dispatcher.objects.get(pk=pk)
+        context['dispatcher'] = dispatcher
+        context['button'] = "Volver al Listado"
+        context['PDF'] = "Generar PDF"
+        return context
+
+
+
 
 
 

@@ -454,7 +454,7 @@ to get the desired effect
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{% url 'list_dispatcher' %}" class="nav-link">
-                                        <img src="{% static 'assets/img/navbar/airplane_plane.png' %}" alt=""
+                                        <img src="{% static 'assets/img/navbar/edit_file_icon.png' %}" alt=""
                                              style="width: 30px;">
                                         <p>Listado De Despacho</p>
                                     </a>
@@ -567,6 +567,27 @@ to get the desired effect
 {% block body %}
 
 {% endblock %}
+
+<!-- Format Date -->
+<script type="application/javascript">
+    !function ($) {
+        $.fn.datepicker.dates['es'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy",
+            monthsTitle: "Meses",
+            clear: "Borrar",
+            weekStart: 1,
+            format: "yyyy-mm-dd"
+        }
+    }(jQuery);
+    $('.datepicker').datepicker({
+        language: 'es'
+    });
+</script>
 
 <!-- Sweet Alert -->
 

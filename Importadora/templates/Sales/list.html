@@ -38,18 +38,14 @@
                                     <tr>
                                         <th>RUT</th>
                                         <th>Nombre Completo</th>
-                                        <th>Celular</th>
-                                        <th>Genero</th>
                                         <th>Opciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for c in clienteFace %}
                                         <tr>
-                                            <td><a class="btn btn-dark btn-sm" href="">{{ c.rut }}</a></td>
+                                            <td><a class="btn btn-dark btn-sm" href="{% url 'detail_client_office' c.pk %}">{{ c.rut }}</a></td>
                                             <td>{{ c.first_name }} {{ c.second_name }} {{ c.pather_last_name }} {{ c.mother_last_name }}</td>
-                                            <td>{{ c.phone }}</td>
-                                            <td>{{ c.gender }}</td>
                                             <td>
                                                 <a href="{% url 'update_client' c.pk %}" type="button"
                                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
