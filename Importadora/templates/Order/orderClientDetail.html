@@ -218,7 +218,7 @@
                                             <td>${{ item.get_sub_total | intcomma }}</td>
                                             <td class="text-center"><a
                                                     href="{% url 'productDetail' item.product.slug %}">
-                                                <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
+                                                <img src="{{ item.product.get_image }}" class="img-fluid d-block mx-auto"
                                                      style="width: 40px; height: 40px"></a>
                                             </td>
                                         </tr>

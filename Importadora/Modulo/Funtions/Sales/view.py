@@ -1,6 +1,9 @@
+from django.http import JsonResponse
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView
-from PuntoVentas.models import Client, Sale
+from PuntoVentas.models import *
 from Modulo.Funtions.Sales.form import ClientForm, SaleForm
 from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
@@ -86,9 +89,30 @@ class SaleClient(CreateView):
     template_name = 'Sales/createSale.html'
     success_url = reverse_lazy('adm')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'search_products':
+                data = []
+                prods = Product.objects.filter(name__contains=request.POST['term'])[0:10]
+                for i in prods:
+                    item = i.toJSON()
+                    item['value'] = i.name
+                    data.append(item)
+            else:
+                data['error'] = 'No ha ingresado ninguna opción'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
     def get_context_data(self, **kwargs):
         context = super(SaleClient, self).get_context_data(**kwargs)
-        context['title'] = "Crear Un Pedido"
+        context['title'] = "Crear Una Venta"
         context['title2'] = "Detalle del Producto"
         context['title3'] = "Datos De La Orden"
         return context

@@ -61,7 +61,7 @@
                                  style="border-color: #000b16">{{ item.product.name }}</div>
                             <li class="list-group-item d-flex justify-content-between lh-sm py-1">
                                 <div class="text-center">
-                                    <img class="text-center" src="{{ item.product.imageURL }}" alt=""
+                                    <img class="text-center" src="{{ item.product.get_image }}" alt=""
                                          style="width: 100px;">
                                     <span class="p-1">Catidad: {{ item.qty }}</span>
                                     {% if item.product.offer %}

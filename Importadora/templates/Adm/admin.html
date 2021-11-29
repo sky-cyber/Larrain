@@ -9,10 +9,28 @@
     <title>AdminLTE 3 | Dashboard 3</title>
 
     <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- jQueryUI -->
+    <script src="{% static 'admin/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/jquery-ui-1.13.0/jquery-ui.min.css' %}">
+
+    <!-- jQuery Confirm -->
+    <script src="{% static 'admin/jqueryConfirm/jquery-confirm.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/jqueryConfirm/jquery-confirm.min.css' %}">
+
+    <!-- Sweet Alert -->
+    <script src="{% static 'js/sweetalert2@11.js' %}"></script>
+
+    <!-- Format DatePicker -->
     <script src="{% static 'bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
     <script src="{% static 'admin/plugins/popper/popper.min.js' %}"></script>
+
+    <!-- Format Touchspin -->
+    <script src="{% static 'admin/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.css' %}">
 
     <!-- Select2 -->
     <script src="{% static 'admin/select2-4.0.13/js/select2.min.js' %}" defer></script>
@@ -33,10 +51,19 @@
     <script src="{% static 'admin/highcharts/modules/export-data.js' %}"></script>
     <script src="{% static 'admin/highcharts/modules/accessibility.js' %}"></script>
 
-    <!-- listado de usuarios -->
-    <script src="{% static 'admin/js/list.js' %}"></script>
-    <!-- listado de Clientes -->
-    <script src="{% static 'admin/js/listClient.js' %}"></script>
+    <!-- functions software -->
+    <!-- user list -->
+    <script src="{% static 'admin/js/functions/list.js' %}"></script>
+    <!-- customer list -->
+    <script src="{% static 'admin/js/functions/listClient.js' %}"></script>
+    <!-- Data Table -->
+    <script src="{% static 'admin/js/functions/dataTable.js' %}"></script>
+    <!-- DatePicker -->
+    <script src="{% static 'admin/js/functions/datePicker.js' %}"></script>
+    <!-- functions -->
+    <script src="{% static 'admin/js/functions/functions.js' %}"></script>
+
+    <!------------------------->
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
@@ -49,6 +76,10 @@
     <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/datatable/datatables.min.css' %}"/>
+    {% block Head %}
+
+    {% endblock %}
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -568,30 +599,6 @@ to get the desired effect
 
 {% endblock %}
 
-<!-- Format Date -->
-<script type="application/javascript">
-    !function ($) {
-        $.fn.datepicker.dates['es'] = {
-            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-            daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
-            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-            today: "Hoy",
-            monthsTitle: "Meses",
-            clear: "Borrar",
-            weekStart: 1,
-            format: "yyyy-mm-dd"
-        }
-    }(jQuery);
-    $('.datepicker').datepicker({
-        language: 'es'
-    });
-</script>
-
-<!-- Sweet Alert -->
-
-<script src="{% static 'js/sweetalert2@11.js' %}"></script>
 
 <script type="application/javascript">
     {% if messages %}
@@ -638,63 +645,112 @@ to get the desired effect
     {% endif %}
 </script>
 
+<!-- Validator RUT -->
+
+<script type="application/javascript">
+
+    $("#form_id").on("submit", function (e) {
+        e.preventDefault();
+
+        var rut = $("#id_rut").val();
+
+        console.log(rut);
+
+        var rutvalido = checkRut(rut);
+
+        if (!rutvalido) {
+            var errors = 'El Rut Ingresado No Es Valido';
+            {% for field in form %}
+                {% for error in field.errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors += '{{ error }}\n';
+            {% endfor %}
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errors
+            });
+        } else {
+            $("#form_id").submit();
+        }
+    });
+
+    //codigo para validar rut
+    function checkRut(rut) {
+        // Despejar Puntos
+        console.log(rut)
+        var valor = rut.replace(/[-.\s]/g, '');
+        {#valor = valor.replace(/-/g, '');#}
+
+        // Aislar Cuerpo y Dígito Verificador
+        var cuerpo = valor.slice(0, -1);
+        var dv = valor.slice(-1).toUpperCase();
+
+        // Formatear RUN
+        rut = cuerpo + "-" + dv;
+
+        // Si no cumple con el mínimo ej. (n.nnn.nnn)
+        if (cuerpo.length < 7) {
+            {#rut.setCustomValidity("RUT Incompleto");#}
+            return false;
+        }
+
+        // Calcular Dígito Verificador
+        var suma = 0;
+        var multiplo = 2;
+
+        // Para cada dígito del Cuerpo
+        for (var i = 1; i <= cuerpo.length; i++) {
+            // Obtener su Producto con el Múltiplo Correspondiente
+            var index = multiplo * valor.charAt(cuerpo.length - i);
+
+            // Sumar al Contador General
+            suma = suma + index;
+
+            // Consolidar Múltiplo dentro del rango [2,7]
+            if (multiplo < 7) {
+                multiplo = multiplo + 1;
+            } else {
+                multiplo = 2;
+            }
+        }
+
+        // Calcular Dígito Verificador en base al Módulo 11
+        var dvEsperado = 11 - (suma % 11);
+
+        // Casos Especiales (0 y K)
+
+        if (dv === "K") {
+            dv = 10;
+        }
+        if (dv == 0) {
+            dv = 11;
+        }
+
+        console.log(dvEsperado)
+        console.log(dv)
+
+        // Validar que el Cuerpo coincide con su Dígito Verificador
+        if (dvEsperado != dv) {
+            {#rut.setCustomValidity("RUT Inválido");#}
+            return false;
+        }
+
+        // Si todo sale bien, eliminar errores (decretar que es válido)
+        {#rut.setCustomValidity("");#}
+        return true;
+    }
+</script>
+
 <!-- REQUIRED SCRIPTS PARA EL DATATABLE -->
 
 <script src="{% static 'admin/datatable/dataTables.min.js' %}" defer></script>
 <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
 <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#tabla').DataTable({
-            "language": {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar _MENU_ registros",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla =(",
-                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-                "buttons": {
-                    "copy": "Copiar",
-                    "colvis": "Visibilidad"
-                }
-            },
-        });
-        {% comment %}        $('#btntest').on('click', function () {
-                    $.ajax({
-                       url: '{% url 'category_list' %}',
-                       type: 'POST',
-                       data: {id: 1},
-                       dataType: 'json'
-                    }).done(function (data) {
-
-                    }).fail(function (data) {
-                        alert("error");
-                    }).always(function (data) {
-                        alert("complete")
-                    });
-                });{% endcomment %}
-    });
-</script>
-
-<!-- jQuery -->
-<script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap -->
 <script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <!-- AdminLTE -->

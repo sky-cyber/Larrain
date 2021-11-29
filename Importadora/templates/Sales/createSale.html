@@ -1,6 +1,9 @@
 {% extends 'Adm/admin.html' %}
+{% load static %}
 
 {% load widget_tweaks %}
+
+{% load humanize %}
 
 {% block body %}
     <div class="content-wrapper">
@@ -37,7 +40,8 @@
                         <form role="form">
                             <div class="card-body">
                                 <div class="input-group">
-                                    <input type="text" class="form-control select2" placeholder="Busque Un Producto">
+                                    <input type="text" class="form-control" name="search"
+                                           placeholder="Busque Un Producto" autocomplete="off">
                                     <span class="input-group-append">
                                         <button type="button" class="btn btn-danger" style="height: 38px"><i
                                                 class="fas fa-times-circle"></i></button>
@@ -45,40 +49,25 @@
                                     <br><br>
                                     <hr>
                                     <div class="container p-2" style="font-size: 12px">
-                                        <table class="table table-hover " id="tabla" style="width: 100%">
+                                        <table class="table table-hover " id="tblproduct" style="width: 100%">
                                             <thead class="bg-dark alert-link text-white">
                                             <tr>
                                                 <th>Eliminar</th>
                                                 <th>Producto</th>
                                                 <th>Categoria</th>
                                                 <th>Precio</th>
+                                                <th>oferta</th>
                                                 <th>Cantidad</th>
                                                 <th>Subtotal</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            {% for c in object_list %}
-                                                <tr>
-                                                    <td>{{ c.id }}</td>
-                                                    <td>{{ c.name }}</td>
-                                                    <td>
-                                                        <a href="{% url 'category_update' c.id %}" type="button"
-                                                           class="btn btn-warning btn-sm"><i
-                                                                class="fas fa-edit"></i>'</a>
-                                                        <a href="{% url 'category_delete' c.id %}"
-                                                           class="btn btn-danger btn-sm"><i
-                                                                class="fas fa-trash-restore-alt"></i></a>
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-success btnRemoveAll">Limpiar Cesta</button>
                             </div>
                         </form>
                     </div>
@@ -104,7 +93,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Costo de Envio:</label>
-                                {{ form.value | add_class:'form-control' | attr:'readonly:True'}}
+                                {{ form.value | add_class:'form-control' | attr:'readonly:True' }}
                             </div>
                             <div class="form-group">
                                 <label>Total a Pagar:</label>
@@ -113,6 +102,8 @@
                         </div>
                     </div>
                 </div>
+                <script src="{% static 'admin/js/functions/datePickerSale.js' %}"></script>
+                <script src="{% static 'admin/js/functions/CreateSale.js' %}"></script>
             </div>
         </div>
     </div>

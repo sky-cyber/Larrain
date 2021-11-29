@@ -38,6 +38,7 @@
                             <div class="card-body">
                                 <div class="container">
                                     {% csrf_token %}
+                                    <input type="hidden" name="action" value="{{ action }}">
                                     {{ form }}
                                 </div>
                                 <br>
@@ -50,12 +51,36 @@
                                     </a>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+        <script type="application/javascript">
+            $('form').on('submit', function (e) {
+                e.preventDefault()
+                var parameter = $(this).serializeArray();
+                $.ajax({
+                    url: window.location.pathname,
+                    type: 'POST',
+                    data: parameter,
+                    dataType: 'json',
+                }).done(function (data) {
+                    if (!data.hasOwnProperty('error')) {
+                        location.href = '{{ list }}'
+                        return false;
+                    }
+                    message_error(data.error);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + ': ' + errorThrown);
+                }).always(function (data) {
+
+                });
+                {% comment %}submit_with_ajax(window.location.pathname, parameter, function () {
+                    location.href = '{{ list }}'
+                });{% endcomment %}
+            });
+        </script>
     </div>
 {% endblock %}
 

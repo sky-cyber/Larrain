@@ -42,6 +42,23 @@ class CategoryCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
     success_url = reverse_lazy('category_list')
     permission_required = 'add_category'
 
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'add':
+                form = self.get_form()
+                # form = CategoryForm(request.POST)
+                if form.is_valid():
+                    form.save()
+                else:
+                    data['error'] = form.errors
+            else:
+                data['error'] = "No ha ingresado ninguna opción"
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Crear Categoria"
@@ -49,6 +66,7 @@ class CategoryCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
         context['button'] = "Guardar Registro"
         context['list'] = reverse_lazy('category_list')
         context['button2'] = "Volver al Listado"
+        context['action'] = 'add'
         return context
 
 
@@ -59,6 +77,26 @@ class CategoryUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
     success_url = reverse_lazy('category_list')
     permission_required = 'change_category'
 
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(CategoryUpdateView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            action = request.POST['action']
+            if action == 'edit':
+                form = self.get_form()
+                if form.is_valid():
+                    form.save()
+                else:
+                    data['error'] = form.errors
+            else:
+                data['error'] = "No Ha Selecionado Ninguna Opción"
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Edición de la Categoria"
@@ -66,6 +104,7 @@ class CategoryUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
         context['button'] = "Actualizar Categoria"
         context['list'] = reverse_lazy('category_list')
         context['button2'] = "Volver al Listado"
+        context['action'] = 'edit'
         return context
 
 
@@ -74,6 +113,18 @@ class CategoryDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
     template_name = "category/delete.html"
     success_url = reverse_lazy('category_list')
     permission_required = 'delete_category'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super(CategoryDeleteView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            self.object.delete()
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

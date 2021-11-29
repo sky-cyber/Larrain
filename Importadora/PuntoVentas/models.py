@@ -46,6 +46,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
     class Meta:
         verbose_name = "Categoria"
         verbose_name_plural = "Categorias"
@@ -109,13 +113,18 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
-        except:
-            url = ''
-        return url
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['category'] = self.category.toJSON()
+        item['image'] = self.get_image()
+        item['salePrice'] = format(int(self.salePrice))
+        item['offerPrice'] = format(int(self.offerPrice))
+        return item
+
+    def get_image(self):
+        if self.image:
+            return '{}{}'.format(MEDIA_URL, self.image)
+        return '{}{}'.format(STATIC_URL, 'assets/img/logo_wykep_ori.png')
 
     class Meta:
         verbose_name = "Producto"

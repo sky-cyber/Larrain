@@ -75,7 +75,7 @@
                                            class="p-1 btn btn-dark">{{ item.product.name }}</a>
                                         <li class="list-group-item justify-content-between lh-sm py-1">
                                             <div style="font-size: 15px">
-                                                <img src="{{ item.product.imageURL }}" alt=""
+                                                <img src="{{ item.product.get_image }}" alt=""
                                                      style="width: 100px;">
                                                 <span class="p-1">Catidad: {{ item.qty }}</span>
                                                 {% if item.product.offer %}

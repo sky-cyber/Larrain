@@ -101,7 +101,7 @@
                             <div class="col-lg-3 col-md-6 mb-4 text-center">
                                 <div class="card h-100 text-bold text-black">
                                     {% if product.image %}
-                                        <img class="card-img-top" src="{{ product.imageURL }}"
+                                        <img class="card-img-top" src="{{ product.get_image }}"
                                              style="width: 100%; height: 250px">
                                     {% endif %}
                                     <div class="card-body">
