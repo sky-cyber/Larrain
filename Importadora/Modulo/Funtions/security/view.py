@@ -51,7 +51,33 @@ def RegisterUser(request):
             clientes, created = Group.objects.get_or_create(name="Clientes")
             user = User.objects.get(username=request.POST.get('username'))
             user.groups.add(clientes)
+
+            user.save()
+
+            mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+            mailServer.starttls()
+            mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+
+            email_to = user.email
+
+            # Construimos el mensaje simple
+            mensaje = MIMEMultipart()
+            mensaje['From'] = settings.EMAIL_HOST_USER
+            mensaje['To'] = email_to
+            mensaje['Subject'] = "Bienvenido A Wykep Querido Cliente"
+
+            content = render_to_string('Email/welcome.html', {
+                'user': user,
+            })
+            # Adjuntamos el texto
+            mensaje.attach(MIMEText(content, 'html'))
+
+            # Envio del mensaje
+            mailServer.sendmail(settings.EMAIL_HOST_USER,
+                                email_to,
+                                mensaje.as_string())
             return redirect('home')
+
     context = {'form': form}
     return render(request, 'Security/register.html', context)
 
@@ -115,6 +141,7 @@ def UpdateUserAdmin(request, pk):
             return redirect(to='list_user')
         data['form'] = form
     return render(request, 'Security/registerAdmin.html', data)
+
 
 # class UpdateUserAdmin(ValidatorPermissionRequiredMixins, UpdateView):
 #     model = User

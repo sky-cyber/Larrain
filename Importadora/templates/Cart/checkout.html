@@ -208,125 +208,13 @@
 
                         Metodos de Pago :
                         <div class="card-footer py-2 text-center hidden" id="payment-info"
-                             style="background: #2b579b; color: white; font-size: 25px">
-                            <button id="make-payment">
-                                <img src="{% static 'assets/img/picture/paypal.png' %}" class="img-fluid"
-                                     style="width: 50px; height: 50px">
-                            </button>
-                            <button>
-                                <img src="{% static 'assets/img/picture/mastercard.png' %}" class="img-fluid"
-                                     style="width: 50px; height: 50px">
-                            </button>
-                            <button>
-                                <img src="{% static 'assets/img/picture/bank-transfer.png' %}" class="img-fluid"
-                                     style="width: 50px; height: 50px">
-                            </button>
-                            <button>
-                                <img src="{% static 'assets/img/picture/american-expres.png' %}" class="img-fluid"
-                                     style="width: 50px; height: 50px">
+                             style="background: #012773; color: white; font-size: 25px;border: None">
+                            <button id="make-payment" class="text-bold py-2 btn-lg btn-block"
+                                    style="background:#012773; color: white; padding: 200px">
+                                <i class="fab fa-paypal"></i> PayPal
                             </button>
                         </div>
-
-
-                        <div class="row">
-                            <div class="mt-4 text-center">
-                                <img
-                                        src="{% static 'assets/img/picture/visa.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/mastercard.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/wester.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/bank-transfer.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/paypal.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                                <img
-                                        src="{% static 'assets/img/picture/american-expres.png' %}"
-                                        class="img-fluid" style="width: 60px; height: 60px">
-                            </div>
-                        </div>
-
-                        <br><br><br><br><br>
-
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="same-address">
-                            <label class="form-check-label" for="same-address">Shipping address is the same as my
-                                billing address</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="save-info">
-                            <label class="form-check-label" for="save-info">Save this information for next time</label>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <h4 class="mb-3">Payment</h4>
-
-                        <div class="my-3">
-                            <div class="form-check">
-                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked=""
-                                       required="">
-                                <label class="form-check-label" for="credit">Credit card</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
-                                       required="">
-                                <label class="form-check-label" for="debit">Debit card</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                       required="">
-                                <label class="form-check-label" for="paypal">PayPal</label>
-                            </div>
-                        </div>
-
-                        <div class="row gy-3">
-                            <div class="col-md-6">
-                                <label for="cc-name" class="form-label">Name on card</label>
-                                <input type="text" class="form-control" id="cc-name" placeholder="">
-                                <small class="text-muted">Full name as displayed on card</small>
-                                <div class="invalid-feedback">
-                                    Name on card is required
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="cc-number" class="form-label">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="">
-                                <div class="invalid-feedback">
-                                    Credit card number is required
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="cc-expiration" class="form-label">Expiration</label>
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="">
-                                <div class="invalid-feedback">
-                                    Expiration date required
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="cc-cvv" class="form-label">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="">
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="my-4">
-
-                        <button class="w-100 btn btn-dark btn-lg" type="submit">Continue to checkout</button>
                     </form>
-                    <br><br>
                 </div>
             </div>
         </main>

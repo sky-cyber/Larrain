@@ -1,4 +1,12 @@
 {% extends 'Adm/admin.html' %}
+
+{% load static %}
+
+{% block Head %}
+    <!-- customer list -->
+    <script src="{% static 'admin/js/functions/listClient.js' %}"></script>
+{% endblock %}
+
 {% block body %}
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

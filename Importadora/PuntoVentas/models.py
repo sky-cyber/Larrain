@@ -115,7 +115,7 @@ class Product(models.Model):
 
     def toJSON(self):
         item = model_to_dict(self)
-        item['category'] = self.category.toJSON()
+        #item['category'] = self.category.toJSON()
         item['image'] = self.get_image()
         item['salePrice'] = format(int(self.salePrice))
         item['offerPrice'] = format(int(self.offerPrice))
@@ -143,10 +143,10 @@ TYPE_CLAIM = (
 class Contact(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=100, verbose_name="Cliente")
-    phone = models.CharField(default="", max_length=12, verbose_name="Celular", blank=False, null=False)
+    phone = models.CharField(default="", max_length=9, verbose_name="Celular", blank=False, null=False)
     email = models.EmailField(max_length=200, null=True, blank=True, verbose_name="Correo")
-    typeClaim = models.CharField(default="", max_length=100, choices=TYPE_CLAIM)
-    claim = models.CharField(max_length=500, verbose_name="Reclamo")
+    typeClaim = models.CharField(default="", max_length=100, choices=TYPE_CLAIM, verbose_name='Tipo de Solicitud')
+    claim = models.CharField(max_length=500, verbose_name="Comentario")
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
     def __str__(self):
@@ -160,7 +160,7 @@ class Contact(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
     rating = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
     comments = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
@@ -185,7 +185,7 @@ ORDER_STATUS = (
 
 class Dispatcher(models.Model):
     rut = models.CharField(max_length=13, unique=True, verbose_name="Rut", null=True, blank=False)
-    first_name = models.CharField(max_length=100, verbose_name="Nombre del Cliente", null=True, blank=False)
+    first_name = models.CharField(max_length=100, verbose_name="Primer Nombre", null=True, blank=False)
     second_name = models.CharField(max_length=100, verbose_name="Segundo Nombre", null=True, blank=False)
     pather_last_name = models.CharField(default="", max_length=100, verbose_name="Apellido Paterno", null=True,
                                         blank=False)
@@ -194,7 +194,7 @@ class Dispatcher(models.Model):
     phone = models.CharField(default="", max_length=9, unique=True, verbose_name="Celular", null=True, blank=False)
     email = models.EmailField(default="", max_length=50, unique=True,
                               verbose_name="Correo Electronico", null=True, blank=False)
-    image = models.ImageField(upload_to='dispatcher', null=True, blank=True)
+    image = models.ImageField(upload_to='dispatcher',verbose_name="imagen", null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False,
                                  verbose_name="Fecha de Registro", null=True, blank=False)
 
@@ -284,6 +284,11 @@ class OderItem(models.Model):
         else:
             sub_total = self.product.salePrice * self.qty
         return sub_total
+
+    @property
+    def get_stock(self):
+        total_stock = self.qty - self.product.stock
+        return total_stock
 
     def __str__(self):
         return str(self.id)

@@ -25,7 +25,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="card" style="width: 1000px;">
+                    <div class="card">
                         <div class="card-header text-primary">
                             {% if user.is_authenticated %}
                                 <h1>Bienvenido a WYKEP {{ user.username }}</h1>
@@ -34,29 +34,40 @@
                             {% endif %}
                         </div>
                         <div class="card-body align-self-center">
-                            <div class="card">
-                                <div class="card bg-info">
+                            <div class="card" style="width: 900px">
+                                <div class="card bg-dark">
                                     <br>
                                     <img src="{{ request.user.get_image }}"
                                          class="card-img-top align-self-center" alt="asd" style="width: 300px;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-bold ">Usuario Administrativo</h5>
+                                        <h5 class="card-title text-bold ">Usuario: {{ request.session.group.name }}</h5>
                                         <p class="card-text text-bold">Un gusto tenerte en nuestro equipo, en este panel
-                                            verificarás tu informacion.</p>
+                                            verificarás tu información.</p>
                                     </div>
                                 </div>
-                                <br>
-                                <ul class="list-group list-group-flush" style="font-size: 20px;">
-                                    <li id="usuario" class="list-group-item">Usuario: {{ user.username }}</li>
-                                    <li id="nombre" class="list-group-item">Nombres: {{ user.first_name }}</li>
-                                    <li id="apellido" class="list-group-item">Apellidos: {{ user.last_name }}</li>
-                                    <li id="correo" class="list-group-item">Correo
-                                        Electronico: {{ user.email }}</li>
+                                <ul class="list-group list-group-flush" style="font-size: 20px;background: #eeecec">
+                                    <div class="card-footer">
+                                        <h3 class="text-left">Permisos:</h3>
+                                        {% if request.session.group.name == "Administrador" %}
+                                            <li class="list-group-item text-danger text-bold">{{ admin }}</li>
+                                        {% elif request.session.group.name == "Encargado de Bodega" %}
+                                            <li class="list-group-item text-danger text-bold">{{ warehouse_manager }}</li>
+                                        {% elif request.session.group.name == "Agente de ventas" %}
+                                            <li class="list-group-item text-danger text-bold">{{ sales_agent }}</li>
+                                        {% elif request.session.group.name == "Despacho" %}
+                                            <li class="list-group-item text-danger text-bold">{{ dispatcher }}</li>
+                                        {% elif request.session.group.name == "Supervisor" %}
+                                            <li class="list-group-item text-danger text-bold">{{ supervisor }}</li>
+                                        {% endif %}
+                                    </div>
+                                    <li class="list-group-item">Usuario: {{ user.username }}</li>
+                                    <li class="list-group-item">Nombres: {{ user.first_name }}</li>
+                                    <li class="list-group-item">Apellidos: {{ user.last_name }}</li>
+                                    <li class="list-group-item">Correo Electronico: {{ user.email }}</li>
                                 </ul>
                                 <div class="card-body align-self-center">
-                                    <a href="{% url 'reset_password' %}" class="card-link btn btn-success">¿Desea
-                                        cambiar la clave?</a>
-                                    <a href="" class="card-link btn btn-danger">¿Solicita eliminar está cuenta?</a>
+                                    <a href="{% url 'reset_password' %}" class="card-link btn btn-primary">¿Desea cambiar la clave?</a>
+                                    <a href="{% url 'profile_update' %}" class="card-link btn btn-success">¿Solicita Editar Su Perfil?</a>
                                 </div>
                             </div>
                         </div>

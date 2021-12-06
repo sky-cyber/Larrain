@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.functions import Coalesce
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your function here.
 from django.urls import reverse_lazy
@@ -8,12 +8,19 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, TemplateView
 from django.core.paginator import Paginator
+from Modulo.Funtions.Profile.form import ProfileUpdateForm
 
 from PuntoVentas.models import *
 
 
 def home(request):
     category = Category.objects.all()
+    product = Product.objects.filter(offer=True).order_by("-id")
+    paginator = Paginator(product, 5)
+    page = request.GET.get('page') or 1
+    product = paginator.get_page(page)
+    current_page = int(page)
+    pages = range(1, product.paginator.num_pages + 1)
     if request.user.is_authenticated:
         user = request.user
         order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
@@ -21,7 +28,8 @@ def home(request):
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-    context = {'items': items, 'order': order, 'category': category}
+    context = {'items': items, 'order': order, 'category': category, 'product': product,
+               'paginator': paginator, 'current_page': current_page, 'pages': pages}
     return render(request, 'Web/home.html', context)
 
 
@@ -54,6 +62,29 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
 class PerfilView(TemplateView):
     template_name = 'Adm/perfil.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PerfilView, self).get_context_data(**kwargs)
+        context['admin'] = "En Este perfil tienes habilidatos todo los permisos del sistema"
+        context['warehouse_manager'] = "En Este perfil tienes habilidatos Los permisos de Categoria, Bodega y la Gestión de Órdenes"
+        context['sales_agent'] = "En Este perfil tienes habilidatos los permisos de la Gestión de Proveedores y generación de Contratos"
+        context['dispatcher'] = "En Este perfil tienes habilidatos los permisos de la Gestión de desachadores, Lista de Traslado y Gestión de ordenes en Estado, Orden a Despacho, Orden En Camino, Orden Completada"
+        context['supervisor'] = "En Este perfil tienes habilidatos los permisos de la Gestión de solicitudes y Listado de productos en ofertas"
+        return context
+
+
+def ProfileUpdate(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, files=request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_admin')
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+    context = {
+        'form': form
+    }
+    return render(request, 'Adm/profileUpdate.html', context)
 
 
 def Catalogue(request):
@@ -176,12 +207,14 @@ class ProductDetailView(TemplateView):
         return context
 
 
-class PurchaseDetail(TemplateView):
+class PurchaseDetail(LoginRequiredMixin, TemplateView):
     template_name = 'Web/purchaseDetail.html'
 
     def get_context_data(self, **kwargs):
         context = super(PurchaseDetail, self).get_context_data(**kwargs)
         return context
+
+
 
 
 def team(request):

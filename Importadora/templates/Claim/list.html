@@ -28,6 +28,13 @@
                                 <i class="fas fa-shopping-basket"></i>
                                 {{ title2 }}
                             </h3>
+                            <br>
+                            <hr>
+                            <div class="text-center" style="display: block">
+                                <a href="{% url 'list_query' %}" class="btn btn-primary m-1"> Consulta</a>
+                                <a href="{% url 'list_suggestion' %}" class="btn btn-warning m-1"> Sugerencia</a>
+                                <a href="{% url 'list_congratulation' %}" class="btn btn-success m-1"> Felicitaciones</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -38,8 +45,8 @@
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Celular</th>
-                                        <th>Tipo de reclamo</th>
-                                        <th>Reclamo</th>
+                                        <th>Solicitud</th>
+                                        <th>Comentario</th>
                                         <th>Opciones</th>
                                     </tr>
                                     </thead>
@@ -52,7 +59,8 @@
                                             <td>{{ r.typeClaim }}</td>
                                             <td>{{ r.claim }}</td>
                                             <td>
-                                                <a href="{% url 'claim_delete' r.id %}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
+                                                <a href="{% url 'claim_delete' r.id %}" class="btn btn-danger btn-sm"><i
+                                                        class="fas fa-trash-restore-alt"></i></a>
                                             </td>
                                         </tr>
                                     {% endfor %}

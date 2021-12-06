@@ -102,38 +102,38 @@ var vents = {
     }
 };
 
+$('input[name="search"]').autocomplete({
+    source: function (request, response) {
+        $.ajax({
+            url: window.location.pathname,
+            type: 'POST',
+            data: {
+                'action': 'search_products',
+                'term': request.term
+            },
+            dataType: 'json',
+        }).done(function (data) {
+            response(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus + ': ' + errorThrown);
+        }).always(function (data) {
+
+        });
+    },
+    delay: 500,
+    minlength: 3,
+    select: function (event, ui) {
+        event.preventDefault()
+        console.clear()
+        ui.item.qty = 1;
+        ui.item.subtotal = 0;
+        console.log(vents.items);
+        vents.add(ui.item)
+        $(this).val('');
+    }
+});
+
 $(function () {
-
-    $('input[name="search"]').autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: window.location.pathname,
-                type: 'POST',
-                data: {
-                    'action': 'search_products',
-                    'term': request.term
-                },
-                dataType: 'json',
-            }).done(function (data) {
-                response(data);
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                alert(textStatus + ': ' + errorThrown);
-            }).always(function (data) {
-
-            });
-        },
-        delay: 500,
-        minlength: 3,
-        select: function (event, ui) {
-            event.preventDefault()
-            console.clear()
-            ui.item.qty = 1;
-            ui.item.subtotal = 0;
-            console.log(vents.items);
-            vents.add(ui.item)
-            $(this).val('');
-        }
-    });
 
     $('.select2').select2({
         theme: "bootstrap4",

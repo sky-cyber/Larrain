@@ -1,13 +1,18 @@
 import datetime
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+from django.template.loader import render_to_string
 from django.utils import timezone
 
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render
 
+from Importadora import settings
 from PuntoVentas.models import *
 import json
-
 
 
 # class AddToCartView(TemplateView):
@@ -93,11 +98,15 @@ def UpdateItem(request):
     order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
     orderItem, created = OderItem.objects.get_or_create(order=order, product=product)
 
-    if action == 'add':
-        orderItem.qty = (orderItem.qty + 1)
+    if orderItem.qty < orderItem.product.stock:
+        if action == 'add':
+            orderItem.qty = (orderItem.qty + 1)
+        elif action == 'remove':
+            orderItem.qty = (orderItem.qty - 1)
+        orderItem.save()
     elif action == 'remove':
         orderItem.qty = (orderItem.qty - 1)
-    orderItem.save()
+        orderItem.save()
 
     if orderItem.qty <= 0:
         orderItem.delete()
@@ -122,13 +131,35 @@ def ProcessOrder(request):
         order.status = 'Orden En Proceso'
         order.deliveredAt = timezone.now()
         order.totalPrice = order.shippingPrice
+
         order.save()
 
-        if subtotal == order.get_cart_total:
-            order.isPaid = True
-            order.isDelivered = True
-            order.paymentMethod = 'PayPal'
-        order.save()
+        user.save()
+
+        mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+        mailServer.starttls()
+        mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+
+        email_to = user.email
+
+        # Construimos el mensaje simple
+        mensaje = MIMEMultipart()
+        mensaje['From'] = settings.EMAIL_HOST_USER
+        mensaje['To'] = email_to
+        mensaje['Subject'] = "Detalle de la Orden"
+
+        content = render_to_string('Email/DetailOrder.html', {
+            'user': user,
+            'order': order,
+            'items': order.oderitem_set.all()
+        })
+        # Adjuntamos el texto
+        mensaje.attach(MIMEText(content, 'html'))
+
+        # Envio del mensaje
+        mailServer.sendmail(settings.EMAIL_HOST_USER,
+                            email_to,
+                            mensaje.as_string())
 
         if order.shipping == True:
             ShippingAddress.objects.create(
@@ -139,14 +170,14 @@ def ProcessOrder(request):
                 postalCode=data['shipping']['postalCode'],
             )
 
+        # productId = data['productId']
+        # product = Product.objects.get(pk=productId)
+        # orderItem , created = OderItem.objects.get_or_create(order=order, product=product)
+        #
+        # orderItem.qty -= orderItem.product.stock
+        # orderItem.product.save()
+
     else:
         print('user not authenticated')
 
     return JsonResponse('payment complete!', safe=False)
-
-
-
-
-
-
-

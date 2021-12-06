@@ -9,7 +9,7 @@ from Modulo.Funtions.PDF.view import *
 from Modulo.Funtions.Order.view import *
 from Modulo.Funtions.Sales.view import *
 from Modulo.Funtions.Dispatch.view import *
-from PuntoVentas.views import DashboardView, PerfilView
+from PuntoVentas.views import DashboardView, PerfilView, ProfileUpdate
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -18,7 +18,8 @@ urlpatterns = [
     path('', DashboardView.as_view(), name='adm'),
 
     # URL FOR PERFIL
-    path('perfil/', login_required(PerfilView.as_view()), name='perfil'),
+    path('profile/', login_required(PerfilView.as_view()), name='profile_admin'),
+    path('profile/update', login_required(ProfileUpdate), name='profile_update'),
 
     # URL OF CATEGORY
     path('category/list', (CategoryListView.as_view()), name='category_list'),
@@ -42,8 +43,11 @@ urlpatterns = [
     path('contract/supplier/<int:pk>/', (ContractSupplier.as_view()), name='supplier_contract'),
 
     # URL THE CLAIM
-    path('claim/list', (ClaimListView.as_view()), name='claim_list'),
+    path('list/claim', (ClaimListView.as_view()), name='list_claim'),
     path('claim/delete/<int:pk>/', (ClaimDeleteView.as_view()), name='claim_delete'),
+    path('list/query', QueryList.as_view(), name='list_query'),
+    path('list/suggestion', SuggestionList.as_view(), name='list_suggestion'),
+    path('list/congratulation', CongratulationList.as_view(), name='list_congratulation'),
 
     # URL THE USER
     path('registerUser/', login_required(RegisterUserAdmin), name='registerUser'),

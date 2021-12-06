@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/sweetalert2@11.js' %}"></script>
 </head>
 
 <body id="page-top">
@@ -31,127 +32,213 @@
     <br><br><br>
     <section class="page-section" id="services">
         <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                    class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{% static 'assets/img/slibar/audifonos_1.jpg' %}" class="d-block w-100"
+                                     style="height: 460px"
+                                     alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'assets/img/slibar/notebook_2.jpg' %}" class="d-block w-100"
+                                     style="height: 460px"
+                                     alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'assets/img/slibar/teclado_1.jpg' %}" class="d-block w-100"
+                                     style="height: 460px"
+                                     alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'assets/img/slibar/mouse_2.jpg' %}" class="d-block w-100"
+                                     style="height: 460px"
+                                     alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'assets/img/slibar/celulares_sam.jpg' %}" class="d-block w-100"
+                                     style="height: 460px"
+                                     alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-6 card-body">
+                            <h1 class="card-title p-2 badge badge-danger" style="background: #e30808; font-size: 18px">
+                                Oferta 20% DCTO</h1>
+                            <a style="text-decoration: none" href="{% url 'product_offer' %}"><p class="card-text"
+                                                                                                 style="font-size: 20px; color: black">
+                                <strong>Audífono Gamer LU741 Light Up Pro Negro.</strong></p></a>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="{% static 'assets/img/product/audifono-gamer-gxt313.jpg' %}" style="width: 250px"
+                                 class="card-img-top">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 card-body">
+                            <h1 class="card-title p-2 badge badge-danger" style="background: #e30808; font-size: 18px">
+                                Oferta 30% DCTO</h1>
+                            <a style="text-decoration: none" href="{% url 'product_offer' %}"><p class="card-text"
+                                                                                                 style="font-size: 20px; color: black">
+                                <strong>SmartPhone Motorola E6 S.</strong></p></a>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="{% static 'assets/img/product/motorola.jpg' %}" style="width: 250px"
+                                 class="card-img-top">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="container bg-dark p-4 text-center" style="color: white">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="{% static 'assets/img/logos/cart_shopping.png' %}" style="width: 50px" alt=""><small>
+                        Productos Variados</small>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{% static 'assets/img/logos/mail_send.png' %}" style="width: 50px" alt=""><small>
+                        Ordenes En Camino</small>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{% static 'assets/img/logos/front_lorry_truck.png' %}" style="width: 50px"
+                             alt=""><small> Envio a todo chile</small>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{% static 'assets/img/logos/badge_defender.png' %}" style="width: 50px" alt=""><small>
+                        Seguridad Comprobada</small>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="container py-3 m-3">
+                <div class="row">
+                    <h2 class="text-danger text-center text-bold">Revise Nuestras Ultimas Ofertas</h2>
+                    <div class="col-lg-12">
+                        {% for p in product %}
+                            <a href="{% url 'productDetail' p.slug %}"><img src="{{ p.get_image }}" style="width: 200px" alt=""></a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <br><br>
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Services</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Servicios</h2>
+                <h1 class="section-subheading text-muted">¿Porqué Comprar en Wykep?</h1>
+            </div>
+            <br>
+            <div class="row text-center">
+                <div class="col-md-4">
+                                    <span class="fa-stack fa-4x">
+                                         <img src="{% static 'assets/img/logos/shopping_cart.png' %}"
+                                              style="width: 130px" alt="">
+                                    </span>
+                    <h4 class="my-3">PRODUCTOS</h4>
+                    <p class="text-muted">Una amplia gama de productos electrónicos y de gran calidad están listos para
+                        ser despachados y enviados a tu domicilio.</p>
+                </div>
+                <div class="col-md-4">
+                                    <span class="fa-stack fa-4x">
+                                        <img src="{% static 'assets/img/logos/fast_load_speed.png' %}"
+                                             style="width: 130px" alt="">
+                                    </span>
+                    <h4 class="my-3">SITIO RÁPIDO</h4>
+                    <p class="text-muted">Navega en nuestro Sitio Web de fácil navegación y además intuitivo, lo que
+                        facilita la experiencia de usabilidad y satisfacción.</p>
+                </div>
+                <div class="col-md-4">
+                                    <span class="fa-stack fa-4x">
+                                        <img src="{% static 'assets/img/logos/cyber_internet.png' %}"
+                                             style="width: 130px" alt="">
+                                    </span>
+                    <h4 class="my-3">DATOS SEGUROS</h4>
+                    <p class="text-muted">Toda la información suministrada en cuanto a datos personales y de registro en
+                        el sistema, están altamente protegidos y seguros.</p>
+                </div>
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
                                     <span class="fa-stack fa-4x">
-                                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                        <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                                         <img src="{% static 'assets/img/logos/box.jpeg' %}"
+                                              style="width: 130px" alt="">
                                     </span>
-                    <h4 class="my-3">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                        architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="my-3">IMPORTAMOS</h4>
+                    <p class="text-muted">Nuestra importadoa se encarga de conseguir e importar los mejores productos de
+                        China y ponerlos a disposición de nuestros clientes..</p>
                 </div>
                 <div class="col-md-4">
                                     <span class="fa-stack fa-4x">
-                                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                        <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                                        <img src="{% static 'assets/img/logos/sale_shipping.png' %}"
+                                             style="width: 130px" alt="">
                                     </span>
-                    <h4 class="my-3">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                        architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="my-3">DESPACHAMOS</h4>
+                    <p class="text-muted">Ponemos nuestro mayor esfuerzo en conseguir que nuestros productos lleguen a
+                        todo el país para satisfacer las necesidades de todos.</p>
                 </div>
                 <div class="col-md-4">
                                     <span class="fa-stack fa-4x">
-                                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                                        <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                                        <img src="{% static 'assets/img/logos/delivery_package.png' %}"
+                                             style="width: 130px" alt="">
                                     </span>
-                    <h4 class="my-3">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                        architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="my-3">ENTREGAMOS</h4>
+                    <p class="text-muted">Entregamos directamente a nuestros usuarios los productos solicitados por
+                        usted de forma rápida y sin contratiempos ni retrasos.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="page-section" id="about">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid"
-                                                         src="{% static 'assets/img/portfolio/1.jpg' %}" alt="..."/></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing
-                                elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam,
-                                recusandae
-                                sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid"
-                                                         src="{% static 'assets/img/portfolio/2.jpg' %}" alt="..."/></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing
-                                elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam,
-                                recusandae
-                                sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid"
-                                                         src="{% static 'assets/img/portfolio/3.jpg' %}" alt="..."/></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing
-                                elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam,
-                                recusandae
-                                sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid"
-                                                         src="{% static 'assets/img/portfolio/4.jpg' %}" alt="..."/></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-                                adipisicing
-                                elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam,
-                                recusandae
-                                sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Be Part
-                                <br/>
-                                Of Our
-                                <br/>
-                                Story!
-                            </h4>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
 {% endblock %}
 
 {% block contend %}
 
 {% endblock %}
+
+<script type="application/javascript">
+    {% if form.errors %}
+        var errors = '';
+        {% for field in form %}
+            {% for error in field.errors %}
+                errors += '{{ error }}\n';
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            errors += '{{ error }}\n';
+        {% endfor %}
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errors
+        });
+    {% endif %}
+</script>
 
 <!-- Footer-->
 <footer class="footer py-4">
@@ -171,7 +258,6 @@
     </div>
 </footer>
 
-
 <!-- Bootstrap core JS-->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <!-- Core theme JS-->
@@ -182,9 +268,9 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="{% static 'js/sb-forms-latest.js' %}"></script>
 <script type="text/javascript">
-            var user = '{{ request.user }}'
-        </script>
-        <script src="{% static 'js/cart.js' %}" ></script>
+    var user = '{{ request.user }}'
+</script>
+<script src="{% static 'js/cart.js' %}"></script>
 
 </body>
 </html>

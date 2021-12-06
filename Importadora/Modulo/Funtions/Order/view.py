@@ -46,7 +46,8 @@ class OrderListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListV
 
     def get_context_data(self, **kwargs):
         context = super(OrderListView, self).get_context_data(**kwargs)
-        context['object_list'] = Orders.objects.all().order_by("-id")
+        allorder = Orders.objects.all().order_by("-id")
+        context['allorder'] = allorder
         context['title'] = 'Listado de Todas Las Ordenes Emitidas'
         context['title2'] = 'Filtrado de Ordenes Registradas:'
         return context

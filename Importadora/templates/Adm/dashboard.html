@@ -1,6 +1,14 @@
 {% extends 'Adm/admin.html' %}
 {% load static %}
 
+{% block Head %}
+    <!-- Graphics -->
+    <script src="{% static 'admin/highcharts/highcharts.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/exporting.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/export-data.js' %}"></script>
+    <script src="{% static 'admin/highcharts/modules/accessibility.js' %}"></script>
+{% endblock %}
+
 {% block titulo %}
 
 {% endblock %}
@@ -36,7 +44,8 @@
                                     <h3>{{ totalProduct }}</h3>
                                     <h4>Productos</h4>
                                     <p class="image card-footer">
-                                        <img src="{% static 'assets/img/navbar/iphone_mobile.png' %}" class="elevation-2"
+                                        <img src="{% static 'assets/img/navbar/iphone_mobile.png' %}"
+                                             class="elevation-2"
                                              alt="User Image" style="height: 100px">
                                     </p>
                                 </div>
@@ -98,7 +107,8 @@
                                     <h3>{{ totalProductOffer }}</h3>
                                     <h4>Productos En Oferta</h4>
                                     <p class="image card-footer">
-                                        <img src="{% static 'assets/img/navbar/discount_sale.png' %}" class="elevation-2"
+                                        <img src="{% static 'assets/img/navbar/discount_sale.png' %}"
+                                             class="elevation-2"
                                              alt="User Image" style="height: 100px">
                                     </p>
                                 </div>

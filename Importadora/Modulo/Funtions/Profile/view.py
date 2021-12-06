@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from PuntoVentas.models import *
 from django.core.paginator import Paginator
+from Modulo.Funtions.Profile.form import ProfileUpdateForm
 
 
 def Profile(request):
@@ -39,3 +40,20 @@ def OrderDetail(request, pk):
     context = {'order': order, 'items': items, 'shipping': shipping,
                'button': button, 'PDF': PDF}
     return render(request, 'Profile/orderDetail.html', context)
+
+
+def UpdateProfile(request):
+
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, files=request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'Profile/updateProfile.html', context)
+

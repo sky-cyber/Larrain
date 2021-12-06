@@ -17,6 +17,10 @@
     <script src="{% static 'admin/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'admin/jquery-ui-1.13.0/jquery-ui.min.css' %}">
 
+    <!-- Format Touchspin -->
+    <script src="{% static 'admin/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.css' %}">
+
     <!-- jQuery Confirm -->
     <script src="{% static 'admin/jqueryConfirm/jquery-confirm.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'admin/jqueryConfirm/jquery-confirm.min.css' %}">
@@ -45,17 +49,7 @@
     <link rel="stylesheet" href="{% static 'admin/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <!-- Graphics -->
-    <script src="{% static 'admin/highcharts/highcharts.js' %}"></script>
-    <script src="{% static 'admin/highcharts/modules/exporting.js' %}"></script>
-    <script src="{% static 'admin/highcharts/modules/export-data.js' %}"></script>
-    <script src="{% static 'admin/highcharts/modules/accessibility.js' %}"></script>
-
     <!-- functions software -->
-    <!-- user list -->
-    <script src="{% static 'admin/js/functions/list.js' %}"></script>
-    <!-- customer list -->
-    <script src="{% static 'admin/js/functions/listClient.js' %}"></script>
     <!-- Data Table -->
     <script src="{% static 'admin/js/functions/dataTable.js' %}"></script>
     <!-- DatePicker -->
@@ -102,7 +96,7 @@ to get the desired effect
                         class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'perfil' %}" class="nav-link text-white btn-dark">PERFIL</a>
+                <a href="{% url 'profile_admin' %}" class="nav-link text-white btn-dark">PERFIL</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{% url 'adm' %}" class="nav-link text-white btn-dark">METRICAS</a>
@@ -281,6 +275,32 @@ to get the desired effect
                                 Barra de opciones
                             </p>
                         </a>
+                        <a href="" class="nav-link active">
+                            <img src="{% static 'assets/img/navbar/folder_user.png' %}" alt=""
+                                 style="width: 30px;">
+                            <p>
+                                Perfil
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'profile_admin' %}" class="nav-link">
+                                    <img src="{% static 'assets/img/navbar/account_administrator.png' %}" alt=""
+                                         style="width: 30px;">
+                                    <p>Mi Perfil</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'profile_update' %}" class="nav-link">
+                                    <img src="{% static 'assets/img/navbar/edit_validated.png' %}" alt=""
+                                         style="width: 30px;">
+                                    <p>Editar Perfil</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
                         {% if request.session.group.name == 'Administrador' or request.session.group.name == 'Encargado de Bodega' %}
                             <a href="" class="nav-link active">
                                 <img src="{% static 'assets/img/navbar/add_bag_basket.png' %}" alt=""
@@ -532,62 +552,14 @@ to get the desired effect
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{% url 'claim_list' %}" class="nav-link">
+                                    <a href="{% url 'list_claim' %}" class="nav-link">
                                         <img src="{% static 'assets/img/navbar/cabinet_file.png' %}" alt=""
                                              style="width: 30px;">
-                                        <p>Listado de Reclamos</p>
+                                        <p>Listado de Solicitudes</p>
                                     </a>
                                 </li>
                             </ul>
                         {% endif %}
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tree"></i>
-                            <p>
-                                UI Elements
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Forms
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Tables
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Tables
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Tables
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Tables
-                            </p>
-                        </a>
                     </li>
                 </ul>
             </nav>

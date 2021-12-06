@@ -132,11 +132,13 @@
                                         <div class="float-right"> Visitas {{ product.numReviews }}</div>
                                     </div>
                                     <div class="card-footer">
-                                        <button data-product="{{ product.id }}" data-action="add"
-                                                class="btn btn-success btn-sm update-cart"><i
-                                                class="fas fa-cart-arrow-down"></i>
-                                            {{ button }}
-                                        </button>
+                                        {% if product.stock != 0 %}
+                                            <button data-product="{{ product.id }}" data-action="add"
+                                                    class="btn btn-success btn-sm update-cart"><i
+                                                    class="fas fa-cart-arrow-down"></i>
+                                                {{ button }}
+                                            </button>
+                                        {% endif %}
                                         <a href="{% url 'productDetail' product.slug %}"
                                            class="btn btn-danger btn-sm"><i class="fas fa-eye"></i>
                                             {{ button1 }}

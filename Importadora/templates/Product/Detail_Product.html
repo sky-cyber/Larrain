@@ -28,20 +28,22 @@
 
                         <p class="lead text-black">
                         <div class="card-title">
-                        {% if product.offer %}
-                            <h5 class="card-title" style="font-size: 15px; color: #5d6974">
-                                <strike>Precio: ${{ product.salePrice | intcomma }}</strike></h5>
+                            {% if product.offer %}
+                                <h5 class="card-title" style="font-size: 15px; color: #5d6974">
+                                    <strike>Precio: ${{ product.salePrice | intcomma }}</strike></h5>
 
-                            <h3 class="card-title" style="font-size: 23px"><img
-                                    src="{% static 'assets/img/picture/price_label.png' %}"
-                                    class="img-fluid" style="width: 35px; height: 35px"> Oferta:
-                                ${{ product.offerPrice | intcomma }}</h3>
+                                <h3 class="card-title" style="font-size: 23px"><img
+                                        src="{% static 'assets/img/picture/price_label.png' %}"
+                                        class="img-fluid" style="width: 35px; height: 35px"><small
+                                        class="right badge badge-danger"
+                                        style="background: #e50808; color: white; font-size: 18px">Oferta:</small>
+                                    ${{ product.offerPrice | intcomma }}</h3>
                             {% else %}
-                             <h3 class="card-title" style="font-size: 23px"><img
-                                    src="{% static 'assets/img/picture/price_label.png' %}"
-                                    class="img-fluid" style="width: 35px; height: 35px"> Precio:
-                                ${{ product.salePrice | intcomma }}</h3>
-                        {% endif %}
+                                <h3 class="card-title" style="font-size: 23px"><img
+                                        src="{% static 'assets/img/picture/price_label.png' %}"
+                                        class="img-fluid" style="width: 35px; height: 35px"> Precio:
+                                    ${{ product.salePrice | intcomma }}</h3>
+                            {% endif %}
                         </div>
                         </p>
                         <p class="lead font-weight-bold"
@@ -59,9 +61,14 @@
                         <br>
                         <form class="d-flex justify-content-left text-center">
                             <!-- Default input -->
-                            <a href="" data-product="{{ product.id }}" data-action="add" class="btn btn-success btn-md my-0 p text-center update-cart"
-                               type="submit"><i class="fas fa-shopping-cart ml-1"></i>{{ button }}
-                            </a>
+                            {% if product.stock != 0 %}
+                                <a href="" data-product="{{ product.id }}" data-action="add"
+                                   class="btn btn-success btn-md my-0 p text-center update-cart"
+                                   type="submit"><i class="fas fa-shopping-cart ml-1"></i>{{ button }}
+                                </a>
+                                {% else %}
+                                <h3 class="text-bold text-danger">Up... Lo Siento Se Nos Agotaron :(</h3>
+                            {% endif %}
                         </form>
                     </div>
                 </div>

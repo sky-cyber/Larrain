@@ -39,8 +39,15 @@
                                 <li id="apellido" class="list-group-item">Apellidos: {{ user.last_name }}</li>
                                 <li id="correo" class="list-group-item">Email: {{ user.email }}</li>
                             </ul>
-                            <div class="card-body align-self-center">
-                                <a href="{% url 'reset_password' %}" class="card-link btn btn-success">Cambiar Clave</a>
+                            <div class="row py-3 m-3">
+                                <div class="col-lg-6">
+                                    <a href="{% url 'reset_password' %}" class="btn btn-sm btn-dark">Actualizar
+                                        Clave</a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="{% url 'update_profile' %}" class="btn btn-sm btn-dark">Actualizar
+                                        Perfil</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,16 +56,16 @@
 
             <div class="col-lg-8">
                 <div class="card-footer bg-dark">
-                    <div class="text-center text-bold text-white p-2" style="font-size: 25px">Ordenes Emitidas</div>
+                    <div class="text-center text-bold text-white p-2" style="font-size: 25px">Historial de Órdenes</div>
                 </div>
                 <table class="table table-hover text-center" id="data">
                     <thead class="bg-dark alert-link text-white">
                     <tr>
                         <th>ID</th>
                         <th>Total</th>
-                        <th>Tipo de Pago</th>
                         <th>Fecha emitida</th>
                         <th>Transacción</th>
+                        <th>Estado</th>
                     </tr>
                     </thead>
                     {% if order %}
@@ -70,9 +77,19 @@
                                            href="{% url 'order-detail' o.pk %}">{{ o.id }}</a>
                                     </td>
                                     <td>${{ o.shippingPrice | intcomma }}</td>
-                                    <td>{{ o.paymentMethod }}</td>
                                     <td>{{ o.paidAt }}</td>
                                     <td>{{ o.transaction_id }}</td>
+                                    {% if o.status == "Orden En Camino" %}
+                                        <td class="badge p-1 py-2 m-2" style="background: black">{{ o.status }}</td>
+                                    {% elif o.status == "Orden En Proceso" %}
+                                        <td class="badge p-1 py-2 m-2" style="background: #ffc500">{{ o.status }}</td>
+                                    {% elif o.status == "Orden A Despacho" %}
+                                        <td class="badge p-1 py-2 m-2" style="background: #0616a1">{{ o.status }}</td>
+                                    {% elif o.status == "Orden Completada" %}
+                                        <td class="badge p-1 py-2 m-2" style="background: #37d302">{{ o.status }}</td>
+                                    {% elif o.status == "Orden Cancelada" %}
+                                        <td class="badge p-1 py-2 m-2" style="background: #de0909">{{ o.status }}</td>
+                                    {% endif %}
                                 </tr>
                                 </tbody>
                             {% endif %}

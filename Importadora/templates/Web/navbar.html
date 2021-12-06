@@ -51,7 +51,8 @@
                             {% for c in category %}
                                 <div class="text-center" style="display: inline-block;">
                                     <li>
-                                        <a class="dropdown-item text-center" style="font-size: 15px;padding: 5px; margin: 5px"
+                                        <a class="dropdown-item text-center"
+                                           style="font-size: 15px;padding: 5px; margin: 5px"
                                            href="{% url 'type_category' c.slug %}">{{ c.name }}</a>
                                     </li>
                                 </div>
@@ -75,6 +76,9 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-door-open"></i>
                                 Logout</a></li>
+                            <li><a class="dropdown-item" href="{% url 'update_profile' %}"><i
+                                    class="fas fa-user-edit"></i>
+                                Editar Perfil</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

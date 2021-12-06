@@ -47,7 +47,7 @@
                                     <div class="card-footer text-center"
                                          style="background: #deedfd; font-size: 14px">
                                         <select class="form-control" name="dispatcher" id="id_dispatcher">
-                                            {% for d, j in range.dispatcher %}
+                                            {% for d, j in dispatcher %}
                                                 <option value="{{ d }}"
                                                 {% if d == order.dispatcher %}selected{% endif %}>{{ j }}</option>
                                             {% endfor %}
@@ -167,7 +167,7 @@
                                         <td>{{ item.qty }}</td>
                                         <td class="text-center"><a
                                                 href="{% url 'productDetail' item.product.slug %}">
-                                            <img src="{{ item.product.imageURL }}" class="img-fluid d-block mx-auto"
+                                            <img src="{{ item.product.get_image }}" class="img-fluid d-block mx-auto"
                                                  style="width: 40px; height: 40px"></a>
                                         </td>
                                     </tr>

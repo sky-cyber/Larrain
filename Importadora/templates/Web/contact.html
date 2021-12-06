@@ -28,6 +28,14 @@
                     <div class="container" style="width: 80%; color: white; font-size: 20px">
                         <div class="row">
                             {% csrf_token %}
+                            {% if request.user.is_authenticated %}
+                                <div class="text-left text-bold">
+                                    {{ form.user.label }}
+                                </div>
+                                <div class="input-group mb-2 form-control m-2" style="width: 98%">
+                                    {{ request.user.username }}
+                                </div>
+                            {% endif %}
                             <div class="text-left text-bold">
                                 {{ form.name.label }}
                             </div>
@@ -50,7 +58,7 @@
                                 {{ form.typeClaim.label }}
                             </div>
                             <div class="input-group mb-2">
-                                {{ form.typeClaim|add_class:'form-control'}}
+                                {{ form.typeClaim|add_class:'form-control' }}
                             </div>
                             <div class="text-left text-bold">
                                 {{ form.claim.label }}
@@ -68,10 +76,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
             </form>
         </div>
     </section>
