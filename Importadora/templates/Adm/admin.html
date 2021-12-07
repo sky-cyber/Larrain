@@ -561,6 +561,37 @@ to get the desired effect
                             </ul>
                         {% endif %}
                     </li>
+                    <li class="nav-item has-treeview">
+                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Agente de ventas" or request.session.group.name == "Supervisor" %}
+                            <a href="" class="nav-link active">
+                                <img src="{% static 'assets/img/navbar/adobe_file.png' %}" alt=""
+                                     style="width: 30px;">
+                                <p>
+                                    Archivos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                {% if request.session.group.name == "Administrador" or request.session.group.name == "Agente de ventas" %}
+                                    <li class="nav-item">
+                                        <a href="{% url 'file_upload' %}" class="nav-link">
+                                            <img src="{% static 'assets/img/navbar/extension_file.png' %}" alt=""
+                                                 style="width: 30px;">
+                                            <p>Subir Archivo</p>
+                                            <i class="right badge badge-danger">New</i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                <li class="nav-item">
+                                    <a href="{% url 'file_list' %}" class="nav-link">
+                                        <img src="{% static 'assets/img/navbar/cabinet_drawer.png' %}" alt=""
+                                             style="width: 30px;">
+                                        <p>Listado de Archivo</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </li>
                 </ul>
             </nav>
         </div>

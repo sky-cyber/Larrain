@@ -8,7 +8,7 @@ def Profile(request):
     if request.user.is_authenticated:
         user = request.user
         order = Orders.objects.filter(user=user).order_by("-id")
-        paginator = Paginator(order, 7)
+        paginator = Paginator(order, 10)
         page = request.GET.get('page') or 1
         order = paginator.get_page(page)
         current_page = int(page)

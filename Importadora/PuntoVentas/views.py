@@ -67,9 +67,9 @@ class PerfilView(TemplateView):
         context = super(PerfilView, self).get_context_data(**kwargs)
         context['admin'] = "En Este perfil tienes habilidatos todo los permisos del sistema"
         context['warehouse_manager'] = "En Este perfil tienes habilidatos Los permisos de Categoria, Bodega y la Gestión de Órdenes"
-        context['sales_agent'] = "En Este perfil tienes habilidatos los permisos de la Gestión de Proveedores y generación de Contratos"
+        context['sales_agent'] = "En Este perfil tienes habilidatos los permisos de la Gestión de Proveedores, generación de Contratos y Gestion de los archivos planos para integrar las nuevas ofertas"
         context['dispatcher'] = "En Este perfil tienes habilidatos los permisos de la Gestión de desachadores, Lista de Traslado y Gestión de ordenes en Estado, Orden a Despacho, Orden En Camino, Orden Completada"
-        context['supervisor'] = "En Este perfil tienes habilidatos los permisos de la Gestión de solicitudes y Listado de productos en ofertas"
+        context['supervisor'] = "En Este perfil tienes habilidatos los permisos de la Gestión de solicitudes, Listado de productos en ofertas y Visualización de archivos planos con las nuevas Ofertas"
         return context
 
 

@@ -6,4 +6,4 @@ from PuntoVentas.models import *
 admin.site.register([Category, ShippingAddress, Orders,
                      Product, Supplier, OderItem, Contact,
                      Review, User, Dispatcher,
-                     Client, Sale, DetSale])
+                     Client, Sale, DetSale, FlatFile])

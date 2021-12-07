@@ -115,7 +115,7 @@ class Product(models.Model):
 
     def toJSON(self):
         item = model_to_dict(self)
-        #item['category'] = self.category.toJSON()
+        # item['category'] = self.category.toJSON()
         item['image'] = self.get_image()
         item['salePrice'] = format(int(self.salePrice))
         item['offerPrice'] = format(int(self.offerPrice))
@@ -194,7 +194,7 @@ class Dispatcher(models.Model):
     phone = models.CharField(default="", max_length=9, unique=True, verbose_name="Celular", null=True, blank=False)
     email = models.EmailField(default="", max_length=50, unique=True,
                               verbose_name="Correo Electronico", null=True, blank=False)
-    image = models.ImageField(upload_to='dispatcher',verbose_name="imagen", null=True, blank=True)
+    image = models.ImageField(upload_to='dispatcher', verbose_name="imagen", null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False,
                                  verbose_name="Fecha de Registro", null=True, blank=False)
 
@@ -385,4 +385,31 @@ class DetSale(models.Model):
     class Meta:
         verbose_name = "Detalle de Venta"
         verbose_name_plural = "Detalle de Ventas"
+        ordering = ['id']
+
+
+TYPE = (
+    ("Word", "Word"),
+    ("Excel", "Excel"),
+    ("PDF", "PDF"),
+    ("PNG", "PNG"),
+    ("Power Point", "Power Point"),
+    ("TXT", "TXT"),
+)
+
+
+class FlatFile(models.Model):
+    title = models.CharField(default="", max_length=100, verbose_name="Titulo", null=False, blank=False)
+    typeFile = models.CharField(default="", max_length=50, verbose_name="Tipo de Archivo", choices=TYPE)
+    description = models.CharField(default="", max_length=100, verbose_name='Descripción', blank=False, null=False)
+    file = models.FileField(upload_to='file', verbose_name="Subir Archivo", null=False, blank=False)
+    createdAt = models.DateField(auto_now=True, auto_now_add=False,
+                                 verbose_name="Fecha de Registro", null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Archivo Plano"
+        verbose_name_plural = "Archivos Planos"
         ordering = ['id']

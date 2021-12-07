@@ -1,0 +1,116 @@
+{% extends 'Adm/admin.html' %}
+{% load static %}
+
+{% block Head %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v3</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-shopping-basket"></i>
+                                {{ title2 }}
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="container">
+                                <table class="table table-hover " id="tabla" style="width: 100%">
+                                    <thead class="bg-dark alert-link text-white">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Titulo</th>
+                                        <th>Tipo de Archivo</th>
+                                        <th>Descripcion</th>
+                                        <th>Fecha de Registro</th>
+                                        <th>Archivo</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for a in object_list %}
+                                        <tr>
+                                            <td>{{ a.id }}</td>
+                                            <td>{{ a.title }}</td>
+                                            <td>{{ a.typeFile }}</td>
+                                            <td>{{ a.description }}</td>
+                                            <td>{{ a.createdAt }}</td>
+                                            {% if a.typeFile == "Word" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-primary btn-sm">
+                                                    <img src="{% static 'admin/img/microsoft_word.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% elif a.typeFile == "PDF" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-danger btn-sm">
+                                                    <img src="{% static 'admin/img/adobe_file_pdf.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% elif a.typeFile == "PNG" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-dark btn-sm">
+                                                    <img src="{% static 'admin/img/picture_png.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% elif a.typeFile == "Excel" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-success btn-sm">
+                                                    <img src="{% static 'admin/img/excel_microsoft.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% elif a.typeFile == "Power Point" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-warning btn-sm">
+                                                    <img src="{% static 'admin/img/powerpoint_icon.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% elif a.typeFile == "TXT" %}
+                                                <td><a href="{{ a.file.url }}" class="btn btn-light btn-sm">
+                                                    <img src="{% static 'admin/img/2257366_extension_file_name_txt_icon.png' %}"
+                                                         style="width: 20px"
+                                                         alt=""> Descargar</a></td>
+                                            {% endif %}
+                                            <td>
+                                                <a href="{% url 'file_update' a.pk %}" type="button"
+                                                   class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>'</a>
+                                                <a href="{% url 'file_delete' a.pk %}"
+                                                   class="btn btn-danger btn-sm"><i
+                                                        class="fas fa-trash-restore-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{% url 'file_upload' %}" class="btn btn-primary" id="btntest"><i
+                                        class="fas fa-plus-square"></i>
+                                    {{ button }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

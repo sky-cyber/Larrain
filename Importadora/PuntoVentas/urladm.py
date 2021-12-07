@@ -9,6 +9,7 @@ from Modulo.Funtions.PDF.view import *
 from Modulo.Funtions.Order.view import *
 from Modulo.Funtions.Sales.view import *
 from Modulo.Funtions.Dispatch.view import *
+from Modulo.Funtions.File.view import *
 from PuntoVentas.views import DashboardView, PerfilView, ProfileUpdate
 from django.contrib.auth.decorators import login_required
 
@@ -96,6 +97,12 @@ urlpatterns = [
     path('detail/client/office/<int:pk>/', DetailClientOffice.as_view(), name='detail_client_office'),
 
     # URL FOR SALE
-    path('sale/client', SaleClient.as_view(), name='sale_client')
+    path('sale/client', SaleClient.as_view(), name='sale_client'),
+
+    # Upload File
+    path('file/upload', FileUpload.as_view(), name='file_upload'),
+    path('file/list', FileList.as_view(), name='file_list'),
+    path('file/edit/<int:pk>/', FileUpdate.as_view(), name='file_update'),
+    path('file/delete/<int:pk>/', FileDelete.as_view(), name='file_delete')
 
 ]
