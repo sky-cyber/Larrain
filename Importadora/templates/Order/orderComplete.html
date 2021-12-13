@@ -8,13 +8,12 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-8 text-center">
+                    <div class="col-sm-6 text-center">
                         <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -34,7 +33,7 @@
                             <br>
                             <hr>
                             <div class="text-center" style="display: block">
-                                <a href="{% url 'order_list' %}" class="btn btn-primary m-1"> Todas Las Ordenes</a>
+                                <a href="{% url 'order_list' %}" class="btn btn-primary m-1"> Todas Las Órdenes</a>
                                 <a href="{% url 'order_in_process' %}" class="btn btn-warning m-1"> Orden En Proceso</a>
                                 <a href="{% url 'order_to_dispatch' %}" class="btn btn-info m-1"> Orden A Despacho</a>
                                 <a href="{% url 'order_canceled' %}" class="btn btn-danger m-1"> Orden Cancelada</a>
@@ -49,8 +48,8 @@
                                     <th>ID</th>
                                     <th>Usuario</th>
                                     <th>Total</th>
-                                    <th>cantidad</th>
-                                    <th>Fecha De Pago</th>
+                                    <th>Cantidad</th>
+                                    <th>Fecha de Pago</th>
                                     <th>Estado</th>
                                     <th>Transacción</th>
                                 </tr>

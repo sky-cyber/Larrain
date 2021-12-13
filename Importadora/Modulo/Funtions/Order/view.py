@@ -22,7 +22,7 @@ class OrderClientDetail(LoginRequiredMixin, ValidatorPermissionRequiredMixins, T
         else:
             context['shipping'] = []
         context['allstatus'] = ORDER_STATUS
-        context['button'] = "Volver al Listado de Ordenes"
+        context['button'] = "Volver al listado de Órdenes"
         context['PDF'] = "Generar PDF"
         return context
 
@@ -48,8 +48,8 @@ class OrderListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListV
         context = super(OrderListView, self).get_context_data(**kwargs)
         allorder = Orders.objects.all().order_by("-id")
         context['allorder'] = allorder
-        context['title'] = 'Listado de Todas Las Ordenes Emitidas'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de todas las Órdenes Emitidas'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context
 
 
@@ -61,8 +61,8 @@ class OrderComplete(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Templ
     def get_context_data(self, **kwargs):
         context = super(OrderComplete, self).get_context_data(**kwargs)
         context['object_list'] = Orders.objects.filter(status="Orden Completada").order_by("-id")
-        context['title'] = 'Listado de Ordenes Completadas'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de Órdenes Completadas'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context
 
 
@@ -74,8 +74,8 @@ class OrderInProcess(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Temp
     def get_context_data(self, **kwargs):
         context = super(OrderInProcess, self).get_context_data(**kwargs)
         context['object_list'] = Orders.objects.filter(status="Orden En Proceso").order_by("-id")
-        context['title'] = 'Listado de Ordenes En Proceso'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de Órdenes En Proceso'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context
 
 
@@ -87,8 +87,8 @@ class OrderToDispatch(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Tem
     def get_context_data(self, **kwargs):
         context = super(OrderToDispatch, self).get_context_data(**kwargs)
         context['object_list'] = Orders.objects.filter(status="Orden A Despacho")
-        context['title'] = 'Listado de Ordenes A Despacho'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de Órdenes A Despacho'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context
 
 
@@ -100,8 +100,8 @@ class OrderCanceled(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Templ
     def get_context_data(self, **kwargs):
         context = super(OrderCanceled, self).get_context_data(**kwargs)
         context['object_list'] = Orders.objects.filter(status="Orden Cancelada")
-        context['title'] = 'Listado de Ordenes Canceladas'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de Órdenes Canceladas'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context
 
 
@@ -113,6 +113,6 @@ class OrderOnTheWay(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Templ
     def get_context_data(self, **kwargs):
         context = super(OrderOnTheWay, self).get_context_data(**kwargs)
         context['object_list'] = Orders.objects.filter(status="Orden En Camino")
-        context['title'] = 'Listado de Ordenes En Camino'
-        context['title2'] = 'Filtrado de Ordenes Registradas:'
+        context['title'] = 'Listado de Órdenes En Camino'
+        context['title2'] = 'Filtrado de Órdenes Registradas:'
         return context

@@ -129,7 +129,7 @@ def RegisterUserAdmin(request):
 def UpdateUserAdmin(request, pk):
     user = get_object_or_404(User, pk=pk)
     title = "Editar un Usuario"
-    title2 = 'Edicion Usuario Administrador'
+    title2 = 'Edición Usuario Administrador'
     button = "Editar Usuario"
     data = {
         'form': CreateUserForm(instance=user), 'title': title, 'title2': title2, 'button': button
@@ -184,7 +184,7 @@ class DeleteUserAdmin(ValidatorPermissionRequiredMixins, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Elimar un Usuario'
+        context['title'] = 'Eliminar un Usuario'
         context['title2'] = "¿Quiere eliminar al Usuario "
         return context
 
@@ -251,7 +251,7 @@ class ResetPasswordView(FormView):
     def get_context_data(self, **kwargs):
         context = super(ResetPasswordView, self).get_context_data(**kwargs)
         context['title'] = 'Reseteo de Contraseña'
-        context['title2'] = 'Ingrese Su Nombre de Usuario que utilizó ' \
+        context['title2'] = 'Ingrese su nombre de usuario que utilizó ' \
                             'al crear su cuenta. Se enviará un correo electrónico ' \
                             'a ese usuario con más instrucciones sobre cómo ' \
                             'restablecer su contraseña.'
@@ -352,7 +352,7 @@ class ClientListView(ValidatorPermissionRequiredMixins, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Clientes"
+        context['title'] = "Listado de Clientes"
         context['title2'] = 'Listado de Clientes Registrados en la Página WYKEP'
         context['button'] = "Nuevo Registro"
         return context

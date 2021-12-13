@@ -33,36 +33,37 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-tag"></i>
-                        Categorias
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown" style="width: 400px">
-                        {% if category %}
-                            <li>
-                                <a class="dropdown-item text-center" href="">
-                                    <i class="fab fa-shopify"></i> Todas las Categorias</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            {% for c in category %}
-                                <div class="text-center" style="display: inline-block;">
-                                    <li>
-                                        <a class="dropdown-item text-center"
-                                           style="font-size: 15px;padding: 5px; margin: 5px"
-                                           href="{% url 'type_category' c.slug %}">{{ c.name }}</a>
-                                    </li>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <p class="text-center">Categoria no Disponible en esta Pestaña</p>
-                        {% endif %}
-                    </ul>
-                </li>
                 {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-tag"></i>
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown"
+                            style="width: 400px">
+                            {% if category %}
+                                <li>
+                                    <a class="dropdown-item text-center" href="">
+                                        <i class="fab fa-shopify"></i> Todas las Categorías</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                {% for c in category %}
+                                    <div class="text-center" style="display: inline-block;">
+                                        <li>
+                                            <a class="dropdown-item text-center"
+                                               style="font-size: 15px;padding: 5px; margin: 5px"
+                                               href="{% url 'type_category' c.slug %}">{{ c.name }}</a>
+                                        </li>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-center">Categoria no Disponible en esta Pestaña</p>
+                            {% endif %}
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-id-card"></i>
                         Perfil
                     </a></li>
@@ -83,7 +84,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="{% url 'contact' %}"><i class="fas fa-phone-volume"></i>
-                                Contactanos</a></li>
+                                Soporte</a></li>
                             <li><a class="dropdown-item" href="{% url 'team' %}"><i class="fas fa-users-cog"></i> Equipo</a>
                             </li>
                         </ul>

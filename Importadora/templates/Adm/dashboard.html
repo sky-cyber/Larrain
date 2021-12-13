@@ -28,7 +28,6 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
                         </ol>
                     </div>
                 </div>
@@ -85,7 +84,7 @@
                             <div class="small-box" style="background: #2a2a2a; color: white">
                                 <div class="inner">
                                     <h3>{{ totalOrder }}</h3>
-                                    <h4>Total de Ordenes</h4>
+                                    <h4>Total de Órdenes</h4>
                                     <p class="image card-footer">
                                         <img src="{% static 'admin/img/order_product.png' %}" class="elevation-2"
                                              alt="User Image" style="height: 100px">
@@ -105,14 +104,14 @@
                             <div class="small-box" style="background: #e7d000; color: white">
                                 <div class="inner">
                                     <h3>{{ totalProductOffer }}</h3>
-                                    <h4>Productos En Oferta</h4>
+                                    <h4>Productos en Oferta</h4>
                                     <p class="image card-footer">
                                         <img src="{% static 'assets/img/navbar/discount_sale.png' %}"
                                              class="elevation-2"
                                              alt="User Image" style="height: 100px">
                                     </p>
                                 </div>
-                                <a href="{% url 'product_list' %}" class="small-box-footer">Ver Registros <i
+                                <a href="{% url 'product_list_offer' %}" class="small-box-footer">Ver Registros <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -140,7 +139,7 @@
                                              alt="User Image" style="height: 100px">
                                     </p>
                                 </div>
-                                <a href="{% url 'supplier_list' %}" class="small-box-footer">Ver Registros <i
+                                <a href="{% url 'list_dispatcher' %}" class="small-box-footer">Ver Registros <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -148,13 +147,13 @@
                             <div class="small-box" style="background: #ff8200; color: white">
                                 <div class="inner">
                                     <h3>{{ OrderProcess }}</h3>
-                                    <h4>Ordenes En Proceso</h4>
+                                    <h4>Órdenes en Proceso</h4>
                                     <p class="image card-footer">
                                         <img src="{% static 'assets/img/navbar/green_mail.png' %}" class="elevation-2"
                                              alt="User Image" style="height: 100px">
                                     </p>
                                 </div>
-                                <a href="{% url 'order_list' %}" class="small-box-footer">Ver Registros <i
+                                <a href="{% url 'order_in_process' %}" class="small-box-footer">Ver Registros <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

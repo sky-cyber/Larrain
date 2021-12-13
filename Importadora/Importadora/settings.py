@@ -83,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'skycyber4',
+        'USER': 'skycyber5',
         'PASSWORD': '123',
     }
 }

@@ -16,7 +16,7 @@
     <div class="container card-footer">
         <div class="row m-0">
             <div class="text-center text-danger card-footer">
-                <h1>Detalle de la Transacción</h1>
+                <h1>Detalle de la Orden</h1>
             </div>
             <hr>
             <div class="col-md-7 col-12">
@@ -44,13 +44,13 @@
                                 <div class="d-block m-2" style="font-size: 20px">Email: {{ user.email }}</div>
                                 <br>
                                 <div class="d-block card-footer"
-                                     style="font-size: 20px; background: #09111EFF; color: white">Información de Envio:
+                                     style="font-size: 20px; background: #09111EFF; color: white">Información de Envío:
                                 </div>
                                 <hr>
                                 {% if shipping %}
                                     <div class="d-block m-2" style="font-size: 20px">País: {{ shipping.country }}</div>
                                     <div class="d-block m-2" style="font-size: 20px">Ciudad: {{ shipping.city }}</div>
-                                    <div class="d-block m-2" style="font-size: 20px">Codigo
+                                    <div class="d-block m-2" style="font-size: 20px">Código
                                         Postal: {{ shipping.postalCode }}</div>
                                     <div class="d-block m-2" style="font-size: 20px">
                                         Dirección: {{ shipping.address }}</div>
@@ -101,8 +101,8 @@
             <div class="col-md-5 col-12 card-footer" style="background: #eee8e8">
             <br><br>
                 <div class="box-left">
-                    <p class="card-footer text-center text-bold text-white" style="background: #09111EFF">Resumen del Pago</p>
-                    <div class="d-block">Metodo de Pago: {{ order.paymentMethod }}</div>
+                    <p class="card-footer text-center text-bold text-white" style="background: #09111EFF">Estado del Pago</p>
+                    <div class="d-block">Método de Pago: {{ order.paymentMethod }}</div>
                     <p class="card-footer text-center text-bold text-white" style="background: #18bd06">
                         Pagado: {{ order.paidAt }}</p>
                     <hr>
@@ -134,14 +134,14 @@
                     {% endif %}
                     <div class="h8">
                         <div class="row m-0 border mb-3 card-footer">
-                            <p class="card-footer text-center" style="background: #ffffff">Resumen de los Totales</p>
+                            <p class="card-footer text-center" style="background: #ffffff">Detalle del Pago</p>
                             <hr>
                             <div class="d-block m-2" style="font-size: 20px">Productos: {{ order.get_cart_items }}</div>
                             <hr>
                             <div class="d-block m-2" style="font-size: 20px">Sub Total:
                                 ${{ order.shippingPrice | intcomma }}</div>
                             <hr>
-                            <div class="d-block m-2" style="font-size: 20px">Costo de envio:
+                            <div class="d-block m-2" style="font-size: 20px">Costo de envío:
                                 ${{ order.tax | intcomma }}</div>
                             <hr>
                             <div class="d-block m-2" style="font-size: 20px">Total Pagado:

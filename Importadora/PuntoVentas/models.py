@@ -58,7 +58,7 @@ class Category(models.Model):
 
 class Supplier(models.Model):
     rut = models.CharField(max_length=15, verbose_name="Rut", unique=True, blank=False, null=False)
-    company = models.CharField(max_length=200, verbose_name="Empresa", blank=False, null=False)
+    company = models.CharField(max_length=200, unique=True, verbose_name="Empresa", blank=False, null=False)
     first_name = models.CharField(default="", max_length=50, verbose_name="Primer Nombre")
     second_name = models.CharField(default="", max_length=50, verbose_name="Segundo Nombre")
     pather_last_name = models.CharField(default="", max_length=50, verbose_name="Apellido Paterno")
@@ -92,21 +92,20 @@ class Supplier(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
-    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, verbose_name="Categoría", null=True, blank=True)
+    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, verbose_name="Proveedor", null=True, blank=True)
     name = models.CharField(max_length=50, verbose_name="Nombre del Producto", unique=True)
-    slug = models.SlugField(unique=True, default="")
-    image = models.ImageField(upload_to="product", null=True, blank=True)
+    slug = models.SlugField(unique=True, default="", verbose_name="Etiqueta")
+    image = models.ImageField(upload_to="product", null=True, blank=True, verbose_name="Imagen")
     brand = models.CharField(default="", verbose_name='Marca del Producto', max_length=50, blank=False, null=False)
     description = models.TextField(default="", verbose_name='Descripción', blank=False, null=False)
-    rating = models.DecimalField(default=0, max_digits=7, decimal_places=2, blank=True, null=True)
     numReviews = models.PositiveIntegerField(default=0, verbose_name="Cantidad de Visitas")
     salePrice = models.PositiveIntegerField(default=0, verbose_name="Precio")
     offerPrice = models.PositiveIntegerField(default=0, verbose_name="Oferta")
     offer = models.BooleanField(default="False", verbose_name="Producto En Oferta", null=True, blank=True)
     stock = models.PositiveIntegerField(default=0)
-    warranty = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Garantia")
-    dispachTime = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Tiempo de envio")
+    warranty = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Garantía")
+    dispachTime = models.CharField(max_length=200, default="", null=True, blank=True, verbose_name="Tiempo de envío")
     statusProduct = models.BooleanField(default="False", verbose_name="Estado", null=True, blank=True)
     createdAt = models.DateField(auto_now=True, auto_now_add=False, verbose_name="Fecha de Registro")
 
@@ -174,15 +173,6 @@ class Review(models.Model):
         ordering = ['id']
 
 
-ORDER_STATUS = (
-    ("Orden A Despacho", "Orden A Despacho"),
-    ("Orden En Proceso", "Orden En Proceso"),
-    ("Orden En Camino", "Orden En Camino"),
-    ("Orden Completada", "Orden Completada"),
-    ("Orden Cancelada", "Orden Cancelada"),
-)
-
-
 class Dispatcher(models.Model):
     rut = models.CharField(max_length=13, unique=True, verbose_name="Rut", null=True, blank=False)
     first_name = models.CharField(max_length=100, verbose_name="Primer Nombre", null=True, blank=False)
@@ -210,6 +200,15 @@ class Dispatcher(models.Model):
         verbose_name = "Despachador"
         verbose_name_plural = "Despachadores"
         ordering = ['id']
+
+
+ORDER_STATUS = (
+    ("Orden A Despacho", "Orden A Despacho"),
+    ("Orden En Proceso", "Orden En Proceso"),
+    ("Orden En Camino", "Orden En Camino"),
+    ("Orden Completada", "Orden Completada"),
+    ("Orden Cancelada", "Orden Cancelada"),
+)
 
 
 class Orders(models.Model):
@@ -399,7 +398,7 @@ TYPE = (
 
 
 class FlatFile(models.Model):
-    title = models.CharField(default="", max_length=100, verbose_name="Titulo", null=False, blank=False)
+    title = models.CharField(default="", max_length=100, verbose_name="Título", null=False, blank=False)
     typeFile = models.CharField(default="", max_length=50, verbose_name="Tipo de Archivo", choices=TYPE)
     description = models.CharField(default="", max_length=100, verbose_name='Descripción', blank=False, null=False)
     file = models.FileField(upload_to='file', verbose_name="Subir Archivo", null=False, blank=False)

@@ -33,7 +33,7 @@ class ProductListOfferView(LoginRequiredMixin, ValidatorPermissionRequiredMixins
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_list'] = Product.objects.filter(offer=True)
-        context['title'] = 'Listado de Productos En Oferta'
+        context['title'] = 'Listado de Productos en Oferta'
         context['title2'] = 'Productos Almacenados en Bodega'
         context['button'] = 'Agregar Producto'
         context['button2'] = 'Generar PDF'
@@ -64,8 +64,8 @@ class ProductUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, U
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Edicion de Producto'
-        context['title2'] = 'Editar'
+        context['title'] = 'Edición de Producto'
+        context['title2'] = 'Ha solicitado editar este producto'
         context['button'] = 'Guardar Nuevo Registro'
         return context
 
@@ -79,7 +79,7 @@ class ProductDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, D
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Eliminación de un producto"
-        context['title2'] = "¿Quiere eliminar El Producto "
+        context['title2'] = "¿Quiere eliminar el producto "
         context['product_url'] = reverse_lazy('product_list')
         return context
 

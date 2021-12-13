@@ -10,13 +10,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         {% block titulo %}
-                            <h1 class="m-0 text-danger text-bold">Perfil Del Usuario</h1>
+                            <h1 class="m-0 text-danger text-bold">Perfil del Usuario</h1>
                         {% endblock %}
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div>
                 </div>
@@ -63,11 +62,11 @@
                                     <li class="list-group-item">Usuario: {{ user.username }}</li>
                                     <li class="list-group-item">Nombres: {{ user.first_name }}</li>
                                     <li class="list-group-item">Apellidos: {{ user.last_name }}</li>
-                                    <li class="list-group-item">Correo Electronico: {{ user.email }}</li>
+                                    <li class="list-group-item">Correo Electrónico: {{ user.email }}</li>
                                 </ul>
                                 <div class="card-body align-self-center">
                                     <a href="{% url 'reset_password' %}" class="card-link btn btn-primary">¿Desea cambiar la clave?</a>
-                                    <a href="{% url 'profile_update' %}" class="card-link btn btn-success">¿Solicita Editar Su Perfil?</a>
+                                    <a href="{% url 'profile_update' %}" class="card-link btn btn-success">¿Solicita editar su perfil?</a>
                                 </div>
                             </div>
                         </div>

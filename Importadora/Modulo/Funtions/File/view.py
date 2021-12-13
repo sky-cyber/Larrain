@@ -18,8 +18,8 @@ class FileUpload(LoginRequiredMixin, ValidatorPermissionRequiredMixins, CreateVi
         context = super(FileUpload, self).get_context_data(**kwargs)
         context['button'] = "Registrar Lista"
         context['filelist'] = reverse_lazy('file_list')
-        context['button2'] = "Volver Al Listado"
-        context['title'] = "Subir Un Archivo"
+        context['button2'] = "Volver al Listado"
+        context['title'] = "Subir un archivo"
         context['title2'] = "Registro"
         return context
 
@@ -33,7 +33,7 @@ class FileList(LoginRequiredMixin, ValidatorPermissionRequiredMixins, ListView):
         context = super(FileList, self).get_context_data(**kwargs)
         context['upload'] = reverse_lazy('file_upload')
         context['button'] = "Subir Archivo"
-        context['title'] = "Listado De Archivos"
+        context['title'] = "Listado de archivos"
         context['title2'] = "Listado"
         return context
 
@@ -49,8 +49,8 @@ class FileUpdate(LoginRequiredMixin, ValidatorPermissionRequiredMixins, UpdateVi
         context = super(FileUpdate, self).get_context_data(**kwargs)
         context['button'] = "Editar Archivo"
         context['filelist'] = reverse_lazy('file_list')
-        context['button2'] = "Volver Al Listado"
-        context['title'] = "Actualización de Archivo Plano"
+        context['button2'] = "Volver al Listado"
+        context['title'] = "Actualización de archivo plano"
         context['title2'] = "Actualización"
         return context
 
@@ -63,7 +63,7 @@ class FileDelete(LoginRequiredMixin, ValidatorPermissionRequiredMixins, DeleteVi
 
     def get_context_data(self, **kwargs):
         context = super(FileDelete, self).get_context_data(**kwargs)
-        context['title'] = "Eliminación de un Archivo Plano"
-        context['title2'] = "¿Quiere eliminar El Archivo "
+        context['title'] = "Eliminación de un archivo plano"
+        context['title2'] = "¿Quiere eliminar el archivo "
         context['url_list'] = reverse_lazy('file_list')
         return context

@@ -1,0 +1,153 @@
+Administrador
+
+1)
+username: skycyber
+first_name: Brian Miguel
+last_name: Nuñez Herrera
+email: brian.zenun21@gmail.com
+password: skyline21
+
+2)
+username: debb16
+first_name: Debbie Catalina
+last_name: Ortega Aranda
+email: debbieortega.a16@gmail.com
+password: asdh#$%2522
+
+3)
+username: angel
+first_name: Miguel Angel
+last_name: Nuñez Vergara
+email: miguel45@hotmail.com
+password: maschmelo245$#
+
+*******************************************
+
+Encargado de Bodega
+
+1)
+username: helio
+first_name: Sergio Julio
+last_name: García Sánchez
+email: sergio.sanchezga@imss.gob.mx
+password: imssgobmx
+
+2)
+username: Leopoldo
+first_name: Leopoldo Arturo
+last_name: García Santos
+email: arturo.santos@gmail.com
+password: 15a22234$
+
+3)
+username: tos
+first_name: Carlos Daniel
+last_name: Campillo Serrano
+email: ccs1944@gmail.com
+password: ccs1944$
+
+*******************************************
+
+Despachador
+
+1)
+username: aguila
+first_name: María Esther
+last_name: Aguilar Urrutia
+email: mariau@gmail.com
+password: ashdjshd#$%
+
+2)
+username: zerg
+first_name: Ángel Alfonso
+last_name: Zarrain Herzberg
+email: zarain@hotmail.es
+password: fsji4%&$+
+
+3)
+username: ratiry
+first_name: Juan Ramón
+last_name: Fuente Ramírez
+email: ceptamim@gmail.com
+password: jokaba354##
+
+*******************************************
+
+Agente de Ventas
+
+1)
+username: pinkie
+first_name: María del Carmen
+last_name: Avíla Casado
+email: carmen.avila-casado@gmail.com
+password: 15jk23$"#$
+
+2)
+username: caldo
+first_name: Luis Felipe
+last_name: Hernández Abreu
+email: luisabreu03@yahoo.com
+password: caldelabro335
+
+3)
+username: voldemor
+first_name: José Antonio
+last_name: Sereno Colo
+email: serenoc@prodigy.net.mx
+password: 15asdj**SDfsd
+
+*******************************************
+
+Supervisor de Local
+
+1)
+username: shy
+first_name: Luisa Lilia
+last_name: Rocha Arrieta
+email: lrocha@gmail.com
+password: pbkdf2_sha256$260000$dMtfNuEcmYyYPv4UNvtpDq$DtB0CK4HswBs/dpqnWfhVwVtikTiOFr8vgjX8HOSbLE=
+
+2)
+username: crush
+first_name: Ana Cristina
+last_name: Arteaga Gómez
+email: acaarteaga@yahoo.com
+password: pbkdf2_sha256$260000$MMliWFRnv2p8IWlRDW4AgO$7id23M011wgZqcNSIl3VuvidQQ50reBzip3giuxl0ec=
+
+3)
+username: gregorio
+first_name: Gregorio David
+last_name: 	Ponce Lazcano
+email: elazcano@gmail.com
+password: pbkdf2_sha256$260000$UIATrGHeO5kkBynhtSsM7V$Z82ynx9w/RfcsfPK61oenk/P9ZxvgN0ktsiMoWSMhbk=
+
+*******************************************
+
+Supervisor
+
+1)
+username: terran
+first_name: Lourdes Andrea
+last_name: Arriagada Pizano
+email: landapi@hotmail.com
+password: landaP152
+
+2)
+username: luna
+first_name: Gabriela Aurora
+last_name: Molina Ortíz
+email: jhernandezo@gmail.com
+password: 1468#$%sax
+
+3)
+username: octavia
+first_name: Octavia Antonela
+last_name: Contreras Peralta
+email: tavimlp@gmail.com
+password: tavir567*$
+
+*******************************************
+
+
+
+

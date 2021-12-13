@@ -44,8 +44,8 @@
                 <img class="d-block mx-auto mb-4" src="{% static 'assets/img/logo_wykep_ori.png' %}" style="width: 40%">
                 <h2>Formulario de Pago</h2>
                 <p class="lead">A continuación se muestra un formulario donde podrá colocar sus datos personales
-                    necesarios para poder realizar la compra de sus prodctos. Cada grupo de formulario requerido tiene
-                    un estado de validación que se activará por si algunos de los campos no está completado de manera
+                    necesarios para poder realizar la compra de sus productos. Cada grupo de formulario requerido tiene
+                    un estado de validación que activará una alerta por si algunos de los campos no está completado de manera
                     correcta.</p>
             </div>
 
@@ -93,7 +93,7 @@
                                       style="font-size: 20px">$ {{ order.get_cart_total | intcomma }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-success text-bold" style="font-size: 20px">Costo de Envio: </h4>
+                                <h4 class="text-success text-bold" style="font-size: 20px">Costo de Envío: </h4>
                                 <span class="badge bg-dark rounded-pill"
                                       style="font-size: 20px">$ {{ order.tax | intcomma }}</span>
                             </div>
@@ -192,7 +192,7 @@
                                 </div>
 
                                 <div class="col-12 form-field">
-                                    <label for="zip" class="form-label">Codigo Postal</label>
+                                    <label for="zip" class="form-label">Código Postal</label>
                                     <input type="text" name="postalCode" class="form-control"
                                            placeholder="Ingrese su Codigo Postal" required="">
                                     <div class="invalid-feedback">
@@ -206,7 +206,7 @@
                                 type="submit" value="continue">Continuar con el Pago
                         </button>
 
-                        Metodos de Pago :
+                        Métodos de Pago :
                         <div class="card-footer py-2 text-center hidden" id="payment-info"
                              style="background: #012773; color: white; font-size: 25px;border: None">
                             <button id="make-payment" class="text-bold py-2 btn-lg btn-block"
@@ -293,12 +293,24 @@
                 .then((response) => response.json())
                 .then((data) => {
                     console.log('success:', data);
-                    alert('Transacción Completa');
-                    window.location.href = '/purchase/detail/';
-                })
+                    var message = 'Transacción Completada, ' +
+                        'Enviaremos Su Detalle Al Correo Electrónico';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Felicitaciones',
+                        text: message,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Continuar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'success'
+                            )
+                            window.location.href = '/purchase/detail/'
+                        }
+                    });
+                });
         }
-
-
     </script>
     </body>
 

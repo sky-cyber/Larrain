@@ -97,7 +97,7 @@
                                 <strong>Audífono Gamer LU741 Light Up Pro Negro.</strong></p></a>
                         </div>
                         <div class="col-lg-6">
-                            <img src="{% static 'assets/img/product/audifono-gamer-gxt313.jpg' %}" style="width: 250px"
+                            <img src="{% static 'assets/img/logos/audifono-gamer-gxt313.jpg' %}" style="width: 250px"
                                  class="card-img-top">
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                                 <strong>SmartPhone Motorola E6 S.</strong></p></a>
                         </div>
                         <div class="col-lg-6">
-                            <img src="{% static 'assets/img/product/motorola.jpg' %}" style="width: 250px"
+                            <img src="{% static 'assets/img/logos/motorola.jpg' %}" style="width: 250px"
                                  class="card-img-top">
                         </div>
                     </div>
@@ -126,11 +126,11 @@
                     </div>
                     <div class="col-lg-3">
                         <img src="{% static 'assets/img/logos/mail_send.png' %}" style="width: 50px" alt=""><small>
-                        Ordenes En Camino</small>
+                        Órdenes En Camino</small>
                     </div>
                     <div class="col-lg-3">
                         <img src="{% static 'assets/img/logos/front_lorry_truck.png' %}" style="width: 50px"
-                             alt=""><small> Envio a todo chile</small>
+                             alt=""><small> Envío a todo chile</small>
                     </div>
                     <div class="col-lg-3">
                         <img src="{% static 'assets/img/logos/badge_defender.png' %}" style="width: 50px" alt=""><small>
@@ -139,17 +139,23 @@
                 </div>
             </div>
             <br><br>
-            <div class="container py-3 m-3">
-                <div class="row">
-                    <h2 class="text-danger text-center text-bold">Revise Nuestras Ultimas Ofertas</h2>
-                    <div class="col-lg-12">
-                        {% for p in product %}
-                            <a href="{% url 'productDetail' p.slug %}"><img src="{{ p.get_image }}" style="width: 200px" alt=""></a>
-                        {% endfor %}
+            {% if user.is_authenticated %}
+                <div class="container py-3 m-3">
+                    <div class="row">
+
+                        <h2 class="text-danger text-center text-bold">Revise Nuestras Últimas Ofertas</h2>
+                        <div class="col-lg-12">
+                            {% for p in product %}
+                                <a href="{% url 'productDetail' p.slug %}">
+                                    <img src="{{ p.get_image }}"
+                                         style="width: 200px"
+                                         alt=""></a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br><br>
+                <br><br>
+            {% endif %}
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Servicios</h2>
                 <h1 class="section-subheading text-muted">¿Porqué Comprar en Wykep?</h1>

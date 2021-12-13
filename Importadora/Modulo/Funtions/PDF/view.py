@@ -35,9 +35,10 @@ class SupplierPdfView(View):
     def get(self, request, *args, **kwargs):
         try:
             template = get_template("PDF/supplierPDF.html")
+            user = self.request.user
             context = {"supplier": Supplier.objects.all(),
-                       "name": "Wykep",
-                       "rut": "17.984.014-6",
+                       "name": user,
+                       "rut": "97.895.263-4",
                        "Company": "Importadora Larrain",
                        "address": "Avenida porvenir #679",
                        "title": "Listado de Proveedores",

@@ -637,10 +637,6 @@
             padding: 5px 20px;
             width: 100%
         }
-
-        .bee-row-12 .bee-col-4 .bee-block-2 .bee-button-container {
-            text-align: "center"
-        }
     </style>
 </head>
 <body>
@@ -671,8 +667,8 @@
                 <br><br>
                 <div class="bee-col text-center" style="color: white">
                     <h5 class="card-title" style="font-size: 40px">Usuario: {{ name }}</h5>
-                    <h5 class="card-title">Compañia: {{ Company }}</h5>
-                    <h5 class="card-title">Rut: {{ rut }}</h5>
+                    <h5 class="card-title">Compañía: {{ Company }}</h5>
+                    <h5 class="card-title">Rut de la Compañía: {{ rut }}</h5>
                     <h5 class="card-title">Dirección: {{ address }}</h5>
                 </div>
                 <br><br>
@@ -684,7 +680,9 @@
                     <div class="bee-text-content"
                          style="font-size: 20px; line-height: 150%; color: white; font-family: inherit;">
                         <p style="font-size: 20px; line-height: 21px; text-align: center;"><span
-                                style="font-size: 20px; line-height: 24px;">En Este pdf se mostraran los Proveedores que fueron Contratados por la Empresa Importadora Larrain con tus caracteristicas e informacion necesaria para su funcionamiento</span>
+                                style="font-size: 20px; line-height: 24px;">En este pdf se mostrarán los Proveedores que
+                            fueron Contratados por la empresa Importadora Larrain con sus
+                            características e información necesaria para su funcionamiento.</span>
                         </p>
                     </div>
                 </div>
@@ -709,13 +707,16 @@
         <div class="col-sm-6">
             <div class="card-header">
                 <div class="card-body">
-                    <h5 class="card-title text-center" style="background-color: #c2d4f5">Compañia: {{ s.company }}</h5>
+                    <h5 class="card-title text-center" style="background-color: #c2d4f5">Compañía: {{ s.company }}</h5>
                     <hr>
                     <h5 class="card-title">Rut: {{ s.rut }}</h5>
+                    <h5 class="card-title">Nombres: {{ s.first_name }} {{ s.second_name }}</h5>
+                    <h5 class="card-title">Apellidos: {{ s.pather_last_name }} {{ s.mother_last_name }}</h5>
+                    <h5 class="card-title">Fecha de Nacimiento: {{ s.birthday }}</h5>
                     <h5 class="card-title">Celular: {{ s.phone }}</h5>
                     <h5 class="card-title">Dirección: {{ s.address }}</h5>
                     <h5 class="card-title">Correo: {{ s.email }}</h5>
-                    <h5 class="card-title">Tiempo de Envio: {{ s.timeDelivery }}</h5>
+                    <h5 class="card-title">Tiempo de Envío: {{ s.timeDelivery }}</h5>
                     <h5 class="card-title">Fecha de Contrato: {{ s.createdAt }}</h5>
                     <hr>
                     <h5 class="card-title text-center" style="background-color: #164d94; color: white">Detalle de los productos</h5>
@@ -742,7 +743,7 @@
                     <div class="bee-text-content"
                          style="font-size: 35px; line-height: 150%; color: white; font-family: inherit;">
                         <p style="font-size: 35px; line-height: 21px; text-align: center;"><span
-                                style="font-size: 16px; line-height: 24px;">Enviamos a todo el mundo, tu producto entregado en tu puerta con las mejores condiciones</span>
+                                style="font-size: 16px; line-height: 24px;">Enviamos tu producto en las mejores condiciones a las puertas de tu casa.</span>
                         </p>
                     </div>
                 </div>

@@ -10,10 +10,9 @@
                     <div class="col-sm-8 text-center">
                         <h1 class="m-0 text-danger text-bold">{{ title }}</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -33,7 +32,7 @@
                             <br>
                             <hr>
                             <div style="display: block">
-                                <a href="{% url 'dispatch_list' %}" class="btn btn-info m-1"> Ordenes A Despachar</a>
+                                <a href="{% url 'dispatch_list' %}" class="btn btn-info m-1"> Órdenes A Despachar</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -57,7 +56,7 @@
                                         <td style="font-size: 18px">{{ o.user }}</td>
                                         <td style="font-size: 20px"><i
                                                 class="right badge badge-success">{{ o.get_cart_items }}</i></td>
-                                        <td>{{ o.dispatcher }}</td>
+                                        <td>{{ o.dispatcher.first_name }} {{ o.dispatcher.second_name }} {{ o.dispatcher.pather_last_name }} {{ o.dispatcher.mother_last_name }}</td>
                                         <td>{{ o.arrivalDate }}</td>
                                         <td>{{ o.transaction_id }}</td>
                                     </tr>

@@ -28,7 +28,7 @@ class ClaimListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Templ
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Reclamos"
+        context['title'] = "Listado de Reclamos"
         context['title2'] = "Listado"
         context['object_list'] = Contact.objects.filter(typeClaim="Reclamo").order_by("-id")
         return context
@@ -54,7 +54,7 @@ class QueryList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(QueryList, self).get_context_data(**kwargs)
-        context['title'] = "Listado De Consultas"
+        context['title'] = "Listado de Consultas"
         context['title2'] = "Listado"
         context['object_list'] = Contact.objects.filter(typeClaim="Consulta").order_by("-id")
         return context
@@ -66,7 +66,7 @@ class SuggestionList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SuggestionList, self).get_context_data(**kwargs)
-        context['title'] = "Listado De Sugerencias"
+        context['title'] = "Listado de Sugerencias"
         context['title2'] = "Listado"
         context['object_list'] = Contact.objects.filter(typeClaim="Sugerencía").order_by("-id")
         return context
@@ -78,7 +78,7 @@ class CongratulationList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(CongratulationList, self).get_context_data(**kwargs)
-        context['title'] = "Listado De Felicitaciones"
+        context['title'] = "Listado de Felicitaciones"
         context['title2'] = "Listado"
         context['object_list'] = Contact.objects.filter(typeClaim="Felicitaciones").order_by("-id")
         return context

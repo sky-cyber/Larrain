@@ -12,13 +12,13 @@ class CategoryForm(ModelForm):
         model = Category
         fields = '__all__'
         labels = {
-            'name': 'Nombre de la categoria',
+            'name': 'Nombre de la categoría',
             'slug': 'Etiqueta'
         }
         widgets = {
             'name': TextInput(
                 attrs={
-                    'placeholder': 'Ingrese Caterogria'
+                    'placeholder': 'Ingrese Categoría'
                 }
             ),
             'slug': TextInput(

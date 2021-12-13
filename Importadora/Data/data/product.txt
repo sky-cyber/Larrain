@@ -1,0 +1,1826 @@
+category
+
+1)
+name = Televisor
+slug = Televisor
+
+2)
+name = CPU
+slug = CPU
+
+3)
+name = Mouse
+slug = Mouse
+
+4)
+name = Teclados
+slug = Teclados
+
+5)
+name = Monitor
+slug = Monitor
+
+6)
+name = Tarjetas
+slug = Tarjetas
+
+7)
+name = Notebook
+slug = Notebook
+
+8)
+name = Routers
+slug = Routers
+
+9)
+name = Cámaras
+slug = Camaras
+
+10)
+name = Auriculares
+slug = Auriculares
+
+11)
+name = Parlantes
+slug = Parlantes
+
+12)
+name = Joysticks
+slug = Joysticks
+
+13)
+name = Pendrive
+slug = Pendrive
+
+14)
+name = Celular
+slug = Celular
+
+15)
+name = Drons
+slug = Drons
+
+16)
+name = Discos
+slug = Discos
+
+17)
+name = Consolas
+slug = Consolas
+
+18)
+name = Microfonos
+slug = Microfonos
+
+19)
+name = Tablests
+slug = Tablests
+
+20)
+name = Pilas
+slug = Pilas
+
+product:
+
+1)
+name = Smart TV AU7000 75 Ultra HD 4K WiFi
+slug = Smart-TV-AU7000-75-Ultra-HD-4K-WiFi
+brand = Samsung®Smart TV
+description = Marca: Samsung
+            Modelo: UN75AU7000GXZS
+            Tipo de Panel: LED
+            Tecnología: 4K ultra HD
+            Resolución: 3840 x 2160
+            Tamaño pantalla: 75"
+            Control por movimiento: No
+            Control por voz: No
+            Control remoto: Si
+            Contraste: Mega Contraste
+            Sistema operativo: Tizen™
+            Procesador: Crystal Processor 4K
+            Tasa de refresco: 60 Hz
+            Conexiones:
+            3 x HDMI
+            1 x USB
+            1 x RJ-45
+            Parlantes: 20W
+            Dimensiones
+            con soporte: 167.32 x 104.79 x 34.11 cm
+            sin soporte: 167.32 x  95.82 x 5.99 cm
+            Peso
+            con soporte: 30.8 kg
+            sin soporte: 30.4 kg
+salePrice = 1099990
+offerPrice = 799990
+stock = 5
+warranty = 3 meses
+dispachTime = 2 meses
+
+2)
+name = CPU Ryzen 9 5950X (AM4)
+slug = CPU-Ryzen-9-5950X-(AM4)
+brand = AMD®CPU AMD sAM4
+description = # de núcleos de CPU
+                16
+                # de hilos
+                32
+                Reloj base
+                3.4GH
+                Reloj de aumento máx.
+                Hasta 4.9GHz
+                Caché L2 total
+                8MB
+                Caché L3 total
+                64MB
+                Desbloqueados
+                Sí
+                CMOS
+                TSMC 7nm FinFET
+                Package
+                AM4
+                Versión de PCI Express
+                PCIe 4.0
+                Solución térmica (PIB)
+                Not included
+                TDP/TDP predeterminado
+                105W
+                Temp. máx.
+                90°C
+                *Compatible con SO
+                Windows 10 edición de 64·bits
+                RHEL x86 edición de 64·bits
+                Ubuntu x86 edición de 64·bits
+                *El soporte del sistema operativo (SO) variará según el fabricante.
+                Memoria
+                Velocidad máxima de memoria
+                Up to 3200MHz
+                Tipo de memoria
+                DDR4
+                Funcionalidades principales
+                Tecnologías compatibles
+                AMD "Zen 3" Core Architecture
+                Tecnología AMD StoreMI
+                Utilidad AMD Ryzen™ Master
+salePrice = 876290
+offerPrice = 0
+stock = 25
+warranty = 5 Meses
+dispachTime = 2 Meses
+
+3)
+name = Mouse Gamer GXT 108 Rava Illuminated USB Negro
+slug = Mouse-Gamer-GXT-108-Rava-Illuminated-USB-Negro
+brand = Trust®Mouses
+description = Forma: Estándar
+                Altura: 122 mm
+                Ancho: 88 mm
+                Profundidad: 34 mm
+                Peso: 111 g
+                Tipo de conexión: Cableado
+                USB versión 2.0
+                Longitud del cable: 170 cm
+                Diseñado para juegos: FPS, RPG, RTS SENSOR DPI 600, 1200, 1600, 2000 Máx. DPI 2.000 dpi
+                DPI ajustable
+                Sensor: Óptico
+                Aceleración óptica 16 G
+                Velocidad de sondeo 125Hz Velocidad de seguimiento 24 ips
+                Luces LED
+                Tipo de agarre: Palma
+                Rueda de desplazamiento
+                Controles: Atrás, dpi, adelante, izquierda, medio, derecho
+                Número de botones: 6
+                Botón DPI
+salePrice = 14990
+offerPrice = 0
+stock = 35
+warranty = 2 Semanas
+dispachTime = 1 Mes
+
+4)
+name = Teclado Gamer Apex 3 Cable USB RGB Membrana Negro
+slug = Teclado-Gamer-Apex-3-Cable-USB-RGB-Membrana-Negro
+brand = Steelseries®Teclados
+description = Compatibilidad: PS5
+                Longitud del cable 8 m
+                Longitud del cable 9 m
+                Tipo de interruptor: Membrana
+                Inalámbrica: No
+                tipo de conector: USB
+                Color: Negro
+                Número de claves de Internet: 104
+                Número de teclas multimedia: 5
+                Reposamuñecas: sí
+                Anti efecto fantasma sí
+                Interruptores mecánicos: No
+                Número de teclas programables 104
+                Teclas programables: sí
+                Iluminación: sí
+                Perfiles disponibles sí
+                Macros disponibles sí
+                Estadísticas disponibles No
+                Se requieren baterías No
+                Firmware actualizable sí
+                Memoria integrada para guardar perfiles No
+                Material de la cubierta El plastico
+                Conector chapado en oro No
+                Cambiar ciclo de vida (clics) 20 millones
+                Material del cable Goma
+                Número de colores de iluminación 16,8 millones
+                Número de zonas de iluminación (zonas por auricular para auriculares) 10
+                Recargable No
+                Modos de iluminación sí
+salePrice = 59990
+offerPrice = 0
+stock = 15
+warranty = 2 Meses
+dispachTime = 2 Meses
+
+5)
+name = Monitor Gamer 23,8" M2442P 165Hz IPS
+slug = Monitor-Gamer-23-8-M2442P-165Hz-IPS
+brand = Gear Gamer®Monitores
+description = Marca: Gear
+                Modelo: M2442
+                Color: Negro
+                Uso: Gamer
+                Display
+                Tamaño Pantalla: 23.8" pulgadas
+                Resolución: 1920 x 1080
+                Display Type: Full HD
+                Tasa de Refresco: 165Hz
+                Tiempo de Respuesta: 2ms
+                Tamaño del pixel: 0.2745 x 0.2745
+                Colores: 16.7M
+                Brillo: 300cd/m2
+                Contraste: 1000:1
+                Angulo de visión: 178°/178°
+                Ratio de Aspecto: 16:9
+                Panel: IPS
+                Tecnologia Sync: FreeSync
+                NTSC: 85%~88%
+                sRGb: 119%~123%
+                Adobe RGB: 90%~91%
+                VESA: 75 x 75mm
+                Conectividad
+                1 x VGA
+                1 x HDMI
+                1 x DisplayPort
+                1 x Audio ou
+                Dimensiones y Peso
+                Dimensiones: 538 x 413.83 x 169.12 mm
+Peso: 3.2kg
+salePrice = 199990
+offerPrice = 0
+stock = 30
+warranty = 6 Meses
+dispachTime = 2 Meses
+
+
+6)
+name = Video AMD RX 6600XT O8GB Dual
+slug = Video-AMD-RX-6600XT-O8GB-Dual
+brand = Asus®Tarjetas Gráficas AMD
+description =
+            Motor gráfico
+            Radeon RX 6600 XT
+            Estándar de bus
+            PCI Express 4.0
+            OpenGL
+            OpenGL®4.6
+            Memoria de video
+            GDDR6 de 8 GB
+            Reloj del motor
+            Modo OC: hasta 2607 MHz (Boost Clock) / hasta 2402 MHz (Game Clock)
+            Modo de juego: hasta 2593 MHz (Boost Clock) / hasta 2382 MHz (Game Clock)
+            Procesadores de flujo
+            2048
+            Velocidad de memoria
+            16 Gbps
+            interfaz de memoria
+            128 bits
+            Resolución
+            Resolución máxima digital 7680 x 4320
+            Interfaz
+            Sí x 1 (HDMI 2.1 nativo)
+            Sí x 3 (DisplayPort 1.4a nativo)
+            Compatibilidad con HDCP Sí (2.3)
+            Soporte de pantalla máximo: 4
+            Soporte NVlink / Crossfire
+            Accesorios
+            1 x Tarjeta de colección
+            1 x Manual de configuración de velocidad
+            Software
+            ASUS GPU Tweak II y controladores: descargue todo el software del sitio de soporte.
+            Dimensiones
+            243 x 134 x 49 mm
+            9,6 x 5,3 x 1,9 pulgadas
+            PSU recomendada: 500W
+            Conectores de poder
+            1 x 8 pines
+            Espacio: 2,5 ranura
+salePrice = 768390
+offerPrice = 729990
+stock = 45
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+7)
+name = Notebook Pavilion Gamer Intel® Core™ i5-10300H NVIDIA GTX 1050(3GB) 8GB RAM
+slug = Notebook-Pavilion-Gamer-Intel®-Core™-i5-10300H-NVIDIA-GTX-1050-3GB-8GB-RAM
+brand = HP®Notebooks Tradicionales
+description =
+            Marca: HP
+            Modelo: 15-dk1028la
+            Color: Negro sombra
+
+            Procesador: Intel® Core™ i5-10300H, 2,5 GHz hasta 4,5GHz (8MB Caché L3)
+            Números de núcleos: Quad Core
+            Memoria Total: 8GB SDRAM DDR4-2933Mhz (1x8GB) + 16GB Intel Optane (Máx. 32GB de Memoria RAM) X 2 Slot
+            Almacenamiento: 256GB SSD / Unidad de estado sólido Intel
+            Pantalla: 15,6" / FHD 1920 x 1080 / retroiluminación WLED FHD IPS antirreflectante y microborde, 250 nits, 45 % de NTSC
+            Tarjeta Gráfica: NVIDIA GeForce GTX 1050 3GB (GDDR5 dedicada)
+            Sistema Operativo: Windows 10 Home (64bit)
+            Microsoft Office: No incluye licencia de Office. Sólo prueba de 30 días
+
+            Webcam: Cámara HD HP Wide Vision con doble micrófono digital integrado
+            Audio: by B&O; Altavoces dobles; HP Audio Boost 1.0
+            Unidad Óptica: No incluye
+            Lector Tarjetas: SD multiformato
+            Teclado: Tamaño completo, tipo isla, con retroiluminación verde ácido y teclado numérico
+            Touchpad: Admite gestos multitáctiles
+
+            Dispositivos de Comunicaciones
+            LAN: 10/100/1000 GbE integrada
+            WiFi: 6 AX 201 (2x2)
+            Bluetooth: 5
+
+            Puertos de Conexión
+            1 x USB Type-C® con SuperSpeed de 10 Gbps Velocidad de señalización (suministro de energía mediante puerto USB, DisplayPort™ 1.4, HP Sleep and Charge)
+            1 x USB Type-A con SuperSpeed de 5 Gbps Velocidad de señalización (HP Sleep and Charge)
+            2 x USB Type-A con SuperSpeed de 5 Gbps Velocidad de señalización
+            1 x HDMI 2.0
+            1 x RJ-45
+            1 x conector inteligente CA
+            1 x combinación de auriculares y micrófono
+
+            Batería: 3 Celdas 52,5WH
+            Dimensión: 36 x 25,6 x 2,34 cm
+            Peso: 2.28 kg
+salePrice = 849990
+offerPrice = 689990
+stock = 20
+warranty = 2 Años
+dispachTime = 2 Meses
+
+8)
+name = Router AC6 doble banda AC1200Mbps
+slug = Router-AC6-doble-banda-AC1200Mbps
+brand = Tenda®Routers
+description =
+            Marca: Tenda
+            Tipo: Router
+            Standard & Protocolo: IEEE802.3, IEEE802.3u
+            Interfaz
+            1 * 10 puertos / 100Mbps WAN
+            3 * 10 puertos / 100Mbps LAN
+            Antenas
+            4 * antenas externas 5dBi
+            Botón
+            1 * Wi-Fi de encendido / apagado, 1 * Botón de reinicio / WPS
+            Poder
+            Entrada: 100-240V-50 / 60Hz, 0.2A
+            Salida: DC 12V == 1A
+            Dimensión: 220 * 141,5 * 49mm
+            Estándares inalámbricos:
+            IEEE 802.11ac / a / n de 5 GHz
+            IEEE 802.11b / g / n de 2,4 GHz
+            Velocidad de datos
+            5GHz: Hasta 867Mbps
+            2,4GHz: hasta 300 Mbps
+            Frecuencia
+            Doble banda simultánea de 2,4 y 5 GHz
+            Potencia de transmisión CE:
+            <30dBm
+            Seguridad inalámbrica
+            WPA-PSK / WPA2-PSK, WPA / WPA2
+            de seguridad inalámbrica
+            WPS (Wi-Fi Protected Set-up) de cifrado rápido
+            Internet Tipo de conexión PPPoE, IP dinámica, IP estática
+            PPPoE (Rusia), PPTP (Rusia), L2TP (Rusia)
+            Modo operativo
+            Modo Router inalámbrico
+            Repetidor Universal Modo
+            Modo WISP
+            Servidor DHCP
+            Servidor DHCP
+            DHCP Client List
+            reserva DHCP
+            Servidor virtual Port Forwarding
+            DMZ Host
+            UPnP
+            Seguridad
+            Filtro de clientes
+            Control Parental (apoyar la lista de negro y lista blanca)
+            Gestión Web remoto
+            Firewall
+            Ataque de inundación UDP
+            TCP ataque de inundación
+            WAN PING de Internet
+            DDNSSoporte Dyn
+            DNS, No-IP, 3322.org, Oray.com, 88IP
+            VPN
+            IPsec
+            PPTP
+            L2TP
+            Cliente PPTP
+            Cliente L2TP
+            Caracteristicas
+            Horario Wifi inteligente
+            Ahorro de energía inteligente
+            Tenda Nube
+            Tenda App
+            Otro:
+            Control de ancho de banda
+            red de invitados
+            IPTV
+            MAC Clone
+            Enrutamiento estático
+            Registro del sistema
+            Copia de seguridad y restauración de configuraciones
+            Actualización del firmware en línea
+            Firmware actualizable a través del navegador
+            Temperatura de funcionamiento: 0 ℃ ~ 40 ℃
+            Temperatura de almacenamiento: -40 ℃ ~ 70 ℃.
+            Humedad de funcionamiento: 10% ~ 90% HR sin condensación
+            Humedad de almacenamiento: 5% ~ 90% HR sin condensación.
+salePrice = 36990
+offerPrice = 0
+stock = 18
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+9)
+name = Handycam 4K AX43
+slug = Handycam-4K-AX43
+brand = Sony®Cámaras de Video
+description =
+SteadyShot óptico balanceado™ de Sony es un exclusivo estabilizador de imagen, con un mecanismo
+estabilizador unas 13 veces más eficaz que otros sistemas ópticos1. Captura imágenes fluidas de
+aspecto profesional, incluso con zoom completo o mientras corres, sin necesidad de voluminosos
+estabilizadores externos. En el modo de captura HD, reduce aún más el efecto de vibración de la
+cámara con el modo Activo inteligente de 5 ejes, que compensa la vibración de panorámica, inclinación,
+giro, dirección y elevación.
+Captura tus videos con el asombroso realismo y detalle de 4K (3840 x 2160). Con un nivel de detalle
+cuatro veces mayor que el Full HD, todas tus imágenes mejorarán con sutiles cualidades que harán que
+cobren vida de forma vibrante.
+salePrice = 829990
+offerPrice = 0
+stock = 10
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+10)
+name = Audífono Gamer GXT363 Hawk 7.1 Bass Vibration
+slug = Audifono-Gamer-GXT363-Hawk-7-1-Bass-Vibration
+brand = Trust®Audífonos Gamer
+description =
+            Tipo de conexión: cableada
+            Longitud del cable principal: 300 cm
+            Tipo de conector: USB
+            Audio
+            Reproducción de sonido estéreo
+            Canales de audio 7.1
+            Tamaño del controlador 50 mm
+            Impedancia 32 ohmios
+            Sensibilidad 112 dB
+            True Wireless Stereo (TWS) no
+            Respuesta de frecuencia 20 Hz - 20000 Hz
+            Software: Si
+            Funciones especiales: sonido envolvente virtual 7.1, lados iluminados
+            Auricular
+            Cancelación activa de ruido: No
+            Tipo de auricular: sobre la oreja
+            Construcción de tapa de oreja cerrada
+            Micrófono
+            Condensador de micrófono tipo sensor
+            Patrón de captación Unidireccional
+            Diseñado para jugar: sí
+            Luces: Si
+            Tipo de luz Lados iluminados y micrófono
+            Proteccion Impermeable: No
+            Compatibilidad
+            Adecuado para uso diario, Fortnite, juegos, hogar, escuchar música, entornos ruidosos (por ejemplo, avión, oficina)
+            Plataformas de software compatibles Windows
+            Tipos de dispositivos compatibles pc, laptop
+            Consolas compatibles: No
+salePrice = 54990
+offerPrice = 47990
+stock = 0
+warranty = 2 Meses
+dispachTime = 2 Meses
+
+11)
+name = Parlante PC Gamer SW-G2.1 2000 II
+slug = Parlante-PC-Gamer-SW-G2-1-2000-II
+brand = Genius®Parlantes PC
+description =
+            Marca: Genius
+            Potencia total (watts): 45W
+            Sistema de altavoces: subwoofer 6.5 ”4Ω ¦ satélite 3” 4Ω
+            Ratio: 75 dB
+            Respuesta de frecuencia 25Hz-20K Hz
+            Potencia Parlante de graves: 29W RMS
+            Secundarios: 8W RMS × 2
+            Unidad de potencia: Altavoces secundarios: Parlantes metálicos de 3 pulgadas
+            Unidad de graves: Unidad de presión de 6.5 pulgadas, Retroiluminada
+            Frecuencia: 25 Hz – 20K Hz
+            Alimentación: 110V or 220V AC
+            Dimensiones (A x A x P)
+            Parlante de graves: 252 x 233 x 235 mm
+            Secundarios:125 x 155 x 91 mm
+            Unidad de control: 55 x 177 x 155 mm
+            Peso:  4,32 Kg
+salePrice = 119990
+offerPrice = 99990
+stock = 20
+warranty = 5 Meses
+dispachTime = 2 Meses
+
+12)
+name = Control Xbox Wireless Controller Robot White + Skin Fortnite
+slug = Control-Xbox-Wireless-Controller-Robot-White-Skin-Fortnite
+brand = Microsoft®Joysticks Consolas
+description =
+            Eleva tu juego:
+            Vive la experiencia del diseño modernizado del control inalámbrico de Xbox en color Robot Blanco, que presenta
+            superficies esculpidas y una geometría refinada para una mayor comodidad y control con el menor esfuerzo durante el juego.
+            Asignación de botones personalizada:
+            Aprópiate del control personalizando la asignación de botones.* Además, conecta
+            cualquier auricular compatible con la entrada de audio de 3.5 mm.
+            Tecnología Xbox Wireless y Bluetooth®:
+            Incluye tecnología Xbox Wireless y Bluetooth® para un juego inalámbrico en consolas, PCs con Windows 10*.
+            Mantén siempre tu objetivo:
+            Mantén siempre tu objetivo con el pad direccional híbrido y el agarre texturizado en los gatillos, en los botones superiores
+            y en la carcasa trasera, y con un nuevo pad
+            direccional híbrido para una entrada precisa pero familiar.
+            Botón para Compartir:
+            Captura y comparte fácilmente contenido, como capturas de pantalla, grabaciones y más, con el nuevo botón para Compartir.
+            Empareja y alterna fácilmente:
+            Empareja y alterna fácilmente dispositivos, incluyendo Xbox Series X, Xbox One, Windows 10 PCs
+salePrice = 62990
+offerPrice = 54990
+stock = 30
+warranty = 2 Meses
+dispachTime = 2 Meses
+
+13)
+name = Pendrive 256GB USB 3.0 DataTraveler 100 G3
+slug = Pendrive-256GB-USB-3-0-DataTraveler-100-G3
+brand = Kingston®Pendrives
+description =
+            Marca: Kingston
+            Modelo: DT100G3/256GB
+            Color: Negro
+            Capacidad: 256 GB
+            Tipo de Puerto: USB 3.0
+            Dimensiones: 60 x 21,2 x 10 mm
+salePrice = 48390
+offerPrice = 0
+stock = 25
+warranty = 2 Meses
+dispachTime = 2 Meses
+
+14)
+name = iPhone 11 64GB Negro
+slug = iPhone-11-64GB-Negro
+brand = Apple®Celulares
+description =
+            Dimensiones y peso
+            Ancho: 7,57 cm
+            Alto: 15,09 cm
+            Grosor: 0,83 cm
+            Peso: 194 g
+            Pantalla
+            Liquid Retina HD
+            Pantalla LCD Multi-Touch de 6,1 pulgadas (en diagonal) con tecnología IPS
+            Resolución de 1.792 por 828 píxeles a 326 p/p
+            Contraste de 1.400:1 (típico)
+            Pantalla True Tone
+            Gama cromática amplia (P3)
+            Respuesta háptica
+            Brillo máximo de 625 nits (típico)
+            Cubierta oleófuga antihuellas
+            Compatible con la presentación simultánea de múltiples idiomas y grupos de caracteres
+
+
+            Resistencia a las salpicaduras, el agua y el polvo
+            Calificación IP68 según la norma IEC 60529 (hasta 2 metros de profundidad durante un máximo de 30 minutos)
+            Chip
+            Chip A13 Bionic
+            Neural Engine de tercera generación
+salePrice = 699990
+offerPrice = 569990
+stock = 32
+warranty = 8 Meses
+dispachTime = 2 Meses
+
+15)
+name = Mavic Mini 2
+slug = Mavic-Mini-2
+brand = DJI®Drones
+description =
+            Con una duración máxima de la batería de 31 minutos, DJI Mini 2 otorga
+            tiempo más que suficiente para componer la toma perfecta.
+            Mini 2 puede resistir vientos de 29-38 km / h y despegar a una altitud máxima de 4000 metros,
+            por lo que su metraje es estable incluso cuando vuela a lo largo de una costa ventosa o muy
+            por encima de un bosque alpinos.
+            Transmisión de video OcuSync 2.0
+            Explore su mundo sin limitaciones.
+            Mini 2 admite hasta 10 km de transmisión de video HD y tiene excelentes capacidades antiinterferentes,
+            lo que le brinda la capacidad de volar más lejos y ver con mayor claridad.
+salePrice = 499990
+offerPrice = 449990
+stock = 6
+warranty = 5 Meses
+dispachTime = 2 Meses
+
+16)
+name = Disco Externo 4TB 2.5 Canvio Gaming
+slug = Disco-Externo-4TB-2-5-Canvio-Gaming
+brand = Toshiba®Discos Externos
+description =
+            Interfaz
+            USB 3.2 Gen 1 (compatible con USB 2.0)
+            Velocidad máxima de transferencia
+            ~ 5.0 Gbit/s
+            Sistema de archivos
+            exFAT
+            Alimentación por bus USB (máx. 900 mA)
+            Requisitos del sistema
+            Con formato exFAT para:
+            - Playstation/Xbox (comprueba la lista de compatibilidad)
+            - Windows® 10 , Windows ® 8.1,
+            - macOS 10.15, macOS 10.14, macOS 10.13
+            Puerto USB Type-A libre
+            Dimensiones
+            4 TB: 80 x 111 x 19.5
+            Peso:
+            4 TB: 210g
+salePrice = 119990
+offerPrice = 99990
+stock = 28
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+17)
+name = Consola Nintendo Switch Bundle Mario Kart 8 Deluxe
+slug = Consola-Nintendo-Switch-Bundle-Mario-Kart-8-Deluxe
+brand = Nintendo®Nintendo
+description =
+            Marca: Nintendo
+            Color: Neon
+            Pantalla: Multitáctil capacitiva de 6.2 pulgadas (1280 x 720)
+            Procesador: VIDIA Custom Tegra
+            Almacenamiento: 32GB (expandible hasta de 2TB)
+            Conexión:
+            WiFi (IEEE 802.11 a/b/g/n/ac)(*)
+            Bluetooth 4.1
+            Salida de video:
+            Hasta 1080p a través de HDMI en el modo TV
+            Hasta 720p en modo portátil y modo semiportátil a través de la pantalla integrada
+            Salida de audio:
+            Compatible con canales PCM 5.1 de salida lineal
+            Salida a través del puerto HDMI en el modo TV
+            Botones: Botón POWER / Botón de volumen
+            Conector de audio: Conector de 3.5 mm
+            Ranura para tarjetas: Compatible con tarjetas microSD/microSDHC/microSDXC
+            *Una vez insertada la tarjeta microSD es necesario realizar una actualización de la consola.
+            Sensores: Acelerómetro, giroscopio y sensor de brillo
+            Batería interna: Iones de litio / 4310mAh
+            Duración de la batería: Este modelo incluye una batería que dura aproximadamente 4.5 a 9 horas (*La duración de la batería varía dependiendo del juego).
+            Tiempo de carga: Aproximadamente 3 horas
+            *Cuando se carga la consola en modo de espera.
+            Dimensiones: 10,16 x 9,4 x 1,4 cm
+            Peso: 399 gr
+salePrice = 399990
+offerPrice = 359990
+stock = 35
+warranty = 5 Meses
+dispachTime = 2 Meses
+
+18)
+name = Micrófono GXT252 EMITA USB
+slug = Microfono-GXT252-EMITA-USB
+brand = Trust®Micrófonos PC
+description =
+            Tipo de conexión cableada
+            Longitud del cable cable principal 180 cm
+            Tipo de conector USB
+            Impedancia 200 Ohm
+            Sensibilidad -35 dB
+            Nivel de presión sonora 135 dB
+            Respuesta de frecuencia 18 Hz - 21000 Hz
+            Reducción de ruido
+            Tipo de sensor condensador de micrófono
+            Patrón de recogida Cardioide
+            Velocidad de muestreo de 16 bits, 48 ​​kHz
+            El tipo de antivibraciones mide el montaje de choque, filtro pop, estuche portátil
+            Tipo de soporte soporte de escritorio de metal
+            Compatibilidad
+            Tipos de dispositivos compatibles pc, laptop, consola de juegos
+            Consolas compatibles PS4, PS4 Slim, PS4 Pro, PS4 Original
+            Plataformas de software compatibles Windows, Chrome OS, Mac OS
+salePrice = 115790
+offerPrice = 0
+stock = 0
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+19)
+name = Tablet Tab M7 3rd Gen 7" HD 2GB 32GB 4G LTE Iron grey
+slug = Tablet-Tab-M7-3rd-Gen-7-HD-2GB-32GB-4G-LTE-Iron-grey
+brand = Lenovo®Tablets
+description =
+            Marca: Lenovo
+            Modelo: M7 Gen 3
+            Color: Iron Grey
+            Sistema Operativo: Android 11
+            Procesador: MediaTek® MT8766 (4C, 4x A53 @ 2.0GHz)
+            Gráficos: IMG integrado GE8300 GPU
+            Nucleos: 4
+            Pantalla: 7", IPS HD, LCD TDDI y con función táctil de 5 puntos
+            Resolución: 1024 x 600. 350 nits
+            Memoria: 2GB LPDDR4 Soldada
+            Almacenamiento: 32GB (eMCP4x, eMMC)
+            Lector de tarjeta: Ranura unica para tarjetas Nano-Sim y Micro SD
+            Tarjeta MicroSD: Soporta FAT32 hasta 128GB y hasta 2TB exFAT
+            Cámara frontal: 2 MP
+            Cámara trasera: 2 MP
+            Wi-Fi: Sí
+            Bandas: 4G LTE
+            Bluetooth: 5.0
+            Sensor: Sensor de Acelerómetro (G)
+            Puertos de Conexión:
+            1 x USB 2.0
+            1 x 3.5mm Stereo
+            Batería: Integrada 3750 mAH
+            Hasta 10 horas (navegación web)
+            Hasta 10 horas (reproducción de vídeo)
+            Dimensiones: 8,3 mm x 102,8 mm x 176,18 mm
+            Peso:  236 gr
+salePrice = 129990
+offerPrice = 109990
+stock = 20
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+20)
+name = Notebook Gamer Nitro 5 Intel i5-10300H NVIDIA GTX 1650(4GB)
+slug = Notebook-Gamer-Nitro-5-Intel-i5-10300H-NVIDIA-GTX-1650-4GB
+brand = Acer®Notebooks Tradicionales
+description =
+            Marca: Acer
+            Modelo: Nitro 5 AN515-55-56P2-2
+            Color: Negro
+
+            Procesador: Intel® Core™ i5-10300H, 2.50GHz hasta 4.50GHz (8M Caché)
+            Números de núcleos: Quad Core
+            Memoria RAM: 16GB DDR4 SODIMM 2400/2666/3200Mhz (Máx. 32GB de Memoria RAM) 2 Slot
+            Almacenamiento: 512GB SSD PCI Express
+            Pantalla: 15.6" / FHD 144Hz / 1920 x 1080 /  Anti-Glare / Mate (IPS) LCD LED
+            Tarjeta Gráfica: NVIDIA® GeForce® GTX 1650 (4GB GDDR5) Dedicado
+            Sistema Operativo: Windows 10 Home (64bit)
+            Microsoft Office: No incluye licencia de Office. Sólo prueba de 30 días
+
+            Webcam: Cámara HD, 1280 x 720
+            Audio: Estéreo
+            Unidad Óptica: No incluye
+            Lector Tarjetas: No incluye
+            Teclado: Español / Teclado Numerico / Retroiluminado Rojo
+            Touchpad: Admite gestos multitáctiles
+
+            Dispositivos de Comunicaciones
+            LAN: (Killer E2600) 10/100/1000 Mbps
+            WiFi: 6 AX201
+            Bluetooth: 5.0
+
+            Puertos de Conexión
+            1 x USB 3.2 (Gen 2)
+            2 x USB 3.2 (Gen 1)
+            1 x USB 3.2 Tipo C (Gen 2)
+            1 x HDMI 2.0
+            1 x Combo Audio Jack
+
+            Batería: 4 Celdas 57 WH
+            Dimensión: 363,4 x 255 x 23,9 mm
+            Peso: 2,3 Kg
+salePrice = 1049990
+offerPrice = 1018490
+stock = 25
+warranty = 2 Años
+dispachTime = 2 Meses
+
+21)
+name = Smartphone P40 Pro 256GB/8GB Azul Liberado
+slug = Smartphone-P40-Pro-256GB-8GB-Azul-Liberado
+brand = Huawei®Smartphones
+description =
+            Modelo P40 Pro
+            Color: Azul
+            Operador: Liberado
+            Sistema Operativo: Android 10+ EMUI 10.1 (AOSP + HMS)
+            Procesador: Octacore 2x2.86 GHz + 2x2.36 GHz + 4x1.95 GHz
+            Pantalla: OLED 6.58" FHD+ (2640x1200)
+            Cámara Trasera:Cuadruple
+            50MP Ultra Vision Camera (Wide Angle, f/1.9, OIS)
+            40MP Cine Camera (Ultra-Wide Angle, f/1.8)
+            12MP SuperSensing Telephoto Camera (f/3.4, OIS)
+            3D Depth Sensing Camera
+            Cámara Frontal: Dual
+            32MP Selfie Camera (f/2.2, Auto Focus)
+            Depth Camera
+            GPU: Mali-G76 MP16
+            CPU: Kirin 990 5G
+            Memoria Interna:256GB
+            Memoria RAM: 8GB
+            Ranura Tarjeta: Nano SD hasta 256GB Utiliza Ranura de SIM Card 2
+            Dual SIM: Si
+salePrice = 949990
+offerPrice = 749990
+stock = 15
+warranty = 8 Meses
+dispachTime = 2 Meses
+
+22)
+name = Teclado Gamer Hermes M5 Mecánico USB Blanco
+slug = Teclado-Gamer-Hermes-M5-Mecanico-USB-Blanco
+brand = Gamdias®Teclados
+description =
+            Marca: Gambias
+            Interruptor de llave Interruptores mecánicos GAMDIAS
+            Cambiar ciclo de vida 50 millones
+            Dimensión (LxAnxAl): 436 x 127 x 35 mm
+            Peso: 797g
+            Memoria incorporada: 32 KB
+            Tasa de sondeo: 1000 Hz
+            Cambio de tecla N
+            Registro de macros OTF: si
+            Desactivación de teclas de Windows: si
+            Bloqueo de todas las teclas: si
+            Longitud del cable: 1,5 m (TPE con conector dorado)
+            Modo de ataque consecutivo: No
+            PersonalizaciónTeclas multimedia (LxWxH) 4
+            Retroiluminado: Retroiluminación azul hielo y 5 niveles de brillo.
+            Efectos de iluminación personalizables: si
+salePrice = 64990
+offerPrice = 0
+stock = 12
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+23)
+name = Audífono Gamer G PRO Sonido 7.1
+slug = Audifono-Gamer-G-PRO-Sonido-7-1
+brand = Logitech®Audífonos Gamer
+description =
+            Audífono:
+
+            Transductor: Malla híbrida PRO-G de 50 mm
+            Imán: Neodimio
+            Respuesta de frecuencia: 20 Hz-20 kHz
+            Impedancia: 35 ohmios
+            Sensibilidad: 91,7 dB SPL a 1 mW y 1 cm
+            Materiales:
+
+            Horquilla: Aluminio
+            Diadema: Acero
+            Almohadillas de audífonos y diadema: Piel sintética y espuma viscoelástica
+            Micrófono Pro:
+
+            Patrón de captación de micrófono: Cardioide (unidireccional)
+            Tipo: Condensador de electreto
+            Tamaño: 6 mm
+            Respuesta de frecuencia: 100 Hz-10 kHz
+            Requisitos de sistema:
+
+            PC con puerto USB
+            Windows® 7 o posteriores
+            Conexión a Internet para descarga de software opcional
+            Peso (sin cable): 320 g
+            Longitud de cable de PC: 2 m
+salePrice = 89990
+offerPrice = 69990
+stock = 15
+warranty = 3 Meses
+dispachTime = 2 Meses
+
+24)
+name = Mouse Gamer GXT 970 Morfix Optico RGB Cable USB Negro
+slug = Mouse-Gamer-GXT-970-Morfix-Optico-RGB-Cable-USB-Negro
+brand = Trust®Mouses
+description =
+            Mouse Gamer GXT 970 Morfix Optico RGB Cable USB Negro
+            Un ratón para gaming produce un gran impacto con incluso el menor movimiento,
+            por lo que es recomendable que sea muy preciso. Imagina un ratón tan milimétrico que
+            esté totalmente adaptado a tu estilo de gaming y haga exactamente lo que quieres.
+            Un ratón personalizable hace que ese sueño sea una realidad;
+            el ratón personalizable para gaming GXT 970 Morfix de Trust se adapta a tus preferencias de gaming únicas.
+            Sensor óptico avanzado con resolución de 10 000 ppp
+            4 piezas laterales intercambiables magnéticamente para personalizar los botones de los lados y la forma
+            2 piezas en el lado izquierdo con configuraciones de 3 o 9 botones, programables para cualquier juego
+            2 piezas en el lado derecho con diferentes formas
+            Iluminación RGB totalmente ajustable con múltiples efectos
+            Hasta 14 botones programables de manera independiente.
+salePrice = 34990
+offerPrice = 0
+stock = 20
+warranty = 2 Meses
+dispachTime = 2 Meses
+
+25)
+name = CPU Intel Core i9-12900K (s1700)
+slug = CPU-Intel-Core-i9-12900K-s1700
+brand = Intel®CPU Intel s1700
+description =
+            Colección de productos: Procesadores Intel® Core ™ i9 de 12.a generación
+            Segmento vertical: Escritorio
+            Número de procesador: i9-12900K
+            Litografía: Intel 7
+            Condiciones de uso PC / Cliente / Tableta
+            Núcleos totales: dieciséis
+            # de núcleos de rendimiento: 8
+            # de núcleos eficientes: 8
+            Total de subprocesos: 24
+            Frecuencia turbo máxima: 5,20 GHz
+            Frecuencia de la tecnología Intel® Turbo Boost Max 3.0 ‡ 5,20 GHz
+            Frecuencia turbo máxima de núcleo de rendimiento: 5,10 GHz
+            Frecuencia turbo máxima de núcleo eficiente: 3,90 GHz
+            Frecuencia base del núcleo de rendimiento 3,20 GHz
+            Frecuencia base de núcleo eficiente 2,40 GHz
+            Cache 30 MB de caché inteligente Intel®
+            Caché L2 total 14 MB
+            Potencia base del procesador: 125 W
+            Potencia turbo máxima: 241 W
+            Especificaciones de memoria: 128 GB
+            Tipos de memoria:
+            Hasta DDR5 4800 MT / s
+            Hasta DDR4 3200 MT / s
+            Cantidad máxima de canales de memoria: 2
+            Ancho de banda de memoria máximo: 76,8 GB / s
+            Gráficos del procesador ‡ Gráficos Intel® UHD 770
+            Frecuencia de base de gráficos: 300 MHz
+            Frecuencia dinámica máxima de gráficos: 1,55 GHz
+            Salida de gráficos: eDP 1.4b, DP 1.4a, HDMI 2.1
+            Unidades de ejecución: 32
+            Resolución máxima (HDMI) ‡ 4096 x 2160 a 60 Hz
+            Resolución máxima (DP) ‡ 7680 x 4320 a 60 Hz
+            Resolución máxima (eDP - Panel plano integrado) ‡ 5120 x 3200 a 120 Hz
+            Soporte DirectX *: 12
+            Soporte OpenGL * 5
+            Motores de códec multiformato: 2
+            Vídeo de sincronización rápida Intel®
+            Tecnología Intel® de video nítido HD
+            # de pantallas admitidas ‡ 4
+            Soporte OpenCL * 1
+salePrice = 814990
+offerPrice = 774190
+stock = 6
+warranty = 8 Meses
+dispachTime = 2 Meses
+
+(26)
+name = Smartphone Xiaomi 11T 256GB/8GB Blanco Liberado + Bundle
+slug = Smartphone-Xiaomi-11T-256GB-8GB-Blanco-Liberado-Bundle
+brand = Xiaomi®Smartphones
+description =
+            Marca: Xiaomi
+            Modelo: 11 T
+            Color: Blanco
+            Operador: Liberado
+            Sistema Operativo: Android 11, MIUI 12.5
+            Procesador: MediaTek MT6893 Dimensity 1200 5G (6 nm)
+            Pantalla: 6.67" IPS LCD, 90Hz, 400 nits (typ), 500 nits (HBM) 1080 x 2400 pixels
+            Cámara Trasera:
+            Principal: Triple o Principal:
+            108 MP, f / 1.8, 26 mm (ancho), 1 / 1.52 ", 0.7µm, PDAF
+            8 MP, f / 2.2, 120˚ (ultraancho), 1/4", 1.12µm
+            5 MP, f / 2.4, 50 mm ( teleobjetivo macro), 1 / 5,0 ", 1,12 µm, AF
+            Cámara Frontal:
+            16 MP, f / 2.5, (ancho), 1 / 3.06 ", 1.0µm
+            GPU: Mali-G77 MC9
+            CPU: Octa-core (1x3.0 GHz Cortex-A78 y 3x2.6 GHz Cortex-A78 y 4x2.0
+            Memoria Interna: 256GB
+            Memoria RAM: 8GB
+            Ranura Tarjeta: No
+            Conectividad Bandas:
+            5G: Compatible con NSA + SA
+            5G: n1/n3/n5/n7/n8/n20/n28/n38/n40/n41/n66/n77/n78
+            4G: LTE FDD: B1/2/3/4/5/7/8/12/13/17/18/19/20/26/28/32/66
+            4G: LTE TDD: B38/40/41/42
+            3G: WCDMA: B1/2/4/5/6/8/19
+            2G: GSM: 850, 900, 1800, 1900 MHz
+            *La conectividad 5G requiere compatibilidad con los servicios del operador de telecomunicaciones local y puede que no esté disponible en todas las regiones
+            Bluetooth: 5.2, A2DP, LE
+            WiFi: Wi-Fi 802.11 a / b / g / n / ac / 6, banda dual, Wi-Fi Direct, punto de acceso
+            Localización: A-GPS de doble banda, GLONASS, GALILEO, BDS
+            Sensores:
+            Huella digital (lateral), acelerómetro, giroscopio, proximidad, brújula
+            NFC: Si
+            Puertos de Conexión: USB Tipo-C 2.0
+            Batería: Li-Po 5000 mAh
+            Dimensiones: 164,1 x 76,9 x 8,8 mm
+            Peso: 203 gr
+salePrice = 249990
+offerPrice = 209990
+stock = 29
+warranty = 3 meses
+dispachTime = 2 meses
+
+(27)
+name = Cámara Seguridad IP 2K Exterior S41
+slug = Camara-Seguridad-IP-2K-Exterior-S41
+brand = Foscam®Cámaras IP
+description =
+            Marca: FOSCAM
+            Tipo: ip camera
+            Alta definición: 4.0 megapíxeles
+            Lente (mm): 2,8-8 mm
+            Estilo: Cámara tipo bala
+            Certificación: CE
+            Certificación: FCC
+            Certificación: RoHS
+            Certificación: Weee
+            Conectividad: IP / red inalámbrica
+            Origen: CN(Origen)
+            Instalación: Side
+            Soporte de pared: Lado
+            consumo( w): 12W
+            Color: Blanco
+            iluminación mínima( lux): 0 Lux(with IR Illuminator)
+            Sensor: CMOS
+            Megapíxeles: 4 MP
+            Marca del sensor: Sony
+            Características especiales: Impermeable/resistente a la intemperie
+            Almacenamiento: Ninguno
+            Acción de la alarma: Foto FTP
+            Acción de la alarma: Foto por correo electrónico
+            Acción de la alarma: Alarma local
+            Formato de compresión del vídeo: H.264
+            Formato de compresión del vídeo: h.265
+            Fuente de Alimentación: Normal
+            Tarjeta micro SD: Ninguno
+            Distancia del IR (M): 10 m
+            Se puede personalizar: No
+            fuente de alimentación( v): 110-240V
+            Número de modelo: S41
+            Ángulo de visión: 120°
+            Tecnología: INFRARED
+            dimensiones( l x w x d)( mm): 10*5*5CM
+            sistemas móviles compatibles: Windows Mobile
+            sistemas móviles compatibles: Android
+            sistemas móviles compatibles: iOS
+            interfaz de red: wi-fi/802.11/b/g
+            Salida de Audio: Ninguno
+            Waterproof: IP66
+            PIR Detection: Built-in 1PCS PIR sensor, detection Angle up to 90°
+            Remote Access: P2P
+            Wireless Standard: IEEE802.11b/g/n/ac
+            Siren: Support maximum 110dB alarm siren
+salePrice = 79990
+offerPrice = 0
+stock = 9
+warranty = 3 meses
+dispachTime = 2 meses
+
+(28)
+name = LG LED 50 4K SMART TV
+slug = LG-LED-50-4K-SMART-TV
+brand = LG®Smart TV
+description =
+            Marca: LG
+            Modelo: 70UP7500PSC
+            Tipo de Panel: LED
+            Tecnología: Smart tv
+            Resolución: 4K Ultra HD (3840 x 2160)
+            Tamaño pantalla: 70
+            Tasa de refresco: 60Hz
+            Procesador: Quad Core Processor 4K
+            Sistema operativo: WebOS 6.0 Smart TV AI ThinQ
+            Conexiones:
+            2 x HDMI
+            1 x USB
+            1 x Ethernet
+            Parlantes: 20W
+            Dimensiones
+            con soporte: 157,8 x 98,4 x 29,9 mm
+            sin soporte: 157,8 x 91,3 x 9,91 mm
+            Peso
+            con soporte: 31,4 kg
+            sin soporte: 30,7 kg
+salePrice = 599990
+offerPrice = 329990
+stock = 25
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(29)
+name = SAMSUNG LED 43 CRYSTAL UHD 4K SMART TV
+slug = SAMSUNG-LED-43-CRYSTAL-UHD-4K-SMART-TV
+brand = Samsung®Smart TV
+description =
+            Marca: Samsung
+            Modelo: UN75AU8200GXZS
+            Tipo de Panel: LED
+            Tecnología: Smart tv
+            Resolución: 4K ultra HD 3840 x 2160
+            Tamaño pantalla: 75"
+            Sistema operativo: Tizen™
+            Contraste: Mega Contraste
+            Procesador: Crystal Processor 4K
+            Control remoto: Sí
+            Tasa de refresco: 60Hz
+            Conexiones:
+            3 x HDMI
+            2 x USB
+            1 x RJ-45
+            1 x Digital Audio Out (Optical)
+            Parlantes: 20W
+            Dimensiones
+            con soporte: 167.67 x 100.34 x 33.22 mm
+            sin soporte: 167.67 x 96.03 x 2.66 mm
+            Peso
+            con soporte: 33.3 kg
+            sin soporte: 32.1  kg
+salePrice = 369990
+offerPrice = 0
+stock = 20
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(30)
+name = CONSOLA PS4
+slug = CONSOLA PS4
+brand = Sony®ps4
+description =
+            Eleva tu juego:
+            Vive la experiencia del diseño modernizado del control inalámbrico de Xbox en color Robot Blanco, que presenta
+            superficies esculpidas y una geometría refinada para una mayor comodidad y control con el menor esfuerzo durante el juego.
+            Asignación de botones personalizada:
+            Aprópiate del control personalizando la asignación de botones.* Además, conecta
+            cualquier auricular compatible con la entrada de audio de 3.5 mm.
+            Tecnología Xbox Wireless y Bluetooth®:
+            Incluye tecnología Xbox Wireless y Bluetooth® para un juego inalámbrico en consolas, PCs con Windows 10*.
+            Mantén siempre tu objetivo:
+            Mantén siempre tu objetivo con el pad direccional híbrido y el agarre texturizado en los gatillos, en los botones superiores
+            y en la carcasa trasera, y con un nuevo pad
+            direccional híbrido para una entrada precisa pero familiar.
+            Botón para Compartir:
+            Captura y comparte fácilmente contenido, como capturas de pantalla, grabaciones y más, con el nuevo botón para Compartir.
+            Empareja y alterna fácilmente:
+            Empareja y alterna fácilmente dispositivos, incluyendo Xbox Series X, Xbox One, Windows 10 PCs
+salePrice = 599990
+offerPrice = 0
+stock = 0
+warranty = 6 meses
+dispachTime = 2 meses
+
+
+(31)
+name = Mouse Gamer GXT 164 Sikanda MMO USB Negro
+slug = Mouse-Gamer-GXT-164-Sikanda-MMO-USB-Negro
+brand = Trust®Mouses
+description =
+            Diseño ergonómico.
+            Altura: 128 mm
+            Ancho: 76 mm
+            Profundidad: 43 mm
+            Peso total: 151 g
+            Tipo de conexión: Cableado USB versión 2.0
+            Tipo de conector USB
+            Longitud del cable: 180 cm
+            Diseñado para juegos: MMO, MOBA, RTS
+            Sensor: Óptico, DPI 100, rango de 5000 DPI 100 - 5000 dpi Máx. DPI 5.000 ppp
+            DPI ajustable
+            Sensor óptico modelo A3050
+            Aceleración 20 G Velocidad de sondeo 125-1000Hz
+            Velocidad de seguimiento 60 ips
+            Luces Colores LED ajustables
+            Tipo de agarre: Palma
+            Rueda de desplazamiento con la mano derecha
+            Bola de seguimiento
+             Dpi +, dpi -, izquierdo, medio, derecho
+            Número de botones: 13
+            Botones programables
+            Número de botones programables: 13
+            Superficie adecuada: Superficie plana no reflectante
+            Programación Macro
+            Fuente de alimentación USB
+            Caracteríasticas: Ratón silencioso Falso Memoria integrada True Almohadillas deslizantes Software UPE incluido True Funciones especiales Muchos botones
+            Ratón GXT 164 Sikanda MMO
+            Compatibilidad: Tipos de dispositivos compatibles Laptop, pc Consolas compatibles No hay plataformas de software compatibles
+salePrice = 39990
+offerPrice = 37990
+stock = 9
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(32)
+name = Monitor Gamer 27" Optix MAG274R2 165Hz 1ms G-Sync IPS
+slug = Monitor-Gamer-27-Optix-MAG274R2-165Hz-1ms-G-Sync-IPS
+brand = MSI®Monitores
+description =
+            Monitor 27" Optix MAG274R2
+            Visualice su victoria con el monitor para juegos de deportes electrónicos MSI Optix MAG274R2.
+            Equipado con una frecuencia de actualización de 1920 x 1080, 165 Hz y un panel de tiempo de respuesta
+            de 1 ms, Optix MAG274R2 le brindará la ventaja competitiva que necesita para derrotar a sus oponentes.
+            Disfrute de un juego extremadamente fluido y sin rasgaduras con la tecnología compatible con NVIDIA G-SYNC
+            incorporada cuando se combina con una tarjeta gráfica NVIDIA compatible. Asegúrese de que puede dar en el blanco
+            con las últimas tecnologías integradas en los monitores de juegos de deportes electrónicos de MSI para un juego
+            competitivo.
+salePrice = 219990
+offerPrice = 0
+stock = 5
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(33)
+name = CPU Intel Core i7-12700KF (s1700)
+slug = CPU-Intel-Core-i7-12700KF-s1700
+brand = Intel®CPU Intel s1700
+description =
+            Modelo de CPU: i7-12700KF
+            Segmento vertical: Escritorio
+            Numero de nucleos totales: 12
+            # de núcleos de rendimiento: 8
+            # de núcleos eficientes: 4
+            Frecuencia turbo máxima: 4,90 GHz
+            Frecuencia turbo máxima de núcleo eficiente: 5,00 GHz
+            Frecuencia base del núcleo de rendimiento: 5,00 GHz
+            Frecuencia base de núcleo eficiente: 4,90 GHz
+            Cache: 25 MB de caché inteligente Intel®
+            Caché L2 total: 12 MB
+            Potencia base del procesador: 125 W
+            Potencia turbo máxima:190 W
+            Tamaño de memoria máximo (depende del tipo de memoria): 128 GB
+            Tipos de memoria
+            Hasta DDR5 4800 MT / s
+            Hasta DDR4 3200 MT / s
+            Cantidad máxima de canales de memoria: 2
+            Ancho de banda de memoria máximo: 76,8 GB / s
+            Revisión de Direct Media Interface (DMI): 4.0
+            Cantidad máxima de carriles DMI: 8
+            Escalabilidad: Solo 1S
+            Revisión de PCI Express: 5.0 y 4.0
+            Configuraciones de PCI Express ‡ Hasta 1x16 + 4, 2x8 + 4
+            Cantidad máxima de carriles PCI Express: 20
+            Acelerador neuronal y gaussiano Intel®: 3,0
+            Director de subprocesos Intel®
+            Intel® Deep Learning Boost (Intel® DL Boost)
+            Compatible con memoria Intel® Optane ™ ‡
+            Tecnología Intel® Speed ​​Shift
+            Tecnología Intel® Turbo Boost Max 3.0 ‡
+            Tecnología Intel® Turbo Boost ‡
+salePrice = 526290
+offerPrice = 499990
+stock = 15
+warranty = 9 meses
+dispachTime = 2 meses
+
+
+(34)
+name = Smartphone Galaxy A52s (5G) 128GB/6GB Blanco Liberado
+slug = Smartphone-Galaxy-A52s-5G-128GB-6GB-Blanco-Liberado
+brand = Samsung®Smartphones
+description =
+            Marca: Samsung
+            Modelo: A52s
+            Color: Blanco
+            Operador: Liberado
+            Sistema Operativo: Android
+            Procesador:  SDM778G, 2.4GHz, 1.8GHz
+            Pantalla:  6.5", 1080 x 2400 (FHD+)
+            Cámara Trasera: 64MP (F1.8) + 12MP (F2.2) + 5MP (F2.4) + 5MP (F2.4)
+            Cámara Frontal: 32MP (F2.2)
+            Memoria Interna: 128 GB
+            Memoria RAM: 6GB
+            Conectividad Bandas
+            3G,4G,5G
+
+            Bluetooth: 5.0 v
+            Video: UHD 4K (3840 x 2160)@30fps
+            Wifi: 802.11 a/b/g/n/ac/ax 2.4G+5GHz, HE80, SISO, 1024-QAM
+            Localización: GPS
+            Sensores: Acelerómetro, Lector de huella, Giroscopio, Sensor geomagnético, Sensor Hall, Sensor de luz RGB, Detección de proximidad virtual
+            NFC: Si
+            Resistente al agua:  IP67
+            Puertos de Conexión: Tipo C
+            Batería:  4500 mAh
+            Dimensiones:  751 x 159.9 x 0.84 cm
+            Peso: 189 gr
+salePrice = 429990
+offerPrice = 304990
+stock = 5
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(35)
+name = Tablet Tab P11 Pro 6GB 128GB 11.5" OLED Slate Grey + Teclado y Lápiz
+slug = Tablet-Tab-P11-Pro-6GB-128GB-11-5-OLED-Slate-Grey-Teclado-Lapiz
+brand = Lenovo®Tablets
+description =
+            Marca: Lenovo
+            Procesador: Qualcomm® Snapdragon™ 730 GB
+            Sistema operativo: Android™ 10
+            Pantalla: 11.5” WQXGA (2560 x 1600), OLED, 350 nits, Dolby Vision™, multitáctil de 10 puntos
+            Memoria: 6GB LPDDR4x (uMCP, DRAM)
+            Almacenamiento
+            Tarjeta microSD, admite FAT32 hasta 256 GB, exFAT hasta 1 TB
+            UMCP de 128 GB (MCP basado en UFS, UFS 2.1) en sistema
+            Altavoces: 4 altavoces JBL®, Dolby Atmos®
+            Micrófonos: Micrófono de matriz dual con DSP dedicado
+            Cámara
+            Frontal: Enfoque fijo frontal RGB de 8MP y RGB + IR de 8 MP
+            Posterior: 13 MP con gran angular, enfoque automático y 5 MP con FoV (campo de visión) ultra ancho de 120 °, enfoque fijo; mono flashlight
+            Sensor acelerómetro, Sensor Hall, Sensor de orientación electrónico, Sensor L ambiental Giroscopio, Sensor de tiempo de vuelo (TOF),Sensor de vibración
+            Conectividad (opcionales): 11 a/b/g/n/ac 2x2 Wi-Fi + Bluetooth 5.0, MU-MIMO
+            Bandas compatibles
+            GSM: B2/B3/B5/B8
+            UMTS: B1/B2/B5(B6/B19)/B8
+            LTE FDD: B1/B2/B3 (banda expandida 3)/B4/B5/B7/B8/B18/B19/B20/B26/B28a/B28b
+            LTE TDD: B38/B39/B40/B41
+            Seguridad: Lector de huellas digitales y Desbloqueo facial
+            Puertos y ranuras (algunos pueden variar o ser opcionales según el modelo)
+            1x USB-C 3.1 Gen 1 (admite OTG, transferencia de datos, Power Delivery, pantalla extendida, T-Hub y dispositivos de audio USB Type-C)
+            1x Pogo pin connector (4-point)
+            Opcional: 1x microSD card slot (modelo WiFi)
+            Batería: Polímero de litio integrada de 8400 mAh
+            Dimensiones: 264.28 x 5.8 x 171.4 mm
+            Peso: 485 g
+salePrice = 579990
+offerPrice = 459990
+stock = 16
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(36)
+name = Audífonos BT Apple AirPods
+slug = Audifonos-BT-Apple-AirPods
+brand = Apple®Audífonos In Ear
+description =
+            Aspectos destacados
+            Deseño de Apple
+            Se activan y se conectan automáticamente
+            Configuración sencilla para todos tus dispositivos Apple
+            Acceso rápido a Siri diciendo «Oye Siri» o con dos toques
+            Toca dos veces para reproducir o cambiar de canción
+            Se cargan rápidamente en el estuche
+            El estuche se puede cargar con un conector Lightning
+            Voz y sonido de alta calidad
+            Pasan de un dispositivo a otro sin interrupciones
+            Contenido de la caja
+            AirPods
+            Estuche de carga
+            Cable de conector Lightning a USB
+            Peso
+            AirPods (cada uno): 4 g
+            Estuche de carga: 38 g
+            Dimensiones
+            AirPods (cada uno): 1,65 x 1,8 x 4,05 cm
+            Estuche de carga: 4,43 x 2,13 x 5,35 cm
+            Conexiones
+            AirPods: Bluetooth
+            Estuche de carga: conector Lightning
+            Accesibilidad
+            Escucha en Directo para audio7
+            Sensores de los AirPods (cada uno):
+            Dos micrófonos con tecnología beamforming
+            Dos sensores ópticos
+            Acelerómetro con detección de movimiento
+            Acelerómetro con detección de voz
+            Alimentación
+            AirPods con estuche de carga: más de 24 horas de reproducción de audio3 y hasta 18 horas de conversación8
+            AirPods (una única carga): hasta 5 horas de reproducción de audio1 y hasta 3 horas de conversación2
+            15 minutos en el estuche te dan hasta 3 horas de reproducción de audio4 o hasta 2 horas de conversación5
+            Requisitos del sistema
+            Modelos de iPhone y iPod touch con la última versión de iOS
+            Modelos de iPad con la última versión de iPadOS
+            Modelos de Apple Watch con la última versión de watchOS
+            Modelos de Mac con la última versión de macOS
+            Modelos de Apple TV con la última versión de tvOS
+salePrice = 169990
+offerPrice = 149990
+stock = 30
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+(37)
+name = Video NVIDIA GeForce GTX1650 4GB StormX
+slug = Video-NVIDIA-GeForce-GTX1650-4GB-StormX
+brand = Palit®Tarjetas Gráficas NVIDIA
+description =
+            Marca: Palit
+            Cantidad de memoria 4G
+            interfaz de memoria 128 bits
+            Tipo de DRAM GDDR5
+            Reloj de gráficos 1485 MHz
+            Impulsar el reloj 1665 MHz
+            Reloj de la memoria 8 Gbps
+            Núcleos CUDA 896
+            Ancho de banda de memoria (GB / seg) 128
+            Microsoft DirectX 12 API con nivel de función 12_1
+            OpenGL 4/5
+            Soporte de bus PCI-E 3.0 x 16
+            DVI DVI-D de doble enlace
+            HDMI HDMI 2.0b
+            Resolución digital máxima 4096x2160 a 60 Hz
+            Altura 2 ranuras
+            Tamaño de la placa 145 x 99 x 40 mm
+            Potencia de la tarjeta gráfica 75 W
+            Potencia mínima recomendada del sistema 300 W
+            soporte mini-ITX
+            NVIDIA Turing ™
+            Aspectos destacados de NVIDIA®
+            Tecnología NVIDIA CUDA
+            Monitor múltiple 2
+            NVIDIA Ansel
+            API de NVIDIA Vulkan
+            Aumento de la GPU de NVIDIA 4
+            Tecnología NVIDIA GameStream
+salePrice = 368390
+offerPrice = 289990
+stock = 25
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(38)
+name = Video AMD RX 6600 8GB Dual
+slug = Video-AMD-RX-6600-8GB-Dual
+brand = Asus®Tarjetas Gráficas AMD
+description =
+            Motor gráfico: Radeon RX 6600
+            Estándar de bus: PCI Express 4.0
+            OpenGL: OpenGL®4.6
+            Memoria de video: GDDR6 de 8 GB
+            Reloj del motor
+            Modo OC: hasta 2491 MHz (Boost Clock) / hasta 2064 MHz (Game Clock)
+            Modo de juego: hasta 2491 MHz (Boost Clock) / hasta 2044 MHz (Game Clock)
+            Procesadores de flujo: 1792
+            Velocidad de memoria: 14 Gbps
+            Interfaz de memoria: 128 bits
+            Resolución: Resolución máxima digital 7680 x 4320
+            Interfaz
+            Sí x 1 (HDMI 2.1 nativo)
+            Sí x 3 (DisplayPort 1.4a nativo)
+            Compatibilidad con HDCP:  Sí (2.3)
+            Soporte de pantalla máximo: 4
+            Soporte NVlink / Crossfire
+            Accesorios
+            1 x Tarjeta de colección
+            1 x Manual de configuración de velocidad
+            Software
+            ASUS GPU Tweak II y controladores: descargue todo el software del sitio de soporte.
+            Dimensiones:
+            243 x 134 x 49 mm
+            9,6 x 5,3 x 1,9 pulgadas
+            PSU recomendada: 500W
+            Conectores de poder
+            1 x 8 pines
+            Espacio: 2,5 ranura
+salePrice = 694690
+offerPrice = 659990
+stock = 17
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(39)
+name = Micrófono Gamer HyperX QuadCast S
+slug = Microfono-Gamer-HyperX-QuadCast-S
+brand = HyperX®Micrófonos PC
+description =
+            Consumo de energía 5 V 220 mA (luz blanca)
+            Frecuencia de muestreo/velocidad de bits 48 kHz/16 bits
+            Elemento Micrófono de condensador electret
+            Tipo de condensador Tres condensadores de 14 mm
+            Patrones polares Estéreo, Omnidireccional, Cardioide, Bidireccional
+            Respuesta de frecuencia 20 Hz – 20 kHzSensibilidad -36 dB (1 V/Pa a 1 kHz)
+            Longitud del cable 3 m
+            Peso Micrófono: 254 g
+            Montura para golpes y soporte: 360 gTotal con cable USB: 710 g
+            Iluminación RGB (16 777 216 colores)
+            Efectos de luz 2 zonas2
+            Tipo de conexión USB-C a USB-A
+            Salida de auricularesImpedancia 32 ΩRespuesta de frecuencia 20 Hz - 20
+            kHzSalida de potencia máxima 7 mWTHD ≤ 0,05% (1 kHz/0 dBFS)SNR ≥ 90 dB (1 kHZ, RL=∞)
+salePrice = 178990
+offerPrice = 169990
+stock = 15
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(40
+name = Micrófono Condensador USB EM-91CU
+slug = Microfono-Condensador-USB-EM-91CU
+brand = Mackie®Micrófonos Condensadores
+description =
+            Tipo: Condensador
+            Patrón Polar: Unidireccional Cardioide
+            Respuesta de frecuencia: 20Hz – 17Hz
+            Sensibilidad: –34 dB ±2 dB (0 dB = 1 V/Pa @ 1 kHz)
+            Impedancia: 100 Ω ±30% (@ 1 kHz)
+            SPL Máximo: 132 dB (@1 kHz = 1% THD)
+            Peso: 0,21 kg
+            Frecuencia de muestreo: 16-Bit/48kHz
+            Accesorios incluidos:
+            Cable USB tipo B
+            Soporte “Schockmount”
+            Manual de usuario
+salePrice = 69990
+offerPrice = 0
+stock = 6
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(41)
+name = Router Inalámbrico de Doble Banda AC2600 MU-MIMO
+slug = Router-Inalambrico-de-Doble-Banda-AC2600-MU-MIMO
+brand = TPLink®Routers
+description =
+Router Inalámbrico de Doble Banda AC2600 MU-MIMO
+Velocidades extremas de WiFi de doble banda *: 1733 Mbps en 5 GHz, 800 Mbps en 2.4 GHz
+Ultimate Range: 4 antenas (3 externas y 1 interna) para amplificar redes inalámbricas,
+Beamforming para enfocar la señal a los dispositivos conectados
+Mayor rendimiento general: MU-MIMO ** + Smart Connect + Equidad de tiempo aire para un rendimiento máximo
+Acceso remoto seguro: servidor VPN OpenVPN y PPTP para un acceso remoto seguro a su red doméstica a través de Internet
+Configuración fácil: interfaz de usuario intuitiva del teléfono y aplicación Tether para una configuración de red rápida en minutos.
+salePrice = 119990
+offerPrice = 109990
+stock = 7
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(42)
+name = Router Móvil SIM 4G Dual-Band AC1200 Archer MR600 Con One Mesh
+slug = Router-Movil-SIM-4G-Dual-Band-AC1200-Archer-MR600-Con-One-Mesh
+brand = TPLink®Routers
+description =
+            El primer enrutador 4G + de TP-Link: admite 4G + Cat6 para aumentar las velocidades de datos de hasta 300 Mbps *
+            Conecte una tarjeta SIM y juegue: no se necesitan configuraciones, la compatibilidad de las tarjetas SIM en más de 100 países está asegurada por años de pruebas de campo
+            Compatible con MU-MIMO: los flujos de datos simultáneos aumentan el rendimiento de WiFi y la eficiencia de la red.
+            Admite TP-Link OneMesh TM : colabora con los productos TP-Link OneMesh para crear una red Mesh flexible y rentable
+            Mejor señal para conexiones en todas partes: disfrute de conexiones estables y eficientes para todos los dispositivos gracias a las dos antenas LTE externas
+            Puertos Gigabit completos: proporciona conexiones por cable confiables para dispositivos que consumen mucho ancho de banda, como consolas de juegos y STB.
+            Modo de enrutador Wi-Fi: conecte un cable Ethernet al puerto LAN / WAN para un acceso flexible como una opción de respaldo si no puede obtener una conexión 4G
+            Fácil configuración y administración, todo mediante la aplicación Tether
+salePrice = 199990
+offerPrice = 189990
+stock = 3
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(43)
+name = Notebook Ideapad 5i 14" FHD Intel i5-1135G7 8GB 512GB SSD Windows 10 Graphite Grey
+slug = Notebook-Ideapad-5i-FHD-Intel-i5-1135G7-8GB-512GB-SSD-Windows-10-Graphite-Grey
+brand = Ideapad®Notebook
+description =
+            Modelo: Ideapad 5i
+            Color: Graphite Grey
+
+            Procesador: Intel® Core™ i5-1135G7, hasta 4.2GHz (4MB Cache)
+            Números de núcleos: Quad Core
+            Memoria RAM: 8GB Soldered DDR4-3200Mhz (Máx. 8GB de Memoria RAM) 1 Slot
+            Almacenamiento: 512GB SSD M.2 2242 PCIe 3.0x4 NVMe
+            Pantalla: 14" FHD TN 250nits Anti-glare, 45% NTSC / 1920 x 1080
+            Tarjeta Gráfica: Intel Iris Xe (integrada)
+            Sistema Operativo: Windows 10 Home (64bit)
+            Microsoft Office: No incluye licencia de Office. Sólo prueba de 30 días
+
+            Webcam: Cámara 720p
+            Audio: High Definition (HD)
+            Unidad Óptica: No incluye
+            Lector Tarjetas: 4 en 1
+            Teclado: Non-backlit, Spanish (LA)
+            Touchpad: Admite gestos multitáctiles
+
+            Dispositivos de Comunicaciones
+            LAN: No aplica
+            WiFi: 11ac, 2x2
+            Bluetooth: BT5.0
+
+            Puertos de Conexión
+            1 x USB 3.2 (Gen 1)
+            1 x USB 3.2 (Gen 1) (Always On)
+            1 x USB-C 3.2 (Gen 1) (support data transfer, Power Delivery 3.0 and DisplayPort 1.2)
+            1 x HDMI 1.4b
+            1 x Headphone / microphone combo jack (3.5mm)
+
+            Batería: 56.5Wh
+            Dimensión: 321.57 x 211.59 x 17.9-19.9 mm
+            Peso: 1.39 kg
+salePrice = 749990
+offerPrice = 0
+stock = 35
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(44)
+name = Teclado Gamer K100 Óptico-Mecánico RGB USB Negro
+slug = Teclado-Gamer-K100-Optico-Mecanico-RGB-USB-Negro
+brand = Corsair®Teclados
+description =
+            Marca: Corsaire
+            Chasis Aluminio, anodizado negro, acabado cepillado
+            Interruptores de llave CORSAIR OPX, óptico-mecánico, fuerza de actuación de 45 g, distancia de actuación de 1,0 mm
+            Luz de fondo Iluminada individualmente y programable por tecla
+            LED Color RGB, 16,8 millones de colores
+            Teclas 104/105/108 teclas PBT juego de teclas de doble disparo, 1,5 mm de grosor, compatible con retroiluminación
+            Teclas macro Sí, seis teclas dedicadas con teclas de ABS texturizadas de 2 piezas
+            Conectividad 2 x USB 3.0 Tipo A
+            Paso de USB 1 x USB 2.0 tipo A
+            Tasa de informe USB de hasta 4.000 Hz
+            Rollover de clave completo de matriz (NKRO) con 100% anti-ghosting
+            Perfiles integrados Sí, hasta 200
+            Teclas multimedia Sí, cinco teclas de acceso rápido dedicadas (reproducir / pausar, detener, pista siguiente, última pista, silenciar) y volumen
+            rodillo (subir y bajar volumen)
+            Tecla de brillo Sí
+            Tecla de bloqueo de Windows Sí
+            Altura ajustable Sí, dos alturas de inclinación
+            Reposamanos de longitud completa, acolchado magnético desmontable con cojín de espuma viscoelástica
+            iCUE (software) compatible con Windows 10 y macOS 10.15
+            Cable de 1,82 m / 6 pies, fibra trenzada
+            Dimensiones 470 (L) x 166 (W) x 38 (H) mm / 18.51 (L) x 6.54 (W) x 1.5 (H) in
+            Peso 1,31 kg / 2,89 libras
+salePrice = 246990
+offerPrice = 234590
+stock = 30
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(45)
+name = Control Nacon Revolution Unlimited PS4 / PC Versión Call of Duty
+slug = Control-Nacon-Revolution-Unlimited-PS4-PC-Version-Call-of-Duty
+brand = Nacon®Joysticks Consolas
+description =
+            Marca: Nacon
+            Conexión: Adaptador USB Bluetooth® y cable USB-C/USB extraíble
+            Inalámbrico: Sí
+            Posición de joysticks: Asimétricos
+            Perfiles: Sí
+            Botones programables: Sí
+            Retroiluminación: RGB
+            Indicador LED de jugador: Sí
+            Cable incluido: Sí
+            Longitud del cable: 300 cm
+            Software: Sí
+            Alcance: 7m
+            Conector de auriculares: Sí
+            Compatibilidad: Windows/PS4
+            Tipo de batería: Li-Polymer 1300mAh
+            Duración de la batería: 7 h
+salePrice = 179990
+offerPrice = 159990
+stock = 53
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(46)
+name = Unidad SSD 2TB PCIe NVMe Gen4 M.2 Renegade
+slug = Unidad-SSD-2TB-PCIe-NVMe-Gen4--Renegade
+brand = Kingston FURY®Discos SSD
+description =
+            Factor de Forma: M.2 2280
+            Interfaz: PCIe NVMe™ Gen 4.0
+            Capacidade: 2TB
+            Controlador: Phison E18
+            Velocidad de Lectura: Hasta 7.300 MB/s
+            Velocidad de Escritura: Hasta 7.000 MB/s
+            Tasa aleatoria sostenida de lectura/escritura de 4k: hasta 1,000,000/1,000,000 IOPS
+            Consumo de energía: 5mW Idle / 0.36W Avg / 2.8W (MÁX) Lectura / 9.9W (MÁX) Escritura
+            Temperaturas de funcionamiento: 0°C a 70°C
+            Temperaturas de Almacenamiento: 40°C a 85°C
+            MTBF: 1,800,000 horas
+            Dimensiones: 80mm x 22mm x 3.5mm
+            Peso: 9.7grs
+            Vibración en funcionamiento 2.17G (7–800Hz)
+salePrice = 526290
+offerPrice = 0
+stock = 31
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(47)
+name = Parlante Bluetooth XB13
+slug = Parlante Bluetooth XB13
+brand = Sony®Parlantes Portátiles
+description =
+            Marca: Sony
+            Diámetro de la unidad de altavoz (altavoz mono): 46 mm
+            Tamaño y peso:
+            Dimensiones (an. x al. x pr.)
+            76 mm de diámetro × 95 mm
+            Peso: 253 g
+            Conexiones inalámbricas: función de manos libres
+            Bluetooth®: 4.2
+            Alcance de comunicación máximo: 10 m
+            Perfiles compatibles: a2dp/avrcp/hfp/hsp
+            Códecs compatibles: sbc, aac
+            Alcance de transmisión de frecuencia: 20 hz - 20.000 hz (frecuencia de muestreo de 44,1 khz)
+            Interfaz: terminales de entrada y salida
+            usb type-c®
+            Duración de la batería: 16 h
+            Fuente de alimentación: batería recargable interna
+salePrice = 38990
+offerPrice = 34990
+stock = 17
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(48)
+name = Drone X15T Night Hawk
+slug = Drone-X15T-Night-Hawk
+brand = Revolt®Drones
+description =
+            2 velocidades disponibles
+            Función de desplazamiento automático, aterrizaje / despegue de una tecla
+            Arriba / abajo, izquierda / derecha.Vuelo lateral / adelante / atrás, girar a la izquierda / derecha con Gyro, modo sin cabeza, giro de 360 grados
+            Empaquetado Try-Me para demostrar características ligeras.
+            El NIGHT HAWK está programado con 16 acrobacias que incluyen volteretas y patrones de vuelo preprogramados.
+            Elija entre 6 patrones de luz diferentes provenientes del cuerpo principal
+salePrice = 19990
+offerPrice = 18990
+stock = 67
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(49)
+name = Cámara Mirrorless A7M2K
+slug = Camara-Mirrorless-A7M2K
+brand = Sony®Cámaras Mirrorless
+description =
+            Estabilización de imágenes de 5 ejes
+            La cámara α7 II aumenta tu rango de expresión gracias a la compensación para cinco
+            tipos de vibraciones de la cámara durante las capturas manuales de fotografías y videos.
+            La compensación sumamente efectiva de 4.5 pasos te permite acercar la imagen de
+            sujetos alejados, obtener primeros planos con muchos detalles, capturar imágenes
+            nocturnas y muchas cosas más, todo con un mínimo nivel de desenfoque causado
+            por la vibración de la cámara. Compatibilidad con lentes con montura de amplio alcance
+            La nueva estabilización de imágenes de 5 ejes te permite disfrutar de una libertad
+            de capturas manuales sin precedentes con muchas de tus lentes montables preferidas.
+            La corta distancia entre la montura y el punto focal en la cámara α7 II con montura E
+            proporciona una mayor compatibilidad de lentes. Optimización automática para cada lente α
+            Usa con confianza tus lentes favoritas con montura E y montura A, ya que α7 II
+            analizará la información de la lente para optimizar el rendimiento de reproducción
+            y la estabilización de imágenes de 5 ejes para la lente específica que hayas montado.
+            Cuando usas lentes con montura E con estabilización óptica (OSS), α7 II combina
+            lo mejor de la estabilización de imágenes en la lente y en la cámara.
+salePrice = 1399990
+offerPrice = 1299990
+stock = 15
+warranty = 12 meses
+dispachTime = 2 meses
+
+
+(50)
+name = Pendrive 64GB USB 3.0 JumpDrive M35
+slug = Pendrive-64GB-USB-JumpDrive-M35
+brand = Lexar®Pendrives
+description =
+            Marca: Lexar
+            Capacidad: 64 GB
+            Tipo de Puerto: USB 3.0
+            Velocidad de Lectura: Hasta 100 MB/s
+            Compatibilidad: PC y MAC
+            Características Físicas: Diseño en una sola pieza, transformando el mismo cuerpo del pendrive en el conector USB.
+            Dimensiones: 44 mm x 19 mm x 7.45 mm
+            Almacene sus datos con la elegante unidad flash Lexar® JumpDrive® M35 USB 3.0. El acabado metálico sirve como
+            diseño elegante y cubierta protectora duradera para sus archivos. Con una rápida velocidad de transferencia
+            USB 3.0 de hasta 150 MB/s de lectura1, podrá transferir rápidamente archivos, fotos y vídeos en poco tiempo.
+            Disponible en opciones de distinta capacidad para satisfacer sus necesidades.
+salePrice = 8590
+offerPrice = 8190
+stock = 79
+warranty = 3 meses
+dispachTime = 2 meses
+
+
+
+
+

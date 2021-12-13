@@ -12,7 +12,6 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'adm' %}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,7 +28,7 @@
                             <div class="card-body">
                                 <div class="container">
                                     <div class="alert alert-danger alert-dismissible">
-                                        <h3><i class="icon fas fa-ban"></i>{{ title2 }} {{ object.first_name }} {{ object.second_name }} {{ object.pather_last_name }} {{ object.mother_last_name }}?</h3>
+                                        <h4><i class="icon fas fa-ban"></i>{{ title2 }} {{ object.first_name }} {{ object.second_name }} {{ object.pather_last_name }} {{ object.mother_last_name }}?</h4>
                                     </div>
                                     {% csrf_token %}
                                 </div>

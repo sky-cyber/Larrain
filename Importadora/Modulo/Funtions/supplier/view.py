@@ -15,7 +15,7 @@ class SupplierListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Li
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De los Contratos"
+        context['title'] = "Listado de los Contratos"
         context['title2'] = "Proveedores Registrados"
         context['object_list'] = Supplier.objects.all()
         context['url_create_supplier'] = reverse_lazy('supplier_create')

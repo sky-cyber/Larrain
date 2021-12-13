@@ -85,7 +85,7 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" style="background: #343a40">
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark navbar-light text-bold alert-while">
@@ -96,10 +96,10 @@ to get the desired effect
                         class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'profile_admin' %}" class="nav-link text-white btn-dark">PERFIL</a>
+                <a href="{% url 'profile_admin' %}" class="nav-link text-white btn-dark">Perfil</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'adm' %}" class="nav-link text-white btn-dark">METRICAS</a>
+                <a href="{% url 'adm' %}" class="nav-link text-white btn-dark">Métricas</a>
             </li>
             {% if request.user.groups.all %}
                 <li class="nav-item dropdown">
@@ -124,115 +124,7 @@ to get the desired effect
                 </li>
             {% endif %}
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'logout' %}" class="nav-link text-white btn-dark">SALIR</a>
-            </li>
-        </ul>
-
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{% static 'admin/dist/img/user1-128x128.jpg' %}" alt="User Avatar"
-                                 class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{% static 'admin/dist/img/user8-128x128.jpg' %}" alt="User Avatar"
-                                 class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{% static 'admin/dist/img/user8-128x128.jpg' %}" alt="User Avatar"
-                                 class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-                        class="fas fa-th-large"></i></a>
+                <a href="{% url 'logout' %}" class="nav-link text-white btn-dark">Salir</a>
             </li>
         </ul>
     </nav>
@@ -250,7 +142,7 @@ to get the desired effect
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar" style="height: 1700px">
+        <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -306,7 +198,7 @@ to get the desired effect
                                 <img src="{% static 'assets/img/navbar/add_bag_basket.png' %}" alt=""
                                      style="width: 30px;">
                                 <p>
-                                    Categorias
+                                    Categorías
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -315,7 +207,7 @@ to get the desired effect
                                     <a href="{% url 'category_create' %}" class="nav-link">
                                         <img src="{% static 'assets/img/navbar/add_icon.png' %}" alt=""
                                              style="width: 30px;">
-                                        <p>Nueva categoria</p>
+                                        <p>Nueva categoría</p>
                                         <i class="right badge badge-danger">New</i>
                                     </a>
                                 </li>
@@ -323,7 +215,7 @@ to get the desired effect
                                     <a href="{% url 'category_list' %}" class="nav-link">
                                         <img src="{% static 'assets/img/navbar/checkmark_done.png' %}" alt=""
                                              style="width: 30px;">
-                                        <p>Listado de cateogrias</p>
+                                        <p>Listado de categorías</p>
                                     </a>
                                 </li>
                             </ul>
@@ -429,7 +321,7 @@ to get the desired effect
                                     <a href="{% url 'order_list' %}" class="nav-link">
                                         <img src="{% static 'assets/img/navbar/file_open_icon.png' %}" alt=""
                                              style="width: 30px;">
-                                        <p>Ordenes</p>
+                                        <p>Órdenes</p>
                                         <i class="right badge badge-primary">New</i>
                                     </a>
                                 </li>
@@ -445,43 +337,43 @@ to get the desired effect
                             </ul>
                         {% endif %}
                     </li>
-                    <li class="nav-item has-treeview">
-                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Vendedor" %}
-                            <a href="" class="nav-link active">
-                                <img src="{% static 'assets/img/navbar/businessman.png' %}" alt=""
-                                     style="width: 30px;">
-                                <p>
-                                    Vendedor
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{% url 'create_client' %}" class="nav-link">
-                                        <img src="{% static 'assets/img/navbar/education_file.png' %}" alt=""
-                                             style="width: 30px;">
-                                        <p>Crear Cliente</p>
-                                        <i class="right badge badge-danger">New</i>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{% url 'sale_client' %}" class="nav-link">
-                                        <img src="{% static 'assets/img/navbar/shopping_cart.png' %}" alt=""
-                                             style="width: 30px;">
-                                        <p>Generar Compra</p>
-                                        <i class="right badge badge-primary">New</i>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{% url 'list_client_face' %}" class="nav-link">
-                                        <img src="{% static 'assets/img/navbar/document.png' %}" alt=""
-                                             style="width: 30px;">
-                                        <p>Listado de Clientes</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        {% endif %}
-                    </li>
+{#                    <li class="nav-item has-treeview">#}
+{#                        {% if request.session.group.name == "Administrador" or request.session.group.name == "Vendedor" %}#}
+{#                            <a href="" class="nav-link active">#}
+{#                                <img src="{% static 'assets/img/navbar/businessman.png' %}" alt=""#}
+{#                                     style="width: 30px;">#}
+{#                                <p>#}
+{#                                    Vendedor#}
+{#                                    <i class="right fas fa-angle-left"></i>#}
+{#                                </p>#}
+{#                            </a>#}
+{#                            <ul class="nav nav-treeview">#}
+{#                                <li class="nav-item">#}
+{#                                    <a href="{% url 'create_client' %}" class="nav-link">#}
+{#                                        <img src="{% static 'assets/img/navbar/education_file.png' %}" alt=""#}
+{#                                             style="width: 30px;">#}
+{#                                        <p>Crear Cliente</p>#}
+{#                                        <i class="right badge badge-danger">New</i>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li class="nav-item">#}
+{#                                    <a href="{% url 'sale_client' %}" class="nav-link">#}
+{#                                        <img src="{% static 'assets/img/navbar/shopping_cart.png' %}" alt=""#}
+{#                                             style="width: 30px;">#}
+{#                                        <p>Generar Compra</p>#}
+{#                                        <i class="right badge badge-primary">New</i>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                                <li class="nav-item">#}
+{#                                    <a href="{% url 'list_client_face' %}" class="nav-link">#}
+{#                                        <img src="{% static 'assets/img/navbar/document.png' %}" alt=""#}
+{#                                             style="width: 30px;">#}
+{#                                        <p>Listado de Clientes</p>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        {% endif %}#}
+{#                    </li>#}
                     <li class="nav-item has-treeview">
                         {% if request.session.group.name == "Administrador" or request.session.group.name == "Despacho" %}
                             <a href="" class="nav-link active">
@@ -526,7 +418,7 @@ to get the desired effect
                                     <a href="{% url 'dispatch_list_complete' %}" class="nav-link">
                                         <img src="{% static 'assets/img/navbar/file_filing.png' %}" alt=""
                                              style="width: 30px;">
-                                        <p>Ordenes Completadas</p>
+                                        <p>Órdenes Completadas</p>
                                     </a>
                                 </li>
                             </ul>
@@ -567,7 +459,7 @@ to get the desired effect
                                 <img src="{% static 'assets/img/navbar/adobe_file.png' %}" alt=""
                                      style="width: 30px;">
                                 <p>
-                                    Archivoss
+                                    Archivos
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>

@@ -52,7 +52,7 @@
          style="width: 250px; height: 100px">
     <h1 class="name-company">{{ Company }}</h1>
     <p class="text-center">
-        Direccion: {{ address }}<br>
+        Dirección: {{ address }}<br>
         Rut de la Empresa: {{ rut }}<br>
         N° de servicio a cliente: {{ Telefóno }}<br>
         Sitio Web: {{ Web }}<br>
@@ -62,10 +62,10 @@
     <h2 class="text-center">Datos del Cliente</h2>
     <p>
         <b>Cliente:</b> {{ order.user.get_full_name }}<br>
-        <b>Correo Electronico:</b> {{ order.user.email }}<br>
+        <b>Correo Electrónico:</b> {{ order.user.email }}<br>
         <b>Tipo de Pago:</b> {{ order.paymentMethod }}<br>
         <b>Fecha de Pago:</b> {{ order.paidAt }}<br>
-        <b>Numero de Order:</b> {{ order.transaction_id }}<br>
+        <b>Número de Orden:</b> {{ order.transaction_id }}<br>
     </p>
     <hr>
     <br>
@@ -101,7 +101,7 @@
             <td class="text-right">${{ order.get_cart_total | intcomma }}</td>
         </tr>
         <tr>
-            <td colspan="3" class="text-right"><b>Descuento por envio</b></td>
+            <td colspan="3" class="text-right"><b>Descuento por envío</b></td>
             <td class="text-right">${{ order.tax | intcomma }}</td>
         </tr>
         <tr>

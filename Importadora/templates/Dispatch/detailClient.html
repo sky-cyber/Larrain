@@ -25,7 +25,7 @@
                     <div class="card bg-dark">
                         <div class="card-body text-center">
                             <h1 class="card-text text-bold">Detalle de la información del pedido del Cliente</h1>
-                            <p class="card-text text-bold">Se visualiza toda la informacion y datos
+                            <p class="card-text text-bold">Se visualiza toda la información y datos
                                 personales del cliente para el despacho de sus productos.</p>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6 mb-4" style="font-size: 20px">
                         {% if order.status == "Orden A Despacho" or order.status == "Orden En Camino" %}
-                            <strong class="">Actualizacion del Pedido:</strong>
+                            <strong class="">Actualización del Pedido:</strong>
                             <hr>
                             <form action="{% url 'change_list_dispatch' order.pk %}" method="POST">
                                 {% csrf_token %}
@@ -47,16 +47,16 @@
                                     <div class="card-footer text-center"
                                          style="background: #deedfd; font-size: 14px">
                                         <select class="form-control" name="dispatcher" id="id_dispatcher">
-                                            {% for d, j in dispatcher %}
-                                                <option value="{{ d }}"
-                                                {% if d == order.dispatcher %}selected{% endif %}>{{ j }}</option>
+                                            {% for i, j in range.dispatcher %}
+                                                <option value="{{ i }}"
+                                                        {% if i == order.dispatch %}selected{% endif %}>{{ j }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="username" class="form-label">Fecha Estimada de Envio</label>
+                                    <label for="username" class="form-label">Fecha Estimada de Envío</label>
                                     <input class="text-center form-control datepicker" name="arrivalDate"
                                            autocomplete="off" required=""
                                            style="background: #deedfd; font-size: 14px;" value="">
@@ -83,8 +83,14 @@
                             </form>
                         {% else %}
                             <div class="col-sm-12">
-                                <label for="username" class="form-label">Fecha En La que se Enviaron Los
-                                    Productos</label>
+                                <label for="username" class="form-label">Despachador Responsable</label>
+                                <div class="card-footer text-center"
+                                     style="background: #deedfd; font-size: 14px">
+                                    <strong class="h5">{{ order.dispatcher.first_name }} {{ order.dispatcher.second_name }} {{ order.dispatcher.pather_last_name }} {{ order.dispatcher.mother_last_name }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="username" class="form-label">Fecha en la que se enviaron los Productos</label>
                                 <div class="card-footer text-center"
                                      style="background: #deedfd; font-size: 14px">
                                     <strong>{{ order.arrivalDate }}</strong>
@@ -111,7 +117,7 @@
                                     <strong>Apellidos: {{ order.user.last_name }}</strong>
                                 </span>
                             <span class="card">
-                                    <strong>Correo Electronico: {{ order.user.email }}</strong>
+                                    <strong>Correo Electrónico: {{ order.user.email }}</strong>
                                 </span>
                             <span class="card">
                                     <strong>Fecha de Registro: {{ order.user.date_joined }}</strong>
@@ -124,7 +130,7 @@
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="card-footer text-center bg-dark" style="font-size: 20px">Información para el
-                            Envio de Productos
+                            Envío de Productos
                         </div>
                         <div class="card-footer" style="font-size: 18px">
                                 <span class="card">
@@ -134,7 +140,7 @@
                                     <strong>Ciudad: {{ shipping.city }}</strong>
                                 </span>
                             <span class="card">
-                                    <strong>Codigo Postal: {{ shipping.postalCode }}</strong>
+                                    <strong>Código Postal: {{ shipping.postalCode }}</strong>
                                 </span>
                             <span class="card">
                                     <strong>Dirección: {{ shipping.address }}</strong>
@@ -143,9 +149,9 @@
                         </div>
                     </div>
                     {% if order.status == "Orden A Despacho" or order.status == "Orden En Camino" %}
-                        <h2 class="text-center">Detalle de los Productos a Despachar</h2>
+                        <h2 class="text-center">Detalle de los productos a despachar</h2>
                     {% else %}
-                        <h2 class="text-center">Detalle de los Productos Despachados</h2>
+                        <h2 class="text-center">Detalle de los productos despachados</h2>
                     {% endif %}
                     <hr>
                     <div class="card-body">
@@ -156,7 +162,7 @@
                                     <th>ID</th>
                                     <th>Nombre del Producto</th>
                                     <th>Cantidad</th>
-                                    <th>imagen</th>
+                                    <th>Imagen</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -168,7 +174,7 @@
                                         <td class="text-center"><a
                                                 href="{% url 'productDetail' item.product.slug %}">
                                             <img src="{{ item.product.get_image }}" class="img-fluid d-block mx-auto"
-                                                 style="width: 40px; height: 40px"></a>
+                                                 style="width: 60px; height: 60px"></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

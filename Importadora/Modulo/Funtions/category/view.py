@@ -26,8 +26,8 @@ class CategoryListView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, Li
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Listado De Categorias"
-        context['title2'] = "Categorias Registradas"
+        context['title'] = "Listado De Categorías"
+        context['title2'] = "Categorías Registradas"
         context['object_list'] = Category.objects.all()
         context['url_create'] = reverse_lazy('category_create')
         context['button'] = "Nuevo Registro"
@@ -61,8 +61,8 @@ class CategoryCreateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Crear Categoria"
-        context['title2'] = "Agregue Su Categoria"
+        context['title'] = "Crear Categoría"
+        context['title2'] = "Agregue Su Categoría"
         context['button'] = "Guardar Registro"
         context['list'] = reverse_lazy('category_list')
         context['button2'] = "Volver al Listado"
@@ -99,9 +99,9 @@ class CategoryUpdateView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Edición de la Categoria"
-        context['title2'] = "Edite Su Categoria"
-        context['button'] = "Actualizar Categoria"
+        context['title'] = "Edición de la Categoría"
+        context['title2'] = "Edite Su Categoría"
+        context['button'] = "Actualizar Categoría"
         context['list'] = reverse_lazy('category_list')
         context['button2'] = "Volver al Listado"
         context['action'] = 'edit'
@@ -128,7 +128,7 @@ class CategoryDeleteView(LoginRequiredMixin, ValidatorPermissionRequiredMixins, 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Eliminación de una Categoria"
-        context['title2'] = "¿Quiere eliminar la categoria "
+        context['title'] = "Eliminación de una Categoría"
+        context['title2'] = "¿Quiere eliminar la categoría "
         context['url_list'] = reverse_lazy('category_list')
         return context

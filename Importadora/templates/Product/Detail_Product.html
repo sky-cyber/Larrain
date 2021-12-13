@@ -34,28 +34,33 @@
 
                                 <h3 class="card-title" style="font-size: 23px"><img
                                         src="{% static 'assets/img/picture/price_label.png' %}"
-                                        class="img-fluid" style="width: 35px; height: 35px"><small
+                                        class="img-fluid" style="width: 50px; height: 50px"><small
                                         class="right badge badge-danger"
                                         style="background: #e50808; color: white; font-size: 18px">Oferta:</small>
                                     ${{ product.offerPrice | intcomma }}</h3>
                             {% else %}
                                 <h3 class="card-title" style="font-size: 23px"><img
                                         src="{% static 'assets/img/picture/price_label.png' %}"
-                                        class="img-fluid" style="width: 35px; height: 35px"> Precio:
+                                        class="img-fluid" style="width: 50px; height: 50px"> Precio:
                                     ${{ product.salePrice | intcomma }}</h3>
                             {% endif %}
                         </div>
                         </p>
                         <p class="lead font-weight-bold"
                            style="font-size: 25px"><img src="{% static 'assets/img/picture/product.png' %}"
-                                                        class="img-fluid" style="width: 35px; height: 35px">
-                            Categoria: {{ product.category }}</p>
+                                                        class="img-fluid" style="width: 50px; height: 50px">
+                            Categoría: {{ product.category }}</p>
                         <p class="lead font-weight-bold" style="font-size: 25px"><img
                                 src="{% static 'assets/img/picture/mark.png' %}"
-                                class="img-fluid" style="width: 35px; height: 35px"> Marca: {{ product.brand }}</p>
+                                class="img-fluid" style="width: 50px; height: 50px"> Marca: {{ product.brand }}</p>
                         <p class="lead font-weight-bold text-danger" style="font-size: 25px"><img
                                 src="{% static 'assets/img/picture/warranty.png' %}"
-                                class="img-fluid" style="width: 35px; height: 35px"> Garantia: {{ product.warranty }}
+                                class="img-fluid" style="width: 50px; height: 50px"> Garantía: {{ product.warranty }}
+                        </p>
+                        <p class="lead font-weight-bold text-danger" style="font-size: 25px"><img
+                                src="{% static 'assets/img/picture/autoship_delivery.png' %}"
+                                class="img-fluid" style="width: 60px; height: 60px"> Tiempo
+                            Estimado: {{ product.dispachTime }}
                         </p>
                         <hr>
                         <br>
@@ -66,37 +71,22 @@
                                    class="btn btn-success btn-md my-0 p text-center update-cart"
                                    type="submit"><i class="fas fa-shopping-cart ml-1"></i>{{ button }}
                                 </a>
-                                {% else %}
-                                <h3 class="text-bold text-danger">Up... Lo Siento Se Nos Agotaron :(</h3>
+                            {% else %}
+                                <h3 class="text-bold text-danger">Ups.. Lo Siento, se nos agotaron :(</h3>
                             {% endif %}
                         </form>
                     </div>
                 </div>
-                <h2 class="text-center">Caracteristicas del producto</h2>
+                <h2 class="text-center">Características del Producto</h2>
                 <div class="card-footer">
                     <p class="lead font-weight-bold">{{ product.description }}</p>
                 </div>
                 <div class="row">
                     <div class="mt-4 text-center">
-                        <p class="lead text-center text-bold">Metodos de pago:</p>
-                        <img
-                                src="{% static 'assets/img/picture/visa.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
-                        <img
-                                src="{% static 'assets/img/picture/mastercard.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
-                        <img
-                                src="{% static 'assets/img/picture/wester.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
-                        <img
-                                src="{% static 'assets/img/picture/bank-transfer.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
+                        <p class="lead text-center text-bold">Método de pago:</p>
                         <img
                                 src="{% static 'assets/img/picture/paypal.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
-                        <img
-                                src="{% static 'assets/img/picture/american-expres.png' %}"
-                                class="img-fluid" style="width: 60px; height: 60px">
+                                class="img-fluid" style="width: 80px; height: 80px">
                     </div>
                 </div>
             </div>
@@ -106,12 +96,12 @@
                 <!--Grid column-->
                 <div class="col-md-6 text-center">
 
-                    <h4 class="my-4 h4">Additional information</h4>
+                    <h4 class="my-4 h4">Información Adicional</h4>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta
-                        odit
-                        voluptates,
-                        quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+                    <p>Por tu seguridad, recuerda revisar siempre en tu navegador que el sitio que visitas sea la
+                        versión oficial. Este es el único sitio oficial de la web.
+                        Seguridad y Privacidad Garantizada. Comprar en Wykep es 100%
+                        seguro.</p>
 
                 </div>
                 <!--Grid column-->

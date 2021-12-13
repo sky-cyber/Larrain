@@ -18,7 +18,7 @@
         <div class="row" style="width: 100%">
             {% if categories %}
                 {% for cat in categories %}
-                    <h2>Categoria: {{ cat.name }}</h2>
+                    <h2>Categoría: {{ cat.name }}</h2>
                     <hr>
                     <div class="row mt-3">
                         {% if cat.product_set.all %}
@@ -59,11 +59,13 @@
                                             </div>
                                         </div>
                                         <div class="card-footer" style="width: 100%">
-                                            <a href="" data-product="{{ p.id }}" data-action="add"
-                                               class="btn btn-success btn-sm update-cart"><i
-                                                    class="fas fa-cart-arrow-down"></i>
-                                                {{ button }}
-                                            </a>
+                                            {% if p.stock != 0 %}
+                                                <a href="" data-product="{{ p.id }}" data-action="add"
+                                                   class="btn btn-success btn-sm update-cart"><i
+                                                        class="fas fa-cart-arrow-down"></i>
+                                                    {{ button }}
+                                                </a>
+                                            {% endif %}
                                             <a href="{% url 'productDetail' p.slug %}" class="btn btn-danger btn-sm"><i
                                                     class="fas fa-eye"></i>
                                                 {{ button1 }}

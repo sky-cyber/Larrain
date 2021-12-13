@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, TemplateView
 from django.core.paginator import Paginator
 from Modulo.Funtions.Profile.form import ProfileUpdateForm
+from PuntoVentas.mixins import ValidatorPermissionRequiredMixins
 
 from PuntoVentas.models import *
 
@@ -48,7 +49,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Total de Registros'
-        context['title2'] = 'Metricas Del Año 2020'
+        context['title2'] = 'Métricas Del Año 2020'
         context['totalProduct'] = Product.objects.count()
         context['totalProductOffer'] = Product.objects.filter(offer=True).count()
         context['totalUsers'] = User.objects.all().exclude(groups__name="Clientes").count()
@@ -65,11 +66,11 @@ class PerfilView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PerfilView, self).get_context_data(**kwargs)
-        context['admin'] = "En Este perfil tienes habilidatos todo los permisos del sistema"
-        context['warehouse_manager'] = "En Este perfil tienes habilidatos Los permisos de Categoria, Bodega y la Gestión de Órdenes"
-        context['sales_agent'] = "En Este perfil tienes habilidatos los permisos de la Gestión de Proveedores, generación de Contratos y Gestion de los archivos planos para integrar las nuevas ofertas"
-        context['dispatcher'] = "En Este perfil tienes habilidatos los permisos de la Gestión de desachadores, Lista de Traslado y Gestión de ordenes en Estado, Orden a Despacho, Orden En Camino, Orden Completada"
-        context['supervisor'] = "En Este perfil tienes habilidatos los permisos de la Gestión de solicitudes, Listado de productos en ofertas y Visualización de archivos planos con las nuevas Ofertas"
+        context['admin'] = "En este perfil tienes habilitados todos los permisos del sistema"
+        context['warehouse_manager'] = "En este perfil tienes habilitados los permisos de integrar categorías, gestionar productos y organizar las órdenes."
+        context['sales_agent'] = "En este perfil tienes habilitados los permisos de la gestión de proveedores, generación de contratos y gestión de los archivos planos para integrar las nuevas ofertas."
+        context['dispatcher'] = "En este perfil tienes habilitados los permisos de la gestión de despachadores, lista de traslado y gestión de estado de órdenes, orden a despacho, orden en camino, orden completada."
+        context['supervisor'] = "En este perfil tienes habilitados los permisos de la gestión de solicitudes, listado de productos en ofertas y visualización de archivos planos."
         return context
 
 
@@ -90,9 +91,9 @@ def ProfileUpdate(request):
 def Catalogue(request):
     button = 'Agregar al Carrito'
     button1 = 'Ver Producto'
-    object_list = Product.objects.all().order_by("-id")
     category = Category.objects.all()
     if request.user.is_authenticated:
+        object_list = Product.objects.all().order_by("-id")
         user = request.user
         order, created = Orders.objects.get_or_create(user=user, isPaid=False, isDelivered=False)
         items = order.oderitem_set.all()
@@ -104,6 +105,7 @@ def Catalogue(request):
     else:
         order = []
         items = []
+        object_list = Product.objects.filter(offerPrice=0).order_by("-id")
         paginator = Paginator(object_list, 8)
         page = request.GET.get('page') or 1
         object_list = paginator.get_page(page)

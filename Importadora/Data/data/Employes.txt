@@ -1,0 +1,228 @@
+
+Proveedores:
+
+1)
+rut: 23.893.432-K
+company: Sony
+first_name: Eucebio
+second_name: Rolando
+pather_last_name: Morales
+mother_last_name: Fuentes
+phone: 983138040
+address: 40, Xuanwumenwai Dajie, Beijing 100052
+email: eucrolan@gmail.com
+
+2)
+rut: 8.072.733-K
+company: skeybord
+first_name: Chain
+second_name: Guanchu
+pather_last_name: Toquelele
+mother_last_name: Ruanghi
+phone: 962083114
+address: 1 Chama Nanjie, Xichengqu 100055 Beijing
+email: chain_541@gmail.com
+
+3)
+rut: 13.090.400-9
+company: Samsung
+first_name: Chingu
+second_name: Whayagi
+pather_last_name: Perez
+mother_last_name: Valdivia
+phone: 866011115
+address: 6, Xitucheng Lu, Jimenqiao Haidian District, 100088 Beijing, China
+email: chinyagi@gmail.com
+
+4)
+rut: 6.960.976-7
+company: Logi
+first_name: Ricardo
+second_name: Alfonso
+pather_last_name: Ramirez
+mother_last_name: Morales
+phone: 965058114
+address: 8 Sanlihe Donglu, Xichengqu, Tolimanch, 100820 Beijing, China
+email: ricardorf@gmail.com
+
+5)
+rut: 14.609.207-1
+company: Samsung
+first_name: Marcelo
+second_name: Sebastian
+pather_last_name: Rodriguez
+mother_last_name: Camacho
+phone: 965448122
+address: 11 Sanlihe Donglu, Xichengqu, Ronfy, 104512, Beijing, China
+email: marcl@gmail.com
+
+6)
+rut: 12.367.219-4
+company: Arris
+first_name: Esteban
+second_name: Marcelo
+pather_last_name: Ronaldo
+mother_last_name: : Vecerra
+phone: 975058166
+address: 14 Sanlihe DongFeng, Chicuat, 101240 Beijing, China
+email: ronaldo@gmail.com
+
+7)
+rut: 18.230.202-3
+company: Vconn
+first_name: Alberto
+second_name: Manuel
+pather_last_name: Urrutia
+mother_last_name: Dominguez
+phone: 975058452
+address: 4 Sanlihe DongFeng, Caburga, 14555788 Beijing, China
+email: albert@gmail.com
+
+8)
+rut: 17.495.537-9
+company: Viconty
+first_name: Sofia
+second_name: Marcela
+pather_last_name: Perez
+mother_last_name: Machuca
+phone: 975058142
+address: 4 Sanlihe DongFeng, Ricuyack, 177449966 Beijing, China
+email: sofiper@gmail.com
+
+9)
+rut: 19.561.487-3
+company: Pearls
+first_name: Nelson
+second_name: Gustavo
+pather_last_name: Rojas
+mother_last_name: Beltran
+phone: 9754558131
+address: 7 Sanlihe Sinaguta, Rolleng, 62354174 Beijing, China
+email: nelsgus@gmail.com
+
+10)
+rut: 10.221.016-6
+company: Sonyong
+first_name: Sandra
+second_name: Urbina
+pather_last_name: Maldonado
+mother_last_name: Ricón
+phone: 973324868
+address: 7 Sanlihe Sinaguta, Rolleng, 62412356 Beijing, China
+email: sandra12@gmail.com
+
+*******************************************
+
+Despachadores:
+
+1)
+rut: 12.513.307-K
+first_name: Manuel
+second_name: Rodrigo
+pather_last_name: Osandon
+mother_last_name: Rubilar
+phone: 945126985
+email: manuelito@gmail.com
+
+2)
+rut: 7.744.084-4
+first_name: Jose
+second_name: Rolando
+pather_last_name: Vergara
+mother_last_name: Quinteros
+phone: 956432178
+email: josepth@gmail.com
+
+3)
+rut: 6.002.280-1
+first_name: Bernardo
+second_name: Ramon
+pather_last_name: Valdivia
+mother_last_name: Sepulveda
+phone: 957381462
+email: bernard@gmail.com
+
+4)
+rut: 3.881.058-8
+first_name: Joselin
+second_name: Paulina
+pather_last_name: Muñoz
+mother_last_name: Aranda
+phone: 945127863
+email: joselinp@gmail.com
+
+5)
+rut: 15.631.373-4
+first_name: Ester
+second_name: Romina
+pather_last_name: Faundes
+mother_last_name: Mendez
+phone: 912784635
+email: esterromi@gmail.com
+
+6)
+rut: 5.605.795-1
+first_name: Luz
+second_name: Carmen
+pather_last_name: Rivas
+mother_last_name: Perez
+phone: 988553641
+email: lucar@gmail.com
+
+7)
+rut: 20.977.074-1
+first_name: Stephany
+second_name: Roxana
+pather_last_name: Segovia
+mother_last_name: Miranda
+phone: 955226644
+email: stefyrox@gmail.com
+
+8)
+rut: 6.328.309-6
+first_name: Carlos
+second_name: Fabian
+pather_last_name: Rosales
+mother_last_name: Marambio
+phone: 921335574
+email: carlfa@gmail.com
+
+9)
+rut: 8.870.019-8
+first_name: Paula
+second_name: Andrea
+pather_last_name: Belice
+mother_last_name: Asturias
+phone: 971284632
+email: pauland@gmail.com
+
+10)
+rut: 10.917.688-5
+first_name: Rodrigo
+second_name: Bastian
+pather_last_name: Romero
+mother_last_name: Castillo
+phone: 912456358
+email: rodribas563@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

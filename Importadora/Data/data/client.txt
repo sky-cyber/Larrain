@@ -1,0 +1,169 @@
+client
+
+1)
+username:sky
+first_name:Brian Miguel
+last_name:Nuñez Herrera
+email:brian.zenun21@gmail.com
+password:skyline21
+
+2)
+username:amaflor
+first_name:Amada Natali
+last_name:Vargas Hernandez
+email:ama.vargas.hernandez@gmail.com
+password:15fqe#$%#$
+
+3)
+username:cris
+first_name:Cristobal Mario
+last_name:Venegas Valdes
+email:cristobalvenegas001@gmail.com
+password:contraseña
+
+4)
+username:sgto
+first_name:Santiago Fidel
+last_name:Urquieta Poblete
+email:surqueta_307@hotmail.com
+password:haskjdfa3$%
+
+5)
+username:Camilo2
+first_name:Camilo Secto
+last_name:Garrido Araya
+email:camilog@gmail.com
+password:cgarrido..
+
+6)
+username:Robert
+first_name:Roberto Fotocopia
+last_name:Urrutia Caceres
+email:rurrutia@gmail.com
+password:roberto2021
+
+7)
+username:Sofia25
+first_name:Sofia Esperanza
+last_name:Arriagada Avalos
+email:arriagadas@gmail.com
+password:sofi1456.-
+
+8)
+username:Carol
+first_name:Carolina Marcela
+last_name:Barrientos Perez
+email:carolb@gmail.com
+password:carol2022
+
+9)
+username:Juanca
+first_name:Juan Carlos
+last_name:Parada Barrios
+email:juancp@gmail.com
+password:juanca26
+
+10)
+username:Paty
+first_name:Patricia Melani
+last_name:Campos Costa
+email:patriciac@gmail.com
+password:patriciac
+
+11)
+username:Cris45
+first_name:Cristian Carlos
+last_name:Olmedo Ojeda
+email:crisolmedo@gmail.com
+password:crisolmedo
+
+12)
+username:Nico
+first_name:Nicolás Mauricio
+last_name:Alvarez Herrera
+email:nicoalvarez@gmail.com
+password:nico8735-
+
+13)
+username:Edu
+first_name:Eduardo Andres
+last_name:Opazo Placeres
+email:eduardoo@gmail.com
+password:eduardoO25
+
+14)
+username:Taty
+first_name:Tatiana Margarita
+last_name:Gonzalez Flores
+email:tatyg20@gmail.com
+password:tatyg2021
+
+15)
+username:Vale
+first_name:San Valentin
+last_name:Estay Marruecos
+email:valeestay@gmail.com
+password:valeestay
+
+16)
+username:Andrea35
+first_name:Andrea Paredes
+last_name:Gacitua Golden
+email:agacitua@gmail.com
+password:andreag..
+
+17)
+username:Pascu18
+first_name:Pascuala Venado
+last_name:Valdivia Fuente
+email:pascu28@gmail.com
+password:Pascuala28
+
+18)
+username:Domi19
+first_name:Dominga Saturday
+last_name:Cuadra Melo
+email:domicuadra@gmail.com
+password:dominga19
+
+19)
+username:Jessy
+first_name:Jessenia Parquert
+last_name:Fuentes Salinas
+email:jessyf@gmail.com
+password:jessyf39.-
+
+20)
+username:Tamy
+first_name:Tamara Luz
+last_name:Apablaza Lazcano
+email:tamy.apablaza@gmail.com
+password:tamara10..
+
+21)
+username:Ricardo
+first_name:Ricardo Machucado
+last_name:Sepulveda Mondaca
+email:ricard50@gmail.com
+password:ricard50$#
+
+22)
+username:Laura30
+first_name:Laura Lucero
+last_name:Espinoza Paz
+email:l.espinoza@gmail.com
+password:lespinoza30
+
+23)
+username:Kas
+first_name:Kassandra Maldonado
+last_name:Rebolledo Nuggest
+email:kas.rebolledo@gmail.com
+password:kasrebolledo
+
+24)
+username:Sara33
+first_name:Sara Conor
+last_name:Ulloa Castrosa
+email:saraulloa@gmail.com
+password:s#$%15325X
